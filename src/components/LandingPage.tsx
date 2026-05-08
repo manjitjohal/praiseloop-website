@@ -92,7 +92,7 @@ const Nav = () => (
   <header className="nav">
     <div className="container nav-row">
       <a href="#" aria-label="PraiseLoop">
-        <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={140} height={38} style={{ height: 38, width: "auto" }} priority />
+        <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={200} height={52} style={{ height: 52, width: "auto" }} priority />
       </a>
       <nav className="nav-links">
         <a href="#how">Platform</a>
@@ -364,52 +364,6 @@ const HowItWorks = () => (
   </section>
 );
 
-/* ── Roadmap ───────────────────────────────────────────────── */
-const Roadmap = () => (
-  <section id="roadmap">
-    <div className="container">
-      <div className="section-head">
-        <span className="eyebrow">Roadmap</span>
-        <h2>What ships now. What ships next.</h2>
-        <p className="lede">No vapour. No roadmap as marketing.</p>
-      </div>
-      <div className="roadmap-cards">
-        <div className="rm-card now">
-          <span className="when">Available now</span>
-          <h4>Phase A · The closed loop</h4>
-          <ul>
-            <li>{ENGINE_NAME} + double-entry ledger</li>
-            <li>Salesforce, HubSpot, Jira, Workday webhooks</li>
-            <li>Quiet hero detection</li>
-            <li>Smart writing assistant</li>
-            <li>Manager nudges</li>
-            <li>Arabic-first UX (RTL)</li>
-          </ul>
-        </div>
-        <div className="rm-card next">
-          <span className="when">Q3 2026</span>
-          <h4>Phase B · Measure the loop</h4>
-          <ul>
-            <li>Recognition ROI analysis</li>
-            <li>Team health scoring</li>
-            <li>Manager-effectiveness signals</li>
-            <li>Cohort + tenure analytics</li>
-          </ul>
-        </div>
-        <div className="rm-card later">
-          <span className="when">2027</span>
-          <h4>Phase C · Predict the loop</h4>
-          <ul>
-            <li>Attrition risk prediction</li>
-            <li>Performance forecasting</li>
-            <li>Compensation guidance</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 /* ── Sparkline ─────────────────────────────────────────────── */
 const Sparkline = ({ points, trend = "up" }: { points: number[]; trend?: "up" | "down" }) => {
   const w = 120, h = 36;
@@ -524,7 +478,7 @@ const FooterSection = () => (
     <div className="container">
       <div className="footer-grid">
         <div className="footer-brand">
-          <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={140} height={44} style={{ height: 44, width: "auto" }} />
+          <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={200} height={56} style={{ height: 56, width: "auto" }} />
           <p className="footer-tag" style={{ marginTop: 18 }}>Performance-linked recognition for teams that measure what matters. Built for the GCC. Available globally.</p>
           <span className="footer-mantra">Reward outcomes, not effort.</span>
         </div>
@@ -534,7 +488,7 @@ const FooterSection = () => (
             <li><a href="#how">Recognition layer</a></li>
             <li><a href="#how">{ENGINE_NAME}</a></li>
             <li><a href="#how">Intelligence layer</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#stats">Why it matters</a></li>
           </ul>
         </div>
         <div>
@@ -573,7 +527,7 @@ export default function LandingPage() {
       <Integrations />
       <Problem />
       <HowItWorks />
-      <Roadmap />
+
       <Stats />
       <VPSales />
       <GCC />
