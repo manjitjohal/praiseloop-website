@@ -115,15 +115,11 @@ const Nav = () => (
 
 /* ── Hero ──────────────────────────────────────────────────── */
 const Hero = () => {
-  const [count, setCount] = useState(47);
-  const [coins, setCoins] = useState(2400);
   const [showSecondBadge, setShowSecondBadge] = useState(false);
 
   useEffect(() => {
-    const t = setInterval(() => setCount((c) => c + (Math.random() < 0.6 ? 1 : 0)), 4200);
-    const c = setInterval(() => setCoins((v) => v + 25), 3000);
     const b = setInterval(() => setShowSecondBadge((v) => !v), 3500);
-    return () => { clearInterval(t); clearInterval(c); clearInterval(b); };
+    return () => clearInterval(b);
   }, []);
 
   return (
@@ -159,7 +155,7 @@ const Hero = () => {
           <div className="dashboard">
             <div className="dashboard-head">
               <h4 style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <Image src="/Orange logo - transparent bg.png" alt="" width={16} height={16} style={{ height: 16, width: "auto" }} />
+                <Image src="/Orange logo - transparent bg.png" alt="" width={28} height={28} style={{ height: 28, width: "auto" }} />
                 <span style={{ color: "var(--outline)" }}>· live</span>
               </h4>
               <div className="dashboard-dots"><span></span><span></span><span></span></div>
@@ -170,7 +166,7 @@ const Hero = () => {
                 <div>
                   <span className="label">Triggered today</span>
                   <div className="value">
-                    <span className="dash-counter">{count}</span>
+                    <span className="dash-counter">47</span>
                     <span className="unit">rewards</span>
                   </div>
                   <div className="sub">From 4 connected systems</div>
@@ -182,7 +178,7 @@ const Hero = () => {
                 <div>
                   <span className="label">Top performer</span>
                   <div className="value">Sarah Chen</div>
-                  <div className="sub">$240K closed · {coins.toLocaleString()} coins earned</div>
+                  <div className="sub">$240K closed · 2,400 coins earned</div>
                 </div>
                 <span className="dash-tag">Q2</span>
               </div>
@@ -197,6 +193,18 @@ const Hero = () => {
                   </div>
                   <div className="sub" style={{ marginTop: 8 }}>All systems firing</div>
                 </div>
+              </div>
+              <div className="dash-card">
+                <div className="dash-icon"><Icon.Shield /></div>
+                <div>
+                  <span className="label">Pending approvals</span>
+                  <div className="value">
+                    <span className="dash-counter">3</span>
+                    <span className="unit">awaiting review</span>
+                  </div>
+                  <div className="sub">Avg response: 1.4 hrs</div>
+                </div>
+                <span className="dash-tag" style={{ background: "var(--soft-teal)", color: "var(--teal)" }}>On track</span>
               </div>
             </div>
           </div>
@@ -228,9 +236,11 @@ const integrations = [
 
 const Integrations = () => (
   <section className="integrations-section">
-    <div className="container integrations-row">
-      <span className="eyebrow no-dot">Connects to the systems your work actually lives in</span>
-      <div className="integration-logos">
+    <div className="container">
+      <div className="integrations-header">
+        <span className="eyebrow no-dot">Connects to the systems your work actually lives in</span>
+      </div>
+      <div className="integration-grid">
         {integrations.map((l) => (
           <span key={l.name} className="int-logo">
             <l.Logo />
@@ -287,7 +297,7 @@ const HowItWorks = () => (
 
       {/* Loop diagram */}
       <div className="loop-diagram">
-        <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg viewBox="0 -30 900 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
               <path d="M0 0 L10 5 L0 10 z" fill="var(--orange)"/>

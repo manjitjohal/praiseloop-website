@@ -787,19 +787,36 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
   border-bottom: 1px solid var(--surface-container-high);
   background: var(--surface);
 }
+.integrations-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.integrations-header .eyebrow {
+  max-width: none;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-weight: 500;
+}
+.integration-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 32px;
+  justify-items: center;
+  color: var(--on-surface);
+}
+@media (max-width: 768px) {
+  .integration-grid { grid-template-columns: repeat(2, 1fr); }
+}
 .int-logo {
   display: inline-flex; align-items: center; gap: 10px;
-  font-weight: 600; font-size: 16px; opacity: 0.85;
+  font-weight: 600; font-size: 15px; opacity: 0.85;
   transition: opacity .2s ease, transform .2s ease;
-  padding: 6px 0;
+  padding: 8px 12px;
+  white-space: nowrap;
 }
 .int-logo:hover { opacity: 1; transform: translateY(-1px); }
 .int-logo svg { flex-shrink: 0; }
-.integration-logos {
-  display: flex; flex-wrap: wrap;
-  gap: 32px 40px; align-items: center;
-  color: var(--on-surface);
-}
 
 /* Sanity Studio */
 .next-sanity-studio {
