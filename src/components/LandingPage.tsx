@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import {
+  SalesforceLogo, HubSpotLogo, JiraLogo, BambooHRLogo,
+  HiBobLogo, TeamsLogo, SlackLogo, GoogleWorkspaceLogo,
+} from "./BrandLogos";
 
 /* ── Icons ─────────────────────────────────────────────────── */
 const Icon = {
@@ -113,11 +117,13 @@ const Nav = () => (
 const Hero = () => {
   const [count, setCount] = useState(47);
   const [coins, setCoins] = useState(2400);
+  const [showSecondBadge, setShowSecondBadge] = useState(false);
 
   useEffect(() => {
     const t = setInterval(() => setCount((c) => c + (Math.random() < 0.6 ? 1 : 0)), 4200);
     const c = setInterval(() => setCoins((v) => v + 25), 3000);
-    return () => { clearInterval(t); clearInterval(c); };
+    const b = setInterval(() => setShowSecondBadge((v) => !v), 3500);
+    return () => { clearInterval(t); clearInterval(c); clearInterval(b); };
   }, []);
 
   return (
@@ -149,6 +155,7 @@ const Hero = () => {
         </div>
 
         <div style={{ position: "relative" }}>
+          <div className="dashboard-glow" />
           <div className="dashboard">
             <div className="dashboard-head">
               <h4 style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -171,7 +178,7 @@ const Hero = () => {
                 <span className="dash-tag">+12%</span>
               </div>
               <div className="dash-card featured">
-                <div className="dash-icon"><Icon.Trophy /></div>
+                <div className="dash-avatar">SC</div>
                 <div>
                   <span className="label">Top performer</span>
                   <div className="value">Sarah Chen</div>
@@ -192,11 +199,14 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className="dash-caption">Simulated dashboard preview.</div>
           </div>
           <div className="hero-fire">
             <span className="spark"><Icon.Spark /></span>
             +500 coins · deal closed
+          </div>
+          <div className={`hero-fire hero-fire-second ${showSecondBadge ? "visible" : ""}`}>
+            <span className="spark spark-teal"><Icon.Check /></span>
+            +120 coins · ticket resolved
           </div>
         </div>
       </div>
@@ -205,24 +215,26 @@ const Hero = () => {
 };
 
 /* ── Integrations ──────────────────────────────────────────── */
+const integrations = [
+  { name: "Salesforce", Logo: SalesforceLogo },
+  { name: "HubSpot", Logo: HubSpotLogo },
+  { name: "Jira", Logo: JiraLogo },
+  { name: "BambooHR", Logo: BambooHRLogo },
+  { name: "HiBob", Logo: HiBobLogo },
+  { name: "Microsoft Teams", Logo: TeamsLogo },
+  { name: "Slack", Logo: SlackLogo },
+  { name: "Google Workspace", Logo: GoogleWorkspaceLogo },
+];
+
 const Integrations = () => (
-  <section className="integrations-section" style={{ padding: "56px 0" }}>
+  <section className="integrations-section">
     <div className="container integrations-row">
       <span className="eyebrow no-dot">Connects to the systems your work actually lives in</span>
       <div className="integration-logos">
-        {[
-          { n: "Salesforce", c: "#00a1e0" },
-          { n: "HubSpot", c: "#ff7a59" },
-          { n: "Jira", c: "#2684ff" },
-          { n: "BambooHR", c: "#73c41d" },
-          { n: "HiBob", c: "#e94e1b" },
-          { n: "Microsoft Teams", c: "#5b5fc7" },
-          { n: "Slack", c: "#611f69" },
-          { n: "Google Workspace", c: "#4285f4" },
-        ].map((l) => (
-          <span key={l.n} className="int-logo">
-            <span className="dot" style={{ background: l.c, opacity: 0.85 }}></span>
-            {l.n}
+        {integrations.map((l) => (
+          <span key={l.name} className="int-logo">
+            <l.Logo />
+            {l.name}
           </span>
         ))}
       </div>
@@ -275,38 +287,78 @@ const HowItWorks = () => (
 
       {/* Loop diagram */}
       <div className="loop-diagram">
-        <svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
-            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
               <path d="M0 0 L10 5 L0 10 z" fill="var(--orange)"/>
             </marker>
+            <radialGradient id="engine-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="var(--orange)" stopOpacity="0.25"/>
+              <stop offset="100%" stopColor="var(--orange)" stopOpacity="0"/>
+            </radialGradient>
+            <linearGradient id="path-grad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="var(--outline-variant)"/>
+              <stop offset="50%" stopColor="var(--orange)" stopOpacity="0.6"/>
+              <stop offset="100%" stopColor="var(--outline-variant)"/>
+            </linearGradient>
           </defs>
-          <path d="M 80 200 Q 220 60 450 60 Q 680 60 820 200" stroke="var(--outline-variant)" strokeWidth="1.5" fill="none" strokeDasharray="4 6"/>
-          <path d="M 820 200 Q 680 240 450 240 Q 220 240 80 200" stroke="var(--orange)" strokeWidth="2" fill="none" markerEnd="url(#arr)"/>
-          <g transform="translate(80 200)">
-            <circle r="44" fill="#fff" stroke="var(--surface-container-high)"/>
-            <text y="-58" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" letterSpacing="2" fill="var(--on-surface-variant)">01</text>
-            <text y="6" textAnchor="middle" fontSize="13" fontWeight="600" fill="var(--on-surface)">Recognition</text>
-            <text y="22" textAnchor="middle" fontSize="11" fill="var(--on-surface-variant)">Capture</text>
+
+          {/* Forward path (top arc) */}
+          <path d="M 80 210 Q 220 60 450 60 Q 680 60 820 210" stroke="url(#path-grad)" strokeWidth="2.5" fill="none" strokeDasharray="6 8"/>
+          {/* Return path (bottom arc) */}
+          <path d="M 820 210 Q 680 260 450 260 Q 220 260 80 210" stroke="var(--orange)" strokeWidth="3" fill="none" markerEnd="url(#arr)"/>
+
+          {/* Animated dots travelling along forward path */}
+          <circle r="4" fill="var(--orange)">
+            <animateMotion dur="4s" repeatCount="indefinite" path="M 80 210 Q 220 60 450 60 Q 680 60 820 210"/>
+          </circle>
+          <circle r="3" fill="var(--orange)" opacity="0.5">
+            <animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M 80 210 Q 220 60 450 60 Q 680 60 820 210"/>
+          </circle>
+          {/* Animated dot on return path */}
+          <circle r="4" fill="var(--orange)">
+            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 820 210 Q 680 260 450 260 Q 220 260 80 210"/>
+          </circle>
+
+          {/* Floating labels on curves */}
+          <text x="240" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">webhook fires</text>
+          <text x="610" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">coins awarded</text>
+          <text x="400" y="280" fontSize="10" fontWeight="600" fill="var(--orange)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">signals compound</text>
+
+          {/* Node 1 — Recognition */}
+          <g transform="translate(80 210)">
+            <circle r="50" fill="#fff" stroke="var(--surface-container-high)" strokeWidth="2"/>
+            <text y="-64" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" letterSpacing="2" fill="var(--on-surface-variant)">01</text>
+            {/* Signal icon */}
+            <path d="M-8-6l4 6-4 6M0-6l4 6-4 6M8-6l4 6-4 6" stroke="var(--orange)" strokeWidth="1.5" fill="none" strokeLinecap="round" transform="translate(-4,-12) scale(0.8)"/>
+            <text y="10" textAnchor="middle" fontSize="14" fontWeight="600" fill="var(--on-surface)">Recognition</text>
+            <text y="26" textAnchor="middle" fontSize="11" fill="var(--on-surface-variant)">Capture</text>
           </g>
+
+          {/* Node 2 — Outcome Engine (larger, glowing) */}
           <g transform="translate(450 60)">
-            <circle r="62" fill="var(--navy)"/>
-            <circle r="62" fill="none" stroke="var(--orange)" strokeWidth="2" opacity="0.4"/>
-            <circle r="74" fill="none" stroke="var(--orange)" strokeWidth="1" opacity="0.2"/>
-            <text y="-78" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" letterSpacing="2" fill="var(--orange)">02 · CORE</text>
-            <text y="-4" textAnchor="middle" fontSize="15" fontWeight="700" fill="#fff">{ENGINE_NAME}</text>
-            <text y="16" textAnchor="middle" fontSize="11" fill="rgba(255,255,255,0.7)">Trigger reward</text>
+            <circle r="100" fill="url(#engine-glow)" className="engine-pulse"/>
+            <circle r="72" fill="var(--navy)"/>
+            <circle r="72" fill="none" stroke="var(--orange)" strokeWidth="2.5" opacity="0.5" className="engine-ring"/>
+            <circle r="86" fill="none" stroke="var(--orange)" strokeWidth="1" opacity="0.2"/>
+            <text y="-90" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="11" fontWeight="700" letterSpacing="2" fill="var(--orange)">02 · CORE</text>
+            {/* Bolt icon */}
+            <path d="M-4-18l-8 14h6l-2 14 10-16h-7z" fill="var(--orange)" opacity="0.6" transform="translate(0,-4) scale(0.7)"/>
+            <text y="4" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">{ENGINE_NAME}</text>
+            <text y="22" textAnchor="middle" fontSize="12" fill="rgba(255,255,255,0.7)">Trigger reward</text>
           </g>
-          <g transform="translate(820 200)">
-            <circle r="44" fill="#fff" stroke="var(--surface-container-high)"/>
-            <text y="-58" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" letterSpacing="2" fill="var(--on-surface-variant)">03</text>
-            <text y="6" textAnchor="middle" fontSize="13" fontWeight="600" fill="var(--on-surface)">Intelligence</text>
-            <text y="22" textAnchor="middle" fontSize="11" fill="var(--on-surface-variant)">Compound</text>
+
+          {/* Node 3 — Intelligence */}
+          <g transform="translate(820 210)">
+            <circle r="50" fill="#fff" stroke="var(--surface-container-high)" strokeWidth="2"/>
+            <text y="-64" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" letterSpacing="2" fill="var(--on-surface-variant)">03</text>
+            {/* Chart icon */}
+            <rect x="-12" y="-12" width="5" height="10" rx="1" fill="var(--slate)" opacity="0.6"/>
+            <rect x="-4" y="-18" width="5" height="16" rx="1" fill="var(--orange)" opacity="0.7"/>
+            <rect x="4" y="-15" width="5" height="13" rx="1" fill="var(--slate)" opacity="0.6"/>
+            <text y="10" textAnchor="middle" fontSize="14" fontWeight="600" fill="var(--on-surface)">Intelligence</text>
+            <text y="26" textAnchor="middle" fontSize="11" fill="var(--on-surface-variant)">Compound</text>
           </g>
-          <circle cx="220" cy="105" r="3" fill="var(--orange)"/>
-          <circle cx="350" cy="72" r="2" fill="var(--orange)" opacity="0.6"/>
-          <circle cx="560" cy="72" r="2" fill="var(--orange)" opacity="0.6"/>
-          <circle cx="690" cy="105" r="3" fill="var(--orange)"/>
         </svg>
       </div>
 

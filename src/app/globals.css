@@ -730,6 +730,77 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
 .loop-diagram { margin: -16px auto 56px; max-width: 920px; }
 .loop-diagram svg { width: 100%; height: auto; }
 
+/* ── Hero improvements ── */
+.dashboard-glow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse at center, rgba(255, 91, 4, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.dashboard { position: relative; z-index: 1; }
+.dash-avatar {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-soft) 100%);
+  color: #fff;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.hero-fire-second {
+  top: auto; bottom: 32px; right: auto; left: -24px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  animation: none;
+}
+.hero-fire-second.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.spark-teal {
+  background: var(--teal) !important;
+}
+
+/* ── Loop diagram improvements ── */
+.engine-pulse {
+  animation: enginePulse 3s ease-in-out infinite;
+}
+@keyframes enginePulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+.engine-ring {
+  animation: ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.3; r: 72; }
+  50% { opacity: 0.7; r: 74; }
+}
+
+/* ── Integrations bar improvements ── */
+.integrations-section {
+  padding: 48px 0;
+  border-top: 1px solid var(--surface-container-high);
+  border-bottom: 1px solid var(--surface-container-high);
+  background: var(--surface);
+}
+.int-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 600; font-size: 16px; opacity: 0.85;
+  transition: opacity .2s ease, transform .2s ease;
+  padding: 6px 0;
+}
+.int-logo:hover { opacity: 1; transform: translateY(-1px); }
+.int-logo svg { flex-shrink: 0; }
+.integration-logos {
+  display: flex; flex-wrap: wrap;
+  gap: 32px 40px; align-items: center;
+  color: var(--on-surface);
+}
+
 /* Sanity Studio */
 .next-sanity-studio {
   height: 100vh;
