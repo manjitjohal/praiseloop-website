@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Extracted bundle assets (not part of the app)
+    "_asset_*.jsx",
+    "_*.html",
+    "_*.css",
   ]),
 ]);
 

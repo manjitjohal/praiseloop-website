@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
+import { Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const figtree = Figtree({
-  variable: "--font-figtree",
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "PraiseLoop — Performance-linked recognition & rewards",
+  title: "PraiseLoop — Performance-linked recognition",
   description:
-    "Automate employee recognition tied to real KPIs. PraiseLoop connects to your CRM, awards coins when targets are hit, and lets employees redeem real rewards.",
+    "When your CRM, ticketing, or LMS confirms a result, PraiseLoop fires the reward automatically. The work itself triggers the recognition.",
   openGraph: {
-    title: "PraiseLoop — Performance-linked recognition & rewards",
+    title: "PraiseLoop — Performance-linked recognition",
     description:
-      "Automate employee recognition tied to real KPIs. Award coins, redeem real rewards.",
+      "Most recognition platforms reward effort. PraiseLoop rewards outcomes.",
     siteName: "PraiseLoop",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PraiseLoop — Performance-linked recognition & rewards",
-    description:
-      "Automate employee recognition tied to real KPIs. Award coins, redeem real rewards.",
   },
 };
 
@@ -33,8 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${figtree.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${jetbrainsMono.variable} antialiased`}
+    >
+      <body>{children}</body>
     </html>
   );
 }
