@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(mkdir -p _temp)",
+      "Bash(mv \"DESIGN.md\" \"Orange logo - transparent bg.png\" \"PraiseLoop Home _standalone_.html\" \"praiseloop-logo-white.png\" \"praiseloop-logo.png\" _temp/)",
+      "Bash(mv:*)"
+    ]
+  }
+}
