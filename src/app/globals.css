@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-teal: #1B6B6B;
+  --brand-teal-dark: #153F3F;
+  --brand-orange: #F26522;
+  --brand-orange-hover: #D9551A;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F5;
+  --bg-light-teal: #E8F0F0;
+  --text-primary: #1A1A1A;
+  --text-secondary: #6B7280;
+  --text-white: #FFFFFF;
+  --border: #E5E7EB;
+  --success: #22C55E;
+  --destructive: #DC2626;
+  --warning: #F59E0B;
+  --coin-gold: #F59E0B;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-teal-dark: var(--brand-teal-dark);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-hover: var(--brand-orange-hover);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-light-teal: var(--bg-light-teal);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-default: var(--border);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-figtree);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-figtree), system-ui, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sanity Studio overrides — let Studio control its own styles */
+.next-sanity-studio {
+  height: 100vh;
+  max-height: 100dvh;
+  width: 100vw;
 }
