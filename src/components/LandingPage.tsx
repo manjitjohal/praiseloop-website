@@ -135,7 +135,7 @@ const Hero = () => {
             PraiseLoop rewards <span className="em">outcomes</span>.
           </h1>
           <p className="lede" style={{ marginTop: 24 }}>
-            When your CRM, ticketing, or LMS confirms a result, PraiseLoop fires the reward automatically. The work itself triggers the recognition.
+            When someone hits a target, closes a deal, or completes a milestone, PraiseLoop rewards them automatically. No forms. No delays.
           </p>
           <div className="hero-cta">
             <a href="#how" className="btn btn-primary btn-arrow">
@@ -146,7 +146,7 @@ const Hero = () => {
           <div className="hero-meta">
             <span><span className="check"><Icon.Check /></span> No credit card</span>
             <span><span className="check"><Icon.Check /></span> 30-min walkthrough</span>
-            <span><span className="check"><Icon.Check /></span> Live webhook demo</span>
+            <span><span className="check"><Icon.Check /></span> Live platform demo</span>
           </div>
         </div>
 
@@ -185,13 +185,13 @@ const Hero = () => {
               <div className="dash-card">
                 <div className="dash-icon"><Icon.Webhook /></div>
                 <div>
-                  <span className="label">Webhook activity</span>
+                  <span className="label">Connected systems</span>
                   <div className="dash-systems" style={{ marginTop: 6 }}>
                     <span className="sys-pill"><span className="ping"></span>Salesforce</span>
                     <span className="sys-pill"><span className="ping"></span>Jira</span>
                     <span className="sys-pill"><span className="ping"></span>BambooHR</span>
                   </div>
-                  <div className="sub" style={{ marginTop: 8 }}>All systems firing</div>
+                  <div className="sub" style={{ marginTop: 8 }}>All synced</div>
                 </div>
               </div>
               <div className="dash-card">
@@ -210,11 +210,11 @@ const Hero = () => {
           </div>
           <div className="hero-fire">
             <span className="spark"><Icon.Spark /></span>
-            +500 coins · deal closed
+            +500 coins · deal won
           </div>
           <div className={`hero-fire hero-fire-second ${showSecondBadge ? "visible" : ""}`}>
             <span className="spark spark-teal"><Icon.Check /></span>
-            +120 coins · ticket resolved
+            +120 coins · issue fixed
           </div>
         </div>
       </div>
@@ -264,21 +264,21 @@ const Problem = () => (
       <div className="problem-cards">
         <div className="problem-card">
           <div className="deco"><Icon.Stack /></div>
-          <span className="num">01 / DATA</span>
+          <span className="num">01 / THE GAP</span>
           <h3>The data is in the wrong place</h3>
-          <p>Performance lives in your CRM and ticketing system. Recognition lives in a platform that can&apos;t see either.</p>
+          <p>Real performance lives in your sales and project tools. Your recognition platform can&apos;t see any of it.</p>
         </div>
         <div className="problem-card">
           <div className="deco"><Icon.Eye /></div>
-          <span className="num">02 / SIGNAL</span>
+          <span className="num">02 / THE BIAS</span>
           <h3>Recognition stays subjective</h3>
-          <p>Managers nominate, peers thank, HR runs campaigns — none of it tied to what the company actually pays for.</p>
+          <p>Managers nominate favourites, peers thank friends, HR runs campaigns — none of it tied to who actually delivered results.</p>
         </div>
         <div className="problem-card">
           <div className="deco"><Icon.Brain /></div>
-          <span className="num">03 / LOOP</span>
+          <span className="num">03 / THE BLIND SPOT</span>
           <h3>There&apos;s no feedback loop</h3>
-          <p>You can&apos;t measure whether incentives drive behaviour when they aren&apos;t tied to it in the first place.</p>
+          <p>You can&apos;t tell whether your recognition programme is actually changing behaviour — because it was never connected to results.</p>
         </div>
       </div>
     </div>
@@ -292,7 +292,7 @@ const HowItWorks = () => (
       <div className="section-head">
         <span className="eyebrow">How it works</span>
         <h2>Three layers. One closed loop.</h2>
-        <p className="lede">Recognition captures the signal. The {ENGINE_NAME} connects it to outcomes. Intelligence compounds over time.</p>
+        <p className="lede">Recognise great work. Automatically reward results. Learn what drives your best people.</p>
       </div>
 
       {/* Loop diagram */}
@@ -331,9 +331,9 @@ const HowItWorks = () => (
           </circle>
 
           {/* Floating labels on curves */}
-          <text x="240" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">webhook fires</text>
-          <text x="610" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">coins awarded</text>
-          <text x="400" y="280" fontSize="10" fontWeight="600" fill="var(--orange)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">signals compound</text>
+          <text x="240" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">target hit</text>
+          <text x="620" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">reward sent</text>
+          <text x="390" y="280" fontSize="10" fontWeight="600" fill="var(--orange)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">insights improve over time</text>
 
           {/* Node 1 — Recognition */}
           <g transform="translate(80 210)">
@@ -355,7 +355,7 @@ const HowItWorks = () => (
             {/* Bolt icon */}
             <path d="M-4-18l-8 14h6l-2 14 10-16h-7z" fill="var(--orange)" opacity="0.6" transform="translate(0,-4) scale(0.7)"/>
             <text y="4" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">{ENGINE_NAME}</text>
-            <text y="22" textAnchor="middle" fontSize="12" fill="rgba(255,255,255,0.7)">Trigger reward</text>
+            <text y="22" textAnchor="middle" fontSize="12" fill="rgba(255,255,255,0.7)">Auto-reward</text>
           </g>
 
           {/* Node 3 — Intelligence */}
@@ -377,8 +377,8 @@ const HowItWorks = () => (
         <div className="layer">
           <div>
             <span className="layer-tag">— Layer 01 / Recognition</span>
-            <h3>Capture every signal, automatically</h3>
-            <p>Peer thanks, manager endorsements, milestones, value badges — turned into structured data without anyone filling in a form.</p>
+            <h3>Capture every moment of great work</h3>
+            <p>Peer shout-outs, manager endorsements, milestones, value badges — all in one place, without anyone filling in a form.</p>
           </div>
           <div className="layer-visual">
             <div className="signal-row"><span className="av">JR</span><div><strong>Jamie</strong> thanked <strong>Priya</strong> · <em>shipped under the wire</em></div></div>
@@ -393,15 +393,15 @@ const HowItWorks = () => (
           <div>
             <span className="layer-badge">★ The differentiator</span>
             <span className="layer-tag">— Layer 02 / {ENGINE_NAME}</span>
-            <h3>The work itself fires the reward</h3>
-            <p>Deal closes in Salesforce. Ticket resolves in Jira. Cert completes in your LMS. The {ENGINE_NAME} fires automatically — configurable rules, double-entry ledger, approval thresholds. Recognition becomes evidence the work was done.</p>
+            <h3>Results trigger rewards — automatically</h3>
+            <p>Someone closes a deal in Salesforce. Resolves a critical issue in Jira. Earns a certification. The {ENGINE_NAME} spots it and sends the reward instantly — with full budget controls and approval workflows built in.</p>
           </div>
           <div className="coin-demo">
-            <div className="layers-pre"><span>WEBHOOK STREAM</span><span className="line"></span><span>LIVE</span></div>
-            <div className="coin-row"><span className="coin-source">salesforce</span><span className="coin-event">opportunity.closed_won · Acme Corp · $240K</span><span className="coin-amount">+500</span></div>
-            <div className="coin-row"><span className="coin-source">jira</span><span className="coin-event">ticket.resolved · INC-2901 · P1 · 42m</span><span className="coin-amount">+120</span></div>
-            <div className="coin-row"><span className="coin-source">workday</span><span className="coin-event">cert.completed · AWS Solutions Architect</span><span className="coin-amount">+250</span></div>
-            <div className="coin-row"><span className="coin-source">hubspot</span><span className="coin-event">deal.closed_won · Northwind · $86K</span><span className="coin-amount">+180</span></div>
+            <div className="layers-pre"><span>RECENT REWARDS</span><span className="line"></span><span>LIVE</span></div>
+            <div className="coin-row"><span className="coin-source">Salesforce</span><span className="coin-event">Deal won · Acme Corp · $240K</span><span className="coin-amount">+500</span></div>
+            <div className="coin-row"><span className="coin-source">Jira</span><span className="coin-event">Critical issue resolved · 42 min response</span><span className="coin-amount">+120</span></div>
+            <div className="coin-row"><span className="coin-source">Training</span><span className="coin-event">Certification completed · AWS Solutions Architect</span><span className="coin-amount">+250</span></div>
+            <div className="coin-row"><span className="coin-source">HubSpot</span><span className="coin-event">Deal won · Northwind · $86K</span><span className="coin-amount">+180</span></div>
           </div>
         </div>
 
@@ -409,15 +409,15 @@ const HowItWorks = () => (
         <div className="layer">
           <div>
             <span className="layer-tag">— Layer 03 / Intelligence</span>
-            <h3>The signals build up over time</h3>
-            <p>Every reward and recognition event is a data point. Today: quiet hero detection, smart writing, manager nudges. Next: ROI analysis, team health, attrition prediction.</p>
+            <h3>Every recognition becomes an insight</h3>
+            <p>Over time, PraiseLoop builds a picture of what drives your best people — surfacing hidden contributors, flagging disengagement, and helping managers act before it&apos;s too late.</p>
           </div>
           <div className="layer-visual">
             <div className="timeline">
-              <div className="timeline-item now"><span className="when">NOW</span><span className="what">Quiet hero detection · smart writing · manager nudges</span><span className="pill">Live</span></div>
-              <div className="timeline-item next"><span className="when">Q3 &apos;26</span><span className="what">Recognition ROI analysis</span><span className="pill">Soon</span></div>
+              <div className="timeline-item now"><span className="when">NOW</span><span className="what">Spot hidden contributors · smart writing help · manager nudges</span><span className="pill">Live</span></div>
+              <div className="timeline-item next"><span className="when">Q3 &apos;26</span><span className="what">Recognition impact reporting</span><span className="pill">Soon</span></div>
               <div className="timeline-item next"><span className="when">Q3 &apos;26</span><span className="what">Team health scoring</span><span className="pill">Soon</span></div>
-              <div className="timeline-item later"><span className="when">2027</span><span className="what">Attrition prediction</span><span className="pill">Planned</span></div>
+              <div className="timeline-item later"><span className="when">2027</span><span className="what">Flight risk alerts</span><span className="pill">Planned</span></div>
             </div>
           </div>
         </div>
@@ -471,14 +471,14 @@ const VPSales = () => (
         <div className="vp-head">
           <span className="eyebrow">Built for sales-driven teams</span>
           <h2>Your CRM already knows who deserves recognition. Why doesn&apos;t your recognition platform?</h2>
-          <p className="lede">Closed deals, quota attainment, pipeline progression — measurable, in Salesforce, and disconnected from how reps actually get recognised. PraiseLoop closes the gap.</p>
+          <p className="lede">Closed deals, quota hits, pipeline wins — they&apos;re all measurable. But your recognition platform can&apos;t see them. PraiseLoop connects the two.</p>
         </div>
         <div className="vp-cards">
-          <div className="vp-card"><div className="ico"><Icon.Webhook /></div><h4>Webhook the win</h4><p>Deal closes above threshold, the {ENGINE_NAME} fires. Your closer is paid before the manager sees the notification.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Trophy /></div><h4>Beyond the leaderboard</h4><p>Reps see what they can earn next as a forward-looking quest log, not a backward-looking leaderboard.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Eye /></div><h4>Manager view that makes sense</h4><p>Managers see KPI attainment. <em>&quot;Sarah closed Acme ($240K)&quot;</em> — not <em>&quot;Sarah received +500 coins.&quot;</em></p></div>
+          <div className="vp-card"><div className="ico"><Icon.Bolt /></div><h4>Automate the reward</h4><p>Deal closes above a threshold? The reward lands in the rep&apos;s account before the manager even sees the update.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Trophy /></div><h4>Beyond the leaderboard</h4><p>Reps see what they can earn next — a forward-looking goal, not a backward-looking scoreboard.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Eye /></div><h4>Manager view that makes sense</h4><p>Managers see results: <em>&quot;Sarah closed Acme ($240K)&quot;</em> — not just <em>&quot;Sarah received 500 coins.&quot;</em></p></div>
         </div>
-        <div className="vp-cta"><a href="#cta" className="btn btn-primary btn-arrow">See the VP Sales demo <Icon.Arrow /></a></div>
+        <div className="vp-cta"><a href="#cta" className="btn btn-primary btn-arrow">See it in action <Icon.Arrow /></a></div>
       </div>
     </div>
   </section>
@@ -492,12 +492,12 @@ const GCC = () => (
         <div>
           <span className="eyebrow">Built for the GCC</span>
           <h2 style={{ marginTop: 14 }}>Workforce realities the US-built platforms weren&apos;t designed for</h2>
-          <p className="lede" style={{ marginTop: 18 }}>The GCC isn&apos;t a translation problem — it&apos;s a different operating context. PraiseLoop was built for it from day one.</p>
+          <p className="lede" style={{ marginTop: 18 }}>The GCC isn&apos;t a translation problem — it&apos;s a completely different operating context. PraiseLoop was built for it from day one.</p>
           <div className="gcc-points">
-            <div className="gcc-point"><div className="ico"><Icon.Shield /></div><div><h4>Nationalisation tracking that matches the regulation</h4><p>Emiratisation, Nitaqat, Qatarisation reporting built in — not bolted on.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Arabic-first, not Arabic-translated</h4><p>Full RTL, native Arabic UX, designed alongside English — not after it.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Gift /></div><div><h4>Regional reward catalogues</h4><p>UAE, KSA, Qatar gift cards, charity partners, and experiences employees actually want.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Globe /></div><div><h4>Data residency your CISO will sign off on</h4><p>GCC-based hosting options when you need them.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Shield /></div><div><h4>Nationalisation tracking built in</h4><p>Emiratisation, Nitaqat, and Qatarisation reporting out of the box — not bolted on later.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Arabic-first, not Arabic-translated</h4><p>Full right-to-left Arabic interface, designed alongside English — not added as an afterthought.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Gift /></div><div><h4>Regional reward catalogues</h4><p>UAE, KSA, and Qatar gift cards, charity partners, and experiences employees actually want.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Globe /></div><div><h4>Your data stays in-region</h4><p>GCC-based hosting available so your data never leaves the region.</p></div></div>
           </div>
         </div>
         <div>
@@ -509,7 +509,7 @@ const GCC = () => (
           </div>
           <div style={{ marginTop: 20, padding: 18, background: "#fff", border: "1px dashed var(--outline-variant)", borderRadius: "var(--r)", fontSize: 13, color: "var(--on-surface-variant)", display: "flex", gap: 10, alignItems: "flex-start" }}>
             <Icon.Pin style={{ flexShrink: 0, marginTop: 2, color: "var(--orange)" }}/>
-            <span>Hosting available in UAE (Dubai), KSA (Riyadh), Qatar (Doha), and EU-West.</span>
+            <span>Data hosting available in UAE (Dubai), KSA (Riyadh), Qatar (Doha), and Europe.</span>
           </div>
         </div>
       </div>
@@ -523,8 +523,8 @@ const CTASection = () => (
     <div className="container">
       <div className="cta-card">
         <span className="eyebrow" style={{ color: "var(--orange)" }}>Demo</span>
-        <h2 style={{ marginTop: 16 }}>See the {ENGINE_NAME} fire in real time.</h2>
-        <p className="lede">30 minutes. Your CRM, a webhook, the full loop — deal to reward to dashboard. Live.</p>
+        <h2 style={{ marginTop: 16 }}>See PraiseLoop in action.</h2>
+        <p className="lede">30 minutes. We&apos;ll show you the full platform live — from someone hitting a target to the reward landing in their account.</p>
         <div className="hero-cta">
           <a href="#" className="btn btn-primary btn-arrow">Book a demo <Icon.Arrow /></a>
           <a href="#" className="btn btn-secondary" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.2)" }}>Watch a 2-min explainer</a>
