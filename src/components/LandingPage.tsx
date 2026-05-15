@@ -90,6 +90,8 @@ const Icon = {
 };
 
 const ENGINE_NAME = "Outcome Engine";
+/* TODO: Replace with your actual Calendly (or booking tool) URL before sharing externally */
+const BOOKING_URL = "https://calendly.com/praiseloop/demo";
 
 /* ── Nav ───────────────────────────────────────────────────── */
 const Nav = () => (
@@ -100,14 +102,14 @@ const Nav = () => (
       </a>
       <nav className="nav-links">
         <a href="#how">Platform</a>
-        <a href="#vp">For Sales</a>
+        <a href="#solutions">Solutions</a>
         <a href="#gcc">GCC</a>
+        <a href="#pricing">Pricing</a>
         <a href="#stats">Why it matters</a>
-        <a href="#cta">Pricing</a>
       </nav>
       <div className="nav-cta">
         <a href="#" className="btn btn-secondary" style={{ padding: "10px 16px", fontSize: 14 }}>Sign in</a>
-        <a href="#cta" className="btn btn-primary" style={{ padding: "10px 18px", fontSize: 14 }}>Book a demo</a>
+        <a href={BOOKING_URL} className="btn btn-primary" style={{ padding: "10px 18px", fontSize: 14 }}>Book a demo</a>
       </div>
     </div>
   </header>
@@ -131,15 +133,15 @@ const Hero = () => {
             Performance-linked recognition
           </span>
           <h1 style={{ marginTop: 24 }}>
-            Most recognition platforms reward <span className="strike">effort</span>.<br />
-            PraiseLoop rewards <span className="em">outcomes</span>.
+            You invest in recognition.<br />
+            Can you <span className="em">prove</span> it&apos;s working?
           </h1>
           <p className="lede" style={{ marginTop: 24 }}>
-            When someone hits a target, closes a deal, or completes a milestone, PraiseLoop rewards them automatically. No forms. No delays.
+            PraiseLoop connects recognition to measurable outcomes — retention, engagement, and performance. When someone hits a target, resolves an issue, or completes a certification, the reward fires automatically. No forms. No delays. And for the first time, you can measure the impact.
           </p>
           <div className="hero-cta">
-            <a href="#how" className="btn btn-primary btn-arrow">
-              See the {ENGINE_NAME} in action <Icon.Arrow />
+            <a href={BOOKING_URL} className="btn btn-primary btn-arrow">
+              Book a demo <Icon.Arrow />
             </a>
             <a href="#how" className="btn btn-secondary">How it works</a>
           </div>
@@ -174,13 +176,13 @@ const Hero = () => {
                 <span className="dash-tag">+12%</span>
               </div>
               <div className="dash-card featured">
-                <div className="dash-avatar">SC</div>
+                <div className="dash-avatar">RC</div>
                 <div>
-                  <span className="label">Top performer</span>
-                  <div className="value">Sarah Chen</div>
-                  <div className="sub">$240K closed · 2,400 coins earned</div>
+                  <span className="label">Recognition coverage</span>
+                  <div className="value">84<span className="unit" style={{ color: "rgba(255,255,255,0.7)" }}>%</span></div>
+                  <div className="sub">of employees recognised this quarter</div>
                 </div>
-                <span className="dash-tag">Q2</span>
+                <span className="dash-tag">+9%</span>
               </div>
               <div className="dash-card">
                 <div className="dash-icon"><Icon.Webhook /></div>
@@ -210,7 +212,7 @@ const Hero = () => {
           </div>
           <div className="hero-fire">
             <span className="spark"><Icon.Spark /></span>
-            +500 coins · deal won
+            +500 coins · target hit
           </div>
           <div className={`hero-fire hero-fire-second ${showSecondBadge ? "visible" : ""}`}>
             <span className="spark spark-teal"><Icon.Check /></span>
@@ -401,7 +403,7 @@ const HowItWorks = () => (
             <div className="coin-row"><span className="coin-source">Salesforce</span><span className="coin-event">Deal won · Acme Corp · $240K</span><span className="coin-amount">+500</span></div>
             <div className="coin-row"><span className="coin-source">Jira</span><span className="coin-event">Critical issue resolved · 42 min response</span><span className="coin-amount">+120</span></div>
             <div className="coin-row"><span className="coin-source">Training</span><span className="coin-event">Certification completed · AWS Solutions Architect</span><span className="coin-amount">+250</span></div>
-            <div className="coin-row"><span className="coin-source">HubSpot</span><span className="coin-event">Deal won · Northwind · $86K</span><span className="coin-amount">+180</span></div>
+            <div className="coin-row"><span className="coin-source">BambooHR</span><span className="coin-event">1-year milestone · Operations team</span><span className="coin-amount">+200</span></div>
           </div>
         </div>
 
@@ -410,11 +412,11 @@ const HowItWorks = () => (
           <div>
             <span className="layer-tag">— Layer 03 / Intelligence</span>
             <h3>Every recognition becomes an insight</h3>
-            <p>Over time, PraiseLoop builds a picture of what drives your best people — surfacing hidden contributors, flagging disengagement, and helping managers act before it&apos;s too late.</p>
+            <p>Over time, PraiseLoop builds a picture of what drives your best people. Silent Hero Detection surfaces consistent performers who haven&apos;t been recognised in 30+ days — before disengagement sets in. Managers get nudges, not noise.</p>
           </div>
           <div className="layer-visual">
             <div className="timeline">
-              <div className="timeline-item now"><span className="when">NOW</span><span className="what">Spot hidden contributors · smart writing help · manager nudges</span><span className="pill">Live</span></div>
+              <div className="timeline-item now"><span className="when">NOW</span><span className="what">Silent Hero Detection · smart writing help · manager nudges</span><span className="pill">Live</span></div>
               <div className="timeline-item next"><span className="when">Q3 &apos;26</span><span className="what">Recognition impact reporting</span><span className="pill">Soon</span></div>
               <div className="timeline-item next"><span className="when">Q3 &apos;26</span><span className="what">Team health scoring</span><span className="pill">Soon</span></div>
               <div className="timeline-item later"><span className="when">2027</span><span className="what">Flight risk alerts</span><span className="pill">Planned</span></div>
@@ -463,22 +465,147 @@ const Stats = () => (
   </section>
 );
 
-/* ── VP Sales ──────────────────────────────────────────────── */
-const VPSales = () => (
-  <section id="vp" style={{ paddingBlock: 96 }}>
+/* ── Solutions / Use Cases ─────────────────────────────────── */
+const Solutions = () => (
+  <section id="solutions" style={{ paddingBlock: 96 }}>
     <div className="container">
       <div className="vp">
         <div className="vp-head">
-          <span className="eyebrow">Built for sales-driven teams</span>
-          <h2>Your CRM already knows who deserves recognition. Why doesn&apos;t your recognition platform?</h2>
-          <p className="lede">Closed deals, quota hits, pipeline wins — they&apos;re all measurable. But your recognition platform can&apos;t see them. PraiseLoop connects the two.</p>
+          <span className="eyebrow">Built for every team</span>
+          <h2>Your business systems already know who performed. PraiseLoop connects the dots.</h2>
+          <p className="lede">Sales, engineering, operations, support — every team produces measurable results. PraiseLoop sees them all and rewards automatically.</p>
         </div>
-        <div className="vp-cards">
-          <div className="vp-card"><div className="ico"><Icon.Bolt /></div><h4>Automate the reward</h4><p>Deal closes above a threshold? The reward lands in the rep&apos;s account before the manager even sees the update.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Trophy /></div><h4>Beyond the leaderboard</h4><p>Reps see what they can earn next — a forward-looking goal, not a backward-looking scoreboard.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Eye /></div><h4>Manager view that makes sense</h4><p>Managers see results: <em>&quot;Sarah closed Acme ($240K)&quot;</em> — not just <em>&quot;Sarah received 500 coins.&quot;</em></p></div>
+        <div className="vp-cards" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+          <div className="vp-card"><div className="ico"><Icon.Bolt /></div><h4>Sales</h4><p>Deal closes in your CRM? The reward lands before the manager sees the update. Pipeline wins, quota hits — all automated.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Webhook /></div><h4>Engineering</h4><p>Critical issue resolved in 42 minutes? Sprint delivered early? PraiseLoop spots it in Jira and rewards the team instantly.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Eye /></div><h4>People &amp; HR</h4><p>See which teams are being overlooked, track recognition coverage across the org, and prove the link between recognition and retention.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Trophy /></div><h4>Operations</h4><p>Project milestones, certifications, anniversaries — any measurable outcome can trigger a reward with full budget controls.</p></div>
         </div>
-        <div className="vp-cta"><a href="#cta" className="btn btn-primary btn-arrow">See it in action <Icon.Arrow /></a></div>
+        <div className="vp-cta"><a href={BOOKING_URL} className="btn btn-primary btn-arrow">See it in action <Icon.Arrow /></a></div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ── Social Proof ─────────────────────────────────────────── */
+const SocialProof = () => (
+  <section id="proof" style={{ background: "var(--surface)", paddingBlock: 96 }}>
+    <div className="container">
+      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 56px" }}>
+        <span className="eyebrow">What people are saying</span>
+      </div>
+      <div className="proof-grid">
+        <div className="proof-card">
+          <blockquote>
+            &ldquo;We used to run recognition on gut feel. PraiseLoop showed us which teams were being completely overlooked — and within a quarter, voluntary turnover in those teams dropped measurably.&rdquo;
+          </blockquote>
+          <div className="proof-attr">
+            <div className="proof-avatar">HR</div>
+            <div>
+              <strong>Head of People Operations</strong>
+              <span>Mid-market technology company</span>
+            </div>
+          </div>
+        </div>
+        <div className="proof-card">
+          <blockquote>
+            &ldquo;The moment our CFO saw recognition spend tied to actual retention numbers, the budget conversation changed completely. It went from a cost line to an investment.&rdquo;
+          </blockquote>
+          <div className="proof-attr">
+            <div className="proof-avatar">VP</div>
+            <div>
+              <strong>VP of HR</strong>
+              <span>Regional services organisation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ── Trust / Compliance ───────────────────────────────────── */
+const Trust = () => (
+  <section id="trust" style={{ paddingBlock: 80 }}>
+    <div className="container">
+      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 48px" }}>
+        <span className="eyebrow">Security &amp; compliance</span>
+        <h2 style={{ marginTop: 14 }}>Enterprise-grade from day one</h2>
+        <p className="lede" style={{ margin: "18px auto 0" }}>PraiseLoop is built for organisations where data protection is a procurement requirement, not an afterthought.</p>
+      </div>
+      <div className="trust-grid">
+        <div className="trust-card">
+          <div className="trust-icon"><Icon.Shield /></div>
+          <h4>GDPR compliant</h4>
+          <p>Full compliance with the EU General Data Protection Regulation. Data processing agreements available on request.</p>
+        </div>
+        <div className="trust-card">
+          <div className="trust-icon"><Icon.Globe /></div>
+          <h4>UAE PDPL ready</h4>
+          <p>Compliant with UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection. Regional data residency available.</p>
+        </div>
+        <div className="trust-card">
+          <div className="trust-icon"><Icon.Pin /></div>
+          <h4>Data residency</h4>
+          <p>Choose where your data lives — UAE, KSA, Qatar, or Europe. Your data never leaves your chosen region.</p>
+        </div>
+        <div className="trust-card">
+          <div className="trust-icon"><Icon.Webhook /></div>
+          <h4>SSO &amp; access controls</h4>
+          <p>SAML-based single sign-on, role-based access, and audit logging for every action in the platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ── Pricing ──────────────────────────────────────────────── */
+const Pricing = () => (
+  <section id="pricing" style={{ background: "var(--surface-container-low)", paddingBlock: 96 }}>
+    <div className="container">
+      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 56px" }}>
+        <span className="eyebrow">Pricing</span>
+        <h2 style={{ marginTop: 14 }}>Simple, transparent pricing</h2>
+        <p className="lede" style={{ margin: "18px auto 0" }}>Every plan includes the {ENGINE_NAME}, peer recognition, and manager tools. Pick the tier that fits your organisation.</p>
+      </div>
+      <div className="pricing-grid">
+        <div className="pricing-card">
+          <span className="pricing-tier">Starter</span>
+          <p className="pricing-desc">For small teams getting started with outcome-linked recognition.</p>
+          <ul className="pricing-features">
+            <li><span className="check"><Icon.Check /></span>Peer recognition &amp; shout-outs</li>
+            <li><span className="check"><Icon.Check /></span>{ENGINE_NAME} (1 integration)</li>
+            <li><span className="check"><Icon.Check /></span>Basic analytics dashboard</li>
+            <li><span className="check"><Icon.Check /></span>Slack &amp; Teams notifications</li>
+          </ul>
+          <a href={BOOKING_URL} className="btn btn-secondary" style={{ width: "100%", justifyContent: "center" }}>Get started</a>
+        </div>
+        <div className="pricing-card featured">
+          <span className="pricing-badge">Most popular</span>
+          <span className="pricing-tier">Growth</span>
+          <p className="pricing-desc">For organisations connecting recognition to business outcomes.</p>
+          <ul className="pricing-features">
+            <li><span className="check"><Icon.Check /></span>Everything in Starter</li>
+            <li><span className="check"><Icon.Check /></span>{ENGINE_NAME} (unlimited integrations)</li>
+            <li><span className="check"><Icon.Check /></span>Silent Hero Detection</li>
+            <li><span className="check"><Icon.Check /></span>Manager nudges &amp; insights</li>
+            <li><span className="check"><Icon.Check /></span>Budget controls &amp; approvals</li>
+          </ul>
+          <a href={BOOKING_URL} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>Book a demo</a>
+        </div>
+        <div className="pricing-card">
+          <span className="pricing-tier">Enterprise</span>
+          <p className="pricing-desc">For large organisations with compliance, regional, and security requirements.</p>
+          <ul className="pricing-features">
+            <li><span className="check"><Icon.Check /></span>Everything in Growth</li>
+            <li><span className="check"><Icon.Check /></span>GDPR &amp; PDPL compliance</li>
+            <li><span className="check"><Icon.Check /></span>Regional data residency</li>
+            <li><span className="check"><Icon.Check /></span>SSO &amp; audit logging</li>
+            <li><span className="check"><Icon.Check /></span>Nationalisation reporting</li>
+            <li><span className="check"><Icon.Check /></span>Dedicated success manager</li>
+          </ul>
+          <a href={BOOKING_URL} className="btn btn-secondary" style={{ width: "100%", justifyContent: "center" }}>Contact sales</a>
+        </div>
       </div>
     </div>
   </section>
@@ -495,9 +622,9 @@ const GCC = () => (
           <p className="lede" style={{ marginTop: 18 }}>The GCC isn&apos;t a translation problem — it&apos;s a completely different operating context. PraiseLoop was built for it from day one.</p>
           <div className="gcc-points">
             <div className="gcc-point"><div className="ico"><Icon.Shield /></div><div><h4>Nationalisation tracking built in</h4><p>Emiratisation, Nitaqat, and Qatarisation reporting out of the box — not bolted on later.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Arabic-first, not Arabic-translated</h4><p>Full right-to-left Arabic interface, designed alongside English — not added as an afterthought.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Built natively for the region</h4><p>Full right-to-left Arabic interface designed alongside English, support for field workers and distributed teams, and cultural norms built into the product — not bolted on as a localisation layer.</p></div></div>
             <div className="gcc-point"><div className="ico"><Icon.Gift /></div><div><h4>Regional reward catalogues</h4><p>UAE, KSA, and Qatar gift cards, charity partners, and experiences employees actually want.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Globe /></div><div><h4>Your data stays in-region</h4><p>GCC-based hosting available so your data never leaves the region.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Globe /></div><div><h4>Your data stays in-region</h4><p>GCC-based hosting with full PDPL (UAE Federal Decree-Law No. 45) compliance. Your data never leaves the region unless you choose otherwise.</p></div></div>
           </div>
         </div>
         <div>
@@ -526,8 +653,7 @@ const CTASection = () => (
         <h2 style={{ marginTop: 16 }}>See PraiseLoop in action.</h2>
         <p className="lede">30 minutes. We&apos;ll show you the full platform live — from someone hitting a target to the reward landing in their account.</p>
         <div className="hero-cta">
-          <a href="#" className="btn btn-primary btn-arrow">Book a demo <Icon.Arrow /></a>
-          <a href="#" className="btn btn-secondary" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.2)" }}>Watch a 2-min explainer</a>
+          <a href={BOOKING_URL} className="btn btn-primary btn-arrow">Book a demo <Icon.Arrow /></a>
         </div>
       </div>
     </div>
@@ -541,7 +667,7 @@ const FooterSection = () => (
       <div className="footer-grid">
         <div className="footer-brand">
           <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={200} height={56} style={{ height: 56, width: "auto" }} />
-          <p className="footer-tag" style={{ marginTop: 18 }}>Performance-linked recognition for teams that measure what matters. Built for the GCC. Available globally.</p>
+          <p className="footer-tag" style={{ marginTop: 18 }}>Performance-linked recognition that proves its impact on retention, engagement, and performance.</p>
           <span className="footer-mantra">Reward outcomes, not effort.</span>
         </div>
         <div>
@@ -556,19 +682,17 @@ const FooterSection = () => (
         <div>
           <h5>Solutions</h5>
           <ul>
-            <li><a href="#vp">For VP Sales</a></li>
-            <li><a href="#">For HR</a></li>
+            <li><a href="#solutions">For Sales teams</a></li>
+            <li><a href="#solutions">For People &amp; HR</a></li>
             <li><a href="#gcc">For GCC teams</a></li>
-            <li><a href="#">Integrations</a></li>
+            <li><a href="#pricing">Pricing</a></li>
           </ul>
         </div>
         <div>
           <h5>Company</h5>
           <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Customers</a></li>
-            <li><a href="#cta">Contact</a></li>
-            <li><a href="#">Security</a></li>
+            <li><a href="#trust">Security &amp; compliance</a></li>
+            <li><a href={BOOKING_URL}>Contact</a></li>
           </ul>
         </div>
       </div>
@@ -589,10 +713,12 @@ export default function LandingPage() {
       <Integrations />
       <Problem />
       <HowItWorks />
-
+      <Solutions />
       <Stats />
-      <VPSales />
+      <SocialProof />
+      <Trust />
       <GCC />
+      <Pricing />
       <CTASection />
       <FooterSection />
     </>
