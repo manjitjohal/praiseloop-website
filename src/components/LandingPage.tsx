@@ -69,28 +69,27 @@ const Icon = {
       <path d="M12 3v6m0 6v6m-9-9h6m6 0h6M5.5 5.5l4 4m5 5l4 4m-13 0l4-4m5-5l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
     </svg>
   ),
-  Stack: (p: React.SVGProps<SVGSVGElement>) => (
-    <svg {...p} width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M4 7l8-4 8 4-8 4-8-4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-      <path d="M4 12l8 4 8-4M4 17l8 4 8-4" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
-    </svg>
-  ),
-  Brain: (p: React.SVGProps<SVGSVGElement>) => (
-    <svg {...p} width="20" height="20" viewBox="0 0 24 24" fill="none">
-      <path d="M9 4a3 3 0 013 0 3 3 0 013 0 3 3 0 012 5 3 3 0 01-1 5 3 3 0 01-4 2 3 3 0 01-4 0 3 3 0 01-4-2 3 3 0 01-1-5 3 3 0 012-5z" stroke="currentColor" strokeWidth="1.5"/>
-      <path d="M12 4v16M9 9h6M8 14h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  ),
   Pin: (p: React.SVGProps<SVGSVGElement>) => (
     <svg {...p} width="14" height="14" viewBox="0 0 24 24" fill="none">
       <path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z" stroke="currentColor" strokeWidth="1.6"/>
       <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.6"/>
     </svg>
   ),
+  Chart: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="12" width="4" height="9" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+      <rect x="10" y="6" width="4" height="15" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+      <rect x="17" y="3" width="4" height="18" rx="1" stroke="currentColor" strokeWidth="1.6"/>
+    </svg>
+  ),
+  Zap: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+    </svg>
+  ),
 };
 
 const ENGINE_NAME = "Outcome Engine";
-/* TODO: Replace with your actual Calendly (or booking tool) URL before sharing externally */
 const BOOKING_URL = "https://calendly.com/praiseloop/demo";
 
 /* ── Nav ───────────────────────────────────────────────────── */
@@ -143,7 +142,7 @@ const Hero = () => {
             <a href={BOOKING_URL} className="btn btn-primary btn-arrow">
               Book a demo <Icon.Arrow />
             </a>
-            <a href="#how" className="btn btn-secondary">How it works</a>
+            <a href="#how" className="btn btn-secondary">See how it works</a>
           </div>
           <div className="hero-meta">
             <span><span className="check"><Icon.Check /></span> No credit card</span>
@@ -254,180 +253,6 @@ const Integrations = () => (
   </section>
 );
 
-/* ── Problem ───────────────────────────────────────────────── */
-const Problem = () => (
-  <section id="problem">
-    <div className="container">
-      <div className="section-head">
-        <span className="eyebrow">The problem</span>
-        <h2>Recognition stopped being connected to outcomes — and nobody noticed.</h2>
-        <p className="lede">Companies say they reward performance. Their recognition systems have no idea who actually performed.</p>
-      </div>
-      <div className="problem-cards">
-        <div className="problem-card">
-          <div className="deco"><Icon.Stack /></div>
-          <span className="num">01 / THE GAP</span>
-          <h3>The data is in the wrong place</h3>
-          <p>Real performance lives in your sales and project tools. Your recognition platform can&apos;t see any of it.</p>
-        </div>
-        <div className="problem-card">
-          <div className="deco"><Icon.Eye /></div>
-          <span className="num">02 / THE BIAS</span>
-          <h3>Recognition stays subjective</h3>
-          <p>Managers nominate favourites, peers thank friends, HR runs campaigns — none of it tied to who actually delivered results.</p>
-        </div>
-        <div className="problem-card">
-          <div className="deco"><Icon.Brain /></div>
-          <span className="num">03 / THE BLIND SPOT</span>
-          <h3>There&apos;s no feedback loop</h3>
-          <p>You can&apos;t tell whether your recognition programme is actually changing behaviour — because it was never connected to results.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-/* ── How It Works ──────────────────────────────────────────── */
-const HowItWorks = () => (
-  <section id="how" style={{ background: "var(--surface-container-low)" }}>
-    <div className="container">
-      <div className="section-head">
-        <span className="eyebrow">How it works</span>
-        <h2>Three layers. One closed loop.</h2>
-        <p className="lede">Recognise great work. Automatically reward results. Learn what drives your best people.</p>
-      </div>
-
-      {/* Loop diagram */}
-      <div className="loop-diagram">
-        <svg viewBox="0 -30 900 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-              <path d="M0 0 L10 5 L0 10 z" fill="var(--orange)"/>
-            </marker>
-            <radialGradient id="engine-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="var(--orange)" stopOpacity="0.25"/>
-              <stop offset="100%" stopColor="var(--orange)" stopOpacity="0"/>
-            </radialGradient>
-            <linearGradient id="path-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="var(--outline-variant)"/>
-              <stop offset="50%" stopColor="var(--orange)" stopOpacity="0.6"/>
-              <stop offset="100%" stopColor="var(--outline-variant)"/>
-            </linearGradient>
-          </defs>
-
-          {/* Forward path (top arc) */}
-          <path d="M 80 210 Q 220 60 450 60 Q 680 60 820 210" stroke="url(#path-grad)" strokeWidth="2.5" fill="none" strokeDasharray="6 8"/>
-          {/* Return path (bottom arc) */}
-          <path d="M 820 210 Q 680 260 450 260 Q 220 260 80 210" stroke="var(--orange)" strokeWidth="3" fill="none" markerEnd="url(#arr)"/>
-
-          {/* Animated dots travelling along forward path */}
-          <circle r="4" fill="var(--orange)">
-            <animateMotion dur="4s" repeatCount="indefinite" path="M 80 210 Q 220 60 450 60 Q 680 60 820 210"/>
-          </circle>
-          <circle r="3" fill="var(--orange)" opacity="0.5">
-            <animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M 80 210 Q 220 60 450 60 Q 680 60 820 210"/>
-          </circle>
-          {/* Animated dot on return path */}
-          <circle r="4" fill="var(--orange)">
-            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 820 210 Q 680 260 450 260 Q 220 260 80 210"/>
-          </circle>
-
-          {/* Floating labels on curves */}
-          <text x="240" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">target hit</text>
-          <text x="620" y="110" fontSize="10" fontWeight="600" fill="var(--on-surface-variant)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">reward sent</text>
-          <text x="390" y="280" fontSize="10" fontWeight="600" fill="var(--orange)" opacity="0.7" fontFamily="var(--font-mono)" letterSpacing="0.5">insights improve over time</text>
-
-          {/* Node 1 — Recognition */}
-          <g transform="translate(80 210)">
-            <circle r="50" fill="#fff" stroke="var(--surface-container-high)" strokeWidth="2"/>
-            <text y="-64" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" letterSpacing="2" fill="var(--on-surface-variant)">01</text>
-            {/* Signal icon */}
-            <path d="M-8-6l4 6-4 6M0-6l4 6-4 6M8-6l4 6-4 6" stroke="var(--orange)" strokeWidth="1.5" fill="none" strokeLinecap="round" transform="translate(-4,-12) scale(0.8)"/>
-            <text y="10" textAnchor="middle" fontSize="14" fontWeight="600" fill="var(--on-surface)">Recognition</text>
-            <text y="26" textAnchor="middle" fontSize="11" fill="var(--on-surface-variant)">Capture</text>
-          </g>
-
-          {/* Node 2 — Outcome Engine (larger, glowing) */}
-          <g transform="translate(450 60)">
-            <circle r="100" fill="url(#engine-glow)" className="engine-pulse"/>
-            <circle r="72" fill="var(--navy)"/>
-            <circle r="72" fill="none" stroke="var(--orange)" strokeWidth="2.5" opacity="0.5" className="engine-ring"/>
-            <circle r="86" fill="none" stroke="var(--orange)" strokeWidth="1" opacity="0.2"/>
-            <text y="-90" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="11" fontWeight="700" letterSpacing="2" fill="var(--orange)">02 · CORE</text>
-            {/* Bolt icon */}
-            <path d="M-4-18l-8 14h6l-2 14 10-16h-7z" fill="var(--orange)" opacity="0.6" transform="translate(0,-4) scale(0.7)"/>
-            <text y="4" textAnchor="middle" fontSize="16" fontWeight="700" fill="#fff">{ENGINE_NAME}</text>
-            <text y="22" textAnchor="middle" fontSize="12" fill="rgba(255,255,255,0.7)">Auto-reward</text>
-          </g>
-
-          {/* Node 3 — Intelligence */}
-          <g transform="translate(820 210)">
-            <circle r="50" fill="#fff" stroke="var(--surface-container-high)" strokeWidth="2"/>
-            <text y="-64" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fontWeight="700" letterSpacing="2" fill="var(--on-surface-variant)">03</text>
-            {/* Chart icon */}
-            <rect x="-12" y="-12" width="5" height="10" rx="1" fill="var(--slate)" opacity="0.6"/>
-            <rect x="-4" y="-18" width="5" height="16" rx="1" fill="var(--orange)" opacity="0.7"/>
-            <rect x="4" y="-15" width="5" height="13" rx="1" fill="var(--slate)" opacity="0.6"/>
-            <text y="10" textAnchor="middle" fontSize="14" fontWeight="600" fill="var(--on-surface)">Intelligence</text>
-            <text y="26" textAnchor="middle" fontSize="11" fill="var(--on-surface-variant)">Compound</text>
-          </g>
-        </svg>
-      </div>
-
-      <div className="layers">
-        {/* Layer 01 */}
-        <div className="layer">
-          <div>
-            <span className="layer-tag">— Layer 01 / Recognition</span>
-            <h3>Capture every moment of great work</h3>
-            <p>Peer shout-outs, manager endorsements, milestones, value badges — all in one place, without anyone filling in a form.</p>
-          </div>
-          <div className="layer-visual">
-            <div className="signal-row"><span className="av">JR</span><div><strong>Jamie</strong> thanked <strong>Priya</strong> · <em>shipped under the wire</em></div></div>
-            <div className="signal-row"><span className="av b">MK</span><div><strong>Manager endorsement</strong> · <em>customer-obsession value</em></div></div>
-            <div className="signal-row"><span className="av c">SC</span><div><strong>Milestone</strong> · 2-year anniversary</div></div>
-            <div className="signal-row"><span className="av d">AB</span><div><strong>Peer kudos</strong> · helped <em>resolve P1</em></div></div>
-          </div>
-        </div>
-
-        {/* Layer 02 — featured */}
-        <div className="layer featured">
-          <div>
-            <span className="layer-badge">★ The differentiator</span>
-            <span className="layer-tag">— Layer 02 / {ENGINE_NAME}</span>
-            <h3>Results trigger rewards — automatically</h3>
-            <p>Someone closes a deal in Salesforce. Resolves a critical issue in Jira. Earns a certification. The {ENGINE_NAME} spots it and sends the reward instantly — with full budget controls and approval workflows built in.</p>
-          </div>
-          <div className="coin-demo">
-            <div className="layers-pre"><span>RECENT REWARDS</span><span className="line"></span><span>LIVE</span></div>
-            <div className="coin-row"><span className="coin-source">Salesforce</span><span className="coin-event">Deal won · Acme Corp · $240K</span><span className="coin-amount">+500</span></div>
-            <div className="coin-row"><span className="coin-source">Jira</span><span className="coin-event">Critical issue resolved · 42 min response</span><span className="coin-amount">+120</span></div>
-            <div className="coin-row"><span className="coin-source">Training</span><span className="coin-event">Certification completed · AWS Solutions Architect</span><span className="coin-amount">+250</span></div>
-            <div className="coin-row"><span className="coin-source">BambooHR</span><span className="coin-event">1-year milestone · Operations team</span><span className="coin-amount">+200</span></div>
-          </div>
-        </div>
-
-        {/* Layer 03 */}
-        <div className="layer">
-          <div>
-            <span className="layer-tag">— Layer 03 / Intelligence</span>
-            <h3>Every recognition becomes an insight</h3>
-            <p>Over time, PraiseLoop builds a picture of what drives your best people. Silent Hero Detection surfaces consistent performers who haven&apos;t been recognised in 30+ days — before disengagement sets in. Managers get nudges, not noise.</p>
-          </div>
-          <div className="layer-visual">
-            <div className="timeline">
-              <div className="timeline-item now"><span className="when">NOW</span><span className="what">Silent Hero Detection · smart writing help · manager nudges</span><span className="pill">Live</span></div>
-              <div className="timeline-item next"><span className="when">Q3 &apos;26</span><span className="what">Recognition impact reporting</span><span className="pill">Soon</span></div>
-              <div className="timeline-item next"><span className="when">Q3 &apos;26</span><span className="what">Team health scoring</span><span className="pill">Soon</span></div>
-              <div className="timeline-item later"><span className="when">2027</span><span className="what">Flight risk alerts</span><span className="pill">Planned</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 /* ── Sparkline ─────────────────────────────────────────────── */
 const Sparkline = ({ points, trend = "up" }: { points: number[]; trend?: "up" | "down" }) => {
   const w = 120, h = 36;
@@ -447,9 +272,9 @@ const Sparkline = ({ points, trend = "up" }: { points: number[]; trend?: "up" | 
   );
 };
 
-/* ── Stats ─────────────────────────────────────────────────── */
+/* ── Stats + Social Proof (merged, moved up) ─────────────── */
 const Stats = () => (
-  <section id="stats" style={{ background: "var(--surface)", paddingBottom: 32 }}>
+  <section id="stats" style={{ paddingBottom: 32 }}>
     <div className="container">
       <div className="section-head" style={{ maxWidth: 720 }}>
         <span className="eyebrow">By the numbers</span>
@@ -461,40 +286,9 @@ const Stats = () => (
         <div className="stat"><div className="stat-row"><div className="num">2.5<span className="sym">×</span></div><Sparkline points={[1,1.2,1.5,1.8,2,2.3,2.5]} /></div><p>More likely to rate innovative performance as excellent</p><span className="src">SHRM / Globoforce</span></div>
         <div className="stat"><div className="stat-row"><div className="num">41<span className="sym">%</span></div><Sparkline points={[30,26,24,18,14,10,8]} trend="down" /></div><p>Reduction in absenteeism with high-engagement cultures</p><span className="src">Gallup</span></div>
       </div>
-    </div>
-  </section>
-);
 
-/* ── Solutions / Use Cases ─────────────────────────────────── */
-const Solutions = () => (
-  <section id="solutions" style={{ paddingBlock: 96 }}>
-    <div className="container">
-      <div className="vp">
-        <div className="vp-head">
-          <span className="eyebrow">Built for every team</span>
-          <h2>Your business systems already know who performed. PraiseLoop connects the dots.</h2>
-          <p className="lede">Sales, engineering, operations, support — every team produces measurable results. PraiseLoop sees them all and rewards automatically.</p>
-        </div>
-        <div className="vp-cards" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-          <div className="vp-card"><div className="ico"><Icon.Bolt /></div><h4>Sales</h4><p>Deal closes in your CRM? The reward lands before the manager sees the update. Pipeline wins, quota hits — all automated.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Webhook /></div><h4>Engineering</h4><p>Critical issue resolved in 42 minutes? Sprint delivered early? PraiseLoop spots it in Jira and rewards the team instantly.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Eye /></div><h4>People &amp; HR</h4><p>See which teams are being overlooked, track recognition coverage across the org, and prove the link between recognition and retention.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Trophy /></div><h4>Operations</h4><p>Project milestones, certifications, anniversaries — any measurable outcome can trigger a reward with full budget controls.</p></div>
-        </div>
-        <div className="vp-cta"><a href={BOOKING_URL} className="btn btn-primary btn-arrow">See it in action <Icon.Arrow /></a></div>
-      </div>
-    </div>
-  </section>
-);
-
-/* ── Social Proof ─────────────────────────────────────────── */
-const SocialProof = () => (
-  <section id="proof" style={{ background: "var(--surface)", paddingBlock: 96 }}>
-    <div className="container">
-      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 56px" }}>
-        <span className="eyebrow">What people are saying</span>
-      </div>
-      <div className="proof-grid">
+      {/* Social proof merged here */}
+      <div className="proof-grid" style={{ marginTop: 56 }}>
         <div className="proof-card">
           <blockquote>
             &ldquo;We used to run recognition on gut feel. PraiseLoop showed us which teams were being completely overlooked — and within a quarter, voluntary turnover in those teams dropped measurably.&rdquo;
@@ -519,6 +313,233 @@ const SocialProof = () => (
             </div>
           </div>
         </div>
+      </div>
+
+      <div style={{ textAlign: "center", marginTop: 40 }}>
+        <a href="#" className="btn btn-secondary btn-arrow">Calculate your ROI <Icon.Arrow /></a>
+      </div>
+    </div>
+  </section>
+);
+
+/* ── How It Works — Alternating Blocks ───────────────────── */
+
+/* Mock: Recognition Feed */
+const MockRecognitionFeed = () => (
+  <div className="mock-ui">
+    <div className="mock-header">
+      <span className="mock-dot green"></span>
+      <span className="mock-title">Recognition feed</span>
+      <span className="mock-badge">Live</span>
+    </div>
+    <div className="mock-body">
+      <div className="feed-item">
+        <span className="feed-avatar" style={{ background: "var(--orange-soft)" }}>JR</span>
+        <div className="feed-content">
+          <div className="feed-top"><strong>Jamie Rodriguez</strong> <span className="feed-time">2m ago</span></div>
+          <p>Thanked <strong>Priya Sharma</strong> for <em>shipping the client dashboard under the wire</em></p>
+          <div className="feed-tags"><span className="feed-tag">Collaboration</span><span className="feed-tag value">Customer-obsession</span></div>
+        </div>
+      </div>
+      <div className="feed-item">
+        <span className="feed-avatar" style={{ background: "var(--slate)" }}>MK</span>
+        <div className="feed-content">
+          <div className="feed-top"><strong>Manager endorsement</strong> <span className="feed-time">18m ago</span></div>
+          <p>Marcus endorsed <strong>Aisha Khan</strong> &middot; <em>exceptional Q2 client retention</em></p>
+          <div className="feed-tags"><span className="feed-tag endorsed">Endorsed</span><span className="feed-coins">+250 coins</span></div>
+        </div>
+      </div>
+      <div className="feed-item">
+        <span className="feed-avatar" style={{ background: "var(--navy)" }}>SC</span>
+        <div className="feed-content">
+          <div className="feed-top"><strong>Milestone reached</strong> <span className="feed-time">1h ago</span></div>
+          <p>Sarah Chen &middot; 2-year anniversary</p>
+          <div className="feed-tags"><span className="feed-tag milestone">Milestone</span><span className="feed-coins">+200 coins</span></div>
+        </div>
+      </div>
+      <div className="feed-item">
+        <span className="feed-avatar" style={{ background: "var(--sand)", color: "var(--navy)" }}>AB</span>
+        <div className="feed-content">
+          <div className="feed-top"><strong>Alex Bello</strong> <span className="feed-time">2h ago</span></div>
+          <p>Peer kudos &middot; helped <em>resolve P1 incident in 42 minutes</em></p>
+          <div className="feed-tags"><span className="feed-tag">Teamwork</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+/* Mock: Rule Builder */
+const MockRuleBuilder = () => (
+  <div className="mock-ui dark-mock">
+    <div className="mock-header">
+      <span className="mock-dot orange"></span>
+      <span className="mock-title">Rule builder</span>
+      <span className="mock-badge active">Active</span>
+    </div>
+    <div className="mock-body">
+      <div className="rule-card">
+        <div className="rule-label">WHEN</div>
+        <div className="rule-row">
+          <span className="rule-pill source">Salesforce</span>
+          <span className="rule-text">Deal closed &middot; value &ge; $50K</span>
+        </div>
+      </div>
+      <div className="rule-arrow">
+        <Icon.Bolt style={{ color: "var(--orange)" }} />
+      </div>
+      <div className="rule-card">
+        <div className="rule-label">THEN</div>
+        <div className="rule-row">
+          <span className="rule-pill reward">+500 coins</span>
+          <span className="rule-text">to deal owner + team</span>
+        </div>
+        <div className="rule-conditions">
+          <span className="rule-condition"><Icon.Check /> Budget cap: $2K/quarter</span>
+          <span className="rule-condition"><Icon.Check /> Manager approval &gt; $500</span>
+          <span className="rule-condition"><Icon.Check /> Auto-notify via Slack</span>
+        </div>
+      </div>
+      <div className="rule-divider"></div>
+      <div className="rule-card">
+        <div className="rule-label">WHEN</div>
+        <div className="rule-row">
+          <span className="rule-pill source jira">Jira</span>
+          <span className="rule-text">Critical issue resolved &lt; 1 hour</span>
+        </div>
+      </div>
+      <div className="rule-arrow">
+        <Icon.Bolt style={{ color: "var(--orange)" }} />
+      </div>
+      <div className="rule-card">
+        <div className="rule-label">THEN</div>
+        <div className="rule-row">
+          <span className="rule-pill reward">+120 coins</span>
+          <span className="rule-text">to assignee</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+/* Mock: Analytics Dashboard */
+const MockAnalytics = () => (
+  <div className="mock-ui">
+    <div className="mock-header">
+      <span className="mock-dot green"></span>
+      <span className="mock-title">Intelligence dashboard</span>
+      <span className="mock-badge">Q2 2026</span>
+    </div>
+    <div className="mock-body">
+      <div className="analytics-row">
+        <div className="analytics-card">
+          <span className="analytics-label">Recognition coverage</span>
+          <div className="analytics-value">84%</div>
+          <div className="analytics-bar"><div className="analytics-fill" style={{ width: "84%" }}></div></div>
+        </div>
+        <div className="analytics-card">
+          <span className="analytics-label">Teams at risk</span>
+          <div className="analytics-value warn">3</div>
+          <span className="analytics-sub">Below 40% coverage</span>
+        </div>
+      </div>
+      <div className="silent-hero-alert">
+        <div className="sha-icon"><Icon.Eye /></div>
+        <div className="sha-content">
+          <strong>Silent Hero Detection</strong>
+          <p>4 consistent performers haven&apos;t been recognised in 30+ days</p>
+        </div>
+        <span className="sha-action">Review</span>
+      </div>
+      <div className="analytics-row">
+        <div className="analytics-card wide">
+          <span className="analytics-label">Recognition &rarr; retention correlation</span>
+          <div className="mini-chart">
+            <div className="chart-bar" style={{ height: "40%" }}><span>Q1</span></div>
+            <div className="chart-bar" style={{ height: "55%" }}><span>Q2</span></div>
+            <div className="chart-bar" style={{ height: "65%" }}><span>Q3</span></div>
+            <div className="chart-bar accent" style={{ height: "82%" }}><span>Q4</span></div>
+          </div>
+        </div>
+        <div className="analytics-card">
+          <span className="analytics-label">Manager nudges sent</span>
+          <div className="analytics-value">18</div>
+          <span className="analytics-sub">This month &middot; 72% acted on</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const HowItWorks = () => (
+  <section id="how">
+    <div className="container">
+      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
+        <span className="eyebrow">How it works</span>
+        <h2 style={{ marginTop: 14 }}>Three layers. One closed loop.</h2>
+        <p className="lede" style={{ margin: "18px auto 0" }}>Recognise great work. Automatically reward results. Learn what drives your best people.</p>
+      </div>
+
+      {/* Block 1: Recognition — text left, visual right */}
+      <div className="alt-block">
+        <div className="alt-text">
+          <span className="alt-num">01</span>
+          <h3>Capture every moment of great work</h3>
+          <p>Peer shout-outs, manager endorsements, milestones, value badges — all in one place, without anyone filling in a form. Every recognition is tagged, timestamped, and tied to an employee profile.</p>
+          <a href="#solutions" className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>Explore the platform <Icon.Arrow /></a>
+        </div>
+        <div className="alt-visual">
+          <MockRecognitionFeed />
+        </div>
+      </div>
+
+      {/* Block 2: Outcome Engine — text right, visual left (dark) */}
+      <div className="alt-block reverse featured-block">
+        <div className="alt-text">
+          <span className="alt-badge">The differentiator</span>
+          <span className="alt-num">02</span>
+          <h3>Results trigger rewards — automatically</h3>
+          <p>Someone closes a deal in Salesforce. Resolves a critical issue in Jira. Earns a certification. The {ENGINE_NAME} spots it and sends the reward instantly — with full budget controls and approval workflows built in.</p>
+          <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ marginTop: 24 }}>See it in action <Icon.Arrow /></a>
+        </div>
+        <div className="alt-visual">
+          <MockRuleBuilder />
+        </div>
+      </div>
+
+      {/* Block 3: Intelligence — text left, visual right */}
+      <div className="alt-block">
+        <div className="alt-text">
+          <span className="alt-num">03</span>
+          <h3>Every recognition becomes an insight</h3>
+          <p>Over time, PraiseLoop builds a picture of what drives your best people. Silent Hero Detection surfaces consistent performers who haven&apos;t been recognised in 30+ days — before disengagement sets in. Managers get nudges, not noise.</p>
+          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the analytics <Icon.Arrow /></a>
+        </div>
+        <div className="alt-visual">
+          <MockAnalytics />
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ── Solutions / Use Cases ─────────────────────────────────── */
+const Solutions = () => (
+  <section id="solutions" className="section-cream" style={{ paddingBlock: 96 }}>
+    <div className="container">
+      <div className="vp">
+        <div className="vp-head">
+          <span className="eyebrow">Built for every team</span>
+          <h2>Your business systems already know who performed. PraiseLoop connects the dots.</h2>
+          <p className="lede">Sales, engineering, operations, support — every team produces measurable results. PraiseLoop sees them all and rewards automatically.</p>
+        </div>
+        <div className="vp-cards" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+          <div className="vp-card"><div className="ico"><Icon.Bolt /></div><h4>Sales</h4><p>Deal closes in your CRM? The reward lands before the manager sees the update. Pipeline wins, quota hits — all automated.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Webhook /></div><h4>Engineering</h4><p>Critical issue resolved in 42 minutes? Sprint delivered early? PraiseLoop spots it in Jira and rewards the team instantly.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Eye /></div><h4>People &amp; HR</h4><p>See which teams are being overlooked, track recognition coverage across the org, and prove the link between recognition and retention.</p></div>
+          <div className="vp-card"><div className="ico"><Icon.Trophy /></div><h4>Operations</h4><p>Project milestones, certifications, anniversaries — any measurable outcome can trigger a reward with full budget controls.</p></div>
+        </div>
+        <div className="vp-cta"><a href={BOOKING_URL} className="btn btn-primary btn-arrow">Talk to sales <Icon.Arrow /></a></div>
       </div>
     </div>
   </section>
@@ -561,7 +582,7 @@ const Trust = () => (
 
 /* ── Pricing ──────────────────────────────────────────────── */
 const Pricing = () => (
-  <section id="pricing" style={{ background: "var(--surface-container-low)", paddingBlock: 96 }}>
+  <section id="pricing" className="section-cream" style={{ paddingBlock: 96 }}>
     <div className="container">
       <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 56px" }}>
         <span className="eyebrow">Pricing</span>
@@ -697,8 +718,8 @@ const FooterSection = () => (
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© 2026 PraiseLoop · All rights reserved</span>
-        <span>Dubai · Riyadh · London</span>
+        <span>&copy; 2026 PraiseLoop &middot; All rights reserved</span>
+        <span>Dubai &middot; Riyadh &middot; London</span>
       </div>
     </div>
   </footer>
@@ -711,11 +732,9 @@ export default function LandingPage() {
       <Nav />
       <Hero />
       <Integrations />
-      <Problem />
+      <Stats />
       <HowItWorks />
       <Solutions />
-      <Stats />
-      <SocialProof />
       <Trust />
       <GCC />
       <Pricing />
