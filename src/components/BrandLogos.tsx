@@ -1,6 +1,6 @@
 /* Simplified brand logos as inline SVGs for the integrations bar */
 
-const size = { width: 24, height: 24 };
+const size = { width: 32, height: 32 };
 
 export const SalesforceLogo = () => (
   <svg {...size} viewBox="0 0 24 24" fill="none">
