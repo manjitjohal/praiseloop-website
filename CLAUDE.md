@@ -53,7 +53,26 @@ SANITY_API_WRITE_TOKEN=sk...                # only for scripts/import-blog-post.
 ### Creating posts
 
 - **Author in Studio** — go to `/studio` (needs the `NEXT_PUBLIC_*` vars), create a Blog Post.
-- **Programmatic** — `node scripts/import-blog-post.mjs` (needs `SANITY_API_WRITE_TOKEN`; `--replace` to overwrite). This is the single source of truth for the P1 turnover pillar.
+- **Programmatic** — `node scripts/import-blog-post.mjs` (needs `SANITY_API_WRITE_TOKEN`; `--replace` to overwrite). This script is the single source of truth for the P1 turnover pillar's body/taxonomy.
+
+**⚠️ Content ownership — two domains, don't cross them:**
+
+- **Article body + taxonomy** (title, `body`, `keyTakeaways`, `contentType`/`territory`/etc., SEO) → owned by `import-blog-post.mjs`. Re-running it with `--replace` **overwrites the whole document**, so it will clobber any edits made directly in Studio. Use the script for structural changes; only make throwaway copy tweaks in Studio.
+- **Cover image** (`featuredImage`) → owned by `scripts/set-cover.mjs` (or Studio). The import script does **not** set `featuredImage`; on `--replace` it fetches and **preserves** the existing one so a content re-import can't wipe the cover.
+
+**Cover images** (`FAL_KEY` in `.env.local`, local-only):
+
+- `node scripts/generate-cover.mjs` — on-brand cover art via fal.ai (Recraft V3). Brand brief is baked in (warm cream + navy/teal + one orange accent, no text/people). Previews save to `public/blog-covers/` (gitignored). Flags: `--name`, `--count`, `--prompt`, `--model`.
+- `node scripts/set-cover.mjs --file=<path> --post=<id> [--alt=...]` — uploads a chosen image to Sanity and sets it as that post's `featuredImage`.
+
+### Reusable body blocks (Portable Text)
+
+The `blogPost.body` supports custom blocks, editable in Studio and rendered in `src/app/blog/[slug]/page.tsx`:
+
+- **statCallout** — a row of big-number stat tiles (`tone`: orange/navy/teal).
+- **pullQuote** — large accented quote.
+- **costStack** — iceberg-style figure: small "visible" costs above a waterline, larger "hidden" costs below.
+- Plus standard blocks, images, and the top-level `keyTakeaways` list.
 
 ## Blog content model (SEO content strategy)
 
