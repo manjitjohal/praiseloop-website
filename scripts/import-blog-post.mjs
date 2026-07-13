@@ -234,6 +234,16 @@ const client = createClient({ projectId, dataset, apiVersion, token, useCdn: fal
 const replace = process.argv.includes("--replace");
 
 try {
+  if (replace && !doc.featuredImage) {
+    // The import owns the article content; the cover is managed separately
+    // (set-cover.mjs / Studio). Preserve any existing featuredImage so a
+    // content re-import never wipes the uploaded cover.
+    const existing = await client.getDocument(doc._id).catch(() => null);
+    if (existing?.featuredImage) {
+      doc.featuredImage = existing.featuredImage;
+      console.log("  (preserving existing featuredImage)");
+    }
+  }
   const result = replace
     ? await client.createOrReplace(doc)
     : await client.create(doc);
