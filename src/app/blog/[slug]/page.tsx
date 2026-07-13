@@ -148,7 +148,7 @@ function makeComponents(headingByKey: Map<string, Heading>): PortableTextCompone
         return (
           <figure className="cost-stack">
             {v.heading && <div className="cost-stack-heading">{v.heading}</div>}
-            <div className="cost-stack-zone visible">
+            <div className="cost-stack-zone above">
               {v.visibleTitle && <span className="zone-title">{v.visibleTitle}</span>}
               <ul>
                 {visible.map((it, i) => (
@@ -159,7 +159,7 @@ function makeComponents(headingByKey: Map<string, Heading>): PortableTextCompone
             <div className="cost-stack-waterline">
               <span>the waterline</span>
             </div>
-            <div className="cost-stack-zone hidden">
+            <div className="cost-stack-zone below">
               {v.hiddenTitle && <span className="zone-title">{v.hiddenTitle}</span>}
               <ul>
                 {hidden.map((it, i) => (
