@@ -1865,8 +1865,10 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
 
 /* Prose — airy, scannable (write for the scanner: short paras, generous space) */
 .post-body { font-size: 18px; line-height: 1.85; color: var(--on-surface-variant); }
+/* Reset via > * (0,1,0) so it does NOT outrank the spacing rule below.
+   (A `.post-body p { margin: 0 }` reset is 0,1,1 and would cancel the gap.) */
+.post-body > * { margin: 0; }
 .post-body > * + * { margin-top: 34px; }
-.post-body p { margin: 0; }
 .post-body h2 {
   font-size: clamp(24px, 2.6vw, 32px);
   margin-top: 56px;
