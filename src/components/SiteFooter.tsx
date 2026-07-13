@@ -13,7 +13,7 @@ export default function SiteFooter() {
             <Image
               src="/praiseloop-logo-white.png"
               alt="PraiseLoop"
-              width={200}
+              width={141}
               height={56}
               style={{ height: 56, width: "auto" }}
             />

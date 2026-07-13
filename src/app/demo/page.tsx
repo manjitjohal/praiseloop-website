@@ -29,7 +29,7 @@ export default function DemoPage() {
       <header className="nav">
         <div className="container nav-row">
           <a href="/" aria-label="PraiseLoop">
-            <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={200} height={52} style={{ height: 52, width: "auto" }} priority />
+            <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={131} height={52} style={{ height: 52, width: "auto" }} priority />
           </a>
           <div className="nav-cta">
             <a href="https://app.praiseloop.com" className="btn btn-secondary" style={{ padding: "10px 16px", fontSize: 14 }}>Sign in</a>

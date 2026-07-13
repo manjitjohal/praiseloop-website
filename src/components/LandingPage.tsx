@@ -86,7 +86,7 @@ const Nav = () => (
   <header className="nav">
     <div className="container nav-row">
       <a href="#" aria-label="PraiseLoop">
-        <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={200} height={52} style={{ height: 52, width: "auto" }} priority />
+        <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={131} height={52} style={{ height: 52, width: "auto" }} priority />
       </a>
       <nav className="nav-links">
         <a href="#how">Platform</a>
@@ -139,7 +139,7 @@ const Hero = () => {
           <div className="dashboard">
             <div className="dashboard-head">
               <h4 style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <Image src="/Orange logo - transparent bg.png" alt="" width={28} height={28} style={{ height: 28, width: "auto" }} />
+                <Image src="/Orange logo - transparent bg.png" alt="" width={71} height={28} style={{ height: 28, width: "auto" }} />
                 <span style={{ color: "var(--outline)" }}>· live</span>
               </h4>
               <div className="dashboard-dots"><span></span><span></span><span></span></div>
@@ -720,7 +720,7 @@ const FooterSection = () => (
     <div className="container">
       <div className="footer-grid">
         <div className="footer-brand">
-          <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={200} height={56} style={{ height: 56, width: "auto" }} />
+          <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={141} height={56} style={{ height: 56, width: "auto" }} />
           <p className="footer-tag" style={{ marginTop: 18 }}>Performance-linked recognition that proves its impact on retention, engagement, and performance.</p>
           <span className="footer-mantra">Reward outcomes, not effort.</span>
         </div>

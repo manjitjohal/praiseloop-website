@@ -11,7 +11,7 @@ export default function SiteHeader() {
           <Image
             src="/praiseloop-logo.png"
             alt="PraiseLoop"
-            width={200}
+            width={131}
             height={52}
             style={{ height: 52, width: "auto" }}
             priority
