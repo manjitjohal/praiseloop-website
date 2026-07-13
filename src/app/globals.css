@@ -1863,9 +1863,9 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
 }
 .post-cover img { width: 100%; display: block; }
 
-/* Prose */
-.post-body { font-size: 18px; line-height: 1.75; color: var(--on-surface-variant); }
-.post-body > * + * { margin-top: 24px; }
+/* Prose — airy, scannable (write for the scanner: short paras, generous space) */
+.post-body { font-size: 18px; line-height: 1.85; color: var(--on-surface-variant); }
+.post-body > * + * { margin-top: 34px; }
 .post-body p { margin: 0; }
 .post-body h2 {
   font-size: clamp(24px, 2.6vw, 32px);

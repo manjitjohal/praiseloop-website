@@ -91,6 +91,31 @@ The blog is structured around the SEO content list (pillars, clusters, compariso
 
 **First pillar:** P1 — *"The True Cost of Employee Turnover in GCC Enterprise"* (`territory: t1`, `wave-1`). Its clusters in the plan (C1, C2, C3, C8, C9) link up to it.
 
+## Writing & editorial quality
+
+Posts are premium editorial, not walls of text. North star: **Nicolas Cole, *The Art & Business of Writing Online*** — *write for the scanner, format for momentum.*
+
+**Format for the scanner**
+- Short paragraphs — **1–3 sentences, one idea each.** Never a dense block; break long paragraphs up.
+- Generous white space between paragraphs — let the page breathe (`.post-body` spacing is tuned airy on purpose; don't tighten it).
+- Vary sentence and paragraph length for rhythm.
+- A subhead every few paragraphs (the numbered H2 sections). Hook in the first line; use transitions and pull quotes to pull the reader down the page.
+- Front-load the point of each section, then support it.
+
+**Stats & data**
+- Never bury a striking number in prose — pull it into a `statCallout`, with its source.
+- Group related figures into one callout row.
+
+**Visuals**
+- One purposeful visual beats five decorative ones.
+- Prefer diagrams that carry an argument (`costStack`, coded/SVG) over stock or AI imagery.
+- **Anything with labels or numbers is coded (SVG/HTML), never AI-generated** — image models garble text. Reserve AI generation for *decorative* covers only.
+- On-brand always: the palette, matte, minimal, a single orange accent.
+
+**Pillar post shape**
+- Standfirst → key takeaways → TOC → numbered sections → a memorable closing line.
+- Each section: a claim → the evidence (often a stat callout) → the consequence.
+
 ## Conventions & notes
 
 - **Never start servers automatically — always ask first.**
