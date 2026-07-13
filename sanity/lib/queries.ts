@@ -54,7 +54,11 @@ export const BLOG_POSTS_QUERY = defineQuery(
     excerpt,
     publishedAt,
     featuredImage,
-    category
+    contentType,
+    territory,
+    contentId,
+    targetKeyword,
+    "pillar": pillar->{ _id, title, "slug": slug.current }
   }`
 );
 
@@ -67,8 +71,22 @@ export const BLOG_POST_BY_SLUG_QUERY = defineQuery(
     body,
     publishedAt,
     featuredImage,
-    category,
+    contentType,
+    territory,
+    contentId,
+    targetKeyword,
+    searchIntent,
+    wave,
     seoTitle,
-    seoDescription
+    seoDescription,
+    "pillar": pillar->{ _id, title, "slug": slug.current, contentType, territory },
+    "clusters": *[_type == "blogPost" && references(^._id)] | order(contentId asc){
+      _id,
+      title,
+      "slug": slug.current,
+      contentType,
+      territory,
+      targetKeyword
+    }
   }`
 );

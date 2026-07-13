@@ -94,6 +94,7 @@ const Nav = () => (
         <a href="#gcc">GCC</a>
         <a href="#pricing">Pricing</a>
         <a href="#outcomes">Why it matters</a>
+        <a href="/blog">Blog</a>
       </nav>
       <div className="nav-cta">
         <a href="https://app.praiseloop.com" className="btn btn-secondary" style={{ padding: "10px 16px", fontSize: 14 }}>Sign in</a>
@@ -744,6 +745,7 @@ const FooterSection = () => (
         <div>
           <h5>Company</h5>
           <ul>
+            <li><a href="/blog">Blog</a></li>
             <li><a href="#trust">Security &amp; compliance</a></li>
             <li><a href={BOOKING_URL}>Contact</a></li>
           </ul>
