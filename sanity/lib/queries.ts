@@ -68,6 +68,7 @@ export const BLOG_POST_BY_SLUG_QUERY = defineQuery(
     title,
     slug,
     excerpt,
+    keyTakeaways,
     body,
     publishedAt,
     featuredImage,

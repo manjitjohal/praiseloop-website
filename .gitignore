@@ -40,6 +40,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# generated blog cover previews (finals are uploaded to Sanity)
+/public/blog-covers/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

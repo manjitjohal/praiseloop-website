@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -10,6 +9,7 @@ import {
   topicLabel,
   contentTypeBadge,
   formatDate,
+  TERRITORY_LABELS,
   type BlogPostSummary,
 } from "@/lib/sanity";
 
@@ -20,6 +20,20 @@ export const metadata: Metadata = {
   description:
     "Insights on employee recognition, retention economics, and HR strategy — written for People leaders across the GCC and beyond.",
 };
+
+const TERRITORIES = [
+  { value: "t1", blurb: "Turnover, retention, productivity, manager effectiveness." },
+  { value: "t2", blurb: "Workforce intelligence, buyer guides and comparisons." },
+  { value: "t3", blurb: "Emiratisation, Saudization and GCC-specific realities." },
+  { value: "feeder", blurb: "Recognition, gamification and frontline engagement." },
+];
+
+// Planned Wave-1 pieces from the content list — shown until they're published.
+const ROADMAP = [
+  { title: "Why Top Performers Leave — And How to See It Coming", territory: "t1" },
+  { title: "Employee Turnover Rate UAE / KSA: Benchmarks for 2026", territory: "t1" },
+  { title: "How to Reduce Employee Turnover in High-Attrition Workforces", territory: "t1" },
+];
 
 function Thumb({ post, priority = false }: { post: BlogPostSummary; priority?: boolean }) {
   const src = post.featuredImage
@@ -34,9 +48,16 @@ function Thumb({ post, priority = false }: { post: BlogPostSummary; priority?: b
     );
   }
 
+  const topic = topicLabel(post);
   return (
-    <div className="blog-thumb placeholder">
-      <Image src="/Orange logo - transparent bg.png" alt="" width={56} height={56} className="ph-mark" />
+    <div className="blog-thumb placeholder" data-territory={post.territory ?? "default"}>
+      <span className="ph-loop" aria-hidden>
+        ↻
+      </span>
+      <div className="ph-inner">
+        {topic && <span className="ph-kicker">{topic}</span>}
+        <span className="ph-title">{post.title}</span>
+      </div>
     </div>
   );
 }
@@ -48,6 +69,7 @@ function FeaturedCard({ post }: { post: BlogPostSummary }) {
     <Link href={`/blog/${post.slug.current}`} className="blog-featured">
       <Thumb post={post} priority />
       <div className="blog-featured-body">
+        <span className="featured-kicker">Featured</span>
         <div className="blog-cat-row">
           {topic && <span className="blog-cat">{topic}</span>}
           {badge && <span className="blog-format">{badge}</span>}
@@ -87,9 +109,78 @@ function PostCard({ post }: { post: BlogPostSummary }) {
   );
 }
 
-export default async function BlogIndexPage() {
+function TopicRail({
+  active,
+  counts,
+}: {
+  active?: string;
+  counts: Record<string, number>;
+}) {
+  return (
+    <div className="topic-rail">
+      <div className="topic-rail-head">
+        <span className="eyebrow no-dot">Browse by topic</span>
+        {active && (
+          <Link href="/blog" className="topic-clear">
+            Clear filter ✕
+          </Link>
+        )}
+      </div>
+      <div className="topic-grid">
+        {TERRITORIES.map((t) => (
+          <Link
+            key={t.value}
+            href={active === t.value ? "/blog" : `/blog?territory=${t.value}`}
+            className={`topic-card${active === t.value ? " active" : ""}`}
+            data-territory={t.value}
+          >
+            <span className="topic-count">{counts[t.value] ?? 0}</span>
+            <span className="topic-name">{TERRITORY_LABELS[t.value]}</span>
+            <span className="topic-blurb">{t.blurb}</span>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Roadmap() {
+  return (
+    <section className="roadmap">
+      <div className="roadmap-head">
+        <span className="eyebrow">On the roadmap</span>
+        <p>More Wave 1 pieces in the Performance &amp; Retention series, publishing soon.</p>
+      </div>
+      <div className="roadmap-grid">
+        {ROADMAP.map((r) => (
+          <div key={r.title} className="roadmap-card" data-territory={r.territory}>
+            <span className="roadmap-tag">Coming soon</span>
+            <span className="roadmap-title">{r.title}</span>
+            <span className="roadmap-topic">{TERRITORY_LABELS[r.territory]}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default async function BlogIndexPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ territory?: string }>;
+}) {
+  const { territory } = await searchParams;
   const posts = await getBlogPosts();
-  const [featured, ...rest] = posts;
+
+  const counts = posts.reduce<Record<string, number>>((acc, p) => {
+    if (p.territory) acc[p.territory] = (acc[p.territory] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  const activeTerritory = territory && TERRITORY_LABELS[territory] ? territory : undefined;
+  const filtered = activeTerritory ? posts.filter((p) => p.territory === activeTerritory) : posts;
+  const [featured, ...rest] = filtered;
+  const showRoadmap = posts.length > 0 && posts.length < 6;
 
   return (
     <div className="blog-page">
@@ -118,14 +209,29 @@ export default async function BlogIndexPage() {
               </div>
             ) : (
               <>
-                {featured && <FeaturedCard post={featured} />}
-                {rest.length > 0 && (
-                  <div className="blog-grid">
-                    {rest.map((post) => (
-                      <PostCard key={post._id} post={post} />
-                    ))}
+                <TopicRail active={activeTerritory} counts={counts} />
+
+                {filtered.length === 0 ? (
+                  <div className="blog-empty small">
+                    <p>
+                      No posts in <strong>{TERRITORY_LABELS[activeTerritory ?? ""]}</strong> yet.{" "}
+                      <Link href="/blog">View all posts</Link>.
+                    </p>
                   </div>
+                ) : (
+                  <>
+                    {featured && <FeaturedCard post={featured} />}
+                    {rest.length > 0 && (
+                      <div className="blog-grid">
+                        {rest.map((post) => (
+                          <PostCard key={post._id} post={post} />
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
+
+                {showRoadmap && !activeTerritory && <Roadmap />}
               </>
             )}
           </div>

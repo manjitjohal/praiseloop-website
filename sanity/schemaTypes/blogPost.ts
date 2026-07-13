@@ -34,6 +34,14 @@ export const blogPost = defineType({
       description: "One or two sentences shown on cards and under the title.",
     }),
     defineField({
+      name: "keyTakeaways",
+      title: "Key Takeaways",
+      type: "array",
+      group: "content",
+      of: [{ type: "string" }],
+      description: "3–5 short bullets shown in a summary box near the top of the article.",
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "array",
@@ -50,6 +58,85 @@ export const blogPost = defineType({
               type: "string",
             }),
           ],
+        },
+        {
+          type: "object",
+          name: "statCallout",
+          title: "Stat Callout",
+          fields: [
+            defineField({
+              name: "stats",
+              title: "Stats",
+              type: "array",
+              validation: (rule) => rule.min(1).max(4),
+              of: [
+                {
+                  type: "object",
+                  name: "stat",
+                  fields: [
+                    defineField({ name: "value", title: "Value", type: "string", validation: (r) => r.required() }),
+                    defineField({ name: "label", title: "Label", type: "string" }),
+                    defineField({ name: "source", title: "Source", type: "string" }),
+                  ],
+                  preview: { select: { title: "value", subtitle: "label" } },
+                },
+              ],
+            }),
+            defineField({
+              name: "tone",
+              title: "Tone",
+              type: "string",
+              initialValue: "orange",
+              options: {
+                list: [
+                  { title: "Orange", value: "orange" },
+                  { title: "Navy", value: "navy" },
+                  { title: "Teal", value: "teal" },
+                ],
+              },
+            }),
+          ],
+          preview: {
+            select: { s0: "stats.0.value", s1: "stats.1.value", s2: "stats.2.value" },
+            prepare({ s0, s1, s2 }) {
+              return { title: "Stat callout", subtitle: [s0, s1, s2].filter(Boolean).join(" · ") };
+            },
+          },
+        },
+        {
+          type: "object",
+          name: "pullQuote",
+          title: "Pull Quote",
+          fields: [
+            defineField({ name: "quote", title: "Quote", type: "text", rows: 3, validation: (r) => r.required() }),
+            defineField({ name: "attribution", title: "Attribution", type: "string" }),
+          ],
+          preview: {
+            select: { title: "quote", subtitle: "attribution" },
+          },
+        },
+        {
+          type: "object",
+          name: "costStack",
+          title: "Cost Stack",
+          description: "Iceberg-style figure: small 'visible' costs above a waterline, larger 'hidden' costs below.",
+          fields: [
+            defineField({ name: "heading", title: "Heading", type: "string" }),
+            defineField({ name: "visibleTitle", title: "Visible zone title", type: "string" }),
+            defineField({ name: "visibleItems", title: "Visible costs", type: "array", of: [{ type: "string" }] }),
+            defineField({ name: "hiddenTitle", title: "Hidden zone title", type: "string" }),
+            defineField({ name: "hiddenItems", title: "Hidden costs", type: "array", of: [{ type: "string" }] }),
+            defineField({ name: "caption", title: "Caption", type: "string" }),
+          ],
+          preview: {
+            select: { title: "heading", v: "visibleItems", h: "hiddenItems" },
+            prepare({ title, v, h }) {
+              return {
+                title: title || "Cost stack",
+                subtitle: `${(v || []).length} visible · ${(h || []).length} hidden`,
+              };
+            },
+          },
         },
       ],
     }),

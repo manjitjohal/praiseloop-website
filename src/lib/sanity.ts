@@ -107,6 +107,7 @@ export type BlogPostSummary = {
 
 export type BlogPost = BlogPostSummary & {
   body?: PortableTextBlock[];
+  keyTakeaways?: string[];
   searchIntent?: string;
   wave?: string;
   seoTitle?: string;
@@ -151,6 +152,27 @@ export async function getBlogSlugs(): Promise<string[]> {
 }
 
 /* ── Helpers ── */
+
+/** Rough reading time in minutes from Portable Text (counts text spans + stat labels). */
+export function readingTime(body?: unknown[]): number {
+  if (!body || !Array.isArray(body)) return 1;
+  let words = 0;
+  for (const block of body as Array<Record<string, unknown>>) {
+    if (block?._type === "block" && Array.isArray(block.children)) {
+      for (const child of block.children as Array<Record<string, unknown>>) {
+        if (typeof child?.text === "string") words += child.text.trim().split(/\s+/).filter(Boolean).length;
+      }
+    } else if (block?._type === "statCallout" && Array.isArray(block.stats)) {
+      for (const stat of block.stats as Array<Record<string, unknown>>) {
+        if (typeof stat?.label === "string") words += stat.label.trim().split(/\s+/).filter(Boolean).length;
+      }
+    } else if (block?._type === "pullQuote" && typeof block.quote === "string") {
+      words += block.quote.trim().split(/\s+/).filter(Boolean).length;
+    }
+  }
+  return Math.max(1, Math.round(words / 220));
+}
+
 export function formatDate(value?: string): string {
   if (!value) return "";
   const date = new Date(value);
