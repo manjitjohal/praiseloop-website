@@ -2114,24 +2114,49 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
   letter-spacing: -0.01em;
   color: var(--on-surface);
 }
-.cost-stack-zone { padding: 20px 24px; }
-.cost-stack-zone .zone-title {
+.cost-stack-body {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 30px;
+  padding: 18px 24px 24px;
+  align-items: center;
+}
+@media (max-width: 620px) {
+  .cost-stack-body { grid-template-columns: 1fr; gap: 22px; }
+}
+/* The iceberg graphic */
+.cost-stack-berg { align-self: stretch; display: flex; }
+.cost-stack-berg svg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
+  border: 1px solid var(--surface-container-high);
+  display: block;
+}
+@media (max-width: 620px) {
+  .cost-stack-berg svg { max-width: 240px; margin: 0 auto; }
+}
+/* The labelled cost lists */
+.cost-stack-lists { display: flex; flex-direction: column; }
+.cs-zone-title {
   display: block;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
-.cost-stack-zone ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.cost-stack-zone li {
+.cs-zone.above .cs-zone-title { color: var(--slate); }
+.cs-zone.below .cs-zone-title { color: var(--orange); }
+.cs-zone ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.cs-zone li {
+  position: relative;
+  padding-left: 18px;
   font-size: 14.5px;
   line-height: 1.4;
-  padding-left: 20px;
-  position: relative;
 }
-.cost-stack-zone li::before {
+.cs-zone li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -2140,26 +2165,23 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
   height: 8px;
   border-radius: 2px;
 }
-/* Visible zone — light, small */
-.cost-stack-zone.above { background: var(--surface-container-low); }
-.cost-stack-zone.above .zone-title { color: var(--on-surface-variant); }
-.cost-stack-zone.above li { color: var(--on-surface-variant); }
-.cost-stack-zone.above li::before { background: var(--outline-variant); }
-/* Waterline */
-.cost-stack-waterline {
+.cs-zone.above li { color: var(--on-surface-variant); }
+.cs-zone.above li::before { background: var(--slate); }
+.cs-zone.below li { color: var(--on-surface); }
+.cs-zone.below li::before { background: var(--orange); }
+.cs-divider {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 24px;
-  background: #fff;
+  margin: 18px 0;
 }
-.cost-stack-waterline::before {
+.cs-divider::before {
   content: '';
   flex: 1;
   height: 0;
   border-top: 2px dashed var(--orange-soft);
 }
-.cost-stack-waterline span {
+.cs-divider span {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -2167,16 +2189,6 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
   color: var(--orange);
   white-space: nowrap;
 }
-/* Hidden zone — dark, large (the iceberg mass) */
-.cost-stack-zone.below {
-  background: linear-gradient(180deg, #16232B 0%, #1f2f39 100%);
-  padding: 24px;
-}
-.cost-stack-zone.below .zone-title { color: var(--orange); }
-.cost-stack-zone.below ul { grid-template-columns: 1fr 1fr; gap: 12px 22px; }
-.cost-stack-zone.below li { color: rgba(255, 255, 255, 0.85); }
-.cost-stack-zone.below li::before { background: var(--orange); }
-@media (max-width: 560px) { .cost-stack-zone.below ul { grid-template-columns: 1fr; } }
 .cost-stack-caption {
   margin: 0;
   padding: 16px 24px;
@@ -2184,7 +2196,7 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
   line-height: 1.5;
   color: var(--on-surface-variant);
   border-top: 1px solid var(--surface-container-high);
-  background: #fff;
+  background: var(--surface-container-low);
 }
 
 /* Featured kicker */

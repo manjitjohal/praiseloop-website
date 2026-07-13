@@ -148,24 +148,64 @@ function makeComponents(headingByKey: Map<string, Heading>): PortableTextCompone
         return (
           <figure className="cost-stack">
             {v.heading && <div className="cost-stack-heading">{v.heading}</div>}
-            <div className="cost-stack-zone above">
-              {v.visibleTitle && <span className="zone-title">{v.visibleTitle}</span>}
-              <ul>
-                {visible.map((it, i) => (
-                  <li key={i}>{it}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="cost-stack-waterline">
-              <span>the waterline</span>
-            </div>
-            <div className="cost-stack-zone below">
-              {v.hiddenTitle && <span className="zone-title">{v.hiddenTitle}</span>}
-              <ul>
-                {hidden.map((it, i) => (
-                  <li key={i}>{it}</li>
-                ))}
-              </ul>
+            <div className="cost-stack-body">
+              <div className="cost-stack-berg">
+                <svg
+                  viewBox="0 0 200 280"
+                  role="img"
+                  aria-label="Iceberg: a small visible tip above the waterline, a much larger mass hidden below"
+                >
+                  <defs>
+                    <linearGradient id="cs-sea" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stopColor="#16232B" />
+                      <stop offset="1" stopColor="#1f2f39" />
+                    </linearGradient>
+                    <linearGradient id="cs-ice" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stopColor="#9ad3d8" stopOpacity="0.95" />
+                      <stop offset="1" stopColor="#075056" stopOpacity="0.7" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="200" height="84" fill="#FAF8F5" />
+                  <rect x="0" y="84" width="200" height="196" fill="url(#cs-sea)" />
+                  <circle cx="166" cy="40" r="13" fill="#FF5B04" />
+                  {/* submerged mass — the hidden bulk */}
+                  <polygon points="58,84 150,84 168,168 104,266 40,166" fill="url(#cs-ice)" />
+                  <path
+                    d="M104,84 L104,266 M58,84 L104,180 M150,84 L104,180 M104,180 L168,168 M104,180 L40,166"
+                    stroke="#FAF8F5"
+                    strokeOpacity="0.25"
+                    strokeWidth="1.5"
+                    fill="none"
+                  />
+                  {/* visible tip */}
+                  <polygon points="66,84 98,34 138,84" fill="#ffffff" />
+                  <polygon points="98,34 138,84 112,84" fill="#e4eef0" />
+                  {/* waterline */}
+                  <line x1="0" y1="84" x2="200" y2="84" stroke="#F49662" strokeWidth="2" strokeDasharray="6 5" />
+                </svg>
+              </div>
+
+              <div className="cost-stack-lists">
+                <div className="cs-zone above">
+                  {v.visibleTitle && <span className="cs-zone-title">{v.visibleTitle}</span>}
+                  <ul>
+                    {visible.map((it, i) => (
+                      <li key={i}>{it}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="cs-divider">
+                  <span>the waterline</span>
+                </div>
+                <div className="cs-zone below">
+                  {v.hiddenTitle && <span className="cs-zone-title">{v.hiddenTitle}</span>}
+                  <ul>
+                    {hidden.map((it, i) => (
+                      <li key={i}>{it}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
             {v.caption && <figcaption className="cost-stack-caption">{v.caption}</figcaption>}
           </figure>
