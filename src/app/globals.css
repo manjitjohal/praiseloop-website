@@ -349,35 +349,6 @@ section { padding: 120px 0; }
 .section-head h2 { margin-top: 14px; }
 .section-head .lede { margin-top: 18px; }
 
-/* Integrations */
-.integrations-section {
-  padding: 48px 0;
-  border-top: 1px solid var(--surface-container-high);
-  border-bottom: 1px solid var(--surface-container-high);
-}
-.integrations-row {
-  display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center;
-}
-@media (min-width: 900px) {
-  .integrations-row { grid-template-columns: auto 1fr; gap: 48px; }
-}
-.integrations-section .eyebrow { color: var(--on-surface-variant); font-size: 13px; letter-spacing: 0.04em; text-transform: none; font-weight: 500; max-width: 22ch; }
-.integrations-section .eyebrow::before { display: none; }
-.integration-logos {
-  display: flex; flex-wrap: wrap;
-  gap: 36px 44px; align-items: center;
-  color: var(--on-surface-variant);
-}
-.int-logo {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-weight: 600; font-size: 15px; opacity: 0.75;
-  transition: opacity .2s ease;
-}
-.int-logo:hover { opacity: 1; }
-.int-logo .dot {
-  width: 10px; height: 10px; border-radius: 3px;
-}
-
 /* Legacy problem cards removed */
 
 /* Legacy layer styles removed — replaced by .alt-block */
@@ -575,14 +546,14 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
 
 /* ── Integrations bar improvements ── */
 .integrations-section {
-  padding: 48px 0;
+  padding: 56px 0;
   border-top: 1px solid var(--surface-container-high);
   border-bottom: 1px solid var(--surface-container-high);
   background: var(--surface);
 }
 .integrations-header {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 .integrations-header .eyebrow {
   max-width: none;
@@ -594,22 +565,27 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
 .integration-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px 32px;
-  justify-items: center;
+  gap: 16px;
   color: var(--on-surface);
 }
 @media (max-width: 768px) {
   .integration-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .int-logo {
-  display: inline-flex; align-items: center; gap: 12px;
-  font-weight: 600; font-size: 16px; opacity: 0.85;
-  transition: opacity .2s ease, transform .2s ease;
-  padding: 10px 14px;
-  white-space: nowrap;
+  display: flex; align-items: center; gap: 14px;
+  font-weight: 600; font-size: 16px;
+  background: #fff;
+  border: 1px solid var(--surface-container-high);
+  border-radius: var(--r-lg);
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  padding: 16px 18px;
 }
-.int-logo:hover { opacity: 1; transform: translateY(-1px); }
-.int-logo svg { flex-shrink: 0; }
+.int-logo:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange);
+  box-shadow: 0 12px 24px -12px rgba(22, 35, 43, 0.18);
+}
+.int-logo svg { flex-shrink: 0; width: 40px; height: 40px; }
 
 /* Social proof */
 .proof-grid {
