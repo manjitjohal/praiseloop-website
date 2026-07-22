@@ -387,31 +387,6 @@ const MockRecognitionFeed = () => (
   </div>
 );
 
-const MockRuleBuilder = () => (
-  <div className="mock-ui dark-mock">
-    <div className="mock-header">
-      <span className="mock-dot orange"></span>
-      <span className="mock-title">Rule builder</span>
-      <span className="mock-badge active">Active</span>
-    </div>
-    <div className="mock-body">
-      <div className="rule-card"><div className="rule-label">WHEN</div><div className="rule-row"><span className="rule-pill source">Salesforce</span><span className="rule-text">Deal closed &middot; value &ge; $50K</span></div></div>
-      <div className="rule-arrow"><Icon.Bolt style={{ color: "var(--orange)" }} /></div>
-      <div className="rule-card"><div className="rule-label">THEN</div><div className="rule-row"><span className="rule-pill reward">+500 coins</span><span className="rule-text">to deal owner + team</span></div>
-        <div className="rule-conditions">
-          <span className="rule-condition"><Icon.Check /> Budget cap: $2K/quarter</span>
-          <span className="rule-condition"><Icon.Check /> Manager approval &gt; $500</span>
-          <span className="rule-condition"><Icon.Check /> Auto-notify via Slack</span>
-        </div>
-      </div>
-      <div className="rule-divider"></div>
-      <div className="rule-card"><div className="rule-label">WHEN</div><div className="rule-row"><span className="rule-pill source jira">Zendesk</span><span className="rule-text">CSAT 5/5 &middot; critical ticket &lt; 1 hour</span></div></div>
-      <div className="rule-arrow"><Icon.Bolt style={{ color: "var(--orange)" }} /></div>
-      <div className="rule-card"><div className="rule-label">THEN</div><div className="rule-row"><span className="rule-pill reward">+120 coins</span><span className="rule-text">to assignee</span></div></div>
-    </div>
-  </div>
-);
-
 const MockImpactPanel = () => (
   <div className="impact-panel">
     <div className="ip-head">
@@ -475,10 +450,14 @@ const HowItWorks = () => (
         <div className="alt-text">
           <span className="alt-num">03 · The {ENGINE_NAME}</span>
           <h3>Your CRM fires the reward. Nobody fills in a form.</h3>
-          <p>An admin types the rule in plain English — &ldquo;when a rep closes a deal over $10K, award 500 coins&rdquo; — and the AI maps it to the webhook. A deal closes, the coins land instantly, the win posts to the feed. Every coin is outcome-linked currency, traceable to a real event — with budget caps and approvals built in.</p>
+          <p>Most tools make someone fill in a nomination form. PraiseLoop watches your systems instead. Write a rule in plain English — &ldquo;close a deal over $10K, award 500 coins&rdquo; — and when it happens, the reward lands on its own. Every coin ties back to a real result, with budget limits built in.</p>
           <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the rule builder <Icon.Arrow /></a>
         </div>
-        <div className="alt-visual"><MockRuleBuilder /></div>
+        <div className="alt-visual">
+          <div className="gap-photo">
+            <Image src="/form-fatigue.webp" alt="A weary manager pinching his brow over a clipboard of nomination forms" width={1024} height={768} />
+          </div>
+        </div>
       </div>
 
       <div className="alt-block" id="proof">
