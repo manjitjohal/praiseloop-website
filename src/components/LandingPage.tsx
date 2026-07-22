@@ -451,7 +451,7 @@ const HowItWorks = () => (
           <span className="alt-num">03 · The {ENGINE_NAME}</span>
           <h3>Your CRM fires the reward. Nobody fills in a form.</h3>
           <p>Most tools make someone fill in a nomination form. PraiseLoop watches your systems instead. Write a rule in plain English — &ldquo;close a deal over $10K, award 500 coins&rdquo; — and when it happens, the reward lands on its own. Every coin ties back to a real result, with budget limits built in.</p>
-          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the rule builder <Icon.Arrow /></a>
+          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>Watch a rule fire <Icon.Arrow /></a>
         </div>
         <div className="alt-visual">
           <div className="gap-photo">
