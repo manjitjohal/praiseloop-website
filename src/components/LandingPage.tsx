@@ -762,22 +762,6 @@ const Pricing = () => (
   </section>
 );
 
-/* ── CTA ──────────────────────────────────────────────────── */
-const CTASection = () => (
-  <section id="cta" className="cta-section">
-    <div className="container">
-      <div className="cta-card">
-        <h2>See it live — with your data. In 30 minutes.</h2>
-        <p className="lede">From a deal closing in your CRM to the reward landing in someone&apos;s wallet — and the report that shows what it moved.</p>
-        <div className="hero-cta">
-          <a href={BOOKING_URL} className="btn btn-primary btn-arrow">Book a demo <Icon.Arrow /></a>
-          <a href="mailto:hello@praiseloop.com" className="btn btn-secondary">hello@praiseloop.com</a>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 /* ── Footer — Ft5 statement close ─────────────────────────── */
 const FooterSection = () => (
   <footer>
@@ -818,7 +802,6 @@ export default function LandingPage() {
       <Trust />
       <GCC />
       <Pricing />
-      <CTASection />
       <FooterSection />
     </>
   );
