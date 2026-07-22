@@ -2654,6 +2654,22 @@ footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 72px 0 
 .gcc-art img { width: 100%; height: auto; display: block; }
 
 /* ── The execution-gap cycle (causal chain) ── */
+.gap-split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+@media (max-width: 900px) { .gap-split { grid-template-columns: 1fr; gap: 32px; } }
+.gap-photo {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1px solid var(--surface-container-high);
+  box-shadow: 0 20px 48px -24px rgba(22, 35, 43, 0.25);
+}
+.gap-photo img { width: 100%; height: auto; display: block; }
+
 .cycle {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

@@ -256,11 +256,16 @@ const Integrations = () => (
 const Reframe = () => (
   <section id="why" className="outcomes" style={{ paddingBlock: 88 }}>
     <div className="container">
-      <div className="section-head" style={{ maxWidth: 800, marginBottom: 44 }}>
-        <h2>Managers know recognition matters. They simply don&apos;t have time to do it consistently.</h2>
-        <p className="lede" style={{ marginTop: 18 }}>
-          That&apos;s the <strong>manager execution gap</strong> — and left alone, it quietly compounds:
-        </p>
+      <div className="gap-split">
+        <div>
+          <h2>Managers know recognition matters. They simply don&apos;t have time to do it consistently.</h2>
+          <p className="lede" style={{ marginTop: 18 }}>
+            That&apos;s the <strong>manager execution gap</strong> — and left alone, it quietly compounds:
+          </p>
+        </div>
+        <div className="gap-photo">
+          <Image src="/team-recognition.webp" alt="A team applauding a colleague during a morning stand-up" width={1024} height={768} />
+        </div>
       </div>
 
       <div className="cycle">
