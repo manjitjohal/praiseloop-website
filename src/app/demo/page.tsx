@@ -27,12 +27,14 @@ export default function DemoPage() {
   return (
     <div className="demo-page">
       <header className="nav">
-        <div className="container nav-row">
-          <a href="/" aria-label="PraiseLoop">
-            <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={131} height={52} style={{ height: 52, width: "auto" }} priority />
-          </a>
-          <div className="nav-cta">
-            <a href="https://app.praiseloop.com" className="btn btn-secondary" style={{ padding: "10px 16px", fontSize: 14 }}>Sign in</a>
+        <div className="container">
+          <div className="nav-row">
+            <a href="/" aria-label="PraiseLoop">
+              <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={101} height={40} style={{ height: 40, width: "auto" }} priority />
+            </a>
+            <div className="nav-cta">
+              <a href="https://app.praiseloop.com" className="btn btn-secondary" style={{ padding: "9px 16px", fontSize: 14 }}>Sign in</a>
+            </div>
           </div>
         </div>
       </header>
@@ -50,19 +52,19 @@ export default function DemoPage() {
                   <span className="demo-check">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  <span>See the Outcome Engine fire rewards from your actual tools</span>
+                  <span>Watch the AI Deputy surface a moment and draft the note — one click to approve</span>
                 </div>
                 <div className="demo-benefit">
                   <span className="demo-check">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  <span>Walk through the analytics dashboard with real-world data</span>
+                  <span>See the Outcome Engine fire a reward from a real CRM event</span>
                 </div>
                 <div className="demo-benefit">
                   <span className="demo-check">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  <span>Get a personalised ROI estimate for your organisation</span>
+                  <span>Walk through the day-90 CFO report — and what a 90-day pilot looks like</span>
                 </div>
                 <div className="demo-benefit">
                   <span className="demo-check">

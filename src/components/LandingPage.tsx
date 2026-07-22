@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import {
-  SalesforceLogo, HubSpotLogo, JiraLogo, BambooHRLogo,
-  HiBobLogo, TeamsLogo, SlackLogo, GoogleWorkspaceLogo,
+  SalesforceLogo, HubSpotLogo, BambooHRLogo, HiBobLogo,
+  TeamsLogo, SlackLogo, WorkdayLogo, SAPLogo, ADPLogo,
 } from "./BrandLogos";
 
 /* ── Icons ─────────────────────────────────────────────────── */
@@ -35,6 +35,16 @@ const Icon = {
   Check: (p: React.SVGProps<SVGSVGElement>) => (
     <svg {...p} width="9" height="9" viewBox="0 0 14 14" fill="none">
       <path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  X: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="10" height="10" viewBox="0 0 14 14" fill="none">
+      <path d="M3.5 3.5l7 7m0-7l-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  ),
+  Loop: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path d="M20 11a8 8 0 10-2.3 6M20 4v5h-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   ),
   Eye: (p: React.SVGProps<SVGSVGElement>) => (
@@ -75,30 +85,67 @@ const Icon = {
       <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.6"/>
     </svg>
   ),
+  Lock: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" strokeWidth="1.6"/>
+    </svg>
+  ),
+  Cloud: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path d="M7 18a4 4 0 01-.6-7.9A5.5 5.5 0 0117 8.6 4.2 4.2 0 0116.8 18H7z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+    </svg>
+  ),
+  Clock: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M12 7v5l3.5 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  Bell: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M6 16v-6a6 6 0 0112 0v6l1.5 2.5h-15L6 16z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+      <path d="M10 21a2.5 2.5 0 004 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+    </svg>
+  ),
+  Frown: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M9 10v.01M15 10v.01" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
+      <path d="M8.5 16.5a5 5 0 017 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+    </svg>
+  ),
+  Exit: (p: React.SVGProps<SVGSVGElement>) => (
+    <svg {...p} width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M14 4h6v16h-6" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+      <path d="M4 12h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
 };
 
 const ENGINE_NAME = "Outcome Engine";
+const DEPUTY_NAME = "AI Deputy";
 const BOOKING_URL = "/demo";
 
 
 /* ── Nav ───────────────────────────────────────────────────── */
 const Nav = () => (
   <header className="nav">
-    <div className="container nav-row">
-      <a href="#" aria-label="PraiseLoop">
-        <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={131} height={52} style={{ height: 52, width: "auto" }} priority />
-      </a>
-      <nav className="nav-links">
-        <a href="#how">Platform</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#gcc">GCC</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#outcomes">Why it matters</a>
-        <a href="/blog">Blog</a>
-      </nav>
-      <div className="nav-cta">
-        <a href="https://app.praiseloop.com" className="btn btn-secondary" style={{ padding: "10px 16px", fontSize: 14 }}>Sign in</a>
-        <a href={BOOKING_URL} className="btn btn-primary" style={{ padding: "10px 18px", fontSize: 14 }}>Book a demo</a>
+    <div className="container">
+      <div className="nav-row">
+        <a href="#" aria-label="PraiseLoop">
+          <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={101} height={40} style={{ height: 40, width: "auto" }} priority />
+        </a>
+        <nav className="nav-links">
+          <a href="#how">Platform</a>
+          <a href="#proof">Proof</a>
+          <a href="#pricing">Pricing</a>
+          <a href="/blog">Blog</a>
+          <a href="https://app.praiseloop.com">Sign in</a>
+        </nav>
+        <div className="nav-cta">
+          <a href={BOOKING_URL} className="btn btn-primary" style={{ padding: "9px 18px", fontSize: 14 }}>Book a demo</a>
+        </div>
       </div>
     </div>
   </header>
@@ -110,16 +157,12 @@ const Hero = () => {
     <section className="hero">
       <div className="container hero-grid">
         <div>
-          <span className="eyebrow-badge">
-            <span className="dot"></span>
-            Performance-linked recognition
-          </span>
-          <h1 style={{ marginTop: 24 }}>
-            You invest in recognition.<br />
-            Can you <span className="em">prove</span> it&apos;s working?
+          <h1>
+            Reward <span className="em">outcomes</span>,<br />
+            not effort.
           </h1>
           <p className="lede" style={{ marginTop: 24 }}>
-            PraiseLoop connects recognition to measurable outcomes — retention, engagement, and performance. When someone hits a target, resolves an issue, or completes a certification, the reward fires automatically. No forms. No delays. And for the first time, you can measure the impact.
+            PraiseLoop spots when good people start to slip — and helps managers turn it around at the right moment. The AI drafts the recognition, your systems trigger the reward, and you see the payback on your own data.
           </p>
           <div className="hero-cta">
             <a href={BOOKING_URL} className="btn btn-primary btn-arrow">
@@ -128,67 +171,49 @@ const Hero = () => {
             <a href="#how" className="btn btn-secondary">See how it works</a>
           </div>
           <div className="hero-meta">
-            <span><span className="check"><Icon.Check /></span> No credit card</span>
-            <span><span className="check"><Icon.Check /></span> 30-min walkthrough</span>
-            <span><span className="check"><Icon.Check /></span> Live platform demo</span>
+            <span><span className="check"><Icon.Check /></span> Ten seconds to say thank you</span>
+            <span><span className="check"><Icon.Check /></span> Rewards fire from real results</span>
+            <span><span className="check"><Icon.Check /></span> Live in two weeks</span>
           </div>
         </div>
 
         <div style={{ position: "relative" }}>
           <div className="dashboard-glow" />
-          <div className="dashboard">
-            <div className="dashboard-head">
-              <h4 style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <Image src="/Orange logo - transparent bg.png" alt="" width={71} height={28} style={{ height: 28, width: "auto" }} />
-                <span style={{ color: "var(--outline)" }}>· live</span>
-              </h4>
-              <div className="dashboard-dots"><span></span><span></span><span></span></div>
+          <div className="hero-stack">
+            <div className="deputy-card">
+              <div className="dc-head">
+                <span className="dc-bot"><Icon.Spark /></span>
+                <span className="dc-title">{DEPUTY_NAME} · recommendation</span>
+                <span className="dc-badge">Suggest-only</span>
+              </div>
+              <div className="dc-msg">Sarah just closed a <strong>$48K deal</strong></div>
+              <div className="dc-sub">Draft ready in your voice — the whole team sees it.</div>
+              <div className="dc-draft">
+                <span className="dc-draft-label">Draft · edit before sending</span>
+                &ldquo;Sarah, that close was three months of patient work paying off. Textbook. The team should know.&rdquo;
+              </div>
+              <div className="dc-actions">
+                <span className="dc-approve"><Icon.Check /> Approve reward</span>
+                <span className="dc-ghost">Edit</span>
+                <span className="dc-ghost">Later</span>
+              </div>
             </div>
-            <div className="dash-cards">
-              <div className="dash-card">
-                <div className="dash-icon"><Icon.Bolt /></div>
-                <div>
-                  <span className="label">Triggered today</span>
-                  <div className="value"><span className="dash-counter">47</span><span className="unit">rewards</span></div>
-                  <div className="sub">From 4 connected systems</div>
-                </div>
-                <span className="dash-tag">+12%</span>
+            <div className="mini-score">
+              <div className="ms-head">
+                <span>Recognition impact · 90 days</span>
+                <span className="illus-chip on-dark">Illustrative</span>
               </div>
-              <div className="dash-card featured">
-                <div className="dash-avatar">RC</div>
-                <div>
-                  <span className="label">Recognition coverage</span>
-                  <div className="value">84<span className="unit" style={{ color: "rgba(255,255,255,0.7)" }}>%</span></div>
-                  <div className="sub">of employees recognised this quarter</div>
-                </div>
-                <span className="dash-tag">+9%</span>
-              </div>
-              <div className="dash-card">
-                <div className="dash-icon"><Icon.Webhook /></div>
-                <div>
-                  <span className="label">Connected systems</span>
-                  <div className="dash-systems" style={{ marginTop: 6 }}>
-                    <span className="sys-pill"><span className="ping"></span>Salesforce</span>
-                    <span className="sys-pill"><span className="ping"></span>Jira</span>
-                    <span className="sys-pill"><span className="ping"></span>BambooHR</span>
-                  </div>
-                  <div className="sub" style={{ marginTop: 8 }}>All synced</div>
-                </div>
-              </div>
-              <div className="dash-card">
-                <div className="dash-icon"><Icon.Shield /></div>
-                <div>
-                  <span className="label">Pending approvals</span>
-                  <div className="value"><span className="dash-counter">3</span><span className="unit">awaiting review</span></div>
-                  <div className="sub">Avg response: 1.4 hrs</div>
-                </div>
-                <span className="dash-tag" style={{ background: "var(--soft-teal)", color: "var(--teal)" }}>On track</span>
+              <div className="ms-grid">
+                <div><span className="k">Deals</span><span className="v">+25%</span></div>
+                <div><span className="k">Retention</span><span className="v">+17%</span></div>
+                <div><span className="k">Revenue</span><span className="v rev">$127K</span></div>
+                <div><span className="k">Coverage</span><span className="v">84%</span></div>
               </div>
             </div>
           </div>
           <div className="hero-fire">
             <span className="spark"><Icon.Spark /></span>
-            +500 coins · target hit
+            +500 coins · deal closed
           </div>
         </div>
       </div>
@@ -196,41 +221,24 @@ const Hero = () => {
   );
 };
 
-/* ── People Strip (social proof faces) ────────────────────── */
-const PeopleStrip = () => (
-  <section className="people-strip">
-    <div className="container">
-      <div className="people-row">
-        <div className="people-faces">
-          <Image src="/testimonial-1.png" alt="" width={44} height={44} className="people-face" />
-          <Image src="/heather.png" alt="" width={44} height={44} className="people-face" />
-          <Image src="/john.png" alt="" width={44} height={44} className="people-face" />
-          <Image src="/joe.png" alt="" width={44} height={44} className="people-face" />
-          <Image src="/person-executive.jpg" alt="" width={44} height={44} className="people-face" />
-        </div>
-        <span className="people-text">Trusted by People &amp; HR leaders across the GCC, UK, and Europe</span>
-      </div>
-    </div>
-  </section>
-);
-
 /* ── Integrations ──────────────────────────────────────────── */
 const integrations = [
-  { name: "Salesforce", Logo: SalesforceLogo },
-  { name: "HubSpot", Logo: HubSpotLogo },
-  { name: "Jira", Logo: JiraLogo },
+  { name: "Workday", Logo: WorkdayLogo },
+  { name: "SAP SuccessFactors", Logo: SAPLogo },
+  { name: "ADP", Logo: ADPLogo },
   { name: "BambooHR", Logo: BambooHRLogo },
   { name: "HiBob", Logo: HiBobLogo },
+  { name: "Salesforce", Logo: SalesforceLogo },
+  { name: "HubSpot", Logo: HubSpotLogo },
   { name: "Microsoft Teams", Logo: TeamsLogo },
   { name: "Slack", Logo: SlackLogo },
-  { name: "Google Workspace", Logo: GoogleWorkspaceLogo },
 ];
 
 const Integrations = () => (
   <section className="integrations-section">
     <div className="container">
       <div className="integrations-header">
-        <span className="eyebrow no-dot">Connects to the systems your work actually lives in</span>
+        <span className="eyebrow no-dot">Zero integrations required on day one — connect your CRM, help desk, and HRIS when you&apos;re ready</span>
       </div>
       <div className="integration-grid">
         {integrations.map((l) => (
@@ -244,59 +252,91 @@ const Integrations = () => (
   </section>
 );
 
-/* ── Outcomes (ported from standalone — richer cards) ─────── */
-const Outcomes = () => (
-  <section id="outcomes" className="outcomes">
+/* ── The Reframe (manager execution gap) ──────────────────── */
+const Reframe = () => (
+  <section id="why" className="outcomes" style={{ paddingBlock: 88 }}>
     <div className="container">
-      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 56px" }}>
-        <span className="eyebrow">Measurable impact</span>
-        <h2 style={{ marginTop: 14 }}>Recognition that moves the numbers that matter</h2>
+      <div className="section-head" style={{ maxWidth: 800, marginBottom: 44 }}>
+        <h2>Managers know recognition matters. They simply don&apos;t have time to do it consistently.</h2>
+        <p className="lede" style={{ marginTop: 18 }}>
+          That&apos;s the <strong>manager execution gap</strong> — and left alone, it quietly compounds:
+        </p>
       </div>
-      <div className="outcome-grid">
-        <div className="outcome-card">
-          <span className="num">01 / RETENTION</span>
-          <h3>Keep your best people</h3>
-          <p>Strategic recognition reduces voluntary turnover by connecting rewards to the outcomes that make people want to stay.</p>
-          <div className="outcome-foot">
-            <div className="outcome-stat"><span className="big">31%</span><span className="sub">Lower turnover</span></div>
-            <span className="src">Bersin by Deloitte</span>
-          </div>
-        </div>
-        <div className="outcome-card tone-sand">
-          <span className="num">02 / COST</span>
-          <h3>Cut replacement spend</h3>
-          <p>Every departure costs months of productivity. Recognition is the cheapest lever to reduce that number.</p>
-          <div className="outcome-foot">
-            <div className="outcome-stat"><span className="big">$16K</span><span className="sub">Avg replacement cost</span></div>
-            <span className="src">SHRM</span>
-          </div>
-        </div>
-        <div className="outcome-card tone-teal">
-          <span className="num">03 / PERFORMANCE</span>
-          <h3>Unlock innovation</h3>
-          <p>Recognised employees are dramatically more likely to go above and beyond — and their teams follow.</p>
-          <div className="outcome-foot">
-            <div className="outcome-stat"><span className="big">2.5&times;</span><span className="sub">Better innovation</span></div>
-            <span className="src">SHRM / Globoforce</span>
-          </div>
-        </div>
-        <div className="outcome-card tone-navy">
-          <span className="num">04 / ENGAGEMENT</span>
-          <h3>Reduce absenteeism</h3>
-          <p>High-engagement cultures built on recognition see dramatically lower absence rates across the board.</p>
-          <div className="outcome-foot">
-            <div className="outcome-stat"><span className="big">41%</span><span className="sub">Less absenteeism</span></div>
-            <span className="src">Gallup</span>
-          </div>
+
+      <div className="cycle">
+        <div className="cycle-step"><span className="ico"><Icon.Spark /></span><h4>Managers want to recognise</h4><p>They know praise moves performance.</p></div>
+        <div className="cycle-step"><span className="ico"><Icon.Clock /></span><h4>The day takes over</h4><p>Back-to-back meetings. The loudest problem wins.</p></div>
+        <div className="cycle-step"><span className="ico"><Icon.Bell /></span><h4>Recognition is forgotten</h4><p>Great work goes unnoticed — or lands too late.</p></div>
+        <div className="cycle-step"><span className="ico"><Icon.Frown /></span><h4>People disengage</h4><p>They feel unseen. They stop going the extra mile.</p></div>
+        <div className="cycle-step"><span className="ico"><Icon.Exit /></span><h4>Your best people leave</h4><p>Replacing them costs far more than keeping them.</p></div>
+      </div>
+
+      <div className="cycle-band">
+        <span className="cycle-repeat"><Icon.Loop /> The cycle repeats</span>
+        <div className="cycle-break">
+          <span><strong>PraiseLoop breaks it.</strong> The AI spots the moment, drafts the note — the manager clicks send. Ten seconds.</span>
+          <a href="#how" className="cycle-break-link">See how <Icon.Arrow /></a>
         </div>
       </div>
+
+      <div className="stat-strip">
+        <div className="ss-item">
+          <div className="n">70%</div>
+          <p>of how engaged a team feels comes down to one person: the manager</p>
+          <span className="src">Gallup</span>
+        </div>
+        <div className="ss-item">
+          <div className="n">4–8&times;</div>
+          <p>more output from a top performer than an average one</p>
+          <span className="src">McKinsey</span>
+        </div>
+        <div className="ss-item">
+          <div className="n teal">21%</div>
+          <p>higher profitability for teams with high engagement</p>
+          <span className="src">Gallup</span>
+        </div>
+      </div>
+
     </div>
   </section>
 );
 
-/* Hero Product section removed — photos used in Customer Stories instead */
+/* ── Mock UIs ─────────────────────────────────────────────── */
 
-/* ── How It Works — Alternating Blocks ───────────────────── */
+const MockDeputyQueue = () => (
+  <div className="mock-ui">
+    <div className="mock-header">
+      <span className="mock-dot orange"></span>
+      <span className="mock-title">{DEPUTY_NAME} · manager queue</span>
+      <span className="mock-badge active">2 pending</span>
+    </div>
+    <div className="mock-body">
+      <div className="dep-card">
+        <div className="dep-top"><span className="dep-type">Recognition nudge</span><span className="dep-pri">Priority 9</span></div>
+        <p className="dep-title"><strong>Ravi</strong> closed two deals last week — and hasn&apos;t been recognised in <strong>32 days</strong>.</p>
+        <div className="dep-user">
+          <span className="dep-av">RK</span>
+          <div><strong>Ravi Kumar</strong><span>Sales Engineer</span></div>
+        </div>
+        <div className="dep-draft">
+          <span className="dc-draft-label">Draft · in your voice</span>
+          &ldquo;Ravi, those two closes carried the week — quietly, like always. The team should know. Great work.&rdquo;
+        </div>
+        <div className="dep-chips">
+          <span className="feed-tag value">Teamwork</span>
+          <span className="feed-coins">+250 coins</span>
+        </div>
+        <div className="dep-approve"><Icon.Check /> Approve &amp; send</div>
+        <div className="dep-secondary"><span>Edit</span><span>Maybe later</span><span>Why?</span></div>
+      </div>
+      <div className="dep-card compact">
+        <div className="dep-top"><span className="dep-type teal">Silent hero</span><span className="dep-pri">Priority 7</span></div>
+        <p className="dep-title"><strong>Deepa Patel</strong> — 34 days unrecognised; quietly closed 11 critical tickets this sprint.</p>
+        <div className="dep-chips"><span className="feed-tag endorsed">Draft ready</span><span className="feed-coins">+120 coins</span></div>
+      </div>
+    </div>
+  </div>
+);
 
 const MockRecognitionFeed = () => (
   <div className="mock-ui">
@@ -360,121 +400,107 @@ const MockRuleBuilder = () => (
         </div>
       </div>
       <div className="rule-divider"></div>
-      <div className="rule-card"><div className="rule-label">WHEN</div><div className="rule-row"><span className="rule-pill source jira">Jira</span><span className="rule-text">Critical issue resolved &lt; 1 hour</span></div></div>
+      <div className="rule-card"><div className="rule-label">WHEN</div><div className="rule-row"><span className="rule-pill source jira">Zendesk</span><span className="rule-text">CSAT 5/5 &middot; critical ticket &lt; 1 hour</span></div></div>
       <div className="rule-arrow"><Icon.Bolt style={{ color: "var(--orange)" }} /></div>
       <div className="rule-card"><div className="rule-label">THEN</div><div className="rule-row"><span className="rule-pill reward">+120 coins</span><span className="rule-text">to assignee</span></div></div>
     </div>
   </div>
 );
 
-/* Rich Analytics Board (ported from standalone) */
-const MockAnalyticsBoard = () => (
-  <div className="mock-ui">
-    <div className="mock-header">
-      <span className="mock-dot green"></span>
-      <span className="mock-title">Intelligence dashboard</span>
-      <div className="ab-tabs">
-        <span className="ab-tab active">Overview</span>
-        <span className="ab-tab">Teams</span>
-        <span className="ab-tab">Trends</span>
-      </div>
-      <span className="ab-range"><span className="ab-dot"></span>Q2 2026</span>
+const MockImpactPanel = () => (
+  <div className="impact-panel">
+    <div className="ip-head">
+      <div className="ip-title">Recognition impact <span>· last 90 days</span></div>
+      <span className="illus-chip on-dark">Illustrative · demo data</span>
     </div>
-    <div className="mock-body">
-      <div className="ab-kpis">
-        <div className="ab-kpi"><span className="lbl">Coverage</span><div className="big">84<span className="unit">%</span></div><span className="delta up">+9% vs Q1</span></div>
-        <div className="ab-kpi"><span className="lbl">Silent heroes</span><div className="big risk">4</div><span className="delta down">Need attention</span></div>
-        <div className="ab-kpi"><span className="lbl">Rewards sent</span><div className="big">1,247</div><span className="delta up">+22% vs Q1</span></div>
-        <div className="ab-kpi"><span className="lbl">Budget used</span><div className="big">68<span className="unit">%</span></div><span className="delta up">On track</span></div>
-      </div>
-      <div className="ab-grid">
-        <div className="ab-heat">
-          <div className="ab-card-head"><h4>Recognition heatmap</h4><span>BY TEAM · 12 MONTHS</span></div>
-          <div className="heat-table">
-            {["Engineering", "Sales", "Operations", "Support"].map(team => (
-              <div className="heat-row" key={team}>
-                <span className="heat-label">{team}</span>
-                <div className="heat-cells">
-                  {Array.from({ length: 12 }, (_, i) => {
-                    const intensity = team === "Sales" ? [3,3,4,4,5,5,5,4,5,5,5,5][i]
-                      : team === "Engineering" ? [2,2,3,2,3,4,4,3,4,5,4,5][i]
-                      : team === "Support" ? [1,1,2,2,1,2,3,2,3,3,4,3][i]
-                      : [2,3,3,4,3,4,4,5,4,5,5,5][i];
-                    const colors = ["var(--surface-container)", "var(--orange-tint)", "#ffd4b8", "#ffab7a", "var(--orange)"];
-                    return <span key={i} className="heat-cell" style={{ background: colors[intensity - 1] }} />;
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="heat-legend"><span>Low</span>{[1,2,3,4,5].map(i => {const c = ["var(--surface-container)","var(--orange-tint)","#ffd4b8","#ffab7a","var(--orange)"]; return <span key={i} className="heat-cell" style={{background:c[i-1]}} />;})}<span>High</span></div>
-        </div>
-        <div className="ab-risk">
-          <div className="ab-card-head"><h4>Silent hero alerts</h4><span>30+ DAYS UNRECOGNISED</span></div>
-          <ul className="risk-list">
-            <li><span className="av">DP</span><div><strong>Deepa Patel</strong><span className="sub">Engineering · 34 days</span></div><span className="risk-pill high">High</span></li>
-            <li><span className="av b">TK</span><div><strong>Tom Kwon</strong><span className="sub">Operations · 31 days</span></div><span className="risk-pill high">High</span></li>
-            <li><span className="av c">RH</span><div><strong>Rachel Hayes</strong><span className="sub">Support · 42 days</span></div><span className="risk-pill med">Medium</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <div className="ip-row"><div className="n">Deals closed</div><div className="ip-track"><i style={{ width: "83%" }}></i></div><div className="v">↗ +25%</div></div>
+    <div className="ip-row"><div className="n">CSAT</div><div className="ip-track"><i style={{ width: "70%" }}></i></div><div className="v">↗ +20%</div></div>
+    <div className="ip-row"><div className="n">Retention</div><div className="ip-track"><i style={{ width: "60%" }}></i></div><div className="v">↗ +17%</div></div>
+    <div className="ip-row rev"><div className="n">Revenue influenced</div><div className="ip-track"><i style={{ width: "92%" }}></i></div><div className="v">↗ $127K</div></div>
+    <div className="ip-row down"><div className="n">Pipeline nudge</div><div className="ip-track"><i style={{ width: "18%" }}></i></div><div className="v">−12%</div></div>
+    <p className="ip-foot">Recognised vs unrecognised — same rule, same period. We surface the <b>no-lift</b> rule too, so you stop paying for it. That honesty is what makes the rest believable.</p>
   </div>
 );
 
+/* ── How It Works — the loop + deep dives ─────────────────── */
 const HowItWorks = () => (
   <section id="how">
     <div className="container">
-      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
-        <span className="eyebrow">How it works</span>
-        <h2 style={{ marginTop: 14 }}>Three layers. One closed loop.</h2>
-        <p className="lede" style={{ margin: "18px auto 0" }}>Recognise great work. Automatically reward results. Learn what drives your best people.</p>
+      <div className="how-split">
+        <div>
+          <h2>Your systems in. Measured outcomes back out.</h2>
+          <p className="lede" style={{ marginTop: 18 }}>One closed loop: the AI watches the outcomes you already track, prompts the people who can act on them, and measures the result back in.</p>
+          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 28 }}>See it live <Icon.Arrow /></a>
+        </div>
+        <div className="flow-steps">
+          <div className="flow-step"><span className="n">1</span><div><h4>Connect your HRIS</h4><p>Plug into your HRIS, CRM, and help desk — or start with none at all.</p></div></div>
+          <div className="flow-step"><span className="n">2</span><div><h4>The AI detects achievements</h4><p>It watches verified outcome events and finds the moment to act.</p></div></div>
+          <div className="flow-step"><span className="n">3</span><div><h4>Recognition is sent</h4><p>The manager approves the ready draft — the reward lands instantly.</p></div></div>
+          <div className="flow-step"><span className="n">4</span><div><h4>Engagement improves</h4><p>Measured on your data — recognised vs unrecognised, same rule, same period.</p></div></div>
+          <div className="flow-loop"><Icon.Loop /> Every result feeds the next nudge</div>
+        </div>
+      </div>
+
+      <div className="alt-block reverse featured-block" id="deputy" style={{ marginTop: 56 }}>
+        <div className="alt-text">
+          <span className="alt-badge">The differentiator</span>
+          <span className="alt-num">01 · The manager side</span>
+          <h3>Automate the prompt. Never the recognition.</h3>
+          <p>The {DEPUTY_NAME} surfaces the moment — &ldquo;Ravi closed two deals last week and hasn&apos;t been recognised in 32 days&rdquo; — then drafts the note in the manager&apos;s voice. They edit, approve, done in ten seconds. Auto-sending praise backfires; the human click is the feature.</p>
+          <div className="deputy-trust">
+            <Icon.Shield />
+            <span>The deputy reads <b>outcome events from your systems of record</b>. It never relays what employees tell it in chat.</span>
+          </div>
+          <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ marginTop: 24 }}>See it in action <Icon.Arrow /></a>
+        </div>
+        <div className="alt-visual"><MockDeputyQueue /></div>
       </div>
 
       <div className="alt-block">
         <div className="alt-text">
-          <span className="alt-num">01</span>
-          <h3>Capture every moment of great work</h3>
-          <p>Peer shout-outs, manager endorsements, milestones, value badges — all in one place, without anyone filling in a form. Every recognition is tagged, timestamped, and tied to an employee profile.</p>
+          <span className="alt-num">02 · The employee side</span>
+          <h3>Culture is group behaviour, not a manager broadcast</h3>
+          <p>If only managers post, employees disengage. The flywheel is peers recognising each other — the engagement comes from seeing others engage. And employees open the app because it shows them what they can earn next, not just what they earned before. That&apos;s why adoption doesn&apos;t decay.</p>
           <a href="#solutions" className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>Explore the platform <Icon.Arrow /></a>
         </div>
         <div className="alt-visual"><MockRecognitionFeed /></div>
       </div>
 
-      <div className="alt-block reverse featured-block">
+      <div className="alt-block reverse">
         <div className="alt-text">
-          <span className="alt-badge">The differentiator</span>
-          <span className="alt-num">02</span>
-          <h3>Results trigger rewards — automatically</h3>
-          <p>Someone closes a deal in Salesforce. Resolves a critical issue in Jira. Earns a certification. The {ENGINE_NAME} spots it and sends the reward instantly — with full budget controls and approval workflows built in.</p>
-          <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ marginTop: 24 }}>See it in action <Icon.Arrow /></a>
+          <span className="alt-num">03 · The {ENGINE_NAME}</span>
+          <h3>Your CRM fires the reward. Nobody fills in a form.</h3>
+          <p>An admin types the rule in plain English — &ldquo;when a rep closes a deal over $10K, award 500 coins&rdquo; — and the AI maps it to the webhook. A deal closes, the coins land instantly, the win posts to the feed. Every coin is outcome-linked currency, traceable to a real event — with budget caps and approvals built in.</p>
+          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the rule builder <Icon.Arrow /></a>
         </div>
         <div className="alt-visual"><MockRuleBuilder /></div>
       </div>
 
-      <div className="alt-block">
+      <div className="alt-block" id="proof">
         <div className="alt-text">
-          <span className="alt-num">03</span>
-          <h3>Every recognition becomes an insight</h3>
-          <p>Over time, PraiseLoop builds a picture of what drives your best people. Silent Hero Detection surfaces consistent performers who haven&apos;t been recognised in 30+ days — before disengagement sets in.</p>
-          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the analytics <Icon.Arrow /></a>
+          <span className="alt-num">04 · The proof layer</span>
+          <h3>The one page no other vendor has</h3>
+          <p>Same rule, same period, your data: whether recognised people actually performed better. We show the rules with no lift too — so you stop paying for them. Recognition spend stops being a cost line and becomes an investment you can defend.</p>
+          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the proof <Icon.Arrow /></a>
         </div>
-        <div className="alt-visual"><MockAnalyticsBoard /></div>
+        <div className="alt-visual"><MockImpactPanel /></div>
       </div>
     </div>
   </section>
 );
 
-/* ── ROI Calculator ──────────────────────────────────────── */
+/* ── Day-90 CFO model ─────────────────────────────────────── */
 const ROICalculator = () => {
-  const [employees, setEmployees] = useState(500);
-  const [turnover, setTurnover] = useState(18);
-  const [cost, setCost] = useState(16000);
+  const [seats, setSeats] = useState(200);
+  const [salary, setSalary] = useState(60000);
+  const [exits, setExits] = useState(4);
 
-  const departures = Math.round(employees * turnover / 100);
-  const currentCost = departures * cost;
-  const savedDepartures = Math.round(departures * 0.31);
-  const savings = savedDepartures * cost;
+  const exitsValue = Math.round(exits * 1.5 * salary);
+  const productivity = Math.round(0.02 * seats * salary);
+  const gross = exitsValue + productivity;
+  const cost = seats * 6 * 12;
+  const net = gross - cost;
+  const multiple = Math.round(net / cost);
 
   const fmt = (n: number) => n >= 1000000 ? `$${(n / 1000000).toFixed(1)}M` : n >= 1000 ? `$${(n / 1000).toFixed(0)}K` : `$${n}`;
 
@@ -483,39 +509,43 @@ const ROICalculator = () => {
       <div className="container">
         <div className="roi-card">
           <div>
-            <span className="eyebrow">ROI calculator</span>
-            <h2 style={{ marginTop: 14 }}>What is recognition costing you right now?</h2>
-            <p className="lede" style={{ marginTop: 14 }}>Adjust the sliders to see what outcome-linked recognition could save your organisation.</p>
+            <h2>The report your CFO gets at day 90</h2>
+            <p className="lede" style={{ marginTop: 14 }}>Not a benchmark deck — a worked model on your pilot department: turnover you didn&apos;t pay to replace, plus the productivity lift on the movable middle, netted against what the platform cost.</p>
             <div className="roi-controls">
               <div className="roi-row">
-                <label>Employees</label>
-                <input type="range" min={50} max={5000} step={50} value={employees} onChange={e => setEmployees(+e.target.value)} />
-                <span className="roi-val">{employees.toLocaleString()}</span>
+                <label>Pilot seats</label>
+                <input type="range" min={50} max={1000} step={25} value={seats} onChange={e => setSeats(+e.target.value)} />
+                <span className="roi-val">{seats.toLocaleString()}</span>
               </div>
               <div className="roi-row">
-                <label>Turnover rate</label>
-                <input type="range" min={5} max={40} step={1} value={turnover} onChange={e => setTurnover(+e.target.value)} />
-                <span className="roi-val">{turnover}%</span>
+                <label>Average salary</label>
+                <input type="range" min={30000} max={150000} step={5000} value={salary} onChange={e => setSalary(+e.target.value)} />
+                <span className="roi-val">{fmt(salary)}</span>
               </div>
               <div className="roi-row">
-                <label>Replacement cost</label>
-                <input type="range" min={5000} max={50000} step={1000} value={cost} onChange={e => setCost(+e.target.value)} />
-                <span className="roi-val">{fmt(cost)}</span>
+                <label>Exits avoided / yr</label>
+                <input type="range" min={1} max={12} step={1} value={exits} onChange={e => setExits(+e.target.value)} />
+                <span className="roi-val">{exits}</span>
               </div>
             </div>
           </div>
           <div className="roi-readout">
             <div className="roi-tile">
-              <span className="lbl">Annual turnover cost</span>
-              <div className="big">{fmt(currentCost)}</div>
-              <span className="foot">{departures} departures &times; {fmt(cost)} each</span>
+              <span className="lbl">Gross annual impact</span>
+              <div className="big">{fmt(gross)}</div>
+              <span className="foot">{exits} exits &times; 1.5&times; salary + 2% productivity lift</span>
+            </div>
+            <div className="roi-tile">
+              <span className="lbl">Platform cost</span>
+              <div className="big">{fmt(cost)}</div>
+              <span className="foot">{seats} seats &times; $6 &times; 12 months</span>
             </div>
             <div className="roi-tile featured">
-              <span className="lbl">Potential annual savings</span>
-              <div className="big highlight">{fmt(savings)}</div>
-              <span className="foot">{savedDepartures} fewer departures (31% reduction)</span>
+              <span className="lbl">Net impact · return</span>
+              <div className="big highlight">{fmt(net)} · {multiple}&times;</div>
+              <span className="foot">Illustrative — the pilot replaces every number with yours</span>
             </div>
-            <a href={BOOKING_URL} className="btn btn-primary btn-arrow roi-cta">See it with your data <Icon.Arrow /></a>
+            <a href={BOOKING_URL} className="btn btn-primary btn-arrow roi-cta">Run it on your data <Icon.Arrow /></a>
           </div>
         </div>
       </div>
@@ -523,13 +553,15 @@ const ROICalculator = () => {
   );
 };
 
-/* ── Customer Stories ─────────────────────────────────────── */
+/* ── Customer Stories (illustrative, labelled) ────────────── */
 const CustomerStories = () => (
   <section className="stories">
     <div className="container">
-      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 56px" }}>
-        <span className="eyebrow">What people are saying</span>
-        <h2 style={{ marginTop: 14 }}>Real results from real teams</h2>
+      <div className="section-head" style={{ maxWidth: 760, marginBottom: 40 }}>
+        <h2>What a strong first year looks like</h2>
+        <p className="lede" style={{ marginTop: 16 }}>
+          Illustrative composites, modelled on published recognition research — told the way your own day-90 report will read. <span className="illus-chip">Illustrative</span>
+        </p>
       </div>
       <div className="stories-grid">
         <div className="story-card">
@@ -538,10 +570,10 @@ const CustomerStories = () => (
             &ldquo;We used to run recognition on gut feel. PraiseLoop showed us which teams were being completely overlooked — and within a quarter, voluntary turnover dropped measurably.&rdquo;
           </blockquote>
           <div className="story-attr">
-            <Image src="/heather.png" alt="Head of People Operations" width={48} height={48} className="story-avatar" />
+            <Image src="/heather.png" alt="" width={48} height={48} className="story-avatar" />
             <div>
               <strong>Head of People Operations</strong>
-              <span>Mid-market technology company</span>
+              <span>Mid-market technology company · illustrative</span>
             </div>
           </div>
         </div>
@@ -551,23 +583,23 @@ const CustomerStories = () => (
             &ldquo;The moment our CFO saw recognition spend tied to actual retention numbers, the budget conversation changed completely. It went from a cost line to an investment.&rdquo;
           </blockquote>
           <div className="story-attr">
-            <Image src="/john.png" alt="VP of HR" width={48} height={48} className="story-avatar" />
+            <Image src="/john.png" alt="" width={48} height={48} className="story-avatar" />
             <div>
               <strong>VP of HR</strong>
-              <span>Regional services organisation</span>
+              <span>Regional services organisation · illustrative</span>
             </div>
           </div>
         </div>
         <div className="story-card">
           <div className="story-metric"><span className="big">+41%</span><span className="sub">engagement score</span></div>
           <blockquote className="story-quote">
-            &ldquo;Our field teams were invisible in the old system. PraiseLoop&apos;s Silent Hero Detection flagged 12 consistent performers nobody was recognising. Engagement scores jumped the next quarter.&rdquo;
+            &ldquo;Our field teams were invisible in the old system. Silent-hero detection flagged 12 consistent performers nobody was recognising. Engagement scores jumped the next quarter.&rdquo;
           </blockquote>
           <div className="story-attr">
-            <Image src="/joe.png" alt="Regional HR Director" width={48} height={48} className="story-avatar" />
+            <Image src="/joe.png" alt="" width={48} height={48} className="story-avatar" />
             <div>
               <strong>Regional HR Director</strong>
-              <span>GCC operations company</span>
+              <span>GCC operations company · illustrative</span>
             </div>
           </div>
         </div>
@@ -576,23 +608,45 @@ const CustomerStories = () => (
   </section>
 );
 
-/* ── Solutions / Use Cases ─────────────────────────────────── */
-const Solutions = () => (
-  <section id="solutions" style={{ paddingBlock: 96 }}>
+/* ── One number per buyer — asymmetric bento ──────────────── */
+const Buyers = () => (
+  <section id="solutions" style={{ paddingBlock: 72 }}>
     <div className="container">
-      <div className="vp">
-        <div className="vp-head">
-          <span className="eyebrow">Built for every team</span>
-          <h2>Your business systems already know who performed. PraiseLoop connects the dots.</h2>
-          <p className="lede">Sales, engineering, operations, support — every team produces measurable results. PraiseLoop sees them all and rewards automatically.</p>
+      <div className="section-head" style={{ maxWidth: 760, marginBottom: 40 }}>
+        <h2>Every stakeholder gets the number they care about.</h2>
+        <p className="lede" style={{ marginTop: 16 }}>Sales, HR, finance — the same loop, read three different ways. All from your own data, not a benchmark deck.</p>
+      </div>
+      <div className="buyer-bento">
+        <div className="bb-hero">
+          <div className="bb-hero-copy">
+            <h3>AI recognition that runs itself</h3>
+            <p>The {DEPUTY_NAME} watches your systems, drafts the note, and learns what moves each team. Managers stay in control — one click to send.</p>
+            <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ alignSelf: "flex-start" }}>See it in action <Icon.Arrow /></a>
+          </div>
+          <div className="bb-art">
+            <Image src="/recognition-moment.webp" alt="Two colleagues sharing a high-five over a desk in a bright office" width={768} height={1024} />
+          </div>
         </div>
-        <div className="vp-cards" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-          <div className="vp-card"><div className="ico"><Icon.Bolt /></div><h4>Sales</h4><p>Deal closes in your CRM? The reward lands before the manager sees the update. Pipeline wins, quota hits — all automated.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Webhook /></div><h4>Engineering</h4><p>Critical issue resolved in 42 minutes? Sprint delivered early? PraiseLoop spots it in Jira and rewards the team instantly.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Eye /></div><h4>People &amp; HR</h4><p>See which teams are being overlooked, track recognition coverage across the org, and prove the link between recognition and retention.</p></div>
-          <div className="vp-card"><div className="ico"><Icon.Trophy /></div><h4>Operations</h4><p>Project milestones, certifications, anniversaries — any measurable outcome can trigger a reward with full budget controls.</p></div>
+        <div className="bb-col">
+          <div className="bb-tile">
+            <span className="lbl">Sales leaders</span>
+            <div className="num">+25% <small>deals</small></div>
+            <p>Which recognition moves real deals and quota — and which does nothing.</p>
+            <span className="illus-chip">Illustrative</span>
+          </div>
+          <div className="bb-tile">
+            <span className="lbl">HR leaders</span>
+            <div className="num">+17% <small>retention</small></div>
+            <p>A manager playbook that runs itself.</p>
+            <span className="illus-chip">Illustrative</span>
+          </div>
+          <div className="bb-tile">
+            <span className="lbl">CFO &amp; CEO</span>
+            <div className="num">34&times; <small>return</small></div>
+            <p>One number: the payback on recognition, from your own data.</p>
+            <span className="illus-chip">Illustrative</span>
+          </div>
         </div>
-        <div className="vp-cta"><a href={BOOKING_URL} className="btn btn-primary btn-arrow">Talk to sales <Icon.Arrow /></a></div>
       </div>
     </div>
   </section>
@@ -604,62 +658,13 @@ const Trust = () => (
     <div className="container">
       <span className="trust-label">Enterprise-grade from day one</span>
       <div className="trust-badges">
+        <div className="trust-badge"><Icon.Spark /><span>Suggest-only AI — a human always approves</span></div>
         <div className="trust-badge"><Icon.Shield /><span>GDPR compliant</span></div>
         <div className="trust-badge"><Icon.Globe /><span>UAE PDPL ready</span></div>
-        <div className="trust-badge"><Icon.Pin /><span>Data residency</span></div>
+        <div className="trust-badge"><Icon.Lock /><span>Encryption in transit &amp; at rest</span></div>
         <div className="trust-badge"><Icon.Webhook /><span>SSO &amp; audit logs</span></div>
-      </div>
-    </div>
-  </section>
-);
-
-/* ── Pricing ──────────────────────────────────────────────── */
-const Pricing = () => (
-  <section id="pricing" style={{ paddingBlock: 96 }}>
-    <div className="container">
-      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 56px" }}>
-        <span className="eyebrow">Pricing</span>
-        <h2 style={{ marginTop: 14 }}>Simple, transparent pricing</h2>
-        <p className="lede" style={{ margin: "18px auto 0" }}>Every plan includes the {ENGINE_NAME}, peer recognition, and manager tools. Pick the tier that fits your organisation.</p>
-      </div>
-      <div className="pricing-grid">
-        <div className="pricing-card">
-          <span className="pricing-tier">Starter</span>
-          <p className="pricing-desc">For small teams getting started with outcome-linked recognition.</p>
-          <ul className="pricing-features">
-            <li><span className="check"><Icon.Check /></span>Peer recognition &amp; shout-outs</li>
-            <li><span className="check"><Icon.Check /></span>{ENGINE_NAME} (1 integration)</li>
-            <li><span className="check"><Icon.Check /></span>Basic analytics dashboard</li>
-            <li><span className="check"><Icon.Check /></span>Slack &amp; Teams notifications</li>
-          </ul>
-          <a href={BOOKING_URL} className="btn btn-secondary" style={{ width: "100%", justifyContent: "center" }}>Get started</a>
-        </div>
-        <div className="pricing-card featured">
-          <span className="pricing-badge">Most popular</span>
-          <span className="pricing-tier">Growth</span>
-          <p className="pricing-desc">For organisations connecting recognition to business outcomes.</p>
-          <ul className="pricing-features">
-            <li><span className="check"><Icon.Check /></span>Everything in Starter</li>
-            <li><span className="check"><Icon.Check /></span>{ENGINE_NAME} (unlimited integrations)</li>
-            <li><span className="check"><Icon.Check /></span>Silent Hero Detection</li>
-            <li><span className="check"><Icon.Check /></span>Manager nudges &amp; insights</li>
-            <li><span className="check"><Icon.Check /></span>Budget controls &amp; approvals</li>
-          </ul>
-          <a href={BOOKING_URL} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>Book a demo</a>
-        </div>
-        <div className="pricing-card">
-          <span className="pricing-tier">Enterprise</span>
-          <p className="pricing-desc">For large organisations with compliance, regional, and security requirements.</p>
-          <ul className="pricing-features">
-            <li><span className="check"><Icon.Check /></span>Everything in Growth</li>
-            <li><span className="check"><Icon.Check /></span>GDPR &amp; PDPL compliance</li>
-            <li><span className="check"><Icon.Check /></span>Regional data residency</li>
-            <li><span className="check"><Icon.Check /></span>SSO &amp; audit logging</li>
-            <li><span className="check"><Icon.Check /></span>Nationalisation reporting</li>
-            <li><span className="check"><Icon.Check /></span>Dedicated success manager</li>
-          </ul>
-          <a href={BOOKING_URL} className="btn btn-secondary" style={{ width: "100%", justifyContent: "center" }}>Contact sales</a>
-        </div>
+        <div className="trust-badge"><Icon.Cloud /><span>Azure-hosted</span></div>
+        <div className="trust-badge"><Icon.Pin /><span>Data residency</span></div>
       </div>
     </div>
   </section>
@@ -671,20 +676,22 @@ const GCC = () => (
     <div className="container">
       <div className="gcc-grid">
         <div>
-          <span className="eyebrow">Built for the GCC</span>
-          <h2 style={{ marginTop: 14 }}>Workforce realities the US-built platforms weren&apos;t designed for</h2>
+          <h2>Workforce realities the US-built platforms weren&apos;t designed for</h2>
           <p className="lede" style={{ marginTop: 18 }}>The GCC isn&apos;t a translation problem — it&apos;s a completely different operating context. PraiseLoop was built for it from day one.</p>
           <div className="gcc-points">
-            <div className="gcc-point"><div className="ico"><Icon.Shield /></div><div><h4>Nationalisation tracking built in</h4><p>Emiratisation, Nitaqat, and Qatarisation reporting out of the box — not bolted on later.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Built natively for the region</h4><p>Full right-to-left Arabic interface designed alongside English, support for field workers and distributed teams, and cultural norms built into the product.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Gift /></div><div><h4>Regional reward catalogues</h4><p>UAE, KSA, and Qatar gift cards, charity partners, and experiences employees actually want.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Arabic-first, not translated</h4><p>Full right-to-left interface designed alongside English, with tone and peer dynamics tuned for the region.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Gift /></div><div><h4>Field Worker Mode</h4><p>English, Arabic, and Hindi. Offline-capable, with rewards field teams actually want — time off, phone credit, savings. The 80% of the workforce most platforms ignore.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Shield /></div><div><h4>Nationalisation tracking built in</h4><p>Emiratisation and Saudisation reporting out of the box — recognition data feeds the filing.</p></div></div>
             <div className="gcc-point"><div className="ico"><Icon.Globe /></div><div><h4>Your data stays in-region</h4><p>GCC-based hosting with full PDPL compliance. Your data never leaves the region unless you choose otherwise.</p></div></div>
           </div>
         </div>
         <div>
+          <div className="gcc-art">
+            <Image src="/gcc-skyline.svg" alt="Minimal illustration of a dhow sailing past a Gulf minaret skyline under an orange sun" width={2048} height={1152} unoptimized style={{ width: "100%", height: "auto" }} />
+          </div>
           <div className="country-grid">
             <div className="country"><span className="flag uae"></span><span className="name">United Arab Emirates</span><span className="meta">EMIRATISATION · AED · AR/EN</span></div>
-            <div className="country"><span className="flag ksa"></span><span className="name">Saudi Arabia</span><span className="meta">NITAQAT · SAR · AR/EN</span></div>
+            <div className="country"><span className="flag ksa"></span><span className="name">Saudi Arabia</span><span className="meta">SAUDISATION · SAR · AR/EN</span></div>
             <div className="country"><span className="flag qa"></span><span className="name">Qatar</span><span className="meta">QATARISATION · QAR · AR/EN</span></div>
             <div className="country"><span className="flag uk"></span><span className="name">United Kingdom</span><span className="meta">GBP · EN</span></div>
           </div>
@@ -698,62 +705,94 @@ const GCC = () => (
   </section>
 );
 
-/* ── CTA ───────────────────────────────────────────────────── */
-const CTASection = () => (
-  <section id="cta" className="cta-section">
+/* ── Pricing ──────────────────────────────────────────────── */
+const Pricing = () => (
+  <section id="pricing" style={{ paddingBlock: 72 }}>
     <div className="container">
-      <div className="cta-card">
-        <span className="eyebrow" style={{ color: "var(--orange)" }}>Demo</span>
-        <h2 style={{ marginTop: 16 }}>See your engagement, see your ROI — with your data. In 30 minutes.</h2>
-        <p className="lede">We&apos;ll show you the full platform live — from someone hitting a target to the reward landing in their account.</p>
-        <div className="hero-cta">
-          <a href={BOOKING_URL} className="btn btn-primary btn-arrow">Book a demo <Icon.Arrow /></a>
+      <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 44px" }}>
+        <h2>Simple, transparent pricing</h2>
+        <p className="lede" style={{ margin: "18px auto 0" }}>Every plan includes peer recognition and real rewards. Pick the tier that fits your organisation.</p>
+      </div>
+      <div className="pricing-grid">
+        <div className="pricing-card">
+          <span className="pricing-tier">Starter</span>
+          <p className="pricing-desc">For small teams building the recognition habit.</p>
+          <ul className="pricing-features">
+            <li><span className="check"><Icon.Check /></span>Peer recognition &amp; feed</li>
+            <li><span className="check"><Icon.Check /></span>Rewards catalogue &amp; coins</li>
+            <li><span className="check"><Icon.Check /></span>Slack &amp; Teams notifications</li>
+            <li><span className="check"><Icon.Check /></span>Basic analytics dashboard</li>
+          </ul>
+          <a href={BOOKING_URL} className="btn btn-secondary" style={{ width: "100%", justifyContent: "center" }}>Get started</a>
+        </div>
+        <div className="pricing-card featured">
+          <span className="pricing-badge">Most popular</span>
+          <span className="pricing-tier">Growth</span>
+          <p className="pricing-desc">For organisations closing the manager execution gap.</p>
+          <ul className="pricing-features">
+            <li><span className="check"><Icon.Check /></span>Everything in Starter</li>
+            <li><span className="check"><Icon.Check /></span>{DEPUTY_NAME} — suggest-only manager nudges</li>
+            <li><span className="check"><Icon.Check /></span>{ENGINE_NAME} (unlimited integrations)</li>
+            <li><span className="check"><Icon.Check /></span>Silent-hero detection</li>
+            <li><span className="check"><Icon.Check /></span>Recognition impact dashboard</li>
+            <li><span className="check"><Icon.Check /></span>Budget controls &amp; approvals</li>
+          </ul>
+          <a href={BOOKING_URL} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>Book a demo</a>
+        </div>
+        <div className="pricing-card">
+          <span className="pricing-tier">Enterprise</span>
+          <p className="pricing-desc">For large organisations with compliance, regional, and security requirements.</p>
+          <ul className="pricing-features">
+            <li><span className="check"><Icon.Check /></span>Everything in Growth</li>
+            <li><span className="check"><Icon.Check /></span>Field Worker Mode (EN/AR/HI, offline)</li>
+            <li><span className="check"><Icon.Check /></span>Nationalisation reporting</li>
+            <li><span className="check"><Icon.Check /></span>Regional data residency</li>
+            <li><span className="check"><Icon.Check /></span>SSO &amp; audit logging</li>
+            <li><span className="check"><Icon.Check /></span>Dedicated success manager</li>
+          </ul>
+          <a href={BOOKING_URL} className="btn btn-secondary" style={{ width: "100%", justifyContent: "center" }}>Contact sales</a>
         </div>
       </div>
     </div>
   </section>
 );
 
-/* ── Footer ────────────────────────────────────────────────── */
-const FooterSection = () => (
-  <footer>
+/* ── CTA ──────────────────────────────────────────────────── */
+const CTASection = () => (
+  <section id="cta" className="cta-section">
     <div className="container">
-      <div className="footer-grid">
-        <div className="footer-brand">
-          <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={141} height={56} style={{ height: 56, width: "auto" }} />
-          <p className="footer-tag" style={{ marginTop: 18 }}>Performance-linked recognition that proves its impact on retention, engagement, and performance.</p>
-          <span className="footer-mantra">Reward outcomes, not effort.</span>
-        </div>
-        <div>
-          <h5>Platform</h5>
-          <ul>
-            <li><a href="#how">Recognition layer</a></li>
-            <li><a href="#how">{ENGINE_NAME}</a></li>
-            <li><a href="#how">Intelligence layer</a></li>
-            <li><a href="#outcomes">Why it matters</a></li>
-          </ul>
-        </div>
-        <div>
-          <h5>Solutions</h5>
-          <ul>
-            <li><a href="#solutions">For Sales teams</a></li>
-            <li><a href="#solutions">For People &amp; HR</a></li>
-            <li><a href="#gcc">For GCC teams</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-          </ul>
-        </div>
-        <div>
-          <h5>Company</h5>
-          <ul>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="#trust">Security &amp; compliance</a></li>
-            <li><a href={BOOKING_URL}>Contact</a></li>
-          </ul>
+      <div className="cta-card">
+        <h2>See it live — with your data. In 30 minutes.</h2>
+        <p className="lede">From a deal closing in your CRM to the reward landing in someone&apos;s wallet — and the report that shows what it moved.</p>
+        <div className="hero-cta">
+          <a href={BOOKING_URL} className="btn btn-primary btn-arrow">Book a demo <Icon.Arrow /></a>
+          <a href="mailto:hello@praiseloop.com" className="btn btn-secondary">hello@praiseloop.com</a>
         </div>
       </div>
-      <div className="footer-bottom">
-        <span>&copy; 2026 PraiseLoop &middot; All rights reserved</span>
+    </div>
+  </section>
+);
+
+/* ── Footer — Ft5 statement close ─────────────────────────── */
+const FooterSection = () => (
+  <footer>
+    <div className="container footer-statement">
+      <p className="footer-line">Reward <span className="em">outcomes</span>,<br />not effort.</p>
+      <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={121} height={48} style={{ height: 48, width: "auto", marginTop: 44 }} />
+      <nav className="footer-links-row">
+        <a href="#deputy">The {DEPUTY_NAME}</a>
+        <a href="#how">{ENGINE_NAME}</a>
+        <a href="#proof">Proof</a>
+        <a href="#gcc">GCC</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/blog">Blog</a>
+        <a href="#trust">Security</a>
+        <a href={BOOKING_URL}>Contact</a>
+      </nav>
+      <div className="footer-meta">
+        <span>&copy; 2026 PraiseLoop</span>
         <span>Dubai &middot; Riyadh &middot; London</span>
+        <span>hello@praiseloop.com</span>
       </div>
     </div>
   </footer>
@@ -766,11 +805,11 @@ export default function LandingPage() {
       <Nav />
       <Hero />
       <Integrations />
-      <Outcomes />
+      <Reframe />
       <HowItWorks />
       <ROICalculator />
       <CustomerStories />
-      <Solutions />
+      <Buyers />
       <Trust />
       <GCC />
       <Pricing />

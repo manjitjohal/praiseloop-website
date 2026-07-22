@@ -53,6 +53,28 @@ export const SlackLogo = () => (
   </svg>
 );
 
+export const WorkdayLogo = () => (
+  <svg {...size} viewBox="0 0 24 24" fill="none">
+    <path d="M4 14a8 8 0 0116 0" stroke="#F38B00" strokeWidth="2.4" strokeLinecap="round"/>
+    <path d="M7.6 14a4.4 4.4 0 018.8 0" stroke="#0875E1" strokeWidth="2.4" strokeLinecap="round"/>
+    <circle cx="12" cy="17" r="2" fill="#0875E1"/>
+  </svg>
+);
+
+export const SAPLogo = () => (
+  <svg {...size} viewBox="0 0 24 24" fill="none">
+    <path d="M2 7h20l-5.5 10H2V7z" fill="#0FAAFF"/>
+    <text x="9.5" y="13.8" textAnchor="middle" fill="#fff" fontSize="6" fontWeight="800" fontFamily="system-ui">SAP</text>
+  </svg>
+);
+
+export const ADPLogo = () => (
+  <svg {...size} viewBox="0 0 24 24" fill="none">
+    <rect x="2" y="7" width="20" height="10" rx="2.5" fill="#D0271D"/>
+    <text x="12" y="14.4" textAnchor="middle" fill="#fff" fontSize="6.5" fontWeight="800" fontFamily="system-ui">ADP</text>
+  </svg>
+);
+
 export const GoogleWorkspaceLogo = () => (
   <svg {...size} viewBox="0 0 24 24" fill="none">
     <path d="M12 11v4h6.3a6.5 6.5 0 01-2.8 3.4L12 11z" fill="#4285F4"/>

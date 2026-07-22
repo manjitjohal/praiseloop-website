@@ -15,13 +15,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PraiseLoop — Recognition that proves its ROI",
+  title: "PraiseLoop — Reward outcomes, not effort",
   description:
-    "PraiseLoop connects recognition to measurable outcomes — retention, engagement, and performance. When someone hits a target, PraiseLoop rewards them automatically and shows you the impact.",
+    "PraiseLoop spots when good people start to slip and helps managers turn it around at the right moment. The AI drafts the recognition, your systems trigger the reward, and you see the payback on your own data.",
   openGraph: {
-    title: "PraiseLoop — Recognition that proves its ROI",
+    title: "PraiseLoop — Reward outcomes, not effort",
     description:
-      "You invest in recognition. PraiseLoop proves it's working — with measurable impact on retention, engagement, and performance.",
+      "The performance platform that catches great work early, prompts the manager, and proves the payback on your own data.",
     siteName: "PraiseLoop",
     type: "website",
   },
