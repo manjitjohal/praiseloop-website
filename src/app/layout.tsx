@@ -15,13 +15,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PraiseLoop — Reward outcomes, not effort",
+  title: "PraiseLoop — AI-Powered Performance, Recognition & Rewards",
   description:
-    "PraiseLoop spots when good people start to slip and helps managers turn it around at the right moment. The AI drafts the recognition, your systems trigger the reward, and you see the payback on your own data.",
+    "Rewards are earned, not given. PraiseLoop plugs into the systems where work is measured — when a verified KPI result lands, recognition and reward fire automatically. If the result didn't happen, the reward doesn't exist.",
   openGraph: {
-    title: "PraiseLoop — Reward outcomes, not effort",
+    title: "PraiseLoop — AI-Powered Performance, Recognition & Rewards",
     description:
-      "The performance platform that catches great work early, prompts the manager, and proves the payback on your own data.",
+      "One connected loop: the AI watches the outcomes you already track, prompts the manager, fires the reward, and proves the payback on your own data.",
     siteName: "PraiseLoop",
     type: "website",
   },

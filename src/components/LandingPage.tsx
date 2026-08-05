@@ -123,7 +123,7 @@ const Icon = {
   ),
 };
 
-const ENGINE_NAME = "Outcome Engine";
+const ENGINE_NAME = "Outcome Coin Engine";
 const DEPUTY_NAME = "AI Deputy";
 const BOOKING_URL = "/demo";
 
@@ -157,59 +157,34 @@ const Hero = () => {
     <section className="hero">
       <div className="container hero-grid">
         <div>
-          <h1>
-            Reward <span className="em">outcomes</span>,<br />
-            not effort.
+          <span className="eyebrow no-dot hero-kicker">
+            AI-Powered <span className="kw">Performance</span> · <span className="kw">Recognition</span> · <span className="kw">Rewards</span>
+          </span>
+          <h1 style={{ marginTop: 18 }}>
+            Rewards are <span className="em">earned</span>,<br />
+            not given.
           </h1>
-          <p className="lede" style={{ marginTop: 24 }}>
-            PraiseLoop spots when good people start to slip — and helps managers turn it around at the right moment. The AI drafts the recognition, your systems trigger the reward, and you see the payback on your own data.
+          <p className="lede" style={{ marginTop: 22 }}>
+            PraiseLoop plugs into the systems where work is already measured. When a verified KPI result lands, <span className="kw">recognition</span> and <span className="kw">reward</span> fire automatically — and the AI shows managers who&apos;s driving <span className="kw">performance</span> and who needs support.
           </p>
+          <p className="hero-wedge">If the result didn&apos;t happen, the reward doesn&apos;t exist.</p>
           <div className="hero-cta">
             <a href={BOOKING_URL} className="btn btn-primary btn-arrow">
               Book a demo <Icon.Arrow />
             </a>
-            <a href="#how" className="btn btn-secondary">See how it works</a>
+            <a href="#how" className="btn btn-secondary">See how the loop works</a>
           </div>
           <div className="hero-meta">
-            <span><span className="check"><Icon.Check /></span> Ten seconds to say thank you</span>
-            <span><span className="check"><Icon.Check /></span> Rewards fire from real results</span>
+            <span><span className="check"><Icon.Check /></span> Rewards fire from verified results</span>
+            <span><span className="check"><Icon.Check /></span> AI flags who&apos;s slipping, early</span>
             <span><span className="check"><Icon.Check /></span> Live in two weeks</span>
           </div>
         </div>
 
         <div style={{ position: "relative" }}>
           <div className="dashboard-glow" />
-          <div className="hero-stack">
-            <div className="deputy-card">
-              <div className="dc-head">
-                <span className="dc-bot"><Icon.Spark /></span>
-                <span className="dc-title">{DEPUTY_NAME} · recommendation</span>
-                <span className="dc-badge">Suggest-only</span>
-              </div>
-              <div className="dc-msg">Sarah just closed a <strong>$48K deal</strong></div>
-              <div className="dc-sub">Draft ready in your voice — the whole team sees it.</div>
-              <div className="dc-draft">
-                <span className="dc-draft-label">Draft · edit before sending</span>
-                &ldquo;Sarah, that close was three months of patient work paying off. Textbook. The team should know.&rdquo;
-              </div>
-              <div className="dc-actions">
-                <span className="dc-approve"><Icon.Check /> Approve reward</span>
-                <span className="dc-ghost">Edit</span>
-                <span className="dc-ghost">Later</span>
-              </div>
-            </div>
-            <div className="mini-score">
-              <div className="ms-head">
-                <span>Recognition impact · 90 days</span>
-                <span className="illus-chip on-dark">Illustrative</span>
-              </div>
-              <div className="ms-grid">
-                <div><span className="k">Deals</span><span className="v">+25%</span></div>
-                <div><span className="k">Retention</span><span className="v">+17%</span></div>
-                <div><span className="k">Revenue</span><span className="v rev">$127K</span></div>
-                <div><span className="k">Coverage</span><span className="v">84%</span></div>
-              </div>
-            </div>
+          <div className="hero-photo">
+            <Image src="/team-recognition.webp" alt="A team celebrating a colleague's win together" width={1024} height={768} priority />
           </div>
           <div className="hero-fire">
             <span className="spark"><Icon.Spark /></span>
@@ -238,7 +213,8 @@ const Integrations = () => (
   <section className="integrations-section">
     <div className="container">
       <div className="integrations-header">
-        <span className="eyebrow no-dot">Zero integrations required on day one — connect your CRM, help desk, and HRIS when you&apos;re ready</span>
+        <p className="integrations-title">Zero integrations required to start</p>
+        <p className="integrations-sub">Connect your CRM, help desk, and HRIS whenever you&apos;re ready.</p>
       </div>
       <div className="integration-grid">
         {integrations.map((l) => (
@@ -258,14 +234,20 @@ const Reframe = () => (
     <div className="container">
       <div className="gap-split">
         <div>
-          <h2>Managers know recognition matters. They simply don&apos;t have time to do it consistently.</h2>
+          <h2>Recognition drives <span className="kw">performance</span>. Managers just don&apos;t have the time to do it consistently.</h2>
           <p className="lede" style={{ marginTop: 18 }}>
-            That&apos;s the <strong>manager execution gap</strong> — and left alone, it quietly compounds:
+            That&apos;s the <strong>manager execution gap</strong> — and when great work goes unseen, <span className="kw">performance</span> and retention pay for it. Left alone, it quietly compounds:
           </p>
         </div>
         <div className="gap-photo">
-          <Image src="/team-recognition.webp" alt="A team applauding a colleague during a morning stand-up" width={1024} height={768} />
+          <Image src="/person-executive.jpg" alt="A manager heads-down at her desk, out of time to recognise her team" width={1024} height={683} />
         </div>
+      </div>
+
+      <div className="mini-head">
+        <span className="eyebrow">The manager execution gap</span>
+        <h3>How an unseen win turns into a resignation</h3>
+        <p>No single step is dramatic. Strung together, they&apos;re why your best people leave.</p>
       </div>
 
       <div className="cycle">
@@ -307,41 +289,6 @@ const Reframe = () => (
 );
 
 /* ── Mock UIs ─────────────────────────────────────────────── */
-
-const MockDeputyQueue = () => (
-  <div className="mock-ui">
-    <div className="mock-header">
-      <span className="mock-dot orange"></span>
-      <span className="mock-title">{DEPUTY_NAME} · manager queue</span>
-      <span className="mock-badge active">2 pending</span>
-    </div>
-    <div className="mock-body">
-      <div className="dep-card">
-        <div className="dep-top"><span className="dep-type">Recognition nudge</span><span className="dep-pri">Priority 9</span></div>
-        <p className="dep-title"><strong>Ravi</strong> closed two deals last week — and hasn&apos;t been recognised in <strong>32 days</strong>.</p>
-        <div className="dep-user">
-          <span className="dep-av">RK</span>
-          <div><strong>Ravi Kumar</strong><span>Sales Engineer</span></div>
-        </div>
-        <div className="dep-draft">
-          <span className="dc-draft-label">Draft · in your voice</span>
-          &ldquo;Ravi, those two closes carried the week — quietly, like always. The team should know. Great work.&rdquo;
-        </div>
-        <div className="dep-chips">
-          <span className="feed-tag value">Teamwork</span>
-          <span className="feed-coins">+250 coins</span>
-        </div>
-        <div className="dep-approve"><Icon.Check /> Approve &amp; send</div>
-        <div className="dep-secondary"><span>Edit</span><span>Maybe later</span><span>Why?</span></div>
-      </div>
-      <div className="dep-card compact">
-        <div className="dep-top"><span className="dep-type teal">Silent hero</span><span className="dep-pri">Priority 7</span></div>
-        <p className="dep-title"><strong>Deepa Patel</strong> — 34 days unrecognised; quietly closed 11 critical tickets this sprint.</p>
-        <div className="dep-chips"><span className="feed-tag endorsed">Draft ready</span><span className="feed-coins">+120 coins</span></div>
-      </div>
-    </div>
-  </div>
-);
 
 const MockRecognitionFeed = () => (
   <div className="mock-ui">
@@ -402,29 +349,54 @@ const MockImpactPanel = () => (
   </div>
 );
 
+/* ── The Loop diagram — manager ⇄ AI Deputy ⇄ employee ─────── */
+const LoopDiagram = () => (
+  <div className="loop-diagram">
+    <div className="ld-actors">
+      <div className="ld-actor">
+        <span className="ld-role">The manager</span>
+        <span className="ld-desc">Approves and sends in one click. Always stays in control.</span>
+      </div>
+      <div className="ld-conn"><Icon.Arrow /></div>
+      <div className="ld-actor agent">
+        <span className="ld-badge">The {DEPUTY_NAME}</span>
+        <span className="ld-role">Works between the two</span>
+        <span className="ld-desc">Watches outcomes · drafts the recognition · fires the reward · measures the lift.</span>
+      </div>
+      <div className="ld-conn"><Icon.Arrow /></div>
+      <div className="ld-actor">
+        <span className="ld-role">The employee</span>
+        <span className="ld-desc">Earns real rewards for real results — and knows exactly why.</span>
+      </div>
+    </div>
+    <div className="ld-track">
+      <div className="ld-stage"><span className="n">1</span><h4>Verified result</h4><p>A KPI lands in your CRM, HRIS or help desk.</p></div>
+      <div className="ld-stage p-rec"><span className="n">2</span><h4>Recognition drafted</h4><p>The AI writes the note in the manager&apos;s voice.</p><span className="ld-pill rec">Recognition</span></div>
+      <div className="ld-stage"><span className="n">3</span><h4>Manager approves</h4><p>One click — the human decision stays human.</p></div>
+      <div className="ld-stage p-rew"><span className="n">4</span><h4>Reward fires</h4><p>Coins land automatically, tied to the result.</p><span className="ld-pill rew">Reward</span></div>
+      <div className="ld-stage p-perf"><span className="n">5</span><h4>Performance measured</h4><p>You see what actually moved, on your own data.</p><span className="ld-pill perf">Performance</span></div>
+    </div>
+    <div className="ld-return"><Icon.Loop /> Every measured result feeds the next — the loop compounds</div>
+  </div>
+);
+
 /* ── How It Works — the loop + deep dives ─────────────────── */
 const HowItWorks = () => (
   <section id="how">
     <div className="container">
-      <div className="how-split">
-        <div>
-          <h2>Your systems in. Measured outcomes back out.</h2>
-          <p className="lede" style={{ marginTop: 18 }}>One closed loop: the AI watches the outcomes you already track, prompts the people who can act on them, and measures the result back in.</p>
-          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 28 }}>See it live <Icon.Arrow /></a>
-        </div>
-        <div className="flow-steps">
-          <div className="flow-step"><span className="n">1</span><div><h4>Connect your HRIS</h4><p>Plug into your HRIS, CRM, and help desk — or start with none at all.</p></div></div>
-          <div className="flow-step"><span className="n">2</span><div><h4>The AI detects achievements</h4><p>It watches verified outcome events and finds the moment to act.</p></div></div>
-          <div className="flow-step"><span className="n">3</span><div><h4>Recognition is sent</h4><p>The manager approves the ready draft — the reward lands instantly.</p></div></div>
-          <div className="flow-step"><span className="n">4</span><div><h4>Engagement improves</h4><p>Measured on your data — recognised vs unrecognised, same rule, same period.</p></div></div>
-          <div className="flow-loop"><Icon.Loop /> Every result feeds the next nudge</div>
-        </div>
+      <div className="section-head" style={{ maxWidth: 760, marginBottom: 36 }}>
+        <span className="eyebrow">The loop</span>
+        <h2>From a verified result to a real reward — one connected loop</h2>
+        <p className="lede" style={{ marginTop: 16 }}>
+          The AI watches the outcomes you already track, prompts the manager who can act, fires the reward, and measures what it moved — then feeds it back in. <span className="kw">Performance</span>, <span className="kw">recognition</span> and <span className="kw">reward</span>, working as one system.
+        </p>
       </div>
+
+      <LoopDiagram />
 
       <div className="alt-block reverse featured-block" id="deputy" style={{ marginTop: 56 }}>
         <div className="alt-text">
-          <span className="alt-badge">The differentiator</span>
-          <span className="alt-num">01 · The manager side</span>
+          <span className="alt-badge">The differentiator · the manager side</span>
           <h3>Automate the prompt. Never the recognition.</h3>
           <p>The {DEPUTY_NAME} surfaces the moment — &ldquo;Ravi closed two deals last week and hasn&apos;t been recognised in 32 days&rdquo; — then drafts the note in the manager&apos;s voice. They edit, approve, done in ten seconds. Auto-sending praise backfires; the human click is the feature.</p>
           <div className="deputy-trust">
@@ -433,23 +405,27 @@ const HowItWorks = () => (
           </div>
           <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ marginTop: 24 }}>See it in action <Icon.Arrow /></a>
         </div>
-        <div className="alt-visual"><MockDeputyQueue /></div>
+        <div className="alt-visual">
+          <div className="gap-photo">
+            <Image src="/manager-moment.webp" alt="A manager genuinely recognising a team member in a one-to-one" width={1400} height={1050} />
+          </div>
+        </div>
       </div>
 
       <div className="alt-block">
         <div className="alt-text">
-          <span className="alt-num">02 · The employee side</span>
-          <h3>Culture is group behaviour, not a manager broadcast</h3>
-          <p>If only managers post, employees disengage. The flywheel is peers recognising each other — the engagement comes from seeing others engage. And employees open the app because it shows them what they can earn next, not just what they earned before. That&apos;s why adoption doesn&apos;t decay.</p>
-          <a href="#solutions" className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>Explore the platform <Icon.Arrow /></a>
+          <span className="alt-badge">The employee side</span>
+          <h3>Reward the right behaviours, and <span className="kw">performance</span> compounds</h3>
+          <p>Every recognised action is a signal. Repeated across a team, those behaviours become how your people operate — and the ones you reward are the ones you get more of. PraiseLoop ties them to the numbers leaders actually track: <span className="kw">performance</span> climbs, while regretted attrition, absenteeism and quiet disengagement fall. That&apos;s the case that reaches the C-suite.</p>
+          <a href="#solutions" className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the outcomes <Icon.Arrow /></a>
         </div>
         <div className="alt-visual"><MockRecognitionFeed /></div>
       </div>
 
       <div className="alt-block reverse">
         <div className="alt-text">
-          <span className="alt-num">03 · The {ENGINE_NAME}</span>
-          <h3>Your CRM fires the reward. Nobody fills in a form.</h3>
+          <span className="alt-badge">The {ENGINE_NAME}</span>
+          <h3>Your CRM fires the <span className="kw">reward</span>. Nobody fills in a form.</h3>
           <p>Most tools make someone fill in a nomination form. PraiseLoop watches your systems instead. Write a rule in plain English — &ldquo;close a deal over $10K, award 500 coins&rdquo; — and when it happens, the reward lands on its own. Every coin ties back to a real result, with budget limits built in.</p>
           <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>Watch a rule fire <Icon.Arrow /></a>
         </div>
@@ -462,7 +438,7 @@ const HowItWorks = () => (
 
       <div className="alt-block" id="proof">
         <div className="alt-text">
-          <span className="alt-num">04 · The proof layer</span>
+          <span className="alt-badge">The proof layer</span>
           <h3>The one page no other vendor has</h3>
           <p>Same rule, same period, your data: whether recognised people actually performed better. We show the rules with no lift too — so you stop paying for them. Recognition spend stops being a cost line and becomes an investment you can defend.</p>
           <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the proof <Icon.Arrow /></a>
@@ -494,7 +470,7 @@ const ROICalculator = () => {
         <div className="roi-card">
           <div>
             <h2>The report your CFO gets at day 90</h2>
-            <p className="lede" style={{ marginTop: 14 }}>Not a benchmark deck — a worked model on your pilot department: turnover you didn&apos;t pay to replace, plus the productivity lift on the movable middle, netted against what the platform cost.</p>
+            <p className="lede" style={{ marginTop: 14 }}>Underperformance is why good people leave — and every exit is a hire you have to fund and wait out. Not a benchmark deck: a worked model on your pilot department — the turnover and re-hiring you didn&apos;t pay for, plus the <span className="kw">performance</span> lift on the movable middle, netted against what the platform cost.</p>
             <div className="roi-controls">
               <div className="roi-row">
                 <label>Pilot seats</label>
@@ -603,8 +579,8 @@ const Buyers = () => (
       <div className="buyer-bento">
         <div className="bb-hero">
           <div className="bb-hero-copy">
-            <h3>AI recognition that runs itself</h3>
-            <p>The {DEPUTY_NAME} watches your systems, drafts the note, and learns what moves each team. Managers stay in control — one click to send.</p>
+            <h3>The <span className="kw">performance</span> loop that runs itself</h3>
+            <p>The {DEPUTY_NAME} watches your systems, drafts the recognition, fires the reward, and learns what moves each team. Managers stay in control — one click to send.</p>
             <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ alignSelf: "flex-start" }}>See it in action <Icon.Arrow /></a>
           </div>
           <div className="bb-art">
@@ -621,13 +597,13 @@ const Buyers = () => (
           <div className="bb-tile">
             <span className="lbl">HR leaders</span>
             <div className="num">+17% <small>retention</small></div>
-            <p>A manager playbook that runs itself.</p>
+            <p>Fewer regretted exits — and fewer of the hires you have to fund to replace them.</p>
             <span className="illus-chip">Illustrative</span>
           </div>
           <div className="bb-tile">
             <span className="lbl">CFO &amp; CEO</span>
             <div className="num">34&times; <small>return</small></div>
-            <p>One number: the payback on recognition, from your own data.</p>
+            <p>One number: the payback on <span className="kw">performance</span>, from your own data.</p>
             <span className="illus-chip">Illustrative</span>
           </div>
         </div>
@@ -660,28 +636,28 @@ const GCC = () => (
     <div className="container">
       <div className="gcc-grid">
         <div>
-          <h2>Workforce realities the US-built platforms weren&apos;t designed for</h2>
-          <p className="lede" style={{ marginTop: 18 }}>The GCC isn&apos;t a translation problem — it&apos;s a completely different operating context. PraiseLoop was built for it from day one.</p>
+          <h2>Built for a global, multilingual workforce</h2>
+          <p className="lede" style={{ marginTop: 18 }}>Most recognition platforms are built US-first and English-only. PraiseLoop works across languages, regions and workforce types out of the box — with local compliance wherever you operate.</p>
           <div className="gcc-points">
-            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Arabic-first, not translated</h4><p>Full right-to-left interface designed alongside English, with tone and peer dynamics tuned for the region.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Gift /></div><div><h4>Field Worker Mode</h4><p>English, Arabic, and Hindi. Offline-capable, with rewards field teams actually want — time off, phone credit, savings. The 80% of the workforce most platforms ignore.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Shield /></div><div><h4>Nationalisation tracking built in</h4><p>Emiratisation and Saudisation reporting out of the box — recognition data feeds the filing.</p></div></div>
-            <div className="gcc-point"><div className="ico"><Icon.Globe /></div><div><h4>Your data stays in-region</h4><p>GCC-based hosting with full PDPL compliance. Your data never leaves the region unless you choose otherwise.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Lang /></div><div><h4>Any language, right-to-left included</h4><p>English, Arabic, Hindi and more — designed in alongside each other, not bolted on afterwards.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Gift /></div><div><h4>The frontline, included</h4><p>Field Worker Mode: offline-capable and multilingual, with rewards field teams actually want — time off, phone credit, savings. The majority of the workforce most platforms ignore.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Shield /></div><div><h4>Compliance wherever you operate</h4><p>GDPR and UAE PDPL ready — plus nationalisation reporting (Emiratisation, Saudisation) out of the box for the regions that need it.</p></div></div>
+            <div className="gcc-point"><div className="ico"><Icon.Globe /></div><div><h4>Your data stays in-region</h4><p>Hosting in the UK, Europe and the GCC. Your data never leaves the region you choose.</p></div></div>
           </div>
         </div>
         <div>
           <div className="gcc-art">
-            <Image src="/gcc-skyline.svg" alt="Minimal illustration of a dhow sailing past a Gulf minaret skyline under an orange sun" width={2048} height={1152} unoptimized style={{ width: "100%", height: "auto" }} />
+            <Image src="/global-network.svg" alt="Minimal illustration of a connected world map linking teams across every continent" width={1820} height={1024} unoptimized style={{ width: "100%", height: "auto" }} />
           </div>
           <div className="country-grid">
+            <div className="country"><span className="flag uk"></span><span className="name">United Kingdom</span><span className="meta">GBP · EN</span></div>
             <div className="country"><span className="flag uae"></span><span className="name">United Arab Emirates</span><span className="meta">EMIRATISATION · AED · AR/EN</span></div>
             <div className="country"><span className="flag ksa"></span><span className="name">Saudi Arabia</span><span className="meta">SAUDISATION · SAR · AR/EN</span></div>
             <div className="country"><span className="flag qa"></span><span className="name">Qatar</span><span className="meta">QATARISATION · QAR · AR/EN</span></div>
-            <div className="country"><span className="flag uk"></span><span className="name">United Kingdom</span><span className="meta">GBP · EN</span></div>
           </div>
           <div style={{ marginTop: 20, padding: 18, background: "#fff", border: "1px dashed var(--outline-variant)", borderRadius: "var(--r)", fontSize: 13, color: "var(--on-surface-variant)", display: "flex", gap: 10, alignItems: "flex-start" }}>
             <Icon.Pin style={{ flexShrink: 0, marginTop: 2, color: "var(--orange)" }}/>
-            <span>Data hosting available in UAE (Dubai), KSA (Riyadh), Qatar (Doha), and Europe.</span>
+            <span>Data hosting in the UK, Europe, and the GCC — UAE (Dubai), KSA (Riyadh) and Qatar (Doha). More regions on request.</span>
           </div>
         </div>
       </div>
@@ -695,7 +671,7 @@ const Pricing = () => (
     <div className="container">
       <div className="section-head" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 44px" }}>
         <h2>Simple, transparent pricing</h2>
-        <p className="lede" style={{ margin: "18px auto 0" }}>Every plan includes peer recognition and real rewards. Pick the tier that fits your organisation.</p>
+        <p className="lede" style={{ margin: "18px auto 0" }}>Every plan connects recognition and reward to real results. Pick the tier that fits your organisation.</p>
       </div>
       <div className="pricing-grid">
         <div className="pricing-card">
@@ -745,13 +721,13 @@ const Pricing = () => (
 const FooterSection = () => (
   <footer>
     <div className="container footer-statement">
-      <p className="footer-line">Reward <span className="em">outcomes</span>,<br />not effort.</p>
+      <p className="footer-line">Rewards are <span className="em">earned</span>,<br />not given.</p>
       <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={121} height={48} style={{ height: 48, width: "auto", marginTop: 44 }} />
       <nav className="footer-links-row">
         <a href="#deputy">The {DEPUTY_NAME}</a>
         <a href="#how">{ENGINE_NAME}</a>
         <a href="#proof">Proof</a>
-        <a href="#gcc">GCC</a>
+        <a href="#gcc">Global reach</a>
         <a href="#pricing">Pricing</a>
         <a href="/blog">Blog</a>
         <a href="#trust">Security</a>
