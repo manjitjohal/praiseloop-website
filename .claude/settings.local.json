@@ -5,7 +5,19 @@
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
       "Bash(mkdir -p _temp)",
       "Bash(mv \"DESIGN.md\" \"Orange logo - transparent bg.png\" \"PraiseLoop Home _standalone_.html\" \"praiseloop-logo-white.png\" \"praiseloop-logo.png\" _temp/)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(grep -n *)",
+      "Bash(GIT_EDITOR=true git rebase --continue)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(node gen-images.mjs)",
+      "Bash(node -e ' *)",
+      "Bash(node \"C:/Users/manji/AppData/Local/Temp/claude/C--dev-vipani-praiseloop-website/b6bed3c4-04bb-4fae-8f03-857849f7f6e0/scratchpad/gen-beats.mjs\")",
+      "Bash(npx next *)",
+      "Bash(npx eslint *)",
+      "Bash(echo \"=== exit: $? ===\")",
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1280,2500 --screenshot=preview2.png \"file:///C:/Users/manji/AppData/Local/Temp/claude/C--dev-vipani-praiseloop-website/b6bed3c4-04bb-4fae-8f03-857849f7f6e0/scratchpad/preview2.html\")",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --no-sandbox --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1280,2560 '--screenshot=C:\\\\Users\\\\manji\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--dev-vipani-praiseloop-website\\\\b6bed3c4-04bb-4fae-8f03-857849f7f6e0\\\\scratchpad\\\\preview2.png' file:///C:/Users/manji/AppData/Local/Temp/claude/C--dev-vipani-praiseloop-website/b6bed3c4-04bb-4fae-8f03-857849f7f6e0/scratchpad/preview2.html)",
+      "PowerShell(npm run *)"
     ]
   }
 }

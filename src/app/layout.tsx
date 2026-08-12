@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Manrope, JetBrains_Mono } from "next/font/google";
+import { Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -36,7 +36,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${manrope.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${figtree.variable} ${jetbrainsMono.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

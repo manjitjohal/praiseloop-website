@@ -137,7 +137,7 @@ const Nav = () => (
           <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={101} height={40} style={{ height: 40, width: "auto" }} priority />
         </a>
         <nav className="nav-links">
-          <a href="#how">Platform</a>
+          <a href="#platform">Platform</a>
           <a href="#proof">Proof</a>
           <a href="#pricing">Pricing</a>
           <a href="/blog">Blog</a>
@@ -253,7 +253,7 @@ const Reframe = () => (
       <div className="cycle">
         <div className="cycle-step"><span className="ico"><Icon.Spark /></span><h4>Managers want to recognise</h4><p>They know praise moves performance.</p></div>
         <div className="cycle-step"><span className="ico"><Icon.Clock /></span><h4>The day takes over</h4><p>Back-to-back meetings. The loudest problem wins.</p></div>
-        <div className="cycle-step"><span className="ico"><Icon.Bell /></span><h4>Recognition is forgotten</h4><p>Great work goes unnoticed — or lands too late.</p></div>
+        <div className="cycle-step"><span className="ico"><Icon.Bell /></span><h4>The moment slips by</h4><p>Great work goes unnoticed — or the thank-you lands too late to matter.</p></div>
         <div className="cycle-step"><span className="ico"><Icon.Frown /></span><h4>People disengage</h4><p>They feel unseen. They stop going the extra mile.</p></div>
         <div className="cycle-step"><span className="ico"><Icon.Exit /></span><h4>Your best people leave</h4><p>Replacing them costs far more than keeping them.</p></div>
       </div>
@@ -290,50 +290,6 @@ const Reframe = () => (
 
 /* ── Mock UIs ─────────────────────────────────────────────── */
 
-const MockRecognitionFeed = () => (
-  <div className="mock-ui">
-    <div className="mock-header">
-      <span className="mock-dot green"></span>
-      <span className="mock-title">Recognition feed</span>
-      <span className="mock-badge">Live</span>
-    </div>
-    <div className="mock-body">
-      <div className="feed-item">
-        <span className="feed-avatar" style={{ background: "var(--orange-soft)" }}>JR</span>
-        <div className="feed-content">
-          <div className="feed-top"><strong>Jamie Rodriguez</strong> <span className="feed-time">2m ago</span></div>
-          <p>Thanked <strong>Priya Sharma</strong> for <em>shipping the client dashboard under the wire</em></p>
-          <div className="feed-tags"><span className="feed-tag">Collaboration</span><span className="feed-tag value">Customer-obsession</span></div>
-        </div>
-      </div>
-      <div className="feed-item">
-        <span className="feed-avatar" style={{ background: "var(--slate)" }}>MK</span>
-        <div className="feed-content">
-          <div className="feed-top"><strong>Manager endorsement</strong> <span className="feed-time">18m ago</span></div>
-          <p>Marcus endorsed <strong>Aisha Khan</strong> &middot; <em>exceptional Q2 client retention</em></p>
-          <div className="feed-tags"><span className="feed-tag endorsed">Endorsed</span><span className="feed-coins">+250 coins</span></div>
-        </div>
-      </div>
-      <div className="feed-item">
-        <span className="feed-avatar" style={{ background: "var(--navy)" }}>SC</span>
-        <div className="feed-content">
-          <div className="feed-top"><strong>Milestone reached</strong> <span className="feed-time">1h ago</span></div>
-          <p>Sarah Chen &middot; 2-year anniversary</p>
-          <div className="feed-tags"><span className="feed-tag milestone">Milestone</span><span className="feed-coins">+200 coins</span></div>
-        </div>
-      </div>
-      <div className="feed-item">
-        <span className="feed-avatar" style={{ background: "var(--sand)", color: "var(--navy)" }}>AB</span>
-        <div className="feed-content">
-          <div className="feed-top"><strong>Alex Bello</strong> <span className="feed-time">2h ago</span></div>
-          <p>Peer kudos &middot; helped <em>resolve P1 incident in 42 minutes</em></p>
-          <div className="feed-tags"><span className="feed-tag">Teamwork</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 const MockImpactPanel = () => (
   <div className="impact-panel">
     <div className="ip-head">
@@ -349,94 +305,246 @@ const MockImpactPanel = () => (
   </div>
 );
 
-/* ── The Loop diagram — manager ⇄ AI Deputy ⇄ employee ─────── */
-const LoopDiagram = () => (
-  <div className="loop-diagram">
-    <div className="ld-actors">
-      <div className="ld-actor">
-        <span className="ld-role">The manager</span>
-        <span className="ld-desc">Approves and sends in one click. Always stays in control.</span>
-      </div>
-      <div className="ld-conn"><Icon.Arrow /></div>
-      <div className="ld-actor agent">
-        <span className="ld-badge">The {DEPUTY_NAME}</span>
-        <span className="ld-role">Works between the two</span>
-        <span className="ld-desc">Watches outcomes · drafts the recognition · fires the reward · measures the lift.</span>
-      </div>
-      <div className="ld-conn"><Icon.Arrow /></div>
-      <div className="ld-actor">
-        <span className="ld-role">The employee</span>
-        <span className="ld-desc">Earns real rewards for real results — and knows exactly why.</span>
-      </div>
+/* ── Mock: the AI Deputy at work (concrete agent visual) ───── */
+const MockAgentChat = () => (
+  <div className="mock-ui dark-mock agent-chat">
+    <div className="mock-header">
+      <span className="mock-dot orange"></span>
+      <span className="mock-title">PraiseLoop · {DEPUTY_NAME}</span>
+      <span className="mock-badge active">Working</span>
     </div>
-    <div className="ld-track">
-      <div className="ld-stage"><span className="n">1</span><h4>Verified result</h4><p>A KPI lands in your CRM, HRIS or help desk.</p></div>
-      <div className="ld-stage p-rec"><span className="n">2</span><h4>Recognition drafted</h4><p>The AI writes the note in the manager&apos;s voice.</p><span className="ld-pill rec">Recognition</span></div>
-      <div className="ld-stage"><span className="n">3</span><h4>Manager approves</h4><p>One click — the human decision stays human.</p></div>
-      <div className="ld-stage p-rew"><span className="n">4</span><h4>Reward fires</h4><p>Coins land automatically, tied to the result.</p><span className="ld-pill rew">Reward</span></div>
-      <div className="ld-stage p-perf"><span className="n">5</span><h4>Performance measured</h4><p>You see what actually moved, on your own data.</p><span className="ld-pill perf">Performance</span></div>
+    <div className="mock-body">
+      <div className="ac-signal">
+        <span className="ac-ico"><Icon.Bolt /></span>
+        <div>
+          <strong>Verified result · from your CRM</strong>
+          <p>Ravi closed 2 deals last week — $68K new revenue.</p>
+        </div>
+      </div>
+      <div className="ac-msg">
+        <span className="ac-avatar"><Icon.Spark /></span>
+        <div className="ac-bubble">
+          Ravi hasn&apos;t been recognised in <b>32 days</b>. Want to send praise in your voice?
+        </div>
+      </div>
+      <div className="ac-draft">
+        <span className="ac-draft-label">Drafted for you</span>
+        <p>&ldquo;Ravi — two closes in a week is exceptional. That $68K moves the whole quarter. Thank you.&rdquo;</p>
+        <div className="ac-actions">
+          <span className="ac-btn primary"><Icon.Check /> Approve &amp; send</span>
+          <span className="ac-btn ghost">Edit</span>
+        </div>
+      </div>
+      <div className="ac-fire"><Icon.Bolt /> Reward fired · <b>+500 coins</b> · tied to the result</div>
     </div>
-    <div className="ld-return"><Icon.Loop /> Every measured result feeds the next — the loop compounds</div>
   </div>
 );
 
-/* ── How It Works — the loop + deep dives ─────────────────── */
-const HowItWorks = () => (
-  <section id="how">
+/* ── The Loop — a true closed ring (manager → agent → employee → back) ── */
+const LOOP_NODES = [
+  { n: 1, title: "Verified result", desc: "A KPI lands in your CRM, HRIS or help desk.", pill: "Performance", cls: "perf", left: "50%", top: "15%" },
+  { n: 2, title: "AI drafts recognition", desc: "In the manager’s voice — never auto-sent.", pill: "Recognition", cls: "rec", left: "83%", top: "39%" },
+  { n: 3, title: "Manager approves", desc: "One click — the human stays in control.", pill: "Human", cls: "human", left: "71%", top: "78%" },
+  { n: 4, title: "Reward fires", desc: "Coins land automatically, tied to the result.", pill: "Reward", cls: "rew", left: "29%", top: "78%" },
+  { n: 5, title: "Performance measured", desc: "You see what moved — it feeds the next loop.", pill: "Performance", cls: "perf", left: "17%", top: "39%" },
+];
+
+// Five arrowheads at the mid-points between nodes, tangent to the ring (clockwise).
+const LOOP_ARROWS = [
+  { x: 423.4, y: 130.1, r: 36 },
+  { x: 499.7, y: 364.9, r: 108 },
+  { x: 300, y: 510, r: 180 },
+  { x: 100.3, y: 364.9, r: 252 },
+  { x: 176.6, y: 130.1, r: 324 },
+];
+
+const LoopRing = () => (
+  <div className="loop">
+    <div className="loop-ring">
+      <svg className="loop-track" viewBox="0 0 600 600" aria-hidden="true">
+        <circle cx="300" cy="300" r="210" fill="none" stroke="var(--orange)" strokeOpacity="0.4" strokeWidth="2" strokeDasharray="2 9" strokeLinecap="round" />
+        <g fill="var(--orange)">
+          {LOOP_ARROWS.map((a, i) => (
+            <path key={i} d="M-6 -6 L7 0 L-6 6 Z" transform={`translate(${a.x},${a.y}) rotate(${a.r})`} />
+          ))}
+        </g>
+      </svg>
+      <div className="loop-hub">
+        <span className="loop-hub-badge">The {DEPUTY_NAME}</span>
+        <strong>Works the loop</strong>
+        <p>Between every manager &amp; employee — you stay in control.</p>
+      </div>
+      {LOOP_NODES.map((s) => (
+        <div key={s.n} className={`loop-node ${s.cls}`} style={{ left: s.left, top: s.top }}>
+          <span className="loop-n">{s.n}</span>
+          <h4>{s.title}</h4>
+          <p>{s.desc}</p>
+          <span className={`ld-pill ${s.cls}`}>{s.pill}</span>
+        </div>
+      ))}
+    </div>
+    <div className="loop-caption"><Icon.Loop /> One continuous loop — every measured result feeds the next.</div>
+  </div>
+);
+
+/* ── Beat spot-visuals — coded product fragments, one unified style ── */
+const PerformanceSpot = () => (
+  <div className="spot">
+    <div className="spot-head">
+      <span className="spot-dot" style={{ background: "var(--teal)" }} />
+      <span className="spot-label">Performance signal</span>
+      <span className="spot-chip teal">+14% KPI</span>
+    </div>
+    <svg className="spot-spark" viewBox="0 0 320 96" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="var(--teal)" stopOpacity="0.16" />
+          <stop offset="1" stopColor="var(--teal)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path d="M8 74 L58 66 L108 70 L158 52 L208 46 L258 32 L310 18 L310 96 L8 96 Z" fill="url(#sparkFill)" />
+      <path d="M8 74 L58 66 L108 70 L158 52 L208 46 L258 32 L310 18" fill="none" stroke="var(--teal)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="310" cy="18" r="5" fill="var(--orange)" stroke="#fff" strokeWidth="2" />
+    </svg>
+    <div className="spot-row">
+      <span className="spot-av">RS</span>
+      <div className="spot-row-t"><strong>Ravi Shah</strong><span>Silent hero — consistent, unseen</span></div>
+      <span className="ld-pill perf">Flagged</span>
+    </div>
+  </div>
+);
+
+const RecognitionSpot = () => (
+  <div className="spot">
+    <div className="spot-head">
+      <span className="spot-dot" style={{ background: "var(--orange)" }} />
+      <span className="spot-label">Recognition · earned</span>
+    </div>
+    <div className="spot-event">
+      <div className="spot-event-top">
+        <strong>Deal closed</strong>
+        <span className="spot-verified"><Icon.Check /> Verified · CRM</span>
+      </div>
+      <span className="spot-event-sub">$68K · Q3 renewal</span>
+    </div>
+    <span className="spot-link"><Icon.Arrow /></span>
+    <div className="spot-outcome">
+      <span className="spot-badge"><Icon.Trophy /></span>
+      <div className="spot-outcome-t"><strong>Recognition drafted</strong><span>in the manager’s voice</span></div>
+      <span className="feed-coins">+250</span>
+    </div>
+  </div>
+);
+
+const RewardSpot = () => (
+  <div className="spot">
+    <div className="spot-head">
+      <span className="spot-dot" style={{ background: "var(--orange)" }} />
+      <span className="spot-label">Reward rule</span>
+    </div>
+    <div className="spot-rule">
+      <span className="spot-kw when">WHEN</span> deal value &gt; <b>$10K</b><br />
+      <span className="spot-kw then">THEN</span> award <b>500 coins</b>
+    </div>
+    <span className="spot-link"><Icon.Arrow /></span>
+    <div className="spot-outcome">
+      <span className="spot-badge orange"><Icon.Bolt /></span>
+      <div className="spot-outcome-t"><strong>Reward fired</strong><span>tied to the result · budget ok</span></div>
+      <span className="feed-coins">+500</span>
+    </div>
+  </div>
+);
+
+/* ── The three beats: Performance → Recognition → Reward ───── */
+const BEATS = [
+  {
+    id: "performance",
+    eyebrow: "Step one · Performance",
+    Visual: PerformanceSpot,
+    heading: <>Turn underperformance into <span className="kw">high performance</span>.</>,
+    body: "Most organisations know who is underperforming — not why. PraiseLoop reads the behaviours, engagement and KPIs you already track, spots who’s slipping early and surfaces the silent heroes nobody noticed. Managers get a real-time picture and the next best action — not a once-a-year review.",
+  },
+  {
+    id: "recognition",
+    eyebrow: "Step two · Recognition",
+    Visual: RecognitionSpot,
+    heading: <><span className="kw">Performance</span> earns recognition.</>,
+    body: "Traditional tools reward effort, opinion, or whoever remembers to fill in the nomination form. PraiseLoop ties recognition to verified outcomes — a closed deal, a resolved incident, a hit KPI. Recognition becomes the result of performance, drafted in the manager’s voice and sent in one click.",
+  },
+  {
+    id: "reward",
+    eyebrow: "Step three · Reward",
+    Visual: RewardSpot,
+    heading: <>Recognise improvement. <span className="kw">Reward</span> excellence.</>,
+    body: "Write a rule in plain English — “close a deal over $10K, award 500 coins” — and the reward fires on its own when the result lands, with budget limits built in. As people hit KPIs and improve, they unlock rewards and growth. Progress becomes visible, celebrated, and worth something.",
+  },
+];
+
+const Beats = () => (
+  <section id="platform" className="beats">
     <div className="container">
-      <div className="section-head" style={{ maxWidth: 760, marginBottom: 36 }}>
+      <div className="section-head" style={{ maxWidth: 800 }}>
+        <span className="eyebrow">One loop, in this order</span>
+        <h2><span className="kw">Performance</span>, <span className="kw">recognition</span> and <span className="kw">reward</span> — one system, not three tools.</h2>
+        <p className="lede" style={{ marginTop: 16 }}>Performance comes first. Recognition is what it earns. Reward is what makes it repeat. Here is each stage on its own — then the loop that connects them.</p>
+      </div>
+      <div className="beat-list">
+        {BEATS.map((b, i) => (
+          <div key={b.id} id={b.id} className={`beat alt-block${i % 2 ? " reverse" : ""}`}>
+            <div className="alt-text">
+              <span className="eyebrow">{b.eyebrow}</span>
+              <h3>{b.heading}</h3>
+              <p>{b.body}</p>
+            </div>
+            <div className="alt-visual"><b.Visual /></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ── Meet the AI Deputy — the agent gets its own section ───── */
+const MeetTheAgent = () => (
+  <section id="deputy" className="agent-section">
+    <div className="container">
+      <div className="agent-grid">
+        <div className="agent-copy">
+          <span className="alt-badge on-dark">The agent at the centre of the loop</span>
+          <h2>Meet the {DEPUTY_NAME} — it works between every manager and employee.</h2>
+          <p>It watches the outcomes you already track, spots the moment worth recognising, and drafts the note in the manager’s voice. The manager edits, approves and sends in ten seconds — then the reward fires and the {DEPUTY_NAME} measures what actually moved.</p>
+          <ul className="agent-points">
+            <li><span className="ap-ico"><Icon.Eye /></span><div><strong>Watches</strong> every verified result across CRM, HRIS and help desk.</div></li>
+            <li><span className="ap-ico"><Icon.Spark /></span><div><strong>Drafts &amp; recommends</strong> recognition, coaching and the next best action.</div></li>
+            <li><span className="ap-ico"><Icon.Bolt /></span><div><strong>Fires the reward</strong> and reports the ROI — on your own data.</div></li>
+          </ul>
+          <div className="deputy-trust">
+            <Icon.Shield />
+            <span>Suggest-only — a human always approves. The {DEPUTY_NAME} reads <b>outcome events from your systems of record</b>; it never relays what employees tell it in chat.</span>
+          </div>
+          <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ marginTop: 26 }}>See the agent in action <Icon.Arrow /></a>
+        </div>
+        <div className="agent-visual"><MockAgentChat /></div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ── The Loop — the closed ring + the proof layer ─────────── */
+const TheLoop = () => (
+  <section id="how" className="loop-section">
+    <div className="container">
+      <div className="section-head" style={{ maxWidth: 740 }}>
         <span className="eyebrow">The loop</span>
-        <h2>From a verified result to a real reward — one connected loop</h2>
+        <h2>From a verified result to a real reward — and back again.</h2>
         <p className="lede" style={{ marginTop: 16 }}>
-          The AI watches the outcomes you already track, prompts the manager who can act, fires the reward, and measures what it moved — then feeds it back in. <span className="kw">Performance</span>, <span className="kw">recognition</span> and <span className="kw">reward</span>, working as one system.
+          This is what recognition tools don’t show: <span className="kw">performance</span>, <span className="kw">recognition</span> and <span className="kw">reward</span> aren’t separate steps. Each one feeds the next, and the {DEPUTY_NAME} keeps it turning.
         </p>
       </div>
 
-      <LoopDiagram />
+      <LoopRing />
 
-      <div className="alt-block reverse featured-block" id="deputy" style={{ marginTop: 56 }}>
-        <div className="alt-text">
-          <span className="alt-badge">The differentiator · the manager side</span>
-          <h3>Automate the prompt. Never the recognition.</h3>
-          <p>The {DEPUTY_NAME} surfaces the moment — &ldquo;Ravi closed two deals last week and hasn&apos;t been recognised in 32 days&rdquo; — then drafts the note in the manager&apos;s voice. They edit, approve, done in ten seconds. Auto-sending praise backfires; the human click is the feature.</p>
-          <div className="deputy-trust">
-            <Icon.Shield />
-            <span>The deputy reads <b>outcome events from your systems of record</b>. It never relays what employees tell it in chat.</span>
-          </div>
-          <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ marginTop: 24 }}>See it in action <Icon.Arrow /></a>
-        </div>
-        <div className="alt-visual">
-          <div className="gap-photo">
-            <Image src="/manager-moment.webp" alt="A manager genuinely recognising a team member in a one-to-one" width={1400} height={1050} />
-          </div>
-        </div>
-      </div>
-
-      <div className="alt-block">
-        <div className="alt-text">
-          <span className="alt-badge">The employee side</span>
-          <h3>Reward the right behaviours, and <span className="kw">performance</span> compounds</h3>
-          <p>Every recognised action is a signal. Repeated across a team, those behaviours become how your people operate — and the ones you reward are the ones you get more of. PraiseLoop ties them to the numbers leaders actually track: <span className="kw">performance</span> climbs, while regretted attrition, absenteeism and quiet disengagement fall. That&apos;s the case that reaches the C-suite.</p>
-          <a href="#solutions" className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>See the outcomes <Icon.Arrow /></a>
-        </div>
-        <div className="alt-visual"><MockRecognitionFeed /></div>
-      </div>
-
-      <div className="alt-block reverse">
-        <div className="alt-text">
-          <span className="alt-badge">The {ENGINE_NAME}</span>
-          <h3>Your CRM fires the <span className="kw">reward</span>. Nobody fills in a form.</h3>
-          <p>Most tools make someone fill in a nomination form. PraiseLoop watches your systems instead. Write a rule in plain English — &ldquo;close a deal over $10K, award 500 coins&rdquo; — and when it happens, the reward lands on its own. Every coin ties back to a real result, with budget limits built in.</p>
-          <a href={BOOKING_URL} className="btn btn-secondary btn-arrow" style={{ marginTop: 24 }}>Watch a rule fire <Icon.Arrow /></a>
-        </div>
-        <div className="alt-visual">
-          <div className="gap-photo">
-            <Image src="/form-fatigue.webp" alt="A weary manager pinching his brow over a clipboard of nomination forms" width={1024} height={768} />
-          </div>
-        </div>
-      </div>
-
-      <div className="alt-block" id="proof">
+      <div className="alt-block reverse" id="proof" style={{ marginTop: 8 }}>
         <div className="alt-text">
           <span className="alt-badge">The proof layer</span>
           <h3>The one page no other vendor has</h3>
@@ -576,36 +684,24 @@ const Buyers = () => (
         <h2>Every stakeholder gets the number they care about.</h2>
         <p className="lede" style={{ marginTop: 16 }}>Sales, HR, finance — the same loop, read three different ways. All from your own data, not a benchmark deck.</p>
       </div>
-      <div className="buyer-bento">
-        <div className="bb-hero">
-          <div className="bb-hero-copy">
-            <h3>The <span className="kw">performance</span> loop that runs itself</h3>
-            <p>The {DEPUTY_NAME} watches your systems, drafts the recognition, fires the reward, and learns what moves each team. Managers stay in control — one click to send.</p>
-            <a href={BOOKING_URL} className="btn btn-primary btn-arrow" style={{ alignSelf: "flex-start" }}>See it in action <Icon.Arrow /></a>
-          </div>
-          <div className="bb-art">
-            <Image src="/recognition-moment.webp" alt="Two colleagues sharing a high-five over a desk in a bright office" width={768} height={1024} />
-          </div>
+      <div className="buyer-tiles">
+        <div className="bb-tile">
+          <span className="lbl">Sales leaders</span>
+          <div className="num">+25% <small>deals</small></div>
+          <p>Which recognition moves real deals and quota — and which does nothing.</p>
+          <span className="illus-chip">Illustrative</span>
         </div>
-        <div className="bb-col">
-          <div className="bb-tile">
-            <span className="lbl">Sales leaders</span>
-            <div className="num">+25% <small>deals</small></div>
-            <p>Which recognition moves real deals and quota — and which does nothing.</p>
-            <span className="illus-chip">Illustrative</span>
-          </div>
-          <div className="bb-tile">
-            <span className="lbl">HR leaders</span>
-            <div className="num">+17% <small>retention</small></div>
-            <p>Fewer regretted exits — and fewer of the hires you have to fund to replace them.</p>
-            <span className="illus-chip">Illustrative</span>
-          </div>
-          <div className="bb-tile">
-            <span className="lbl">CFO &amp; CEO</span>
-            <div className="num">34&times; <small>return</small></div>
-            <p>One number: the payback on <span className="kw">performance</span>, from your own data.</p>
-            <span className="illus-chip">Illustrative</span>
-          </div>
+        <div className="bb-tile">
+          <span className="lbl">HR leaders</span>
+          <div className="num">+17% <small>retention</small></div>
+          <p>Fewer regretted exits — and fewer of the hires you have to fund to replace them.</p>
+          <span className="illus-chip">Illustrative</span>
+        </div>
+        <div className="bb-tile">
+          <span className="lbl">CFO &amp; CEO</span>
+          <div className="num">34&times; <small>return</small></div>
+          <p>One number: the payback on <span className="kw">performance</span>, from your own data.</p>
+          <span className="illus-chip">Illustrative</span>
         </div>
       </div>
     </div>
@@ -749,8 +845,10 @@ export default function LandingPage() {
       <Nav />
       <Hero />
       <Integrations />
+      <Beats />
       <Reframe />
-      <HowItWorks />
+      <MeetTheAgent />
+      <TheLoop />
       <ROICalculator />
       <CustomerStories />
       <Buyers />

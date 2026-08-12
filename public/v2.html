@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PraiseLoop — AI Performance, Recognition & Rewards Platform</title>
+<meta name="description" content="The AI loop that turns performance, recognition and reward into ROI. Rewards are earned, not given." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   PraiseLoop marketing — DESIGN.md-anchored pilot (v2)
+   Core identity: DESIGN.md tokens. Flourishes: pill CTAs,
+   big hero type, motion+depth, mono labels + coded diagrams,
+   warm accent panels.
+   ============================================================ */
+:root{
+  /* DESIGN.md core */
+  --teal:#1B6B6B;
+  --teal-dark:#153F3F;
+  --orange:#F26522;
+  --orange-hover:#D9551A;
+  --bg-primary:#FFFFFF;
+  --bg-secondary:#F5F5F5;
+  --light-teal:#E8F0F0;
+  --text-primary:#1A1A1A;
+  --text-secondary:#6B7280;
+  --text-white:#FFFFFF;
+  --border:#E5E7EB;
+  --success:#22C55E;
+  --warning:#F59E0B;
+  --destructive:#DC2626;
+  --coin:#F59E0B;
+  /* flourish: warm accents */
+  --cream:#FBF6EF;
+  --sand:#F1E4D6;
+  /* gradient */
+  --teal-grad:linear-gradient(180deg,#153F3F 0%,#1B6B6B 100%);
+  --teal-grad-160:linear-gradient(160deg,#153F3F 0%,#1B6B6B 70%,#22807f 100%);
+  --font:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --container:1200px;
+  --gutter:24px;
+  --r:8px;--r-sm:6px;--r-md:12px;--r-lg:16px;--r-xl:24px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;font-family:var(--font);
+  background:var(--bg-primary);color:var(--text-primary);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
+}
+img,svg{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:var(--container);margin:0 auto;padding-inline:var(--gutter);}
+section{padding:88px 0;}
+.sprite{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* Typography — flourish: big marketing scale in Figtree */
+h1,h2,h3,h4{margin:0;letter-spacing:-0.02em;font-weight:700;text-wrap:balance;}
+h1{font-size:clamp(40px,5.2vw,72px);line-height:1.04;letter-spacing:-0.035em;font-weight:800;}
+h2{font-size:clamp(30px,3.4vw,48px);line-height:1.08;letter-spacing:-0.028em;}
+h3{font-size:22px;line-height:1.25;letter-spacing:-0.015em;font-weight:600;}
+h4{font-size:16px;font-weight:600;}
+p{margin:0;}
+.lede{font-size:19px;line-height:1.55;color:var(--text-secondary);max-width:60ch;text-wrap:pretty;}
+.kw{color:var(--orange);font-weight:700;}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange);flex:none;}
+.eyebrow.on-dark{color:rgba(255,255,255,.7);}
+.eyebrow.on-orange{color:rgba(255,255,255,.85);}
+.eyebrow.on-orange::before{background:#fff;}
+.section-head{max-width:760px;margin-bottom:48px;}
+.section-head h2{margin-top:16px;}
+.section-head .lede{margin-top:18px;}
+.mono-chip{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.04em;
+  color:var(--text-secondary);background:var(--bg-secondary);border:1px solid var(--border);
+  padding:3px 9px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.mono-chip.illus{color:var(--orange);background:rgba(242,101,34,.08);border-color:rgba(242,101,34,.2);}
+
+/* Icons */
+.ico{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;}
+.ico.sm{width:16px;height:16px;}
+.ico.xs{width:13px;height:13px;stroke-width:2.4;}
+
+/* Buttons — flourish: 999px pills */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:999px;
+  font-weight:600;font-size:15px;letter-spacing:-0.005em;border:1.5px solid transparent;
+  white-space:nowrap;cursor:pointer;transition:transform .15s ease,background .15s ease,box-shadow .2s ease,border-color .15s ease,color .15s ease;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn:active{transform:translateY(0);}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 6px 18px -6px rgba(242,101,34,.5);}
+.btn-primary:hover{background:var(--orange-hover);box-shadow:0 10px 26px -8px rgba(242,101,34,.55);}
+.btn-secondary{background:transparent;color:var(--teal);border-color:rgba(27,107,107,.35);}
+.btn-secondary:hover{background:var(--light-teal);border-color:var(--teal);}
+.btn.on-dark.btn-secondary{color:#fff;border-color:rgba(255,255,255,.3);}
+.btn.on-dark.btn-secondary:hover{background:rgba(255,255,255,.08);}
+.btn.on-orange.btn-secondary{color:#fff;border-color:rgba(255,255,255,.5);}
+.btn.on-orange.btn-secondary:hover{background:rgba(255,255,255,.12);}
+.btn-arrow .ico{transition:transform .2s ease;}
+.btn-arrow:hover .ico{transform:translateX(3px);}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(150%) blur(14px);-webkit-backdrop-filter:saturate(150%) blur(14px);
+  border-bottom:1px solid var(--border);}
+.nav-row{display:flex;align-items:center;gap:28px;height:68px;}
+.nav-logo{height:34px;width:auto;}
+.nav-links{display:flex;gap:24px;margin-left:auto;font-size:14.5px;font-weight:500;color:var(--text-secondary);}
+.nav-links a{transition:color .15s ease;}
+.nav-links a:hover{color:var(--text-primary);}
+.nav-cta{display:flex;align-items:center;gap:14px;}
+.nav-cta .signin{font-size:14.5px;font-weight:500;color:var(--text-secondary);}
+.nav-cta .signin:hover{color:var(--text-primary);}
+@media(max-width:900px){.nav-links{display:none;}.nav-cta .signin{display:none;}}
+
+/* Hero */
+.hero{padding:72px 0 84px;position:relative;overflow:hidden;background:
+  radial-gradient(ellipse at 78% 8%,rgba(27,107,107,.06),transparent 55%),
+  radial-gradient(ellipse at 10% 90%,rgba(242,101,34,.05),transparent 55%),var(--bg-primary);}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:44px;}}
+.hero h1{margin-top:20px;}
+.hero .lede{margin-top:24px;}
+.hero-wedge{margin-top:22px;font-size:16px;font-weight:600;color:var(--teal);
+  border-left:3px solid var(--orange);padding-left:14px;line-height:1.4;}
+.hero-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
+.hero-meta{margin-top:28px;display:flex;gap:24px;flex-wrap:wrap;color:var(--text-secondary);font-size:13px;}
+.hero-meta span{display:inline-flex;align-items:center;gap:7px;}
+.hero-meta .tick{width:16px;height:16px;border-radius:50%;background:var(--success);color:#fff;display:grid;place-items:center;flex:none;}
+/* flourish: motion + depth */
+.hero-media{position:relative;}
+.hero-glow{position:absolute;inset:-30px;background:radial-gradient(ellipse at center,rgba(242,101,34,.1),transparent 70%);z-index:0;}
+.hero-photo{position:relative;z-index:1;border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--border);
+  box-shadow:0 2px 4px rgba(21,63,63,.05),0 24px 60px -24px rgba(21,63,63,.28);}
+.hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:5/4;}
+.hero-badge{position:absolute;z-index:2;top:22px;right:-12px;background:#fff;border:1px solid var(--border);
+  border-radius:999px;padding:8px 14px 8px 8px;display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;
+  box-shadow:0 14px 30px -12px rgba(21,63,63,.3);animation:float 4s ease-in-out infinite;}
+.hero-badge .coin{width:24px;height:24px;border-radius:50%;background:var(--coin);color:#fff;display:grid;place-items:center;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+@media(prefers-reduced-motion:reduce){.hero-badge{animation:none;}}
+
+/* Beats — alternating rows */
+.beats{background:var(--bg-secondary);}
+.beat{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:44px 0;border-bottom:1px solid var(--border);}
+.beat:last-of-type{border-bottom:0;}
+.beat.reverse .beat-text{order:2;}
+.beat.reverse .beat-visual{order:1;}
+@media(max-width:900px){.beat,.beat.reverse{grid-template-columns:1fr;gap:32px;}.beat.reverse .beat-text,.beat.reverse .beat-visual{order:unset;}}
+.beat-text h3{font-size:clamp(24px,2.6vw,32px);margin:14px 0 16px;}
+.beat-text p{font-size:16.5px;color:var(--text-secondary);line-height:1.6;}
+/* coded spot cards (flourish) */
+.spot{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:22px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:14px;}
+.spot-head{display:flex;align-items:center;gap:10px;}
+.spot-dot{width:9px;height:9px;border-radius:50%;flex:none;}
+.spot-label{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);}
+.spot-chip{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;}
+.spot-chip.teal{background:var(--light-teal);color:var(--teal);}
+.spot-spark{width:100%;height:88px;}
+.spot-row{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px dashed var(--border);}
+.spot-av{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;}
+.spot-row-t{flex:1;line-height:1.3;}
+.spot-row-t strong{font-size:14px;}
+.spot-row-t span{display:block;font-size:12px;color:var(--text-secondary);}
+.pill-tag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.04em;padding:4px 10px;border-radius:999px;}
+.pill-tag.flag{background:rgba(242,101,34,.1);color:var(--orange);}
+.pill-tag.verified{background:rgba(34,197,94,.12);color:#16884b;}
+.spot-event,.spot-outcome{display:flex;align-items:center;gap:12px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--r-md);padding:14px 16px;}
+.spot-event{justify-content:space-between;}
+.spot-event strong{font-size:15px;}
+.spot-event span{font-size:12px;color:var(--text-secondary);}
+.spot-badge{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--light-teal);color:var(--teal);flex:none;}
+.spot-badge.orange{background:rgba(242,101,34,.12);color:var(--orange);}
+.spot-outcome-t{flex:1;line-height:1.3;}
+.spot-outcome-t strong{font-size:14px;}
+.spot-outcome-t span{display:block;font-size:12px;color:var(--text-secondary);}
+.spot-coins{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--coin);}
+.spot-link{display:grid;place-items:center;color:var(--text-secondary);}
+.spot-rule{font-family:var(--mono);font-size:14px;line-height:1.8;color:var(--text-primary);background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--r-md);padding:14px 16px;}
+.spot-when{color:var(--teal);font-weight:700;}
+.spot-then{color:var(--orange);font-weight:700;}
+
+/* Mid CTA band */
+.midcta{background:var(--light-teal);padding:52px 0;}
+.midcta-inner{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;text-align:center;}
+.midcta h3{font-size:clamp(22px,2.4vw,30px);color:var(--teal-dark);}
+
+/* Teal loop section */
+.loopwrap{background:var(--teal-grad-160);color:#fff;position:relative;overflow:hidden;}
+.loopwrap::before{content:"";position:absolute;top:-30%;right:-8%;width:620px;height:620px;
+  background:radial-gradient(circle,rgba(242,101,34,.18),transparent 62%);pointer-events:none;}
+.loopwrap .lede{color:rgba(255,255,255,.78);}
+.loop-head{max-width:820px;margin:0 auto 44px;text-align:center;position:relative;z-index:1;}
+.loop-head h2{color:#fff;margin-top:16px;}
+.loop-mock{max-width:520px;margin:0 auto 40px;position:relative;z-index:1;}
+.agent-card{background:#fff;color:var(--text-primary);border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:0 30px 70px -24px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);}
+.agent-top{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--border);font-size:13px;font-weight:600;}
+.agent-top .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 3px rgba(242,101,34,.2);}
+.agent-top .name{flex:1;color:var(--text-secondary);}
+.agent-top .badge{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  background:rgba(242,101,34,.14);color:var(--orange);padding:3px 8px;border-radius:999px;}
+.agent-body{padding:18px;display:flex;flex-direction:column;gap:12px;}
+.agent-signal{display:flex;gap:12px;align-items:flex-start;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--r-md);padding:14px;}
+.agent-signal .ic{width:34px;height:34px;border-radius:9px;background:rgba(34,197,94,.12);color:#16884b;display:grid;place-items:center;flex:none;}
+.agent-signal strong{font-size:13px;}
+.agent-signal p{font-size:13px;color:var(--text-secondary);margin-top:2px;}
+.agent-msg{display:flex;gap:10px;align-items:flex-start;}
+.agent-msg .av{width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;flex:none;}
+.agent-bubble{background:var(--light-teal);border-radius:4px 14px 14px 14px;padding:11px 14px;font-size:13.5px;line-height:1.45;}
+.agent-draft{background:var(--cream);border:1px solid var(--sand);border-radius:var(--r-md);padding:14px;}
+.agent-draft .lbl{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);}
+.agent-draft p{font-size:13.5px;font-style:italic;color:var(--text-primary);margin:8px 0 12px;line-height:1.5;}
+.agent-actions{display:flex;gap:8px;}
+.mini-btn{font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;}
+.mini-btn.primary{background:var(--orange);color:#fff;}
+.mini-btn.ghost{background:var(--bg-secondary);color:var(--text-secondary);border:1px solid var(--border);}
+.agent-fire{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--coin);
+  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:var(--r-md);padding:10px 14px;}
+/* loop step cards on teal (glass — flourish) */
+.loop-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:1;margin-bottom:36px;}
+@media(max-width:860px){.loop-cards{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.loop-cards{grid-template-columns:1fr;}}
+.loop-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-md);
+  padding:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.loop-card .ic{width:38px;height:38px;border-radius:10px;background:rgba(242,101,34,.2);color:#ffb27d;display:grid;place-items:center;margin-bottom:14px;}
+.loop-card h4{color:#fff;font-size:15px;margin-bottom:6px;}
+.loop-card p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5;}
+.loop-band{position:relative;z-index:1;text-align:center;}
+.loop-flow{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;
+  background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:12px 20px;margin-bottom:26px;}
+.loop-flow .step{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.85);}
+.loop-flow .arw{color:var(--orange);}
+.loop-flow .step.hot{color:#ffb27d;}
+
+/* Four people */
+.people{background:var(--bg-primary);}
+.people-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+@media(max-width:980px){.people-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.people-grid{grid-template-columns:1fr;}}
+.person{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);transition:transform .25s ease,box-shadow .25s ease;}
+.person:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(21,63,63,.25);}
+.person-photo{aspect-ratio:4/3;overflow:hidden;}
+.person-photo img{width:100%;height:100%;object-fit:cover;}
+.person-body{padding:20px;}
+.person-role{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);}
+.person-body h4{font-size:17px;margin:8px 0 8px;}
+.person-body p{font-size:14px;color:var(--text-secondary);line-height:1.5;}
+.people-cta{text-align:center;margin-top:44px;}
+
+/* Intelligence flow */
+.flow{background:var(--bg-secondary);}
+.flow-rail{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap;justify-content:center;}
+.flow-node{flex:1;min-width:150px;max-width:210px;background:#fff;border:1px solid var(--border);border-radius:var(--r-md);
+  padding:18px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.flow-node .ic{width:34px;height:34px;border-radius:9px;background:var(--light-teal);color:var(--teal);display:grid;place-items:center;margin-bottom:12px;}
+.flow-node .n{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--text-secondary);letter-spacing:.1em;}
+.flow-node h4{font-size:15px;margin:4px 0 6px;}
+.flow-node p{font-size:12.5px;color:var(--text-secondary);line-height:1.45;}
+.flow-node.ai{background:var(--teal-grad);border-color:transparent;color:#fff;}
+.flow-node.ai .ic{background:rgba(242,101,34,.22);color:#ffb27d;}
+.flow-node.ai .n{color:rgba(255,255,255,.6);}
+.flow-node.ai h4{color:#fff;}
+.flow-node.ai p{color:rgba(255,255,255,.72);}
+.flow-arrow{display:grid;place-items:center;color:var(--orange);flex:none;}
+@media(max-width:820px){.flow-arrow{transform:rotate(90deg);}.flow-node{max-width:none;}}
+.flow-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1.4;min-width:280px;}
+@media(max-width:520px){.flow-pair{grid-template-columns:1fr;}}
+.flow-steps{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:30px;}
+.flow-step{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--teal);background:var(--light-teal);
+  border-radius:999px;padding:8px 16px;}
+.flow-step.hot{background:rgba(242,101,34,.1);color:var(--orange);}
+.flow-feedback{margin-top:28px;text-align:center;}
+.flow-feedback span{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--teal-dark);
+  background:#fff;border:1px dashed var(--teal);border-radius:999px;padding:10px 20px;}
+.flow-feedback .ico{color:var(--orange);}
+
+/* Integrations */
+.ints{background:var(--bg-primary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 0;}
+.ints-head{text-align:center;margin-bottom:30px;}
+.ints-head .title{font-size:20px;font-weight:700;letter-spacing:-0.01em;}
+.ints-head .sub{font-size:14px;color:var(--text-secondary);margin-top:8px;}
+.ints-head .sub b{color:var(--orange);}
+.ints-row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 40px;}
+.int{font-size:18px;font-weight:700;color:var(--text-secondary);letter-spacing:-0.01em;opacity:.75;transition:opacity .2s ease,color .2s ease;}
+.int:hover{opacity:1;color:var(--teal);}
+.int b{color:var(--teal);font-weight:800;}
+
+/* Orange outcome */
+.outcome{background:var(--orange);color:#fff;position:relative;overflow:hidden;}
+.outcome::before{content:"";position:absolute;bottom:-30%;left:-6%;width:560px;height:560px;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 60%);pointer-events:none;}
+.outcome .section-head{position:relative;z-index:1;}
+.outcome h2{color:#fff;}
+.outcome .lede{color:rgba(255,255,255,.85);}
+.outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;z-index:1;}
+@media(max-width:860px){.outcome-grid{grid-template-columns:1fr;}}
+.oc-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-lg);
+  padding:28px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+.oc-card .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);color:#fff;display:grid;place-items:center;margin-bottom:18px;}
+.oc-card h4{font-size:19px;color:#fff;margin-bottom:10px;}
+.oc-card p{font-size:14.5px;color:rgba(255,255,255,.85);line-height:1.55;}
+
+/* Employee stats */
+.emp{background:var(--cream);}
+.emp .section-head{text-align:center;max-width:720px;margin-inline:auto;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);}
+@media(max-width:840px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr;}}
+.stat{padding:34px 26px;border-right:1px solid var(--sand);}
+.stat:last-child{border-right:0;}
+@media(max-width:840px){.stat:nth-child(2){border-right:0;}}
+.stat .num{font-size:46px;font-weight:800;letter-spacing:-0.03em;line-height:1;color:var(--teal);font-variant-numeric:tabular-nums;}
+.stat .num.orange{color:var(--orange);}
+.stat p{font-size:14.5px;color:var(--text-primary);font-weight:500;margin-top:12px;}
+.stat .src{font-family:var(--mono);font-size:11px;color:var(--text-secondary);letter-spacing:.04em;margin-top:6px;display:block;}
+.emp-foot{text-align:center;margin-top:26px;}
+
+/* Testimonials — warm flourish */
+.tst{background:var(--bg-primary);}
+.tst .section-head{text-align:center;max-width:720px;margin-inline:auto;}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.tst-grid{grid-template-columns:1fr;}}
+.tst-card{background:var(--cream);border:1px solid var(--sand);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;gap:18px;}
+.tst-metric{display:flex;align-items:baseline;gap:10px;}
+.tst-metric .big{font-size:34px;font-weight:800;color:var(--orange);letter-spacing:-0.03em;line-height:1;}
+.tst-metric .sub{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-secondary);}
+.tst-quote{font-size:15.5px;line-height:1.6;color:var(--text-primary);font-weight:500;flex:1;text-wrap:pretty;}
+.tst-attr{display:flex;align-items:center;gap:13px;padding-top:16px;border-top:1px solid var(--sand);}
+.tst-attr img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none;}
+.tst-attr strong{display:block;font-size:14px;}
+.tst-attr span{font-size:12.5px;color:var(--text-secondary);}
+
+/* CTA */
+.cta{padding:96px 0;}
+.cta-card{background:var(--teal-grad-160);color:#fff;border-radius:var(--r-xl);padding:80px 60px;text-align:center;position:relative;overflow:hidden;}
+@media(max-width:640px){.cta-card{padding:52px 26px;}}
+.cta-card::before{content:"";position:absolute;top:-40%;right:-8%;width:600px;height:600px;background:radial-gradient(circle,rgba(242,101,34,.22),transparent 62%);pointer-events:none;}
+.cta-card>*{position:relative;z-index:1;}
+.cta-card h2{color:#fff;max-width:18ch;margin:0 auto;}
+.cta-card .lede{color:rgba(255,255,255,.8);margin:18px auto 0;max-width:52ch;}
+.cta-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+.cta-input{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.24);
+  border-radius:999px;padding:4px 6px 4px 18px;min-width:300px;}
+.cta-input .ico{color:rgba(255,255,255,.6);}
+.cta-input input{flex:1;background:transparent;border:0;outline:0;color:#fff;font-family:var(--font);font-size:15px;padding:11px 6px;}
+.cta-input input::placeholder{color:rgba(255,255,255,.55);}
+.cta-alt{margin-top:18px;}
+.cta-alt a{display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:14px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px;}
+.cta-note{margin-top:22px;font-size:12.5px;color:rgba(255,255,255,.6);}
+
+/* Footer */
+footer{background:var(--teal-dark);color:rgba(255,255,255,.7);padding:64px 0 30px;}
+.foot-statement{font-size:clamp(26px,3vw,40px);font-weight:800;letter-spacing:-0.03em;color:#fff;line-height:1.1;}
+.foot-statement .em{color:var(--orange);}
+.foot-logo{height:40px;width:auto;margin-top:32px;}
+.foot-links{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px;font-size:14px;}
+.foot-links a{color:rgba(255,255,255,.72);}
+.foot-links a:hover{color:#fff;}
+.foot-meta{display:flex;flex-wrap:wrap;gap:20px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.5);}
+</style>
+</head>
+<body>
+
+<!-- Icon sprite (Lucide-style) -->
+<svg class="sprite" aria-hidden="true"><defs>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+<symbol id="i-loop" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></symbol>
+<symbol id="i-trending" viewBox="0 0 24 24"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></symbol>
+<symbol id="i-message" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+</defs></svg>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="container nav-row">
+    <a href="#" aria-label="PraiseLoop"><img class="nav-logo" src="praiseloop-logo.png" alt="PraiseLoop" /></a>
+    <nav class="nav-links">
+      <a href="#platform">Platform</a>
+      <a href="#loop">The Loop</a>
+      <a href="#who">Who it's for</a>
+      <a href="#proof">Proof</a>
+      <a href="/blog">Blog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://app.praiseloop.com" class="signin">Sign in</a>
+      <a href="/demo" class="btn btn-primary" style="padding:9px 18px;font-size:14px;">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">AI-Powered · Performance · Recognition · Rewards</span>
+      <h1>The AI loop that turns <span class="kw">performance</span>, <span class="kw">recognition</span> and <span class="kw">reward</span> into ROI.</h1>
+      <p class="lede">PraiseLoop plugs into the systems where work is already measured. When a verified KPI lands, recognition and reward fire automatically — and the AI shows managers who's driving performance and who needs support.</p>
+      <p class="hero-wedge">Rewards are earned, not given. If the result didn't happen, the reward doesn't exist.</p>
+      <div class="hero-cta">
+        <a href="/demo" class="btn btn-primary btn-arrow">Book a demo <svg class="ico sm"><use href="#i-arrow"/></svg></a>
+        <a href="#loop" class="btn btn-secondary">See how the loop works</a>
+      </div>
+      <div class="hero-meta">
+        <span><span class="tick"><svg class="ico xs"><use href="#i-check"/></svg></span> Rewards fire from verified results</span>
+        <span><span class="tick"><svg class="ico xs"><use href="#i-check"/></svg></span> AI flags who's slipping, early</span>
+        <span><span class="tick"><svg class="ico xs"><use href="#i-check"/></svg></span> Live in two weeks</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-glow"></div>
+      <div class="hero-photo"><img src="team-recognition.webp" alt="A team celebrating a colleague's win together" /></div>
+      <div class="hero-badge"><span class="coin"><svg class="ico sm"><use href="#i-zap"/></svg></span> +500 coins · deal closed</div>
+    </div>
+  </div>
+</section>
+
+<!-- Three beats -->
+<section id="platform" class="beats">
+  <div class="container">
+    <div class="section-head" style="max-width:820px;">
+      <span class="eyebrow">One loop, in this order</span>
+      <h2><span class="kw">Performance</span>, <span class="kw">recognition</span> and <span class="kw">reward</span> — one system, not three tools.</h2>
+      <p class="lede">Performance comes first. Recognition is what it earns. Reward is what makes it repeat. Here is each stage on its own — then the loop that connects them.</p>
+    </div>
+
+    <div class="beat">
+      <div class="beat-text">
+        <span class="eyebrow">Step one · Performance</span>
+        <h3>Turn underperformance into <span class="kw">high performance</span>.</h3>
+        <p>Most organisations know who is underperforming — not why. PraiseLoop reads the behaviours, engagement and KPIs you already track, spots who's slipping early and surfaces the silent heroes nobody noticed. Managers get a real-time picture and the next best action — not a once-a-year review.</p>
+      </div>
+      <div class="beat-visual">
+        <div class="spot">
+          <div class="spot-head"><span class="spot-dot" style="background:var(--teal)"></span><span class="spot-label">Performance signal</span><span class="spot-chip teal">+14% KPI</span></div>
+          <svg class="spot-spark" viewBox="0 0 320 88" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B6B6B" stop-opacity=".16"/><stop offset="1" stop-color="#1B6B6B" stop-opacity="0"/></linearGradient></defs>
+            <path d="M8 68 L58 60 L108 64 L158 46 L208 40 L258 28 L310 16 L310 88 L8 88 Z" fill="url(#g1)"/>
+            <path d="M8 68 L58 60 L108 64 L158 46 L208 40 L258 28 L310 16" fill="none" stroke="#1B6B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="310" cy="16" r="5" fill="#F26522" stroke="#fff" stroke-width="2"/>
+          </svg>
+          <div class="spot-row"><span class="spot-av">RS</span><div class="spot-row-t"><strong>Ravi Shah</strong><span>Silent hero — consistent, unseen</span></div><span class="pill-tag flag">Flagged</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="beat reverse">
+      <div class="beat-text">
+        <span class="eyebrow">Step two · Recognition</span>
+        <h3><span class="kw">Performance</span> earns recognition.</h3>
+        <p>Traditional tools reward effort, opinion, or whoever remembers to fill in the nomination form. PraiseLoop ties recognition to verified outcomes — a closed deal, a resolved incident, a hit KPI. Recognition becomes the result of performance, drafted in the manager's voice and sent in one click.</p>
+      </div>
+      <div class="beat-visual">
+        <div class="spot">
+          <div class="spot-head"><span class="spot-dot" style="background:var(--orange)"></span><span class="spot-label">Recognition · earned</span></div>
+          <div class="spot-event"><div><strong>Deal closed</strong><br><span>$68K · Q3 renewal</span></div><span class="pill-tag verified"><svg class="ico xs" style="display:inline;vertical-align:-2px"><use href="#i-check"/></svg> Verified · CRM</span></div>
+          <div class="spot-link"><svg class="ico sm" style="transform:rotate(90deg)"><use href="#i-arrow"/></svg></div>
+          <div class="spot-outcome"><span class="spot-badge"><svg class="ico sm"><use href="#i-trophy"/></svg></span><div class="spot-outcome-t"><strong>Recognition drafted</strong><span>in the manager's voice</span></div><span class="spot-coins">+250</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="beat">
+      <div class="beat-text">
+        <span class="eyebrow">Step three · Reward</span>
+        <h3>Recognise improvement. <span class="kw">Reward</span> excellence.</h3>
+        <p>Write a rule in plain English — "close a deal over $10K, award 500 coins" — and the reward fires on its own when the result lands, with budget limits built in. As people hit KPIs and improve, they unlock rewards and growth. Progress becomes visible, celebrated, and worth something.</p>
+      </div>
+      <div class="beat-visual">
+        <div class="spot">
+          <div class="spot-head"><span class="spot-dot" style="background:var(--orange)"></span><span class="spot-label">Reward rule</span></div>
+          <div class="spot-rule"><span class="spot-when">WHEN</span> deal value &gt; <b>$10K</b><br><span class="spot-then">THEN</span> award <b>500 coins</b></div>
+          <div class="spot-link"><svg class="ico sm" style="transform:rotate(90deg)"><use href="#i-arrow"/></svg></div>
+          <div class="spot-outcome"><span class="spot-badge orange"><svg class="ico sm"><use href="#i-zap"/></svg></span><div class="spot-outcome-t"><strong>Reward fired</strong><span>tied to the result · budget ok</span></div><span class="spot-coins">+500</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mid CTA -->
+<div class="midcta">
+  <div class="container midcta-inner">
+    <h3>Ready to turn performance into measurable ROI?</h3>
+    <a href="/demo" class="btn btn-primary btn-arrow">Book a demo <svg class="ico sm"><use href="#i-arrow"/></svg></a>
+  </div>
+</div>
+
+<!-- Teal loop section -->
+<section id="loop" class="loopwrap">
+  <div class="container">
+    <div class="loop-head">
+      <span class="eyebrow on-dark">The AI performance loop</span>
+      <h2>Measure. Coach. Improve.<br>Recognise. <span class="kw">Reward</span>. Repeat.</h2>
+      <p class="lede" style="margin:16px auto 0;">The AI Deputy watches the outcomes you already track, spots the moment worth recognising, drafts the note in the manager's voice — then fires the reward and measures what actually moved. You stay in control the whole way.</p>
+    </div>
+
+    <div class="loop-mock">
+      <div class="agent-card">
+        <div class="agent-top"><span class="dot"></span><span class="name">PraiseLoop · AI Deputy</span><span class="badge">Working</span></div>
+        <div class="agent-body">
+          <div class="agent-signal"><span class="ic"><svg class="ico sm"><use href="#i-zap"/></svg></span><div><strong>Verified result · from your CRM</strong><p>Ravi closed 2 deals last week — $68K new revenue.</p></div></div>
+          <div class="agent-msg"><span class="av"><svg class="ico sm"><use href="#i-spark"/></svg></span><div class="agent-bubble">Ravi hasn't been recognised in <b>32 days</b>. Want to send praise in your voice?</div></div>
+          <div class="agent-draft"><span class="lbl">Drafted for you</span><p>"Ravi — two closes in a week is exceptional. That $68K moves the whole quarter. Thank you."</p><div class="agent-actions"><span class="mini-btn primary"><svg class="ico xs"><use href="#i-check"/></svg> Approve &amp; send</span><span class="mini-btn ghost">Edit</span></div></div>
+          <div class="agent-fire"><svg class="ico sm"><use href="#i-zap"/></svg> Reward fired · <b>+500 coins</b> · tied to the result</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loop-cards">
+      <div class="loop-card"><span class="ic"><svg class="ico sm"><use href="#i-chart"/></svg></span><h4>Measure</h4><p>Verified results land from CRM, HRIS and help desk — automatically.</p></div>
+      <div class="loop-card"><span class="ic"><svg class="ico sm"><use href="#i-eye"/></svg></span><h4>Analyse</h4><p>Silent heroes surface; whoever's slipping is flagged early.</p></div>
+      <div class="loop-card"><span class="ic"><svg class="ico sm"><use href="#i-message"/></svg></span><h4>Coach</h4><p>The next best action, drafted in the manager's own voice.</p></div>
+      <div class="loop-card"><span class="ic"><svg class="ico sm"><use href="#i-trending"/></svg></span><h4>Improve</h4><p>Reward fires, tied to the result — and performance compounds.</p></div>
+    </div>
+
+    <div class="loop-band">
+      <div class="loop-flow">
+        <span class="step">Measure</span><span class="arw">→</span>
+        <span class="step">Analyse</span><span class="arw">→</span>
+        <span class="step">Coach</span><span class="arw">→</span>
+        <span class="step">Improve</span><span class="arw">→</span>
+        <span class="step hot">Recognise</span><span class="arw">→</span>
+        <span class="step hot">Reward</span><span class="arw">→</span>
+        <span class="step">Repeat</span>
+      </div>
+      <div><a href="/demo" class="btn btn-primary btn-arrow">Book a demo <svg class="ico sm"><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Four people -->
+<section id="who" class="people">
+  <div class="container">
+    <div class="section-head" style="max-width:760px;">
+      <span class="eyebrow">Built for the whole performance chain</span>
+      <h2>One loop. Four people who feel it every day.</h2>
+      <p class="lede">From the frontline to the CFO reading the day-90 report, PraiseLoop gives everyone the same verified view of what good performance looks like — and what it's worth.</p>
+    </div>
+    <div class="people-grid">
+      <div class="person">
+        <div class="person-photo"><img src="recognition-moment.webp" alt="An employee being recognised by peers" /></div>
+        <div class="person-body"><span class="person-role">Employees</span><h4>Seen when it's earned</h4><p>Recognised the moment they hit the result — not once a year, and never overlooked.</p></div>
+      </div>
+      <div class="person">
+        <div class="person-photo"><img src="manager-moment.webp" alt="A sales manager recognising a team member" /></div>
+        <div class="person-body"><span class="person-role">Sales Managers</span><h4>Praise in ten seconds</h4><p>The recognition their team deserves, drafted by the AI and sent with one click.</p></div>
+      </div>
+      <div class="person">
+        <div class="person-photo"><img src="person-executive.jpg" alt="An HR director reviewing retention data" /></div>
+        <div class="person-body"><span class="person-role">HR Directors</span><h4>Fewer regretted exits</h4><p>Retention lift you can prove — and the report that turns recognition spend into an investment.</p></div>
+      </div>
+      <div class="person">
+        <div class="person-photo"><img src="person-analytics.jpg" alt="A sales director reviewing performance analytics" /></div>
+        <div class="person-body"><span class="person-role">Sales Directors</span><h4>Recognition that moves quota</h4><p>Which recognition drives real deals — and which does nothing — on your own numbers.</p></div>
+      </div>
+    </div>
+    <div class="people-cta"><a href="/demo" class="btn btn-secondary btn-arrow">Book a demo <svg class="ico sm"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+
+<!-- Intelligence flow -->
+<section id="how" class="flow">
+  <div class="container">
+    <div class="section-head" style="max-width:760px;">
+      <span class="eyebrow">How it works</span>
+      <h2>The PraiseLoop intelligence flow.</h2>
+      <p class="lede">From the systems that already hold your data to the reward that changes behaviour, every step is connected in one continuous AI loop.</p>
+    </div>
+
+    <div class="flow-rail">
+      <div class="flow-node"><span class="ic"><svg class="ico sm"><use href="#i-link"/></svg></span><span class="n">01</span><h4>Connect</h4><p>CRM, HRIS and help desk — verified data flows in, no manual entry.</p></div>
+      <div class="flow-arrow"><svg class="ico"><use href="#i-arrow"/></svg></div>
+      <div class="flow-node"><span class="ic"><svg class="ico sm"><use href="#i-target"/></svg></span><span class="n">02</span><h4>Align</h4><p>Map every event to the KPIs and performance signals that matter.</p></div>
+      <div class="flow-arrow"><svg class="ico"><use href="#i-arrow"/></svg></div>
+      <div class="flow-node"><span class="ic"><svg class="ico sm"><use href="#i-eye"/></svg></span><span class="n">03</span><h4>Uncover</h4><p>Silent heroes and early risk, surfaced before it's a resignation.</p></div>
+      <div class="flow-arrow"><svg class="ico"><use href="#i-arrow"/></svg></div>
+      <div class="flow-pair">
+        <div class="flow-node ai"><span class="ic"><svg class="ico sm"><use href="#i-spark"/></svg></span><span class="n">AI · Managers</span><h4>AI Deputy</h4><p>Drafts recognition, coaching and the next best action.</p></div>
+        <div class="flow-node ai"><span class="ic"><svg class="ico sm"><use href="#i-users"/></svg></span><span class="n">AI · Employees</span><h4>AI Assistant</h4><p>Nudges, feedback and rewards based on behaviour and KPIs.</p></div>
+      </div>
+    </div>
+
+    <div class="flow-steps">
+      <span class="flow-step">Manager approves</span>
+      <svg class="ico sm" style="color:var(--orange)"><use href="#i-arrow"/></svg>
+      <span class="flow-step">Coach</span>
+      <svg class="ico sm" style="color:var(--orange)"><use href="#i-arrow"/></svg>
+      <span class="flow-step hot">Recognise</span>
+      <svg class="ico sm" style="color:var(--orange)"><use href="#i-arrow"/></svg>
+      <span class="flow-step hot">Reward</span>
+    </div>
+
+    <div class="flow-feedback"><span><svg class="ico sm"><use href="#i-loop"/></svg> Performance improvement feeds back into the loop — every measured result sharpens the next.</span></div>
+  </div>
+</section>
+
+<!-- Integrations -->
+<div class="ints">
+  <div class="container">
+    <div class="ints-head">
+      <p class="title">Zero integrations required to start</p>
+      <p class="sub">Connect your CRM, help desk and HRIS whenever you're ready — <b>25+ integrations</b> ready to go.</p>
+    </div>
+    <div class="ints-row">
+      <span class="int"><b>Workday</b></span>
+      <span class="int">SAP <b>SuccessFactors</b></span>
+      <span class="int"><b>ADP</b></span>
+      <span class="int"><b>Bamboo</b>HR</span>
+      <span class="int"><b>Hi</b>Bob</span>
+      <span class="int"><b>Salesforce</b></span>
+      <span class="int"><b>Hub</b>Spot</span>
+      <span class="int">Microsoft <b>Teams</b></span>
+      <span class="int"><b>Slack</b></span>
+    </div>
+  </div>
+</div>
+
+<!-- Orange outcome -->
+<section class="outcome">
+  <div class="container">
+    <div class="section-head" style="max-width:760px;">
+      <span class="eyebrow on-orange">The outcome</span>
+      <h2>Performance intelligence that actually shows up in the numbers.</h2>
+      <p class="lede">PraiseLoop doesn't just make recognition easier. It closes the loop between workforce behaviour and business results — every team, every KPI.</p>
+    </div>
+    <div class="outcome-grid">
+      <div class="oc-card"><span class="ic"><svg class="ico"><use href="#i-zap"/></svg></span><h4>Turn performance into action</h4><p>Verified KPIs trigger recognition automatically — no manual tracking, no missed moments, no forms to chase.</p></div>
+      <div class="oc-card"><span class="ic"><svg class="ico"><use href="#i-message"/></svg></span><h4>Coach, not just cheer</h4><p>The AI spots who needs support and recommends the next step, so managers lead with intent instead of guessing.</p></div>
+      <div class="oc-card"><span class="ic"><svg class="ico"><use href="#i-chart"/></svg></span><h4>Report ROI, not just recognition</h4><p>Engagement, retention and performance tied to real outcomes — the one page your CFO can actually defend.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Employee stats -->
+<section class="emp">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="justify-content:center;display:flex;">The employee side</span>
+      <h2>Reward the right behaviours, and <span class="kw">performance compounds</span>.</h2>
+      <p class="lede" style="margin-inline:auto;">Every recognised action is a signal. Repeated across a team, those behaviours become how the workforce operates — and the numbers follow. <span class="mono-chip illus">Illustrative</span></p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="num" data-count="14" data-suffix="%" data-prefix="+">+14%</div><p>Performance lift on the KPIs you already track</p><span class="src">recognised vs unrecognised</span></div>
+      <div class="stat"><div class="num orange" data-count="22" data-suffix="%" data-prefix="−">−22%</div><p>Regretted attrition in the first two quarters</p><span class="src">pilot cohort</span></div>
+      <div class="stat"><div class="num" data-count="9" data-suffix="%" data-prefix="−">−9%</div><p>Absenteeism across recognised teams</p><span class="src">rolling 90-day</span></div>
+      <div class="stat"><div class="num orange" data-count="10" data-suffix="s">10s</div><p>Manager time to send a verified recognition</p><span class="src">draft → approve → send</span></div>
+    </div>
+    <div class="emp-foot"><a href="/demo" class="btn btn-primary btn-arrow">Run it on your data <svg class="ico sm"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="proof" class="tst">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="justify-content:center;display:flex;">What a strong first year looks like</span>
+      <h2>Loved by HR, Sales and the people they lead.</h2>
+      <p class="lede" style="margin-inline:auto;">Illustrative composites, modelled on published recognition research — told the way your own day-90 report will read. <span class="mono-chip illus">Illustrative</span></p>
+    </div>
+    <div class="tst-grid">
+      <div class="tst-card">
+        <div class="tst-metric"><span class="big">−24%</span><span class="sub">voluntary turnover</span></div>
+        <p class="tst-quote">"We used to run recognition on gut feel. PraiseLoop showed us which teams were being completely overlooked — and within a quarter, voluntary turnover dropped measurably."</p>
+        <div class="tst-attr"><img src="heather.png" alt="" /><div><strong>Head of People Operations</strong><span>Mid-market technology company · illustrative</span></div></div>
+      </div>
+      <div class="tst-card">
+        <div class="tst-metric"><span class="big">3.2×</span><span class="sub">budget ROI</span></div>
+        <p class="tst-quote">"The moment our CFO saw recognition spend tied to actual retention numbers, the budget conversation changed completely. It went from a cost line to an investment."</p>
+        <div class="tst-attr"><img src="john.png" alt="" /><div><strong>VP of HR</strong><span>Regional services organisation · illustrative</span></div></div>
+      </div>
+      <div class="tst-card">
+        <div class="tst-metric"><span class="big">+41%</span><span class="sub">engagement score</span></div>
+        <p class="tst-quote">"Our field teams were invisible in the old system. Silent-hero detection flagged 12 consistent performers nobody was recognising. Engagement scores jumped the next quarter."</p>
+        <div class="tst-attr"><img src="joe.png" alt="" /><div><strong>Regional HR Director</strong><span>Global operations company · illustrative</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="container">
+    <div class="cta-card">
+      <span class="eyebrow on-dark" style="justify-content:center;display:flex;">Get started</span>
+      <h2>Turn measured results into measured ROI.</h2>
+      <p class="lede">See the loop running on your own KPIs. Book a walkthrough and we'll model the day-90 report on your pilot department.</p>
+      <form class="cta-form" action="/demo" method="get" onsubmit="return true;">
+        <span class="cta-input"><svg class="ico sm"><use href="#i-mail"/></svg><input type="email" name="email" placeholder="you@company.com" aria-label="Work email" /></span>
+        <button type="submit" class="btn btn-primary btn-arrow on-dark">Get the walkthrough <svg class="ico sm"><use href="#i-arrow"/></svg></button>
+      </form>
+      <div class="cta-alt"><a href="/demo"><svg class="ico sm"><use href="#i-calendar"/></svg> or schedule a meeting</a></div>
+      <p class="cta-note">No spam. Just the loop, your KPIs, and the ROI it makes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p class="foot-statement">Rewards are <span class="em">earned</span>,<br>not given.</p>
+    <img class="foot-logo" src="praiseloop-logo-white.png" alt="PraiseLoop" />
+    <nav class="foot-links">
+      <a href="#platform">Platform</a>
+      <a href="#loop">The Loop</a>
+      <a href="#who">Who it's for</a>
+      <a href="#proof">Proof</a>
+      <a href="#how">How it works</a>
+      <a href="/blog">Blog</a>
+      <a href="/demo">Contact</a>
+    </nav>
+    <div class="foot-meta">
+      <span>© 2026 PraiseLoop</span>
+      <span>Dubai · Riyadh · London</span>
+      <span>hello@praiseloop.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* flourish: count-up on stats, reduced-motion aware */
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums = document.querySelectorAll('.stat .num[data-count]');
+  if(reduce || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target, target = parseFloat(el.getAttribute('data-count'));
+      var pre = el.getAttribute('data-prefix')||'', suf = el.getAttribute('data-suffix')||'';
+      var start = null, dur = 1100;
+      function tick(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/dur, 1);
+        var val = Math.round(target * (1 - Math.pow(1-p,3)));
+        el.textContent = pre + val + suf;
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, {threshold:0.6});
+  nums.forEach(function(n){ io.observe(n); });
+})();
+</script>
+
+</body>
+</html>

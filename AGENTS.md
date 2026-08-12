@@ -1,6 +1,6 @@
-# CLAUDE.md — PraiseLoop Marketing Website
+# AGENTS.md — PraiseLoop Marketing Website
 
-Guidance for Claude Code when working in this repo. The user's email is duncan@buildink.co.
+Guidance for Codex when working in this repo. The user's email is duncan@buildink.co.
 
 Marketing site for **PraiseLoop** (performance-linked employee recognition) with a Sanity-backed blog. Deployed on **Vercel**.
 
@@ -31,14 +31,11 @@ Marketing site for **PraiseLoop** (performance-linked employee recognition) with
 | `sanity/lib/queries.ts` | GROQ queries (list, by-slug w/ pillar+clusters) |
 | `sanity/lib/client.ts` | Studio/config client — **throws** if env is missing (do not use for public reads) |
 | `scripts/import-blog-post.mjs` | Creates the first pillar post (P1) via the Sanity API |
-| `DESIGN.md` | **Product-app** design system — canonical token source of truth |
-| `DESIGN.web.md` | **Marketing/web** design system — flourishes + section patterns (pilot: `public/v2.html`) |
+| `DESIGN.md` | Design system reference |
 
 ## Design system
 
-Colors, buttons (`.btn`, `.btn-primary`), `.eyebrow`, `.container`, cards, and mock UIs are defined in `src/app/globals.css`. **Reuse existing classes; match the surrounding style before adding new CSS.**
-
-**Design direction (in progress):** the marketing site is being realigned to the tokens in `DESIGN.md` (Figtree, orange `#F26522`, teal-forward) plus the marketing flourishes documented in **`DESIGN.web.md`**. The pilot is `public/v2.html`; the current homepage (`globals.css` + `LandingPage.tsx`) is still on the older Manrope / `#FF5B04` / warm-cream look and will be retuned to match once the pilot is approved. **When building new marketing UI, follow `DESIGN.web.md`.**
+Colors, buttons (`.btn`, `.btn-primary`), `.eyebrow`, `.container`, cards, and mock UIs are all defined in `src/app/globals.css`. **Reuse existing classes; match the surrounding style before adding new CSS.** Warm palette on `--surface`, orange accent `--orange` (#FF5B04), navy/teal supporting tones. See `DESIGN.md`.
 
 ## Sanity & environment variables
 
