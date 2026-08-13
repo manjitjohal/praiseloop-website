@@ -33,6 +33,10 @@ const Icon = {
   Calendar: svg(<><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></>),
   Send: svg(<><path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4Z" /></>),
   Check: svg(<path d="M20 6 9 17l-5-5" />),
+  Message: svg(<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />),
+  Heart: svg(<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />),
+  Alert: svg(<><circle cx="12" cy="12" r="10" /><path d="M12 8v4" /><path d="M12 16h.01" /></>),
+  ArrowUp: svg(<><path d="M12 19V5" /><path d="m5 12 7-7 7 7" /></>),
   Quote: (p: IP) => (
     <svg className="ico" viewBox="0 0 24 24" {...p}>
       <path d="M7.5 4C5 4 3 6 3 8.7c0 2.4 1.7 4.3 4 4.6-.2 1.8-1.3 3-3 3.6-.4.2-.5.7-.2 1 .2.3.6.4.9.2C8 16.9 10 14 10 10.2V8.7C10 6 9.9 4 7.5 4Zm11 0C16 4 14 6 14 8.7c0 2.4 1.7 4.3 4 4.6-.2 1.8-1.3 3-3 3.6-.4.2-.5.7-.2 1 .2.3.6.4.9.2C19 16.9 21 14 21 10.2V8.7C21 6 20.9 4 18.5 4Z" />
@@ -364,69 +368,23 @@ const People = () => (
 );
 
 /* ── Intelligence flow — closed loop ring ─────────────── */
-const RING_BACKDROP = "/loop-art-1.png";
+const SigArrow = () => <span className="sig-arrow"><Icon.Arrow /></span>;
 
-const RING = [
-  { Ico: Icon.Database, label: "Connect", sub: "HRIS, CRM, ATS & engagement", angle: -90 },
-  { Ico: Icon.Target, label: "Align", sub: "Map to KPIs & metrics", angle: -30 },
-  { Ico: Icon.Bulb, label: "Uncover", sub: "Performance & behaviour insight", angle: 30 },
-  { Ico: Icon.Users, label: "Coach", sub: "1:1 coaching & initiatives", angle: 90, hot: false },
-  { Ico: Icon.Sparkles, label: "Recognise", sub: "Celebrate across the org", angle: 150, hot: true },
-  { Ico: Icon.Gift, label: "Reward", sub: "Coins & rewards for outcomes", angle: 210, hot: true },
-];
-
-const R_RADIUS = 38;
-const ringPos = (deg: number) => {
-  const a = (deg * Math.PI) / 180;
-  return { x: 50 + R_RADIUS * Math.cos(a), y: 50 + R_RADIUS * Math.sin(a) };
-};
-const RING_ARROWS = [-60, 0, 60, 120, 180, 240].map((m) => {
-  const p = ringPos(m);
-  const a = (m * Math.PI) / 180;
-  const rot = (Math.atan2(Math.cos(a), -Math.sin(a)) * 180) / Math.PI;
-  return { ...p, rot };
-});
-
-const LoopRing = () => (
-  <div className="loop-ring">
-    <div className="ring-bg" aria-hidden>
-      <Image src={RING_BACKDROP} alt="" fill sizes="640px" style={{ objectFit: "contain" }} />
-    </div>
-    <svg className="ring-track" viewBox="0 0 100 100" aria-hidden>
-      <circle cx="50" cy="50" r={R_RADIUS} fill="none" stroke="var(--orange)" strokeOpacity="0.4" strokeWidth="0.5" strokeDasharray="0.4 3" strokeLinecap="round" />
-      {RING_ARROWS.map((a, i) => (
-        <path key={i} d="M-2 -2.6 L3 0 L-2 2.6 Z" fill="var(--orange)" transform={`translate(${a.x} ${a.y}) rotate(${a.rot})`} />
-      ))}
-    </svg>
-    <div className="ring-hub">
-      <span className="badge">Praise AI</span>
-      <strong>Works the whole loop</strong>
-      <p>Between every manager &amp; employee</p>
-    </div>
-    {RING.map((n, i) => {
-      const p = ringPos(n.angle);
-      return (
-        <div key={n.label} className={`ring-node${n.hot ? " hot" : ""}`} style={{ left: `${p.x}%`, top: `${p.y}%` }}>
-          <span className="step">{i + 1}</span>
-          <span className="ic"><n.Ico /></span>
-          <h4>{n.label}</h4>
-          <p>{n.sub}</p>
-        </div>
-      );
-    })}
-  </div>
-);
-
-const RingList = () => (
-  <div className="ring-list">
-    <div className="rl-hub"><span className="badge">Praise AI</span><strong>Works the whole loop</strong></div>
-    {RING.map((n, i) => (
-      <div key={n.label} className={`rl-node${n.hot ? " hot" : ""}`}>
-        <span className="ic"><n.Ico /></span>
-        <div><h4>{i + 1}. {n.label}</h4><p>{n.sub}</p></div>
-      </div>
+const SigChart = () => (
+  <svg className="sig-chart" viewBox="0 0 200 68" aria-hidden>
+    <defs>
+      <linearGradient id="sigTrend" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor="#1B6B6B" stopOpacity="0.14" />
+        <stop offset="1" stopColor="#1B6B6B" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+    <path d="M8 52 L40 46 L72 49 L104 36 L136 39 L168 24 L192 12 L192 68 L8 68 Z" fill="url(#sigTrend)" />
+    <path d="M8 52 L40 46 L72 49 L104 36 L136 39 L168 24 L192 12" fill="none" stroke="#1B6B6B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    {[[40, 46], [104, 36], [168, 24]].map(([x, y], i) => (
+      <circle key={i} cx={x} cy={y} r="3" fill="#1B6B6B" />
     ))}
-  </div>
+    <circle cx="192" cy="12" r="3.5" fill="#F26522" stroke="#fff" strokeWidth="1.5" />
+  </svg>
 );
 
 const Flow = () => (
@@ -434,15 +392,117 @@ const Flow = () => (
     <div className="container">
       <div className="section-head center">
         <span className="eyebrow">How it works</span>
-        <h2>The <span className="kw">PraiseLoop</span> intelligence flow</h2>
-        <p className="lede">From the systems that hold your data to the rewards that change behaviour, every step is connected in one continuous AI loop — and each turn sharpens the next.</p>
+        <h2>From signal to <span className="kw">reward</span> in one continuous flow</h2>
+        <p className="lede">PraiseLoop turns the performance signals already happening across your business into timely coaching, recognition and reward.</p>
       </div>
 
-      <LoopRing />
-      <RingList />
+      <div className="sig">
+        <div className="sig-row">
+          {/* 1 · Connect */}
+          <div className="sig-card">
+            <span className="sig-num">1</span>
+            <span className="sig-ic"><Icon.Database /></span>
+            <h4>Connect</h4>
+            <span className="sig-sub">Bring signals together</span>
+            <div className="sig-panel">
+              <div className="sig-list">
+                <div className="sig-li"><span className="i"><Icon.Users /></span>HRIS<span className="ok"><Icon.Check /></span></div>
+                <div className="sig-li"><span className="i"><Icon.Bars /></span>CRM<span className="ok"><Icon.Check /></span></div>
+                <div className="sig-li"><span className="i"><Icon.User /></span>ATS<span className="ok"><Icon.Check /></span></div>
+                <div className="sig-li"><span className="i"><Icon.Heart /></span>Engagement<span className="ok"><Icon.Check /></span></div>
+              </div>
+            </div>
+            <span className="sig-foot">4 signals connected</span>
+          </div>
 
-      <div className="flow-feedback">
-        <span><Icon.Repeat /> Performance improvement feeds back into the loop, continuously refining insights, coaching and rewards.</span>
+          <SigArrow />
+
+          {/* 2 · Uncover */}
+          <div className="sig-card">
+            <span className="sig-num">2</span>
+            <span className="sig-ic"><Icon.Search /></span>
+            <h4>Uncover</h4>
+            <span className="sig-sub">See what matters</span>
+            <div className="sig-panel">
+              <span className="sig-panel-h">Performance insight</span>
+              <SigChart />
+              <div className="sig-insight up"><span className="d"><Icon.ArrowUp /></span>Strong collaboration</div>
+              <div className="sig-insight warn"><span className="d"><Icon.Alert /></span>Coaching opportunity</div>
+            </div>
+            <span className="sig-foot teal">Detected by Praise AI</span>
+          </div>
+
+          <SigArrow />
+
+          {/* 3 · Coach */}
+          <div className="sig-card">
+            <span className="sig-num">3</span>
+            <span className="sig-ic"><Icon.Message /></span>
+            <h4>Coach</h4>
+            <span className="sig-sub">Turn insight into action</span>
+            <div className="sig-panel warn-panel">
+              <span className="sig-tag-orange">Coaching opportunity</span>
+              <p className="sig-p">Sam&apos;s customer satisfaction has improved 11% over the last 30 days.</p>
+              <span className="sig-tag-teal">Suggested 1:1 prompt</span>
+              <p className="sig-quote">&ldquo;What&apos;s changed in your approach recently?&rdquo;</p>
+              <span className="sig-btn">Discuss in 1:1 <Icon.Arrow /></span>
+            </div>
+          </div>
+
+          <SigArrow />
+
+          {/* 4 · Recognise */}
+          <div className="sig-card">
+            <span className="sig-num">4</span>
+            <span className="sig-ic"><Icon.Sparkles /></span>
+            <h4>Recognise</h4>
+            <span className="sig-sub">Make progress visible</span>
+            <div className="sig-panel">
+              <div className="sig-recog-top">
+                <Image className="sig-avatar" src="/heather.png" alt="" width={40} height={40} />
+                <strong>Great work, Sam! 🎉</strong>
+              </div>
+              <div className="sig-points">+50 points</div>
+              <p className="sig-p">For going above and beyond for the team</p>
+              <div className="sig-by">Recognised by Sarah (Manager)</div>
+            </div>
+          </div>
+
+          <SigArrow />
+
+          {/* 5 · Reward */}
+          <div className="sig-card">
+            <span className="sig-num">5</span>
+            <span className="sig-ic"><Icon.Gift /></span>
+            <h4>Reward</h4>
+            <span className="sig-sub">Connect to real rewards</span>
+            <div className="sig-panel">
+              <span className="sig-tag-teal">Reward issued</span>
+              <div className="sig-coin-row"><span className="sig-coin">$</span><strong>+50 coins</strong></div>
+              <p className="sig-p">For outstanding performance</p>
+              <span className="sig-redeem">Redeem in the rewards store <Icon.Arrow /></span>
+            </div>
+          </div>
+        </div>
+
+        <div className="sig-connectors">{[0, 1, 2, 3, 4].map((i) => <span key={i} />)}</div>
+
+        <div className="sig-bar">
+          <span className="sig-bar-ic"><Icon.Sparkles /></span>
+          <strong>Praise AI</strong>
+          <span className="sig-bar-div">|</span>
+          <span className="sig-bar-sub">Powers the whole loop</span>
+        </div>
+
+        <div className="sig-legend">
+          <span className="sig-leg"><Icon.Bars />Signals in</span>
+          <Icon.Arrow className="ico sig-leg-arrow" />
+          <span className="sig-leg"><Icon.Message />Better manager actions</span>
+          <Icon.Arrow className="ico sig-leg-arrow" />
+          <span className="sig-leg"><Icon.Users />Better behaviours</span>
+          <Icon.Arrow className="ico sig-leg-arrow" />
+          <span className="sig-leg"><Icon.Trophy />Measurable outcomes</span>
+        </div>
       </div>
     </div>
   </section>
