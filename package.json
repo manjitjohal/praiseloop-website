@@ -11,13 +11,13 @@
   "dependencies": {
     "@portabletext/react": "^6.2.0",
     "@sanity/image-url": "^2.1.1",
-    "@sanity/vision": "^5.24.0",
+    "@sanity/vision": "^6.9.2",
     "lucide-react": "^1.14.0",
     "next": "16.2.6",
-    "next-sanity": "^12.4.5",
+    "next-sanity": "^13.3.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "sanity": "^5.24.0"
+    "sanity": "^6.9.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
