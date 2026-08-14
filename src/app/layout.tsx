@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { PostHogProvider } from "@/components/PostHogProvider";
 
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -15,11 +16,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PraiseLoop — AI-Powered Performance, Recognition & Rewards",
+  title: "PraiseLoop · AI-Powered Performance, Recognition & Rewards",
   description:
-    "Rewards are earned, not given. PraiseLoop plugs into the systems where work is measured — when a verified KPI result lands, recognition and reward fire automatically. If the result didn't happen, the reward doesn't exist.",
+    "Rewards are earned, not given. PraiseLoop plugs into the systems where work is measured. When a verified KPI result lands, recognition and reward fire automatically. If the result didn't happen, the reward doesn't exist.",
   openGraph: {
-    title: "PraiseLoop — AI-Powered Performance, Recognition & Rewards",
+    title: "PraiseLoop · AI-Powered Performance, Recognition & Rewards",
     description:
       "One connected loop: the AI watches the outcomes you already track, prompts the manager, fires the reward, and proves the payback on your own data.",
     siteName: "PraiseLoop",
@@ -38,7 +39,9 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${figtree.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <PostHogProvider>{children}</PostHogProvider>
+      </body>
     </html>
   );
 }

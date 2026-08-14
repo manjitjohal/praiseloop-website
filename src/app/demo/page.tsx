@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default function DemoPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -18,10 +19,20 @@ export default function DemoPage() {
   const update = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire up to backend / email service
-    setSubmitted(true);
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setSubmitted(true);
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -45,14 +56,14 @@ export default function DemoPage() {
             <div className="demo-copy">
               <h1>See PraiseLoop in action</h1>
               <p className="lede">
-                30 minutes. We&apos;ll show you the full platform live — from someone hitting a target to the reward landing in their account. With your data, not a canned demo.
+                30 minutes. We&apos;ll show you the full platform live, from someone hitting a target to the reward landing in their account. With your data, not a canned demo.
               </p>
               <div className="demo-benefits">
                 <div className="demo-benefit">
                   <span className="demo-check">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  <span>Watch the AI Deputy surface a moment and draft the note — one click to approve</span>
+                  <span>Watch the AI Deputy surface a moment and draft the note, one click to approve</span>
                 </div>
                 <div className="demo-benefit">
                   <span className="demo-check">
@@ -64,13 +75,13 @@ export default function DemoPage() {
                   <span className="demo-check">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  <span>Walk through the day-90 CFO report — and what a 90-day pilot looks like</span>
+                  <span>Walk through the day-90 CFO report, and what a 90-day pilot looks like</span>
                 </div>
                 <div className="demo-benefit">
                   <span className="demo-check">
                     <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  <span>No commitment — just a conversation about what&apos;s possible</span>
+                  <span>No commitment, just a conversation about what&apos;s possible</span>
                 </div>
               </div>
             </div>
@@ -127,10 +138,17 @@ export default function DemoPage() {
                     <label htmlFor="message">Anything specific you&apos;d like to see?</label>
                     <textarea id="message" rows={3} value={form.message} onChange={update("message")} />
                   </div>
-                  <button type="submit" className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: 8 }}>
-                    Request a demo
+                  <button type="submit" disabled={status === "sending"} className="btn btn-primary" style={{ width: "100%", justifyContent: "center", marginTop: 8, opacity: status === "sending" ? 0.7 : 1, cursor: status === "sending" ? "default" : "pointer" }}>
+                    {status === "sending" ? "Sending…" : "Request a demo"}
                   </button>
-                  <p className="form-note">No spam, no pressure. We&apos;ll reach out within 24 hours.</p>
+                  {status === "error" ? (
+                    <p className="form-note" style={{ color: "#c0392b" }}>
+                      Something went wrong sending your request. Please email us directly at{" "}
+                      <a href="mailto:hello@praiseloop.com" style={{ color: "inherit", textDecoration: "underline" }}>hello@praiseloop.com</a>.
+                    </p>
+                  ) : (
+                    <p className="form-note">No spam, no pressure. We&apos;ll reach out within 24 hours.</p>
+                  )}
                 </form>
               )}
             </div>
