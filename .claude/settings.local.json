@@ -17,7 +17,28 @@
       "Bash(echo \"=== exit: $? ===\")",
       "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1280,2500 --screenshot=preview2.png \"file:///C:/Users/manji/AppData/Local/Temp/claude/C--dev-vipani-praiseloop-website/b6bed3c4-04bb-4fae-8f03-857849f7f6e0/scratchpad/preview2.html\")",
       "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --no-sandbox --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1280,2560 '--screenshot=C:\\\\Users\\\\manji\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--dev-vipani-praiseloop-website\\\\b6bed3c4-04bb-4fae-8f03-857849f7f6e0\\\\scratchpad\\\\preview2.png' file:///C:/Users/manji/AppData/Local/Temp/claude/C--dev-vipani-praiseloop-website/b6bed3c4-04bb-4fae-8f03-857849f7f6e0/scratchpad/preview2.html)",
-      "PowerShell(npm run *)"
+      "PowerShell(npm run *)",
+      "Bash(npm view *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\({...p.dependencies,...p.devDependencies},null,2\\)\\)\")",
+      "Bash(npm i *)",
+      "Bash(npm ls *)",
+      "Bash(grep -nE \"^\\\\s*\\\\{?/\\\\*|<section|id=\\\\\"|className=\\\\\"[^\\\\\"]*section|// ---|{/\\\\* \" src/components/LandingPage.tsx)",
+      "Bash(node *)",
+      "Read(//c/dev/vipani/praiseloop-website/**)",
+      "Bash(PORT=3210 npm run dev)",
+      "Bash(echo \"dev server launching in background \\(PID $!\\) on port 3210...\")",
+      "Bash(curl *)",
+      "Bash(DEMO_TO_EMAIL=manjit@kritmatta.com PORT=3210 npm run dev)",
+      "Bash(echo \"restarting dev server with DEMO_TO_EMAIL override \\(PID $!\\)...\")",
+      "Bash(DEMO_FROM_EMAIL=\"PraiseLoop <noreply@praiseloop.com>\" DEMO_TO_EMAIL=\"hello@praiseloop.com\" PORT=3210 npm run dev)",
+      "Bash(echo \"dev server starting with production from/to \\(PID $!\\)...\")",
+      "Bash(taskkill //PID 34036 //F)",
+      "Bash(rm -f /tmp/pl-dev3.log)",
+      "Bash(DEMO_FROM_EMAIL=\"PraiseLoop <noreply@updates.praiseloop.com>\" DEMO_TO_EMAIL=\"hello@praiseloop.com\" PORT=3210 npm run dev)",
+      "Bash(echo \"dev server starting \\(PID $!\\)...\")",
+      "Bash(printf '\\\\n# Demo form sender \\(verified Resend subdomain\\) + recipient\\\\nDEMO_FROM_EMAIL=PraiseLoop <noreply@updates.praiseloop.com>\\\\nDEMO_TO_EMAIL=hello@praiseloop.com\\\\n')",
+      "Bash(taskkill //PID 38720 //F)",
+      "Bash(rm -f /tmp/pl-dev4.log)"
     ]
   }
 }
