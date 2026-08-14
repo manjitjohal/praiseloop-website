@@ -10,16 +10,17 @@ import { NextResponse } from "next/server";
  * Env:
  *   RESEND_API_KEY   (required) — secret API key from the Resend dashboard.
  *   DEMO_TO_EMAIL    (optional) — where leads are sent. Default hello@praiseloop.com.
- *   DEMO_FROM_EMAIL  (optional) — verified sender. Default onboarding@resend.dev,
- *                                 which delivers to the address your Resend account
- *                                 was created with (no domain verification needed).
+ *   DEMO_FROM_EMAIL  (optional) — sender address. Defaults to the verified Resend
+ *                                 subdomain sender below (updates.praiseloop.com);
+ *                                 only override if the verified domain changes. Must
+ *                                 always be an address on a domain verified in Resend.
  *
  * Without RESEND_API_KEY the route fails loudly (503) rather than silently
  * dropping the lead — the caller shows a "email us directly" fallback.
  */
 
 const TO_EMAIL = process.env.DEMO_TO_EMAIL || "hello@praiseloop.com";
-const FROM_EMAIL = process.env.DEMO_FROM_EMAIL || "PraiseLoop Website <onboarding@resend.dev>";
+const FROM_EMAIL = process.env.DEMO_FROM_EMAIL || "PraiseLoop <noreply@updates.praiseloop.com>";
 
 type DemoLead = {
   firstName?: string;
