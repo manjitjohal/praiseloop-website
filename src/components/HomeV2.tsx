@@ -108,11 +108,11 @@ const Hero = () => (
           <span className="kw">Recognition</span> and <span className="kw">Reward</span> into <span className="kw">ROI</span>.
         </h1>
         <p className="lede">
-          Our AI continuously analyses workforce performance, KPIs, behaviours and engagement — giving
+          Our AI continuously analyses workforce performance, KPIs, behaviours and engagement, giving
           managers real-time intelligence into what drives high-performing teams and where intervention is needed.
         </p>
         <p className="hero-wedge">
-          Measure. Recognise. Reward. Improve. Repeat. Performance isn&apos;t managed once a year — it&apos;s optimised every day.
+          Measure. Recognise. Reward. Improve. Repeat. Performance isn&apos;t managed once a year. It&apos;s optimised every day.
         </p>
         <div className="gdpr"><GdprBadge /></div>
         <div className="hero-cta">
@@ -150,7 +150,7 @@ const PerformanceSpot = () => (
     </svg>
     <div className="spot-row">
       <span className="spot-av">RS</span>
-      <div className="spot-row-t"><strong>Ravi Shah</strong><span>Silent hero — consistent, unseen</span></div>
+      <div className="spot-row-t"><strong>Ravi Shah</strong><span>Silent hero: consistent, unseen</span></div>
       <span className="pill-tag flag">Flagged</span>
     </div>
   </div>
@@ -202,7 +202,7 @@ const Beats = () => (
         <div className="beat-text">
           <span className="eyebrow">Performance comes first</span>
           <h3>Turn Underperformance into <span className="kw">High Performance</span></h3>
-          <p>Most organisations know who is underperforming, but not why. PraiseLoop analyses behaviour, engagement and KPIs to spot issues early, then gives managers real-time AI recommendations that help employees improve every day — so teams get stronger and business outcomes improve.</p>
+          <p>Most organisations know who is underperforming, but not why. PraiseLoop analyses behaviour, engagement and KPIs to spot issues early, then gives managers real-time AI recommendations that help employees improve every day, so teams get stronger and business outcomes improve.</p>
         </div>
         <div className="beat-visual"><PerformanceSpot /></div>
       </div>
@@ -215,7 +215,7 @@ const Beats = () => (
           <div className="beat-text">
             <span className="eyebrow">Recognition doesn&apos;t create performance</span>
             <h3><span className="kw">Performance</span> Earns Recognition</h3>
-            <p>Traditional recognition rewards effort or opinion. PraiseLoop rewards measurable performance tied to real KPIs and verified outcomes, so recognition becomes the outcome of performance — not just the driver of it.</p>
+            <p>Traditional recognition rewards effort or opinion. PraiseLoop rewards measurable performance tied to real KPIs and verified outcomes, so recognition becomes the outcome of performance, not just the driver of it.</p>
           </div>
         </div>
       </div>
@@ -226,7 +226,7 @@ const Beats = () => (
         <div className="beat-text">
           <span className="eyebrow">Reward growth, not just results</span>
           <h3>Recognise Improvement. <span className="kw">Reward Excellence.</span></h3>
-          <p>Every employee can improve. PraiseLoop celebrates high performers and those making measurable progress. As they hit KPIs, complete coaching and deliver better outcomes, they unlock recognition, rewards and growth opportunities. Continuous improvement becomes visible, celebrated and rewarded — driving engagement, retention and performance.</p>
+          <p>Every employee can improve. PraiseLoop celebrates high performers and those making measurable progress. As they hit KPIs, complete coaching and deliver better outcomes, they unlock recognition, rewards and growth opportunities. Continuous improvement becomes visible, celebrated and rewarded, driving engagement, retention and performance.</p>
         </div>
         <div className="beat-visual"><RewardSpot /></div>
       </div>
@@ -335,10 +335,10 @@ const Loop = () => (
 
 /* ── People ───────────────────────────────────────────── */
 const PEOPLE = [
-  { img: "/recognition-moment.webp", role: "Employees", body: "See exactly why you were recognised — and earn real rewards for real results." },
+  { img: "/recognition-moment.webp", role: "Employees", body: "See exactly why you were recognised, and earn real rewards for real results." },
   { img: "/manager-moment.webp", role: "Sales Managers", body: "The AI spots the close, drafts the praise, fires the reward. One click, ten seconds." },
   { img: "/person-executive.jpg", role: "HR Directors", body: "Recognition that runs itself, with engagement and retention you can actually measure." },
-  { img: "/person-analytics.jpg", role: "Sales Directors", body: "Workforce data turned into ROI — performance lift, cost of underperformance, board-ready." },
+  { img: "/person-analytics.jpg", role: "Sales Directors", body: "Workforce data turned into ROI: performance lift, cost of underperformance, board-ready." },
 ];
 
 const People = () => (
@@ -347,7 +347,7 @@ const People = () => (
       <div className="section-head">
         <span className="eyebrow">Built for the whole performance chain</span>
         <h2>One loop. Four people who feel it every day.</h2>
-        <p className="lede">From the rep hitting quota to the CHRO reporting on productivity, PraiseLoop gives everyone the same verified view of what good performance looks like — and what it&apos;s worth.</p>
+        <p className="lede">From the rep hitting quota to the CHRO reporting on productivity, PraiseLoop gives everyone the same verified view of what good performance looks like, and what it&apos;s worth.</p>
       </div>
       <div className="people-grid">
         {PEOPLE.map((p) => (
@@ -362,7 +362,6 @@ const People = () => (
           </div>
         ))}
       </div>
-      <div className="people-cta"><a href={BOOKING_URL} className="btn btn-primary btn-arrow">Book a demo <Icon.Arrow /></a></div>
     </div>
   </section>
 );
@@ -515,8 +514,8 @@ const Integrations = () => (
   <div id="integrations" className="ints">
     <div className="container">
       <div className="ints-head">
-        <p className="ints-title">Zero integrations required to start<br />25+ Integrations</p>
-        <p className="ints-sub">Connect your CRM, help desk, behavioural, financial and HRIS whenever you&apos;re ready.</p>
+        <p className="ints-title">Zero integrations required to start</p>
+        <p className="ints-sub">Go live on day one, then connect your CRM, help desk, behavioural, financial and HRIS whenever you&apos;re ready. 25+ integrations available.</p>
       </div>
     </div>
     <div className="marquee">
@@ -529,9 +528,9 @@ const Integrations = () => (
 
 /* ── Orange outcome ───────────────────────────────────── */
 const OUTCOMES = [
-  { Ico: Icon.Zap, h: "Turn performance into action", p: "Verified KPIs automatically trigger recognition and rewards — no manual tracking, no missed moments." },
+  { Ico: Icon.Zap, h: "Turn performance into action", p: "Verified KPIs automatically trigger recognition and rewards, with no manual tracking and no missed moments." },
   { Ico: Icon.Users, h: "Coach, not just cheer", p: "AI agents flag underperformance early and recommend the next step, so managers lead instead of guess." },
-  { Ico: Icon.Trending, h: "Report ROI, not just recognition", p: "Engagement, retention and performance tied to real business outcomes — board-ready, in real time." },
+  { Ico: Icon.Trending, h: "Report ROI, not just recognition", p: "Engagement, retention and performance tied to real business outcomes: board-ready, in real time." },
 ];
 
 const Outcome = () => (
@@ -540,7 +539,7 @@ const Outcome = () => (
       <div className="section-head">
         <span className="eyebrow on-orange">The outcome</span>
         <h2>Performance intelligence that actually shows up in the numbers.</h2>
-        <p className="lede">PraiseLoop doesn&apos;t just make recognition easier. It closes the loop between workforce behaviour and business results — every day, every team, every KPI.</p>
+        <p className="lede">PraiseLoop doesn&apos;t just make recognition easier. It closes the loop between workforce behaviour and business results, every day, every team, every KPI.</p>
       </div>
       <div className="outcome-grid">
         {OUTCOMES.map((o) => (
@@ -570,7 +569,7 @@ const Impact = () => (
       <div className="section-head center">
         <span className="eyebrow">The employee side</span>
         <h2>Reward the right behaviours, and <span className="kw">performance compounds</span></h2>
-        <p className="lede">Every recognised action is a signal. Repeated across a team, those behaviours become how your people operate. PraiseLoop ties them to the numbers leaders actually track — turning workforce data into measurable business outcomes, and reducing the cost of underperformance.</p>
+        <p className="lede">Every recognised action is a signal. Repeated across a team, those behaviours become how your people operate. PraiseLoop ties them to the numbers leaders actually track, turning workforce data into measurable business outcomes and reducing the cost of underperformance.</p>
       </div>
       <div className="stats-panel">
         {STATS.map((s) => (
@@ -625,7 +624,7 @@ const FinalCta = () => (
   <section className="cta2">
     <div className="container cta2-inner">
       <h2>Turn measured results into <span className="kw">measured ROI</span>.</h2>
-      <p className="sub">Performance isn&apos;t managed once a year. It&apos;s optimised every day. See the loop running on your own KPIs — live in two weeks.</p>
+      <p className="sub">Performance isn&apos;t managed once a year. It&apos;s optimised every day. See the loop running on your own KPIs. Live in two weeks.</p>
       <form className="cta2-form" action={BOOKING_URL} method="get">
         <span className="cta2-input">
           <Icon.Mail />
