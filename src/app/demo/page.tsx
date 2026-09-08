@@ -43,9 +43,6 @@ export default function DemoPage() {
             <a href="/" aria-label="PraiseLoop">
               <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={101} height={40} style={{ height: 40, width: "auto" }} priority />
             </a>
-            <div className="nav-cta">
-              <a href="https://app.praiseloop.com" className="btn btn-secondary" style={{ padding: "9px 16px", fontSize: 14 }}>Sign in</a>
-            </div>
           </div>
         </div>
       </header>
