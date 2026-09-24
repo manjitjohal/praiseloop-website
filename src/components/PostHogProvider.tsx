@@ -12,6 +12,9 @@ import { useEffect } from "react";
  * `defaults: "2025-05-24"` turns on automatic pageview + pageleave capture,
  * including SPA route changes (App Router client navigation) — so we don't
  * need a manual route-change tracker.
+ *
+ * Events go through the `/ingest` rewrites in next.config.ts (EU cloud) so
+ * ad blockers don't drop them.
  */
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -19,8 +22,8 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     if (!key) return;
 
     posthog.init(key, {
-      api_host:
-        process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+      api_host: "/ingest",
+      ui_host: "https://eu.posthog.com",
       defaults: "2025-05-24",
     });
   }, []);
