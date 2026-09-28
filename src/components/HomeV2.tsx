@@ -74,6 +74,7 @@ const NAV = [
   { label: "Integrations", href: "#integrations" },
   { label: "Impact", href: "#impact" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "ROI calculator", href: "/roi-calculator" },
   { label: "Blog", href: "/blog" },
 ];
 
