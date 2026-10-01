@@ -1,5 +1,7 @@
 /**
- * ROI model for the /roi-calculator page.
+ * Company-wide ROI model for /roi-calculator/company-wide. The sales model
+ * (the default /roi-calculator) lives in ./roi-sales.ts and reuses the
+ * currency, ramp, pilot and formatting helpers exported here.
  *
  * Shared by the client (live results) and /api/roi (emailed business case),
  * so the numbers a prospect sees on screen are exactly the numbers in their
@@ -42,7 +44,7 @@ export type RoiInputs = {
 
 type NumericKey = Exclude<keyof RoiInputs, "currency">;
 
-type Range = { min: number; max: number; step: number };
+export type Range = { min: number; max: number; step: number };
 
 export const CURRENCIES: Record<
   Currency,
@@ -243,8 +245,8 @@ export type Projection = {
   paybackMonth: number | null;
 };
 
-/** 36-month view: impact ramps to full run-rate by RAMP_MONTHS; cost is flat. */
-export function projection(r: RoiResult): Projection {
+/** 36-month view: impact ramps to full run-rate by RAMP_MONTHS; cost is flat. Works for either model. */
+export function projection(r: { gross: number; cost: number }): Projection {
   const monthlyImpact = r.gross / 12;
   const monthlyCost = r.cost / 12;
   const years: YearRow[] = [];

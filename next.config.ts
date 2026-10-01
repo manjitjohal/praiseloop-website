@@ -28,6 +28,19 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // /roi-calculator became the sales calculator. Links to the original
+  // company-wide model (shared or emailed before the move) always carry `sal`,
+  // which the sales model never uses, so send those on with their query intact.
+  async redirects() {
+    return [
+      {
+        source: "/roi-calculator",
+        has: [{ type: "query", key: "sal" }],
+        destination: "/roi-calculator/company-wide",
+        permanent: false,
+      },
+    ];
+  },
   // PostHog endpoints use trailing slashes; don't let Next redirect them.
   skipTrailingSlashRedirect: true,
 };

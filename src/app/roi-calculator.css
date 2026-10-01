@@ -1,7 +1,8 @@
 /* ============================================================
-   /roi-calculator — layered on home-v2.css (same .plh tokens,
-   nav, hero grid, buttons, dark CTA and footer). Everything
-   here is scoped under `.plh` and prefixed `roi-`.
+   /roi-calculator (sales) and /roi-calculator/company-wide —
+   layered on home-v2.css (same .plh tokens, nav, hero grid,
+   buttons, dark CTA and footer). Everything here is scoped
+   under `.plh` and prefixed `roi-`.
    ============================================================ */
 
 .plh .nav-links a.is-current { color: var(--text); font-weight: 600; }
@@ -12,8 +13,18 @@
 
 /* ── Hero (compact) ──────────────────────────────────── */
 .plh .roi-hero { padding: 60px 0 52px; }
-.plh .roi-hero h1 { margin-top: 14px; max-width: 16ch; }
+.plh .roi-hero h1 { margin-top: 14px; max-width: 18ch; }
 .plh .roi-hero .lede { margin-top: 22px; max-width: 64ch; }
+.plh .roi-hero-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+
+/* sales ⇄ company-wide calculator switch */
+.plh .roi-switch { display: inline-flex; padding: 4px; gap: 2px; background: #fff; border: 1px solid var(--border); border-radius: 999px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+.plh .roi-switch a {
+  font-size: 14px; font-weight: 600; color: var(--text-2); padding: 8px 16px; border-radius: 999px; white-space: nowrap;
+  transition: background .15s ease, color .15s ease;
+}
+.plh .roi-switch a:hover { color: var(--text); }
+.plh .roi-switch a[aria-current="page"] { background: var(--teal); color: #fff; }
 
 /* ── Calculator layout ───────────────────────────────── */
 .plh .roi-calc { padding: 8px 0 92px; }
@@ -79,6 +90,23 @@
 .plh .roi-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 6px rgba(242,101,34,.2); }
 .plh .roi-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 6px rgba(242,101,34,.2); }
 
+/* a value worked out from the inputs above it (sales: revenue per rep) */
+.plh .roi-derived {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  margin: 2px 0 6px; padding: 14px 16px; border-radius: var(--r-md); background: var(--light-teal);
+}
+.plh .roi-derived span { font-size: 14px; font-weight: 600; color: var(--teal-dark); }
+.plh .roi-derived small { display: block; font-size: 12.5px; font-weight: 400; color: var(--text-2); margin-top: 2px; }
+.plh .roi-derived b { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--teal); font-variant-numeric: tabular-nums; }
+.plh .roi-derived + .roi-field { border-top: 0; }
+
+/* a labelled group inside the input card (sales: the lift) */
+.plh .roi-card-sub {
+  margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--border);
+  font-family: var(--mono); font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange);
+}
+.plh .roi-card-sub + .roi-field { border-top: 0; padding-top: 12px; }
+
 /* assumptions drawer */
 .plh .roi-assump { border-top: 1px solid var(--border); margin-top: 6px; }
 .plh .roi-assump summary {
@@ -143,6 +171,22 @@
 .plh .roi-bar-track { display: block; height: 8px; margin-top: 8px; border-radius: 999px; background: rgba(255,255,255,.12); }
 .plh .roi-bar-fill { display: block; height: 100%; border-radius: 4px; background: var(--orange); transition: width .35s ease; }
 
+/* sales: per-rep figures and the gap to target */
+.plh .roi-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 24px 0 0; }
+.plh .roi-kpis > div { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); border-radius: var(--r-md); padding: 12px 14px; }
+.plh .roi-kpis dt { font-size: 12px; font-weight: 600; line-height: 1.3; color: rgba(255,255,255,.72); }
+.plh .roi-kpis dd { margin: 4px 0 0; font-size: 19px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+@media (max-width: 420px) { .plh .roi-kpis { grid-template-columns: 1fr; } .plh .roi-kpis > div { display: flex; justify-content: space-between; align-items: baseline; } }
+
+.plh .roi-gap { margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14); }
+.plh .roi-gap-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.plh .roi-gap-track { display: block; height: 14px; margin-top: 10px; border-radius: 999px; overflow: hidden; background: repeating-linear-gradient(-45deg, rgba(255,255,255,.1) 0 6px, rgba(255,255,255,.18) 6px 12px); }
+.plh .roi-gap-fill { display: block; height: 100%; border-radius: 999px; background: var(--orange); transition: width .35s ease; }
+.plh .roi-gap-legend { display: flex; justify-content: space-between; gap: 6px 14px; flex-wrap: wrap; margin-top: 10px; font-size: 13px; color: rgba(255,255,255,.82); font-variant-numeric: tabular-nums; }
+.plh .roi-gap-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.plh .roi-gap-legend .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.3); }
+.plh .roi-gap-legend .dot.is-fill { background: var(--orange); }
+
 .plh .roi-results-cta { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14); display: flex; flex-direction: column; align-items: stretch; gap: 10px; }
 .plh .roi-results-cta .btn { justify-content: center; }
 .plh .roi-results-fine { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.7); text-align: center; }
@@ -155,7 +199,7 @@
 .plh .roi-link-btn .ico { width: 16px; height: 16px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .plh .roi-bar-fill, .plh .roi-year-bar { transition: none; }
+  .plh .roi-bar-fill, .plh .roi-gap-fill, .plh .roi-year-bar { transition: none; }
 }
 
 /* ── The maths ───────────────────────────────────────── */
@@ -268,7 +312,7 @@
 .plh .roi-net-kpis > div { background: linear-gradient(160deg, var(--teal-dark), var(--teal)); color: #fff; border-radius: var(--r-md); padding: 16px 18px; }
 .plh .roi-net-kpis .k { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.72); }
 .plh .roi-net-kpis .v { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; margin-top: 4px; font-variant-numeric: tabular-nums; }
-.plh .roi-net-inputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin-top: 12px; }
+.plh .roi-net-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 28px; margin-top: 12px; }
 @media (max-width: 760px) { .plh .roi-net-inputs { grid-template-columns: 1fr; } }
 
 .plh .roi-scen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
