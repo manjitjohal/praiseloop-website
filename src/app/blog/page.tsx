@@ -184,7 +184,7 @@ export default async function BlogIndexPage({
 
   return (
     <div className="blog-page">
-      <SiteHeader />
+      <SiteHeader current="blog" />
       <main>
         <section className="blog-hero">
           <div className="container">

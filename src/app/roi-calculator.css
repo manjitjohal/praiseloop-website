@@ -5,10 +5,6 @@
    under `.plh` and prefixed `roi-`.
    ============================================================ */
 
-.plh .nav-links a.is-current { color: var(--text); font-weight: 600; }
-
-.plh .btn-ghost { background: #fff; color: var(--teal-dark); border-color: var(--border); }
-.plh .btn-ghost:hover { border-color: var(--teal); }
 .plh .btn:disabled { opacity: .7; cursor: default; transform: none; }
 
 /* ── Hero (compact) ──────────────────────────────────── */

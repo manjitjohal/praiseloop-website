@@ -1,37 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
+import "../app/home-v2.css";
 
-/** Site-wide header used on secondary pages (blog, etc.).
- *  Section links point back to the homepage so they work from any route. */
-export default function SiteHeader() {
+const LINKS = [
+  { key: "how", label: "How it works", href: "/#how" },
+  { key: "sales", label: "For sales teams", href: "/#who" },
+  { key: "blog", label: "Blog", href: "/blog" },
+] as const;
+
+export const SIGN_IN_URL = "https://app.praiseloop.com";
+
+/**
+ * The one nav, on every page. It wraps itself in a box-less `.plh` so the
+ * marketing styles apply even on pages that aren't `.plh` themselves (blog,
+ * demo), without restyling the rest of those pages.
+ */
+export default function SiteHeader({ current }: { current?: (typeof LINKS)[number]["key"] }) {
   return (
-    <header className="nav">
-      <div className="container">
-        <div className="nav-row">
-          <Link href="/" aria-label="PraiseLoop">
-            <Image
-              src="/praiseloop-logo.png"
-              alt="PraiseLoop"
-              width={101}
-              height={40}
-              style={{ height: 40, width: "auto" }}
-              priority
-            />
+    <div className="plh plh-contents">
+      <header className="nav">
+        <div className="container nav-row">
+          <Link href="/" aria-label="PraiseLoop home">
+            <Image className="nav-logo" src="/praiseloop-logo.png" alt="PraiseLoop" width={70} height={26} priority style={{ height: 26, width: "auto" }} />
           </Link>
-          <nav className="nav-links">
-            <a href="/#how">Platform</a>
-            <a href="/#proof">Proof</a>
-            <a href="/#pricing">Pricing</a>
-            <Link href="/blog">Blog</Link>
-            <a href="https://app.praiseloop.com">Sign in</a>
+          <nav className="nav-links" aria-label="Main">
+            {LINKS.map((l) => (
+              <Link key={l.key} href={l.href} aria-current={l.key === current ? "page" : undefined}>{l.label}</Link>
+            ))}
           </nav>
           <div className="nav-cta">
-            <Link href="/demo" className="btn btn-primary" style={{ padding: "9px 18px", fontSize: 14 }}>
-              Book a demo
-            </Link>
+            <a href={SIGN_IN_URL} className="nav-signin">Sign in</a>
+            <Link href="/demo" className="btn btn-primary">Book a demo</Link>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }

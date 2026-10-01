@@ -248,7 +248,7 @@ function Pack({
           </p>
           <PilotSteps
             steps={[
-              { when: "Weeks 1–2", what: "Go live. Zero integrations needed to start." },
+              { when: "Set-up", what: "Connect your CRM, and build the reward rules from incentives you already pay." },
               { when: "Day 30", what: "Patterns emerge: who's being recognised, and what moved." },
               { when: "Day 90", what: "Your CFO report: the case for rolling out, or not." },
             ]}
@@ -369,7 +369,7 @@ export default function CompanyRoiCalculator() {
     <RoiPage
       cta={{
         title: <>Prove it on one team in <span className="kw">90 days</span>.</>,
-        sub: "The calculator models it. A pilot measures it. Two weeks to go live, 90 days to your CFO report, and if the numbers don't move, you walk.",
+        sub: "The calculator models it. A pilot measures it: 90 days to your CFO report, and if the numbers don't move, you walk.",
       }}
     >
       <Calculator key={search} initialInputs={initialInputs} preUnlocked={preUnlocked} />

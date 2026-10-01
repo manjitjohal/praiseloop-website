@@ -28,7 +28,8 @@ type DemoLead = {
   email?: string;
   company?: string;
   jobTitle?: string;
-  employees?: string;
+  teamSize?: string;
+  crm?: string;
   message?: string;
 };
 
@@ -43,10 +44,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const { firstName, lastName, email, company, jobTitle, employees, message } = data || {};
+  const { firstName, lastName, email, company, jobTitle, teamSize, crm, message } = data || {};
 
-  // Mirror the form's required fields.
-  if (!firstName || !lastName || !email || !company || !employees) {
+  // Mirror the form's required fields. Team size and CRM qualify the lead.
+  if (!firstName || !lastName || !email || !company || !teamSize || !crm) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -65,7 +66,8 @@ export async function POST(req: Request) {
     ["Work email", email],
     ["Company", company],
     ["Job title", jobTitle],
-    ["Company size", employees],
+    ["Sales team size", teamSize],
+    ["CRM", crm],
     ["Message", message],
   ];
   const present = fields.filter(([, v]) => v && v.trim());
@@ -94,7 +96,7 @@ export async function POST(req: Request) {
         from: FROM_EMAIL,
         to: [TO_EMAIL],
         reply_to: email,
-        subject: `New demo request · ${company}`,
+        subject: `New demo request · ${company} · ${teamSize} sales team · ${crm}`,
         html,
         text,
       }),

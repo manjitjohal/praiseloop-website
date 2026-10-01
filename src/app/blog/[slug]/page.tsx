@@ -275,7 +275,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="blog-page">
-      <SiteHeader />
+      <SiteHeader current="blog" />
       <main>
         <article className="post">
           {/* Hero band */}

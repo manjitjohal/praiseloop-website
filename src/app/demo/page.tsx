@@ -1,7 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+
+const BENEFITS = [
+  "See what a manager sees each week: what changed in the CRM, and the conversation to have",
+  "Watch a result in your CRM turn into recognition and coins, automatically",
+  "Walk through a 90-day pilot and the CFO report at the end of it",
+  "No commitment, just a conversation about what's possible",
+];
 
 export default function DemoPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +21,8 @@ export default function DemoPage() {
     email: "",
     company: "",
     jobTitle: "",
-    employees: "",
+    teamSize: "",
+    crm: "",
     message: "",
   });
 
@@ -37,15 +47,7 @@ export default function DemoPage() {
 
   return (
     <div className="demo-page">
-      <header className="nav">
-        <div className="container">
-          <div className="nav-row">
-            <a href="/" aria-label="PraiseLoop">
-              <Image src="/praiseloop-logo.png" alt="PraiseLoop" width={101} height={40} style={{ height: 40, width: "auto" }} priority />
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="demo-main">
         <div className="container">
@@ -53,33 +55,18 @@ export default function DemoPage() {
             <div className="demo-copy">
               <h1>See PraiseLoop in action</h1>
               <p className="lede">
-                30 minutes. We&apos;ll show you the full platform live, from someone hitting a target to the reward landing in their account. With your data, not a canned demo.
+                20 minutes, using the numbers your team already tracks. We&apos;ll show you the loop live, from a result landing in your CRM to the coaching
+                moment, the recognition and the reward.
               </p>
               <div className="demo-benefits">
-                <div className="demo-benefit">
-                  <span className="demo-check">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </span>
-                  <span>Watch the AI Deputy surface a moment and draft the note, one click to approve</span>
-                </div>
-                <div className="demo-benefit">
-                  <span className="demo-check">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </span>
-                  <span>See the Outcome Engine fire a reward from a real CRM event</span>
-                </div>
-                <div className="demo-benefit">
-                  <span className="demo-check">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </span>
-                  <span>Walk through the day-90 CFO report, and what a 90-day pilot looks like</span>
-                </div>
-                <div className="demo-benefit">
-                  <span className="demo-check">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </span>
-                  <span>No commitment, just a conversation about what&apos;s possible</span>
-                </div>
+                {BENEFITS.map((b) => (
+                  <div key={b} className="demo-benefit">
+                    <span className="demo-check">
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                    <span>{b}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -91,7 +78,7 @@ export default function DemoPage() {
                   </div>
                   <h2>Thanks! We&apos;ll be in touch.</h2>
                   <p>One of our team will reach out within 24 hours to schedule your demo.</p>
-                  <a href="/" className="btn btn-secondary" style={{ marginTop: 16 }}>Back to homepage</a>
+                  <Link href="/" className="btn btn-secondary" style={{ marginTop: 16 }}>Back to homepage</Link>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="demo-form">
@@ -120,16 +107,28 @@ export default function DemoPage() {
                       <input id="jobTitle" type="text" value={form.jobTitle} onChange={update("jobTitle")} />
                     </div>
                   </div>
-                  <div className="form-field">
-                    <label htmlFor="employees">Company size *</label>
-                    <select id="employees" required value={form.employees} onChange={update("employees")}>
-                      <option value="">Select...</option>
-                      <option value="1-50">1-50 employees</option>
-                      <option value="51-200">51-200 employees</option>
-                      <option value="201-500">201-500 employees</option>
-                      <option value="501-2000">501-2,000 employees</option>
-                      <option value="2001+">2,001+ employees</option>
-                    </select>
+                  <div className="form-row">
+                    <div className="form-field">
+                      <label htmlFor="teamSize">Sales team size *</label>
+                      <select id="teamSize" required value={form.teamSize} onChange={update("teamSize")}>
+                        <option value="">Select...</option>
+                        <option value="Under 5">Under 5 people</option>
+                        <option value="5-20">5–20 people</option>
+                        <option value="21-50">21–50 people</option>
+                        <option value="51-200">51–200 people</option>
+                        <option value="200+">200+ people</option>
+                      </select>
+                    </div>
+                    <div className="form-field">
+                      <label htmlFor="crm">CRM *</label>
+                      <select id="crm" required value={form.crm} onChange={update("crm")}>
+                        <option value="">Select...</option>
+                        <option value="HubSpot">HubSpot</option>
+                        <option value="Salesforce">Salesforce</option>
+                        <option value="Other">Something else</option>
+                        <option value="None">We don&apos;t use one yet</option>
+                      </select>
+                    </div>
                   </div>
                   <div className="form-field">
                     <label htmlFor="message">Anything specific you&apos;d like to see?</label>
@@ -152,6 +151,7 @@ export default function DemoPage() {
           </div>
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }

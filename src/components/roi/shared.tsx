@@ -8,11 +8,13 @@
  */
 
 import { useRef, useState, useSyncExternalStore } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import posthog from "posthog-js";
 import "../../app/home-v2.css";
 import "../../app/roi-calculator.css";
+import SiteHeader from "../SiteHeader";
+import SiteFooter from "../SiteFooter";
+import { Icon, type IP } from "../site/icons";
 import {
   PILOT_DAYS,
   RAMP_MONTHS,
@@ -40,82 +42,13 @@ export const track = (event: string, props?: Record<string, unknown>) => {
   if (posthog.__loaded) posthog.capture(event, props);
 };
 
-/* ── Icons (Lucide) ───────────────────────────────────── */
-type IP = React.SVGProps<SVGSVGElement>;
-const svg = (children: React.ReactNode) => {
-  const LucideIcon = (p: IP) => <svg className="ico" viewBox="0 0 24 24" aria-hidden {...p}>{children}</svg>;
-  LucideIcon.displayName = "LucideIcon";
-  return LucideIcon;
-};
-export const Icon = {
-  Arrow: svg(<><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></>),
-  ArrowDown: svg(<><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></>),
-  Chevron: svg(<path d="m6 9 6 6 6-6" />),
-  Check: svg(<path d="M20 6 9 17l-5-5" />),
-  Lock: svg(<><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></>),
-  Mail: svg(<><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></>),
-  Link: svg(<><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></>),
-  Printer: svg(<><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /><rect x="6" y="14" width="12" height="8" rx="1" /></>),
-  Reset: svg(<><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></>),
-  UserCheck: svg(<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="m16 11 2 2 4-4" /></>),
-  Users: svg(<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>),
-  Gauge: svg(<><path d="m12 14 4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></>),
-  Trending: svg(<><path d="M16 7h6v6" /><path d="m22 7-8.5 8.5-5-5L2 17" /></>),
-  CalendarX: svg(<><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="m14 14-4 4" /><path d="m10 14 4 4" /></>),
-  Calendar: svg(<><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></>),
-  Coins: svg(<><circle cx="8" cy="8" r="6" /><path d="M18.09 10.37A6 6 0 1 1 10.34 18" /><path d="M7 6h1v4" /><path d="m16.71 13.88.7.71-2.82 2.82" /></>),
-  Layers: svg(<><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" /><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" /><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" /></>),
-  Target: svg(<><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></>),
-};
-
-/* ── Page chrome ──────────────────────────────────────── */
-const NAV = [
-  { label: "Performance", href: "/#performance" },
-  { label: "AI Loop", href: "/#loop" },
-  { label: "How it works", href: "/#how" },
-  { label: "Impact", href: "/#impact" },
-  { label: "ROI calculator", href: "/roi-calculator", current: true },
-  { label: "Blog", href: "/blog" },
-];
-
-const Nav = () => (
-  <header className="nav roi-noprint">
-    <div className="container nav-row">
-      <Link href="/" aria-label="PraiseLoop home">
-        <Image className="nav-logo" src="/praiseloop-logo.png" alt="PraiseLoop" width={70} height={26} priority style={{ height: 26, width: "auto" }} />
-      </Link>
-      <nav className="nav-links">
-        {NAV.map((l) => (
-          <Link key={l.label} href={l.href} aria-current={l.current ? "page" : undefined} className={l.current ? "is-current" : undefined}>{l.label}</Link>
-        ))}
-      </nav>
-      <div className="nav-cta">
-        <Link href={BOOKING_URL} className="btn btn-primary">Book a demo</Link>
-      </div>
-    </div>
-  </header>
-);
-
-const Footer = () => (
-  <footer className="foot roi-noprint">
-    <div className="container foot-row">
-      <Image className="foot-logo" src="/praiseloop-logo.png" alt="PraiseLoop" width={60} height={22} style={{ height: 22, width: "auto" }} />
-      <nav className="foot-links">
-        <Link href="/blog">Blog</Link>
-        <Link href="/demo">Terms and Conditions</Link>
-        <Link href="/demo">Privacy Policy</Link>
-        <Link href="/demo">Cookie Policy</Link>
-      </nav>
-      <span className="foot-copy">© 2026 PraiseLoop. Performance, recognition and reward as one system.</span>
-    </div>
-  </footer>
-);
+export { Icon };
 
 /** Nav, closing CTA and footer around a calculator. */
 export function RoiPage({ cta, children }: { cta: { title: React.ReactNode; sub: string }; children: React.ReactNode }) {
   return (
     <div className="plh roi">
-      <Nav />
+      <SiteHeader />
       <main>{children}</main>
 
       <section className="cta2 roi-noprint">
@@ -129,7 +62,7 @@ export function RoiPage({ cta, children }: { cta: { title: React.ReactNode; sub:
         </div>
       </section>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

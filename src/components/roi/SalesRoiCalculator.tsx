@@ -260,7 +260,7 @@ function Pack({
           </p>
           <PilotSteps
             steps={[
-              { when: "Weeks 1–2", what: "Go live. Zero integrations needed to start." },
+              { when: "Set-up", what: "Connect HubSpot or Salesforce, and build the reward rules from incentives you already pay." },
               { when: "Day 30", what: "Patterns emerge: which reps are moving, and what moved them." },
               { when: "Day 90", what: "Your CFO report: a quarter of attainment, and the case for rolling out, or not." },
             ]}
@@ -384,7 +384,7 @@ export default function SalesRoiCalculator() {
     <RoiPage
       cta={{
         title: <>Prove it on one sales team in <span className="kw">90 days</span>.</>,
-        sub: "The calculator models it. A pilot measures it: two weeks to go live, a full quarter of attainment by your CFO report, and if the numbers don't move, you walk.",
+        sub: "The calculator models it. A pilot measures it: a full quarter of attainment by your CFO report, and if the numbers don't move, you walk.",
       }}
     >
       <Calculator key={search} initialInputs={initialInputs} preUnlocked={preUnlocked} />

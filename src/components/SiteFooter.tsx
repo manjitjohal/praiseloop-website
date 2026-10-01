@@ -1,35 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import "../app/home-v2.css";
+import { CookieSettingsButton } from "./CookieBanner";
 
-/** Site-wide footer used on secondary pages (blog, etc.) — Ft5 statement close. */
+const LINKS = [
+  { label: "How it works", href: "/#how" },
+  { label: "Blog", href: "/blog" },
+  { label: "ROI calculator", href: "/roi-calculator" },
+  { label: "Book a demo", href: "/demo" },
+  { label: "Terms", href: "/terms" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Cookies", href: "/cookies" },
+];
+
+/** The one footer, on every page. Box-less `.plh` wrapper: see SiteHeader. */
 export default function SiteFooter() {
   return (
-    <footer>
-      <div className="container footer-statement">
-        <p className="footer-line">Reward <span className="em">outcomes</span>,<br />not effort.</p>
-        <Image
-          src="/praiseloop-logo-white.png"
-          alt="PraiseLoop"
-          width={121}
-          height={48}
-          style={{ height: 48, width: "auto", marginTop: 44 }}
-        />
-        <nav className="footer-links-row">
-          <a href="/#deputy">The AI Deputy</a>
-          <a href="/#how">Outcome Engine</a>
-          <a href="/#proof">Proof</a>
-          <a href="/#gcc">GCC</a>
-          <a href="/#pricing">Pricing</a>
-          <Link href="/blog">Blog</Link>
-          <a href="/#trust">Security</a>
-          <Link href="/demo">Contact</Link>
-        </nav>
-        <div className="footer-meta">
-          <span>&copy; 2026 PraiseLoop</span>
-          <span>Dubai &middot; Riyadh &middot; London</span>
-          <span>hello@praiseloop.com</span>
+    <div className="plh plh-contents">
+      <footer className="foot">
+        <div className="container foot-row">
+          <Image className="foot-logo" src="/praiseloop-logo.png" alt="PraiseLoop" width={60} height={22} style={{ height: 22, width: "auto" }} />
+          <nav className="foot-links" aria-label="Footer">
+            {LINKS.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
+            <CookieSettingsButton />
+          </nav>
+          <span className="foot-copy">The AI performance coach for sales teams. © 2026 PraiseLoop</span>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 }
