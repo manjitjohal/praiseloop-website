@@ -30,14 +30,17 @@ export function DemoCta({ title, body }: Cta) {
   );
 }
 
-/** Nav, page sections, closing call to action and footer. Styled by site.css under `.pl`. */
-export default function MarketingPage({ children, cta = DEFAULT_CTA }: { children: React.ReactNode; cta?: Cta }) {
+/**
+ * Nav, page sections, closing call to action and footer. Styled by site.css
+ * under `.pl`. `cta={null}` drops the closing band (the demo page itself).
+ */
+export default function MarketingPage({ children, cta = DEFAULT_CTA }: { children: React.ReactNode; cta?: Cta | null }) {
   return (
     <div className="pl">
       <SiteHeader />
       <main>
         {children}
-        <DemoCta {...cta} />
+        {cta && <DemoCta {...cta} />}
       </main>
       <SiteFooter />
     </div>

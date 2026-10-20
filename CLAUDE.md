@@ -25,7 +25,7 @@ Marketing site for **PraiseLoop** (performance-linked employee recognition) with
 | `src/components/marketing/` | Page shell (`MarketingPage`), audience-page layout, coded product mock-ups |
 | `src/app/site.css` | Marketing styles, scoped under `.pl`; nav/footer classes are `pl-` prefixed (they also render inside the older `.plh` pages) |
 | `src/app/demo/page.tsx` | Demo-request form (`/demo`) |
-| `src/app/blog/page.tsx` | Blog listing (`/blog`) — only posts with a `salesTopic` (tabs); others are unlisted and noindexed |
+| `src/app/blog/page.tsx` | Blog listing (`/blog`) — every post; a post's `salesTopic` adds it to that tab (tabs show once a topic has posts) |
 | `src/app/blog/[slug]/page.tsx` | Blog post — Portable Text body, SEO/OG metadata, series links |
 | `src/app/studio/[[...tool]]/page.tsx` | Embedded Sanity Studio (`/studio`) |
 | `src/components/SiteHeader.tsx` / `SiteFooter.tsx` | Shared nav/footer for secondary pages |

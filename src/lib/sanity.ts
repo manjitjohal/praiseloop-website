@@ -54,18 +54,12 @@ export const CONTENT_TYPE_LABELS: Record<string, string> = {
   aeo: "Reference",
 };
 
-/**
- * The /blog tabs. Only posts with a sales topic are listed and indexed; the
- * older HR and retention posts have none, so they stay reachable by link but
- * are hidden until the team decides what to do with them.
- */
+/** The /blog tabs. A tab shows once a post carries its topic; posts without one appear under All. */
 export const SALES_TOPIC_LABELS: Record<string, string> = {
   coaching: "Coaching",
   incentives: "Incentives",
   loop: "The loop",
 };
-
-export const isListedPost = (post: { salesTopic?: string }) => Boolean(post.salesTopic && SALES_TOPIC_LABELS[post.salesTopic]);
 
 /** The category-style pill shown on a post: sales topic, then territory, then a sensible fallback. */
 export function topicLabel(post: {

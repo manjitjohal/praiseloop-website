@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MarketingPage from "@/components/marketing/MarketingPage";
 import { PLAYBOOK_URL } from "@/components/site/blocks";
-import { getBlogPosts, isListedPost, urlForImage, SALES_TOPIC_LABELS, type BlogPostSummary } from "@/lib/sanity";
+import { getBlogPosts, topicLabel, urlForImage, SALES_TOPIC_LABELS, type BlogPostSummary } from "@/lib/sanity";
 
 export const revalidate = 60;
 
@@ -15,15 +15,15 @@ export const metadata: Metadata = {
 const TOPIC_TONE: Record<string, string> = { coaching: "#E8F0F0", incentives: "#FDEBDD", loop: "#F4F4F3" };
 
 function PostCard({ post }: { post: BlogPostSummary }) {
-  const topic = post.salesTopic ?? "";
+  const tag = topicLabel(post);
   const cover = post.featuredImage
     ? urlForImage(post.featuredImage)?.width(800).height(300).fit("crop").auto("format").url()
     : undefined;
   return (
     <Link className="pcard" href={`/blog/${post.slug.current}`}>
-      <div className="pcard-art" style={{ background: TOPIC_TONE[topic] }}>
+      <div className="pcard-art" style={{ background: TOPIC_TONE[post.salesTopic ?? ""] ?? TOPIC_TONE.coaching }}>
         {cover && <img src={cover} alt="" loading="lazy" />}
-        <span className="tag">{SALES_TOPIC_LABELS[topic]}</span>
+        {tag && <span className="tag">{tag}</span>}
       </div>
       <div className="pcard-body">
         <h2>{post.title}</h2>
@@ -35,8 +35,10 @@ function PostCard({ post }: { post: BlogPostSummary }) {
 
 export default async function BlogIndexPage({ searchParams }: { searchParams: Promise<{ topic?: string }> }) {
   const { topic } = await searchParams;
-  const posts = (await getBlogPosts()).filter(isListedPost);
-  const active = topic && SALES_TOPIC_LABELS[topic] ? topic : undefined;
+  const posts = await getBlogPosts();
+  // Only topics that have posts get a tab.
+  const topics = Object.entries(SALES_TOPIC_LABELS).filter(([value]) => posts.some((p) => p.salesTopic === value));
+  const active = topic && topics.some(([value]) => value === topic) ? topic : undefined;
   const shown = active ? posts.filter((p) => p.salesTopic === active) : posts;
 
   return (
@@ -57,21 +59,19 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: Pr
             </div>
           ) : (
             <>
-              <nav className="tabs" aria-label="Filter posts by topic">
-                <Link className={`tab${active ? "" : " on"}`} href="/blog" aria-current={active ? undefined : "page"}>All</Link>
-                {Object.entries(SALES_TOPIC_LABELS).map(([value, label]) => (
-                  <Link key={value} className={`tab${active === value ? " on" : ""}`} href={`/blog?topic=${value}`} aria-current={active === value ? "page" : undefined}>
-                    {label}
-                  </Link>
-                ))}
-              </nav>
-              {shown.length === 0 ? (
-                <div className="empty"><p>Nothing under {SALES_TOPIC_LABELS[active ?? ""]} yet. <Link className="textlink" href="/blog">See all posts</Link></p></div>
-              ) : (
-                <div className="grid2">
-                  {shown.map((post) => <PostCard key={post._id} post={post} />)}
-                </div>
+              {topics.length > 0 && (
+                <nav className="tabs" aria-label="Filter posts by topic">
+                  <Link className={`tab${active ? "" : " on"}`} href="/blog" aria-current={active ? undefined : "page"}>All</Link>
+                  {topics.map(([value, label]) => (
+                    <Link key={value} className={`tab${active === value ? " on" : ""}`} href={`/blog?topic=${value}`} aria-current={active === value ? "page" : undefined}>
+                      {label}
+                    </Link>
+                  ))}
+                </nav>
               )}
+              <div className="grid2">
+                {shown.map((post) => <PostCard key={post._id} post={post} />)}
+              </div>
             </>
           )}
         </div>

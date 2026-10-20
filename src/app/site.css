@@ -189,6 +189,31 @@
 .pl .empty h2{font-size:17px;font-weight:700;letter-spacing:-0.01em}
 .pl .empty p{color:var(--muted);margin-top:8px}
 
+/* demo request */
+.pl .demo-grid{align-items:flex-start}
+.pl .see-h{font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.pl .see{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.pl .see li{display:flex;gap:10px;font-size:16.5px;line-height:1.5}
+.pl .see li .ico{width:18px;height:18px;color:var(--teal);stroke-width:2.6;margin-top:3px}
+.pl .form-card{background:#FFFFFF;border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 30px 60px rgba(21,63,63,0.12);display:flex;flex-direction:column;gap:16px}
+.pl .form-card h2{font-size:24px;letter-spacing:-0.02em}
+.pl .field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pl .field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pl .field label{font-size:14px;font-weight:600;color:#374151}
+.pl .field input,.pl .field select,.pl .field textarea{width:100%;min-width:0;min-height:48px;font:inherit;font-size:16px;color:var(--ink);background:#FFFFFF;border:1px solid #D9D9D5;border-radius:12px;padding:11px 14px}
+.pl .field textarea{resize:vertical;min-height:96px}
+.pl .field input:focus,.pl .field select:focus,.pl .field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+.pl .form-card .btn{width:100%;margin-top:4px;cursor:pointer}
+.pl .form-card .btn:disabled{opacity:.7;cursor:default}
+.pl .form-note{font-size:13.5px;color:var(--muted);text-align:center}
+.pl .form-note.error{color:#B42318}
+.pl .form-note a{text-decoration:underline}
+.pl .form-card.done{align-items:flex-start}
+.pl .form-card.done p{color:var(--muted)}
+.pl .done-ic{width:48px;height:48px;border-radius:50%;background:var(--green-bg);color:var(--green);display:flex;align-items:center;justify-content:center}
+.pl .done-ic .ico{width:24px;height:24px;stroke-width:2.6}
+@media (max-width:520px){.pl .field-row{grid-template-columns:1fr}.pl .form-card{padding:22px}}
+
 /* people */
 .pl .person{display:flex;gap:16px;align-items:center}
 .pl .ph{width:72px;height:72px;border-radius:50%;background:var(--warm);border:1px dashed #CFCFCB;display:flex;align-items:center;justify-content:center;color:var(--soft);font-weight:800;font-size:20px;flex-shrink:0}

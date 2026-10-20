@@ -194,7 +194,7 @@ export const blogPost = defineType({
       type: "string",
       group: "taxonomy",
       description:
-        "Lists the post on /blog under this tab. Posts without one (the older HR and retention pieces) stay reachable by link but are left off the listing and out of search.",
+        "Puts the post under this tab on /blog (it's always listed under All).",
       options: {
         list: [
           { title: "Coaching", value: "coaching" },
