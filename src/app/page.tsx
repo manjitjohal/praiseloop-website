@@ -39,7 +39,7 @@ export default function Home() {
           <div className="hero-copy">
             <h1>Turn sales underperformance into <span className="kw">revenue</span>.</h1>
             <p className="hero-line">PraiseLoop is the AI coach that finds why each rep is behind, coaches them back to target, and shows what it was worth.</p>
-            <p className="hero-sub">Your managers see which rep needs them today, what to try, and whether it worked.</p>
+            <p className="hero-sub">Your managers get the intelligence while the agent is transforming underperformance across your sales team.</p>
             <div className="actions">
               <Link className="btn btn-primary" href={BOOKING_URL}>Book a demo <Icon.Arrow /></Link>
               <a className="textlink" href="#how">See how it works with one rep</a>
