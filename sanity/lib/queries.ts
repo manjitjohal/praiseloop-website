@@ -56,6 +56,7 @@ export const BLOG_POSTS_QUERY = defineQuery(
     featuredImage,
     contentType,
     territory,
+    salesTopic,
     contentId,
     targetKeyword,
     "pillar": pillar->{ _id, title, "slug": slug.current }
@@ -74,6 +75,7 @@ export const BLOG_POST_BY_SLUG_QUERY = defineQuery(
     featuredImage,
     contentType,
     territory,
+    salesTopic,
     contentId,
     targetKeyword,
     searchIntent,

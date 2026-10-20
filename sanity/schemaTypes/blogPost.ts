@@ -189,6 +189,22 @@ export const blogPost = defineType({
       },
     }),
     defineField({
+      name: "salesTopic",
+      title: "Sales topic",
+      type: "string",
+      group: "taxonomy",
+      description:
+        "Lists the post on /blog under this tab. Posts without one (the older HR and retention pieces) stay reachable by link but are left off the listing and out of search.",
+      options: {
+        list: [
+          { title: "Coaching", value: "coaching" },
+          { title: "Incentives", value: "incentives" },
+          { title: "The loop", value: "loop" },
+        ],
+        layout: "radio",
+      },
+    }),
+    defineField({
       name: "pillar",
       title: "Links up to (Pillar)",
       type: "reference",

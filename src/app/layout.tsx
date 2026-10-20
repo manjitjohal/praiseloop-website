@@ -26,14 +26,15 @@ const jetbrainsMono = JetBrains_Mono({
 const GA_ID = "G-D51ZZLEPBP";
 const GTM_ID = "GTM-57GNLCMQ";
 
+const TITLE = "PraiseLoop · Turn sales underperformance into revenue";
 const DESCRIPTION =
-  "PraiseLoop coaches every sales manager and rep from your CRM, and pays rewards automatically when they hit their numbers. Works with HubSpot and Salesforce.";
+  "PraiseLoop is the AI coach that finds why each rep is behind, coaches them back to target, and shows what it was worth. Runs on your HubSpot or Salesforce data.";
 
 export const metadata: Metadata = {
-  title: "PraiseLoop · The AI performance coach for sales teams",
+  title: TITLE,
   description: DESCRIPTION,
   openGraph: {
-    title: "PraiseLoop · The AI performance coach for sales teams",
+    title: TITLE,
     description: DESCRIPTION,
     siteName: "PraiseLoop",
     type: "website",

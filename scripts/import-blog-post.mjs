@@ -306,11 +306,16 @@ const client = createClient({ projectId, dataset, apiVersion, token, useCdn: fal
 const replace = process.argv.includes("--replace");
 
 try {
-  if (replace && !doc.featuredImage) {
+  if (replace) {
     const existing = await client.getDocument(doc._id).catch(() => null);
-    if (existing?.featuredImage) {
+    if (!doc.featuredImage && existing?.featuredImage) {
       doc.featuredImage = existing.featuredImage;
       console.log("  (preserving existing featuredImage)");
+    }
+    // Set in Studio; it decides whether /blog lists the post, so a re-import mustn't drop it.
+    if (!doc.salesTopic && existing?.salesTopic) {
+      doc.salesTopic = existing.salesTopic;
+      console.log("  (preserving existing salesTopic)");
     }
   }
   const result = replace

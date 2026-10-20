@@ -13,6 +13,7 @@ import {
   contentTypeBadge,
   formatDate,
   readingTime,
+  isListedPost,
 } from "@/lib/sanity";
 
 export const revalidate = 60;
@@ -38,6 +39,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${title} — PraiseLoop`,
     description,
+    // The older HR and retention posts are kept out of search until the team decides on them.
+    robots: isListedPost(post) ? undefined : { index: false, follow: true },
     openGraph: {
       title,
       description,
@@ -275,7 +278,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="blog-page">
-      <SiteHeader current="blog" />
+      <SiteHeader />
       <main>
         <article className="post">
           {/* Hero band */}

@@ -20,9 +20,12 @@ Marketing site for **PraiseLoop** (performance-linked employee recognition) with
 
 | Path | What it is |
 |------|-----------|
-| `src/app/page.tsx` → `src/components/LandingPage.tsx` | Homepage — **fully static**, no CMS |
+| `src/app/page.tsx` | Homepage — **fully static**, no CMS |
+| `src/app/{product,pilot,about}/`, `src/app/for/*/` | Product, pilot, about (+ `#security`) and the three audience pages |
+| `src/components/marketing/` | Page shell (`MarketingPage`), audience-page layout, coded product mock-ups |
+| `src/app/site.css` | Marketing styles, scoped under `.pl`; nav/footer classes are `pl-` prefixed (they also render inside the older `.plh` pages) |
 | `src/app/demo/page.tsx` | Demo-request form (`/demo`) |
-| `src/app/blog/page.tsx` | Blog listing (`/blog`) — featured post + card grid |
+| `src/app/blog/page.tsx` | Blog listing (`/blog`) — only posts with a `salesTopic` (tabs); others are unlisted and noindexed |
 | `src/app/blog/[slug]/page.tsx` | Blog post — Portable Text body, SEO/OG metadata, series links |
 | `src/app/studio/[[...tool]]/page.tsx` | Embedded Sanity Studio (`/studio`) |
 | `src/components/SiteHeader.tsx` / `SiteFooter.tsx` | Shared nav/footer for secondary pages |

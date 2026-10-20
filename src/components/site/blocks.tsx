@@ -9,6 +9,7 @@ import { Icon, type IP } from "./icons";
 
 export const BOOKING_URL = "/demo";
 export const PLAYBOOK_URL = "/playbook";
+export const SIGN_IN_URL = "https://app.praiseloop.com";
 
 /* ── Sourced stats ────────────────────────────────────── */
 
