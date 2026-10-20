@@ -35,7 +35,9 @@ function PostCard({ post }: { post: BlogPostSummary }) {
 
 export default async function BlogIndexPage({ searchParams }: { searchParams: Promise<{ topic?: string }> }) {
   const { topic } = await searchParams;
-  const posts = await getBlogPosts();
+  const all = await getBlogPosts();
+  // Sales posts lead; the older HR and retention posts follow. Newest first within each.
+  const posts = [...all.filter((p) => p.salesTopic), ...all.filter((p) => !p.salesTopic)];
   // Only topics that have posts get a tab.
   const topics = Object.entries(SALES_TOPIC_LABELS).filter(([value]) => posts.some((p) => p.salesTopic === value));
   const active = topic && topics.some(([value]) => value === topic) ? topic : undefined;
