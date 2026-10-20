@@ -15,7 +15,7 @@ export default function RepsPage() {
       lede="Your own coach finds what's holding your number back, gives you one habit to fix it, and shows you when it's working. It knows your target and your next accelerator, so you always know which deals matter most."
       media={<RepToday />}
       problem={{
-        h: "Feedback usually turns up at the monthly 1:1. By then the deal's gone.",
+        h: <>Feedback usually turns up at the <span className="kw">monthly 1:1</span>. By then the deal&apos;s gone.</>,
         paras: [
           "And “make more calls” doesn't help much if your problem is what happens after the proposal goes out.",
           "You had a great March. Do you know why? Most reps couldn't tell you.",

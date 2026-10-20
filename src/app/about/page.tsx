@@ -28,7 +28,7 @@ export default function AboutPage() {
     <MarketingPage>
       <section className="hero">
         <div className="container hero-solo">
-          <h1>Every rep coached, not just the ones a manager has time for.</h1>
+          <h1>Every rep <span className="kw">coached</span>, not just the ones a manager has time for.</h1>
           <div className="prose">
             <p>Most sales managers don&apos;t have time to coach everyone. We built PraiseLoop to fill the gap.</p>
             <p>We started out building a recognition product. The more sales teams we spoke to, the clearer it got that the thing they were short of wasn&apos;t praise. It was coaching, and time to do it.</p>
@@ -39,7 +39,7 @@ export default function AboutPage() {
 
       <section className="warm">
         <div className="container">
-          <h2 className="h2-gap">The team</h2>
+          <h2 className="h2-gap">The <span className="kw">team</span></h2>
           <div className="grid3">
             {TEAM.map((t) => (
               <div key={t.name} className="person">
@@ -59,7 +59,7 @@ export default function AboutPage() {
       <section id="security">
         <div className="container split top">
           <div className="prose">
-            <h2>Security and data</h2>
+            <h2>Security and <span className="kw">data</span></h2>
             <p>Your company owns its data. We use it to coach your team and for nothing else.</p>
           </div>
           <div className="plain">

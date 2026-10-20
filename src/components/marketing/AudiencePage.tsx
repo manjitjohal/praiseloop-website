@@ -9,12 +9,13 @@ import { Icon } from "../site/icons";
  * does for them, and the objection they'd raise, answered.
  */
 export default function AudiencePage({
-  title, lede, media, problem, points, objection,
+  title, lede, media, problem, extra, points, objection,
 }: {
   title: React.ReactNode;
   lede: string;
   media: React.ReactNode;
-  problem: { h: string; paras: string[] };
+  problem: { h: React.ReactNode; paras: string[] };
+  extra?: React.ReactNode;
   points: { h: string; p: string }[];
   objection: { q: string; a: string };
 }) {
@@ -42,6 +43,8 @@ export default function AudiencePage({
           </div>
         </div>
       </section>
+
+      {extra}
 
       <section>
         <div className="container plain">

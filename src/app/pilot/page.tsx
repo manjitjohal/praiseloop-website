@@ -27,10 +27,10 @@ const FAQ = [
 
 export default function PilotPage() {
   return (
-    <MarketingPage cta={{ title: "Talk to us about a pilot.", body: "Twenty minutes to see whether your team's a fit, and which number we'd measure." }}>
+    <MarketingPage cta={{ title: <>Talk to us about a <span className="kw">pilot</span>.</>, body: "Twenty minutes to see whether your team's a fit, and which number we'd measure." }}>
       <section className="hero">
         <div className="container hero-solo">
-          <h1>Try it for 90 days on your own team.</h1>
+          <h1>Try it for <span className="kw">90 days</span> on your own team.</h1>
           <p className="lede">We&apos;re onboarding our first sales teams now. On day one we agree the number that would make it worth it. On day 90 we show you where it landed.</p>
           <div className="actions">
             <Link className="btn btn-primary" href={BOOKING_URL}>Talk to us about a pilot <Icon.Arrow /></Link>
@@ -41,7 +41,7 @@ export default function PilotPage() {
       <section className="warm">
         <div className="container">
           <div className="prose" style={{ marginBottom: 44 }}>
-            <h2>What the 90 days look like</h2>
+            <h2>What the <span className="kw">90 days</span> look like</h2>
             <p>Ninety days is long enough to see reps change what they do, and to see that start to show up in the stage it should affect. We&apos;ll report closed revenue too, but we won&apos;t claim it all for the coach.</p>
           </div>
           <ol className="tl">
@@ -59,7 +59,7 @@ export default function PilotPage() {
       <section>
         <div className="container split top">
           <div className="prose">
-            <h2>Who it suits</h2>
+            <h2>Who it <span className="kw">suits</span></h2>
             <p>Sales teams with more than one manager, where the head of sales wants everyone coaching the same way. That usually means somewhere between 20 and 100 reps.</p>
           </div>
           <div className="plain">

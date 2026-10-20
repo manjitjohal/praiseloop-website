@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import AudiencePage from "@/components/marketing/AudiencePage";
 import { ExampleData, Kpi, RepRow } from "@/components/marketing/mocks";
+import { TeamView as TeamSplit } from "@/components/marketing/visuals";
 
 export const metadata: Metadata = {
   title: "For heads of sales · PraiseLoop",
@@ -42,8 +43,20 @@ export default function HeadsOfSalesPage() {
       title={<>Turn the middle of your sales team into <span className="kw">top performers</span>.</>}
       lede="Your best reps' habits, coached into the rest of the team. Every rep gets coached, whoever their manager is. You get one view of which plans moved the number, by manager and by type of problem."
       media={<TeamView />}
+      extra={
+        <section>
+          <div className="container">
+            <div className="head">
+              <span className="eyebrow">Across every team</span>
+              <h2>Where your managers&apos; <span className="kw">time</span> goes.</h2>
+              <p className="lede">PraiseLoop does the legwork with the reps who are behind, in every team. Your managers spend their time where the revenue is.</p>
+            </div>
+            <TeamSplit />
+          </div>
+        </section>
+      }
       problem={{
-        h: "Some of your managers coach every week. Some haven't run a proper 1:1 since the summer.",
+        h: <>Some of your managers coach <span className="kw">every week</span>. Some haven&apos;t run a proper 1:1 since the summer.</>,
         paras: [
           "Results tend to follow the same split. From the CRM you can see who's behind, but you can't see what anyone did about it, or whether it helped.",
           "Meanwhile your forecast keeps leaning on the same handful of reps who are close every quarter and don't quite get there.",

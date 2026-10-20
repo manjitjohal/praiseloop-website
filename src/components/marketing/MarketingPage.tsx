@@ -1,30 +1,36 @@
 import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
-import { BOOKING_URL, PLAYBOOK_URL } from "../site/blocks";
+import DemoForm from "./DemoForm";
+import { Icon } from "../site/icons";
 
-type Cta = { title: string; body: string };
+type Cta = { title: React.ReactNode; body: string };
 
 const DEFAULT_CTA: Cta = {
-  title: "Want to see it on your team?",
-  body: "Book 20 minutes. We'll show you the product with example data, then talk about running a pilot on your own CRM.",
+  title: <>Want to see it on <span className="kw">your team</span>?</>,
+  body: "Book 20 minutes. We'll show you how it works, then look at where the gap is costing your team.",
 };
 
-/** The closing call to action that ends every marketing page. */
+/**
+ * The closing call to action that ends every marketing page: the pitch on
+ * the left, the real demo form (posts to /api/demo) on the right.
+ */
 export function DemoCta({ title, body }: Cta) {
   return (
-    <section id="demo">
-      <div className="container">
-        <div className="cta">
-          <div className="cta-copy">
-            <h2>{title}</h2>
-            <p>{body}</p>
+    <section id="demo" className="warm">
+      <div className="container book">
+        <div className="book-copy">
+          <span className="eyebrow">Book a demo</span>
+          <h2>{title}</h2>
+          <p className="lede">{body}</p>
+          <div className="book-pts">
+            <div><Icon.Check /><span>A walk-through with example data</span></div>
+            <div><Icon.Check /><span>Where your managers&apos; time is going today</span></div>
+            <div><Icon.Check /><span>Whether a 90-day pilot on your own CRM makes sense</span></div>
           </div>
-          <div className="cta-actions">
-            <Link className="btn btn-primary" href={BOOKING_URL}>Book a demo</Link>
-            <Link className="cta-alt" href={PLAYBOOK_URL}>Or get the sales coaching playbook</Link>
-          </div>
+          <p className="fineprint">Not ready to talk? <Link className="textlink" href="/roi-calculator">Work out what it&apos;s worth</Link> first.</p>
         </div>
+        <div className="book-form"><DemoForm /></div>
       </div>
     </section>
   );

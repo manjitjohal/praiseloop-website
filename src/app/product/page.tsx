@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import MarketingPage from "@/components/marketing/MarketingPage";
 import { DidItWork, ManagerOverview, RepToday } from "@/components/marketing/mocks";
+import { Loop } from "@/components/marketing/visuals";
 import { BOOKING_URL } from "@/components/site/blocks";
 import { Icon } from "@/components/site/icons";
 
@@ -57,10 +58,21 @@ export default function ProductPage() {
         </div>
       </section>
 
+      <section>
+        <div className="container">
+          <div className="head center-head">
+            <span className="eyebrow">The loop</span>
+            <h2>How the <span className="kw">loop</span> works.</h2>
+            <p className="lede">Your manager and PraiseLoop take turns, so nothing about a rep who is behind gets missed, and the manager stays in charge.</p>
+          </div>
+          <Loop />
+        </div>
+      </section>
+
       <section className="warm" id="manager">
         <div className="container split">
           <div className="prose">
-            <h2>Monday morning, for a manager.</h2>
+            <h2>Monday morning, for a <span className="kw">manager</span>.</h2>
             <p>Team numbers across the top. Under them, the coach&apos;s read on the week in a couple of sentences. Then every rep, with a status and the reason behind it.</p>
             <p>The reasons are specific. It might be activity, conversion at one stage, pipeline quality, a drop from that rep&apos;s normal, or a rise worth sharing. Each one opens up to the evidence.</p>
             <p>Managers can also just ask: <strong>&ldquo;who&apos;s closest to an accelerator this month?&rdquo;</strong></p>
@@ -76,13 +88,14 @@ export default function ProductPage() {
             <h2>Reps use it because it helps them <span className="kw">earn more</span>.</h2>
             <p>It knows their target and where the next accelerator kicks in, so the first thing they see is how close they are and which deals would get them there.</p>
             <p>Before a call they can ask what the coach knows about the deal. And the habit it suggests comes from their own best weeks, which lands better than a generic playbook.</p>
+            <p><Link className="textlink" href="/for/reps">More on what reps get</Link></p>
           </div>
         </div>
       </section>
 
       <section className="warm" id="did-it-work">
         <div className="container">
-          <h2 style={{ marginBottom: 16 }}>Did it work?</h2>
+          <h2 style={{ marginBottom: 16 }}>Did it <span className="kw">work</span>?</h2>
           <div className="prose" style={{ marginBottom: 36 }}>
             <p>Every plan is measured twice: first the behaviour it asked for, then the number that behaviour should move. Both are compared with the rep&apos;s own last eight weeks, so a good month for the whole team doesn&apos;t make a plan look better than it was. Sometimes the answer is no, and the coach tries something different.</p>
           </div>
@@ -92,7 +105,7 @@ export default function ProductPage() {
 
       <section>
         <div className="container">
-          <h2 className="h2-gap">Also in the product</h2>
+          <h2 className="h2-gap">Also in the <span className="kw">product</span></h2>
           <div className="plain">
             <div>
               <h3>Check-ins when someone dips</h3>
@@ -112,7 +125,7 @@ export default function ProductPage() {
 
       <section className="warm" id="packs">
         <div className="container">
-          <h2 className="h2-gap">Two packs</h2>
+          <h2 className="h2-gap">Two <span className="kw">packs</span></h2>
           <div className="grid2" style={{ maxWidth: 980 }}>
             {PACKS.map((p) => (
               <div key={p.name} className={`pack${p.highlight ? " hl" : ""}`}>

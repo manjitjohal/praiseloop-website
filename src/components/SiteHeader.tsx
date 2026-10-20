@@ -20,7 +20,6 @@ const NAV: NavEntry[] = [
     links: [
       { href: "/for/heads-of-sales", title: "Heads of sales", blurb: "Every manager coaching the same way, with proof" },
       { href: "/for/sales-managers", title: "Sales managers", blurb: "Know why the numbers moved, before the 1:1" },
-      { href: "/for/reps", title: "Reps", blurb: "A coach of your own, on your side" },
     ],
   },
   { kind: "link", label: "Pilot", href: "/pilot", section: "/pilot" },

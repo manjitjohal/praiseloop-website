@@ -49,7 +49,7 @@ export default function SiteFooter() {
           <nav className="pl-foot-grid" aria-label="Footer">
             <div className="pl-foot-brand">
               <Image src="/praiseloop-logo-white.png" alt="PraiseLoop" width={86} height={34} style={{ height: 34, width: "auto" }} />
-              <p>Turn sales underperformance into revenue.</p>
+              <p>Every manager&apos;s hour should go where the revenue is.</p>
             </div>
             {COLUMNS.map((col) => (
               <div key={col.h}>

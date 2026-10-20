@@ -47,7 +47,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: Pr
     <MarketingPage>
       <section className="hero" style={{ paddingBottom: 32 }}>
         <div className="container">
-          <h1 style={{ fontSize: "clamp(36px,4.4vw,56px)" }}>For sales leaders who coach.</h1>
+          <h1 style={{ fontSize: "clamp(36px,4.4vw,56px)" }}>For sales leaders who <span className="kw">coach</span>.</h1>
           <p className="lede" style={{ marginTop: 16 }}>Writing on coaching, incentives and how the two fit together.</p>
         </div>
       </section>
@@ -82,7 +82,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: Pr
       <section className="warm" id="playbook">
         <div className="container split">
           <div className="prose">
-            <h2>The sales coaching playbook</h2>
+            <h2>The sales coaching <span className="kw">playbook</span></h2>
             <p>A free guide for sales managers: how to find the real gap behind a rep&apos;s number, put together a two-week plan, and tell whether it worked.</p>
             <div className="actions" style={{ marginTop: 20 }}>
               <Link className="btn btn-primary" href={PLAYBOOK_URL}>Get the playbook</Link>
@@ -110,7 +110,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: Pr
       <section id="roi">
         <div className="container split">
           <div className="prose">
-            <h2>ROI calculator</h2>
+            <h2><span className="kw">ROI</span> calculator</h2>
             <p>Put in your revenue, team size and how many reps are below target, and see what moving them closer to target would be worth.</p>
           </div>
           <div>
