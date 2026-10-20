@@ -61,10 +61,10 @@ export async function POST(req: Request) {
     ${
       pdfUrl
         ? `<h2 style="margin:0 0 12px;font-size:22px;line-height:1.25">Here's your sales coaching playbook.</h2>
-    <p style="margin:0 0 20px">The five CRM signals that tell a manager who to talk to this week, and four conversation scripts for the 1:1 that follows.</p>
+    <p style="margin:0 0 20px">How to find the real gap behind a rep's number, put together a two-week plan, and tell whether it worked.</p>
     <div style="margin:0 0 20px">${button(pdfUrl, "Download the playbook", "#F26522")}</div>`
         : `<h2 style="margin:0 0 12px;font-size:22px;line-height:1.25">You're on the list for the sales coaching playbook.</h2>
-    <p style="margin:0 0 20px">We're putting the finishing touches to it. We'll send it to this address the day it's ready: the five CRM signals that tell a manager who to talk to this week, and four conversation scripts for the 1:1 that follows.</p>`
+    <p style="margin:0 0 20px">We're putting the finishing touches to it. We'll send it to this address the day it's ready: how to find the real gap behind a rep's number, put together a two-week plan, and tell whether it worked.</p>`
     }
     <p style="margin:0 0 16px;color:#64707E">Rather see the loop running on your own numbers? It's a 20-minute demo.</p>
     <div>${button(demoLink, "Book a demo", "#1B6B6B")}</div>

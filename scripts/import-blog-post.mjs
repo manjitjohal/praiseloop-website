@@ -114,7 +114,7 @@ const CONTENT = [
   { p: "For nationalised roles, a departure stops being just a financial calculation and becomes a regulatory one." },
   { p: "Companies with Emiratisation targets are running two retention problems at once: keeping the expatriate workforce that runs daily operations, and developing and keeping the national workforce that satisfies the mandate." },
   { p: "MoHRE's fines for missing 2025 Emiratisation targets reached AED 108,000 per unfilled national position for the 20–49 employee band, collected as a lump sum in January 2026." },
-  { p: "For the enterprise segment — 50+ employees, PraiseLoop's actual buyer — the structure is different: a monthly per-position fine that climbed from AED 6,000 to AED 9,000 through 2023–2025, and rises again to AED 10,000/month (AED 120,000 annually) from 1 July 2026 for companies that missed their H1 2026 checkpoint. Meeting the quota also unlocks reduced government fees and preferential access to public contracts." },
+  { p: "For enterprises with 50+ employees, the structure is different: a monthly per-position fine that climbed from AED 6,000 to AED 9,000 through 2023–2025, and rises again to AED 10,000/month (AED 120,000 annually) from 1 July 2026 for companies that missed their H1 2026 checkpoint. Meeting the quota also unlocks reduced government fees and preferential access to public contracts." },
   {
     stat: [
       { value: "AED 108,000", label: "one-off fine, 20–49 employee band", source: "MoHRE, Jan 2026" },
@@ -134,7 +134,7 @@ const CONTENT = [
   },
   { p: "That's the starting point for what changes next: most retention tools can't surface that signal in time. Engagement surveys are retrospective and opinion-based. Manual recognition generates goodwill but no structured data. HR dashboards count heads; they don't show the behavioural patterns that precede a resignation." },
   { p: "The shift underway among employers who hold onto their best people is from explaining departures after the fact to seeing them coming while there's still time to act — tracking which recognition events happen, to whom, and how the pattern is changing, rather than relying on an annual mood check." },
-  { p: "PraiseLoop's Outcome Engine ties every recognition event to a verified, KPI-linked outcome, turning the pattern of who is and isn't being recognised into a live signal a manager can act on." },
+  { p: "PraiseLoop is built to surface that signal, starting with sales teams: it reads the work already in your CRM, spots when someone drifts from their own normal, and gives their manager a plan while there's still time to act." },
 
   { h2: "How to calculate your true cost of employee turnover" },
   {
@@ -168,7 +168,7 @@ const CONTENT = [
   { h3: "How is the cost of employee turnover calculated?" },
   { p: "Headcount × attrition rate × average compensation × replacement multiplier (100–200%), plus UAE-specific visa, gratuity, and agency costs. Full method above." },
   { h3: "Does losing an Emirati employee trigger a penalty?" },
-  { p: "Yes. For the 20–49 employee band it's a one-off AED 108,000 fine; for enterprises with 50+ employees — PraiseLoop's actual buyer segment — it's a monthly fine rising to AED 10,000 (AED 120,000/year) from July 2026 for missed targets." },
+  { p: "Yes. For the 20–49 employee band it's a one-off AED 108,000 fine; for enterprises with 50+ employees, it's a monthly fine rising to AED 10,000 (AED 120,000/year) from July 2026 for missed targets." },
 
   { h2: "The bottom line" },
   { p: "For most enterprises, the true cost of turnover runs into the millions of dirhams a year, concentrated in a small number of departures that were often preventable." },
@@ -306,11 +306,16 @@ const client = createClient({ projectId, dataset, apiVersion, token, useCdn: fal
 const replace = process.argv.includes("--replace");
 
 try {
-  if (replace && !doc.featuredImage) {
+  if (replace) {
     const existing = await client.getDocument(doc._id).catch(() => null);
-    if (existing?.featuredImage) {
+    if (!doc.featuredImage && existing?.featuredImage) {
       doc.featuredImage = existing.featuredImage;
       console.log("  (preserving existing featuredImage)");
+    }
+    // Set in Studio; it decides whether /blog lists the post, so a re-import mustn't drop it.
+    if (!doc.salesTopic && existing?.salesTopic) {
+      doc.salesTopic = existing.salesTopic;
+      console.log("  (preserving existing salesTopic)");
     }
   }
   const result = replace

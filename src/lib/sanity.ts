@@ -54,11 +54,20 @@ export const CONTENT_TYPE_LABELS: Record<string, string> = {
   aeo: "Reference",
 };
 
-/** The category-style pill shown on cards: territory first, then a sensible fallback. */
+/** The /blog tabs. A tab shows once a post carries its topic; posts without one appear under All. */
+export const SALES_TOPIC_LABELS: Record<string, string> = {
+  coaching: "Coaching",
+  incentives: "Incentives",
+  loop: "The loop",
+};
+
+/** The category-style pill shown on a post: sales topic, then territory, then a sensible fallback. */
 export function topicLabel(post: {
+  salesTopic?: string;
   territory?: string;
   contentType?: string;
 }): string | null {
+  if (post.salesTopic && SALES_TOPIC_LABELS[post.salesTopic]) return SALES_TOPIC_LABELS[post.salesTopic];
   if (post.territory && TERRITORY_LABELS[post.territory]) return TERRITORY_LABELS[post.territory];
   if (post.contentType && CONTENT_TYPE_LABELS[post.contentType]) return CONTENT_TYPE_LABELS[post.contentType];
   return null;
@@ -100,6 +109,7 @@ export type BlogPostSummary = {
   featuredImage?: SanityImageSource;
   contentType?: string;
   territory?: string;
+  salesTopic?: string;
   contentId?: string;
   targetKeyword?: string;
   pillar?: PillarRef | null;

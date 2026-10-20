@@ -234,10 +234,10 @@ function BottomCTA() {
           <span className="eyebrow" style={{ color: "var(--orange)", justifyContent: "center" }}>
             See it live
           </span>
-          <h2>Recognition that proves its ROI</h2>
+          <h2>Want to see it on your team?</h2>
           <p>
-            See how PraiseLoop connects recognition to retention, engagement, and performance — with your data, in 30
-            minutes.
+            Book 20 minutes. We&apos;ll show you how PraiseLoop coaches every rep from your CRM, with example data, then
+            talk about running a pilot on your own.
           </p>
           <Link href="/demo" className="btn btn-primary">
             Book a demo →
@@ -275,7 +275,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="blog-page">
-      <SiteHeader current="blog" />
+      <SiteHeader />
       <main>
         <article className="post">
           {/* Hero band */}

@@ -189,6 +189,22 @@ export const blogPost = defineType({
       },
     }),
     defineField({
+      name: "salesTopic",
+      title: "Sales topic",
+      type: "string",
+      group: "taxonomy",
+      description:
+        "Puts the post under this tab on /blog (it's always listed under All).",
+      options: {
+        list: [
+          { title: "Coaching", value: "coaching" },
+          { title: "Incentives", value: "incentives" },
+          { title: "The loop", value: "loop" },
+        ],
+        layout: "radio",
+      },
+    }),
+    defineField({
       name: "pillar",
       title: "Links up to (Pillar)",
       type: "reference",

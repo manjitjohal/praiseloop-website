@@ -8,19 +8,20 @@ import { Icon } from "@/components/site/icons";
 export const metadata: Metadata = {
   title: "The sales coaching playbook · PraiseLoop",
   description:
-    "The five CRM signals that tell a sales manager who to talk to this week, and four conversation scripts for the 1:1 that follows.",
+    "A free guide for sales managers: how to find the real gap behind a rep's number, put together a two-week plan, and tell whether it worked.",
   openGraph: {
     title: "The sales coaching playbook · PraiseLoop",
     description:
-      "The five CRM signals that tell a sales manager who to talk to this week, and four conversation scripts for the 1:1 that follows.",
+      "A free guide for sales managers: how to find the real gap behind a rep's number, put together a two-week plan, and tell whether it worked.",
     siteName: "PraiseLoop",
     type: "website",
   },
 };
 
 const INSIDE = [
-  { Ico: Icon.Search, h: "Five signals", p: "What in your CRM says a rep's week is changing, for better or worse, and who to talk to first." },
-  { Ico: Icon.Message, h: "Four conversation scripts", p: "Ready-to-use openers for the 1:1 that follows, so the conversation is about what to do next." },
+  { Ico: Icon.Search, h: "The five gaps", p: "Activity, conversion at a stage, pipeline quality, drops and rises." },
+  { Ico: Icon.Calendar, h: "Two-week plans", p: "A template for each gap." },
+  { Ico: Icon.Trending, h: "Measuring it", p: "Before and after, against the rep's own normal." },
 ];
 
 export default function PlaybookPage() {
@@ -34,8 +35,8 @@ export default function PlaybookPage() {
               <span className="eyebrow">Free playbook</span>
               <h1>The sales coaching <span className="kw">playbook</span>.</h1>
               <p className="lede">
-                Most managers know coaching moves the number. Few have time to work out who needs it this week. This playbook shows where to look in
-                your CRM, and what to say when you find it.
+                Most managers know coaching moves the number. Few have time to work out who needs it this week. This playbook shows how to find the real
+                gap behind a rep&apos;s number, put together a two-week plan, and tell whether it worked.
               </p>
               <ul className="gate-list">
                 {INSIDE.map((it) => (
