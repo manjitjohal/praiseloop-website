@@ -27,6 +27,7 @@
 .pl .container{max-width:1200px;margin:0 auto;padding-inline:24px}
 .pl section{padding:88px 0}
 .pl .warm{background:var(--warm)}
+.pl #how.warm{background:var(--warm)} /* globals.css paints #how for the archived homepage */
 .pl .warm2{background:var(--warm2)}
 .pl .head{display:flex;flex-direction:column;gap:14px;max-width:760px;margin-bottom:44px}
 .pl .ico{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -225,6 +226,7 @@
 .pl .walk-i .panel .rep:first-child{border-top:0}
 .pl .panel.evidence{padding:8px 16px}
 .pl .walk-stack{display:flex;flex-direction:column;gap:8px}
+.pl .walk-i .coach p{color:#FFFFFF;font-size:15px} /* beats .walk-i p, which would grey it out */
 .pl .later{margin-top:56px;display:flex;flex-direction:column;gap:20px}
 .pl .later h3{font-size:clamp(26px,2.8vw,38px);letter-spacing:-0.025em;font-weight:800;max-width:820px}
 .pl .later > p{color:var(--muted);max-width:760px}
