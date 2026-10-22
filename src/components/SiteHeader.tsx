@@ -67,6 +67,17 @@ export default function SiteHeader() {
   const open = menu?.path === path ? menu.key : null;
   const setOpen = (key: string | null) => setMenu(key ? { key, path } : null);
   const navRef = useRef<HTMLElement>(null);
+  // The phone menu, like the dropdowns, only stays open on the page it was opened on.
+  const [mob, setMob] = useState<string | null>(null);
+  const mobOpen = mob === path;
+
+  useEffect(() => {
+    if (!mobOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMob(null); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [mobOpen]);
 
   useEffect(() => {
     const nav = navRef.current;
@@ -158,10 +169,41 @@ export default function SiteHeader() {
             })}
           </nav>
           <div className="pl-nav-cta">
-            <a className="pl-nav-link" href={SIGN_IN_URL}>Sign in</a>
+            <a className="pl-nav-link pl-signin" href={SIGN_IN_URL}>Sign in</a>
             <Link className="pl-nav-demo" href={BOOKING_URL}>Book a demo</Link>
+            <button
+              type="button"
+              className="pl-burger"
+              aria-label={mobOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobOpen}
+              aria-controls="pl-mob"
+              onClick={() => setMob(mobOpen ? null : path)}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" aria-hidden="true">
+                {mobOpen ? <><path d="M6 6l12 12" /><path d="M18 6L6 18" /></> : <><path d="M4 7h16" /><path d="M4 12h16" /><path d="M4 17h16" /></>}
+              </svg>
+            </button>
           </div>
         </div>
+        {mobOpen && (
+          <nav className="pl-mob" id="pl-mob" aria-label="Menu" onClick={(e) => { if ((e.target as Element).closest("a")) setMob(null); }}>
+            {NAV.map((item) =>
+              item.kind === "link" ? (
+                <Link key={item.href} className="pl-mob-top" href={item.href}>{item.label}</Link>
+              ) : (
+                <div key={item.key} className="pl-mob-sec">
+                  {(item.groups ?? [{ h: item.label, links: item.links }]).map((g) => (
+                    <div key={g.h} className="pl-mob-grp">
+                      <span className="pl-mob-h">{g.h}</span>
+                      {g.links.map((l) => <Link key={l.href} href={l.href}>{l.title}</Link>)}
+                    </div>
+                  ))}
+                </div>
+              ),
+            )}
+            <a className="pl-mob-top" href={SIGN_IN_URL}>Sign in</a>
+          </nav>
+        )}
       </header>
     </div>
   );

@@ -195,7 +195,13 @@ export function TeamView({ lead = "manager", person = "rep" }: { lead?: string; 
       return <circle key={`${x0}-${i}`} cx={x0 + c * 46} cy={110 + r * 46} r={17} fill={col} className={drift && i === 2 ? "drift" : undefined} />;
     });
   return (
-    <svg viewBox="0 0 880 300" role="img" aria-label={`An example team split into behind, on track and ahead. PraiseLoop does the legwork with the ${person}s who are behind and moves them up; the ${lead}'s time goes on the ${person}s who are on track and ahead.`} style={{ width: "100%", height: "auto", fontFamily: "inherit" }}>
+    <>
+    <div className="split-m">
+      <div><i style={{ background: BEHIND }} /><p><b>Behind</b><span>PraiseLoop does the legwork and moves them up, with a plan the {lead} agrees.</span></p></div>
+      <div><i style={{ background: "#B8C4C4" }} /><p><b>On track</b><span>Where the {lead}&apos;s time goes, along with the {person}s who are ahead.</span></p></div>
+      <div><i style={{ background: TEAL }} /><p><b>Ahead</b><span>The {person}s bringing in the most, who get the {lead}&apos;s attention back.</span></p></div>
+    </div>
+    <svg className="split-svg" viewBox="0 0 880 300" role="img" aria-label={`An example team split into behind, on track and ahead. PraiseLoop does the legwork with the ${person}s who are behind and moves them up; the ${lead}'s time goes on the ${person}s who are on track and ahead.`} style={{ width: "100%", height: "auto", fontFamily: "inherit" }}>
       <path d="M 330 40 L 330 22 L 860 22 L 860 40" fill="none" stroke="#153F3F" strokeWidth="2.5" />
       <text x="595" y="14" textAnchor="middle" fontSize="14" fontWeight="800" fill="#153F3F">Where your {lead}&apos;s time goes</text>
       <path d="M 20 40 L 20 22 L 280 22 L 280 40" fill="none" stroke={TEAL} strokeWidth="2.5" />
@@ -213,6 +219,7 @@ export function TeamView({ lead = "manager", person = "rep" }: { lead?: string; 
       <text x="270" y="228" textAnchor="middle" fontSize="12.5" fontWeight="700" fill={TEAL}>moving up</text>
       <text x="20" y="282" fontSize="13.5" fill="#5F6672">The {lead} still sees every {person} and agrees every plan. PraiseLoop flags when someone who&apos;s behind needs them in person.</text>
     </svg>
+    </>
   );
 }
 
@@ -375,41 +382,104 @@ export function Integrations() {
   );
 }
 
-/* ── Who it's for (home) ──────────────────────────────── */
+/* ── Who it's for (home): revenue teams around a ring ─────── */
 
 const Arrow = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
 );
-const BARS = [42, 64, 52, 78, 100];
-export function TeamCards() {
+
+type Team = { name: string; short: string; live: boolean; href?: string; number: string; coach: string };
+const TEAMS: Team[] = [
+  { name: "Sales teams", short: "sales teams", live: true, href: "/for/heads-of-sales", number: "Quota and pipeline", coach: "Proposals that go quiet, meetings booked, and deals without a dated next step." },
+  { name: "SDR and BDR teams", short: "SDR teams", live: false, number: "Meetings booked", coach: "How fast leads get a follow-up, connect rates, and how many conversations turn into meetings." },
+  { name: "Pre-sales teams", short: "pre-sales teams", live: false, number: "Technical win rate", coach: "Demos that lead to a decision, and how long it takes to get from demo to proposal." },
+  { name: "Customer success teams", short: "CS teams", live: true, href: "/for/cs-leaders", number: "Retention and net revenue", coach: "Next steps agreed with clients, accounts moving forward a stage, and renewals started early." },
+  { name: "Renewal teams", short: "renewal teams", live: false, number: "Renewals closed on time", coach: "Renewal conversations started by month 8, renewals at risk, and renewals closed early." },
+  { name: "Upsell and expansion teams", short: "expansion teams", live: false, number: "Expansion revenue", coach: "Accounts with a growth conversation under way, and upsell proposals that close." },
+  { name: "Partnership teams", short: "partnership teams", live: false, number: "Partner-sourced pipeline", coach: "Partners actively referring, deals registered, and time from signing a partner to their first deal." },
+  { name: "Delivery teams", short: "delivery teams", live: false, number: "On-time delivery", coach: "Projects slipping from plan, time to client sign-off, and how the team's hours are spread." },
+];
+
+export function RevenueTeams() {
+  const [active, setActive] = useState(0);
+  const [pinned, setPinned] = useState(false);
+  useEffect(() => {
+    if (pinned) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setActive((a) => (a + 1) % TEAMS.length), 3600);
+    return () => clearInterval(t);
+  }, [pinned]);
+  const a = TEAMS[active];
   return (
-    <div className="teams">
-      <Link className="team-card up d1" href="/for/heads-of-sales">
-        <div className="team-viz">
-          <div className="bars" aria-hidden="true">
-            {BARS.map((h, i) => <span key={h} className={`bar-g${i === BARS.length - 1 ? " hi" : ""}`} style={{ height: `${h}%`, animationDelay: `${0.1 + i * 0.1}s` }} />)}
+    <div>
+      <div className="orb">
+        <svg className="orb-ring" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="500" cy="280" rx="400" ry="225" fill="none" stroke={TEAL} strokeWidth="2.5" strokeDasharray="2 9" strokeLinecap="round" opacity="0.5" />
+        </svg>
+        <div className="orb-c" aria-live="polite">
+          <div className="orb-body" key={active}>
+            <span className={`orb-tag${a.live ? " live" : ""}`}>{a.live ? "Live now" : "Next"}</span>
+            <strong className="orb-name">{a.name}</strong>
+            <span className="orb-k">Their number</span>
+            <span className="orb-v">{a.number}</span>
+            <p className="orb-p">{a.coach}</p>
+            {a.live && a.href && <Link className="team-go" href={a.href}>See it for {a.short} <Arrow /></Link>}
           </div>
-          <small>Every rep&apos;s number, and why it moved this week</small>
         </div>
-        <h3>Sales teams</h3>
-        <p>Pipeline, proposals and quota. PraiseLoop finds why each rep&apos;s number moved and coaches the fix.</p>
-        <div className="team-roles"><span>Heads of sales</span><span>Sales managers</span><span>Reps</span></div>
-        <span className="team-go">For sales teams <Arrow /></span>
-      </Link>
-      <Link className="team-card up d2" href="/for/cs-leaders">
-        <div className="team-viz">
-          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true" style={{ flexShrink: 0 }}>
-            <circle cx="32" cy="32" r="26" fill="none" stroke="#E4E4E1" strokeWidth="7" />
-            <circle className="ring-p" cx="32" cy="32" r="26" fill="none" stroke={TEAL} strokeWidth="7" strokeLinecap="round" transform="rotate(-90 32 32)" />
-            <circle className="ring-dot" cx="32" cy="32" r="6" fill="#F26522" />
-          </svg>
-          <small>Every account in each CSM&apos;s book, and where it&apos;s heading</small>
-        </div>
-        <h3>Customer success teams</h3>
-        <p>Renewals, expansion and the accounts in each CSM&apos;s book. PraiseLoop shows which CSM needs you, and what to change.</p>
-        <div className="team-roles"><span>CS leaders</span><span>CSMs</span></div>
-        <span className="team-go">For customer success teams <Arrow /></span>
-      </Link>
+        {TEAMS.map((t, i) => {
+          const ang = ((-90 + i * 45) * Math.PI) / 180;
+          return (
+            <button
+              key={t.name}
+              type="button"
+              className={`orb-n${i === active ? " on" : ""}${t.live ? " live" : ""}`}
+              style={{ left: `${(50 + 40 * Math.cos(ang)).toFixed(1)}%`, top: `${(50 + 40.2 * Math.sin(ang)).toFixed(1)}%` }}
+              aria-pressed={i === active}
+              onClick={() => { setActive(i); setPinned(true); }}
+            >
+              {t.name}
+            </button>
+          );
+        })}
+      </div>
+      <div className="orb-key"><span><i className="k-live" />Live now</span><span><i className="k-next" />Next</span></div>
+    </div>
+  );
+}
+
+/* ── How PraiseLoop helps (home): two lanes, left to right ── */
+
+const LANES: ["m" | "p", string, string][] = [
+  ["p", "Spots the drop", "Every morning, against each person's own normal."],
+  ["m", "Sees who's behind and why", "A few minutes, with the evidence."],
+  ["m", "Agrees the plan", "One tap. The manager stays in charge."],
+  ["p", "Supports them, day to day", "One habit at a time, built from their best weeks."],
+  ["m", "Steps in when needed", "Only when the plan isn't moving."],
+  ["p", "Measures whether it worked", "Against their own baseline. Sometimes the answer is no."],
+];
+
+export function LoopLanes() {
+  return (
+    <div>
+      <div className="sl" role="img" aria-label="How the loop works, left to right. PraiseLoop spots the drop; your manager sees who is behind and why; your manager agrees the plan; the coach supports them day to day; your manager steps in when needed; PraiseLoop measures whether it worked. Then it starts again.">
+        <span className="sl-lab m">Your manager</span>
+        <span className="sl-lab p">PraiseLoop and the coach</span>
+        <div className="sl-track"><span className="sl-run" /></div>
+        {LANES.map(([k, h, d], i) => (
+          <div key={h} style={{ display: "contents" }}>
+            <span className={`sl-dot c${i + 1} w${i + 1}`}>{i + 1}</span>
+            <div className={`sl-step ${k} c${i + 1} w${i + 1}`}>
+              <span className="sl-who">{k === "m" ? "Your manager" : i === 3 ? "The coach" : "PraiseLoop"}</span>
+              <b>{h}</b>
+              <span>{d}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="sl-again">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14" /><path d="M7 22l-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" /></svg>
+        Then it starts again, for everyone who needs it.
+      </div>
     </div>
   );
 }
