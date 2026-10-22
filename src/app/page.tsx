@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import MarketingPage from "@/components/marketing/MarketingPage";
 import { ExampleData, Kpi, RepRow } from "@/components/marketing/mocks";
@@ -126,10 +127,15 @@ export default function Home() {
             <p className="lede">PraiseLoop reads the data your team already has and works out why each person&apos;s numbers moved. Managers see it all in a few minutes. The coach works through a plan with everyone who needs one, and tells the manager when someone needs a 1:1.</p>
           </div>
           <LoopLanes />
-          <figure className="founder center-quote">
+          <div className="quote-split">
+            <div className="quote-photo">
+              <Image src="/team-celebrating.jpg" alt="A sales team celebrating a win around their desks" width={1280} height={960} sizes="(max-width: 860px) 100vw, 520px" />
+            </div>
+          <figure className="founder quote-side">
             <blockquote className="quote">&ldquo;The goal isn&apos;t to get every rep to 100%. It&apos;s to change their behaviours and help them build better habits. Moving someone from zero to fifty percent is a huge improvement, and now they&apos;re part of your mid and top performers.&rdquo;</blockquote>
             <figcaption className="quote-by"><span className="av g s">AV</span>Ash Vipani, CEO and co-founder, who runs a sales team himself</figcaption>
           </figure>
+          </div>
         </div>
       </section>
 
