@@ -49,7 +49,7 @@ export async function POST(req: Request) {
   const { firstName, lastName, email, company, jobTitle, team, teamSize, crm, csTool, message } = data || {};
 
   // Mirror the form's required fields. Team size and CRM qualify the lead.
-  if (!firstName || !lastName || !email || !company || !teamSize || !crm) {
+  if (!firstName || !lastName || !email || !company || !team || !teamSize || !crm) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

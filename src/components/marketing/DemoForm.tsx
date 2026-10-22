@@ -4,8 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import { Icon } from "../site/icons";
 
-const EMPTY = { firstName: "", lastName: "", email: "", company: "", jobTitle: "", team: "Sales", teamSize: "", crm: "", csTool: "", message: "" };
-const TEAMS = ["Sales", "Customer success", "Both"];
+const EMPTY = { firstName: "", lastName: "", email: "", company: "", jobTitle: "", team: "", teamSize: "", crm: "", csTool: "", message: "" };
+const TEAMS = [
+  "Sales",
+  "SDR / BDR",
+  "Pre-sales",
+  "Customer success",
+  "Renewals",
+  "Upsell and expansion",
+  "Partnerships",
+  "Delivery",
+  "More than one of these",
+];
+/** Teams that usually run on customer success tools as well as the CRM. */
+const CS_LIKE = ["Customer success", "Renewals", "Upsell and expansion", "More than one of these"];
 type Field = keyof typeof EMPTY;
 
 /** The demo request form. Posts to /api/demo, which emails the lead to the team. */
@@ -70,14 +82,13 @@ export default function DemoForm() {
           <input id="jobTitle" autoComplete="organization-title" value={form.jobTitle} onChange={update("jobTitle")} />
         </div>
       </div>
-      <fieldset className="field">
-        <legend className="field-legend">Your team *</legend>
-        <div className="pick">
-          {TEAMS.map((t) => (
-            <button key={t} type="button" className={form.team === t ? "on" : ""} aria-pressed={form.team === t} onClick={() => setForm((f) => ({ ...f, team: t, csTool: t === "Sales" ? "" : f.csTool }))}>{t}</button>
-          ))}
-        </div>
-      </fieldset>
+      <div className="field">
+        <label htmlFor="team">Which team is this for? *</label>
+        <select id="team" required value={form.team} onChange={(e) => { const t = e.target.value; setForm((f) => ({ ...f, team: t, csTool: CS_LIKE.includes(t) ? f.csTool : "" })); }}>
+          <option value="">Select…</option>
+          {TEAMS.map((t) => <option key={t} value={t}>{t}</option>)}
+        </select>
+      </div>
       <div className="field-row">
         <div className="field">
           <label htmlFor="teamSize">Team size *</label>
@@ -101,7 +112,7 @@ export default function DemoForm() {
           </select>
         </div>
       </div>
-      {form.team !== "Sales" && (
+      {CS_LIKE.includes(form.team) && (
         <div className="field">
           <label htmlFor="csTool">What do you use for customer success? (optional)</label>
           <select id="csTool" value={form.csTool} onChange={update("csTool")}>
