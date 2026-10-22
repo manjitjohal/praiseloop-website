@@ -1,4 +1,3 @@
-import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import DemoForm from "./DemoForm";
@@ -28,7 +27,6 @@ export function DemoCta({ title, body }: Cta) {
             <div><Icon.Check /><span>Where your managers&apos; time is going today</span></div>
             <div><Icon.Check /><span>Whether a 90-day pilot on your own CRM makes sense</span></div>
           </div>
-          <p className="fineprint">Not ready to talk? <Link className="textlink" href="/roi-calculator">Work out what it&apos;s worth</Link> first.</p>
         </div>
         <div className="book-form"><DemoForm /></div>
       </div>

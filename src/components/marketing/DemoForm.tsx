@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { Icon } from "../site/icons";
 
-const EMPTY = { firstName: "", lastName: "", email: "", company: "", jobTitle: "", teamSize: "", crm: "", message: "" };
+const EMPTY = { firstName: "", lastName: "", email: "", company: "", jobTitle: "", team: "Sales", teamSize: "", crm: "", csTool: "", message: "" };
+const TEAMS = ["Sales", "Customer success", "Both"];
 type Field = keyof typeof EMPTY;
 
 /** The demo request form. Posts to /api/demo, which emails the lead to the team. */
@@ -69,16 +70,24 @@ export default function DemoForm() {
           <input id="jobTitle" autoComplete="organization-title" value={form.jobTitle} onChange={update("jobTitle")} />
         </div>
       </div>
+      <fieldset className="field">
+        <legend className="field-legend">Your team *</legend>
+        <div className="pick">
+          {TEAMS.map((t) => (
+            <button key={t} type="button" className={form.team === t ? "on" : ""} aria-pressed={form.team === t} onClick={() => setForm((f) => ({ ...f, team: t, csTool: t === "Sales" ? "" : f.csTool }))}>{t}</button>
+          ))}
+        </div>
+      </fieldset>
       <div className="field-row">
         <div className="field">
-          <label htmlFor="teamSize">Sales team size *</label>
+          <label htmlFor="teamSize">Team size *</label>
           <select id="teamSize" required value={form.teamSize} onChange={update("teamSize")}>
             <option value="">Select…</option>
-            <option value="Under 5">Under 5 reps</option>
-            <option value="5-20">5–20 reps</option>
-            <option value="21-50">21–50 reps</option>
-            <option value="51-200">51–200 reps</option>
-            <option value="200+">200+ reps</option>
+            <option value="Under 5">Under 5 people</option>
+            <option value="5-20">5–20 people</option>
+            <option value="21-50">21–50 people</option>
+            <option value="51-200">51–200 people</option>
+            <option value="200+">200+ people</option>
           </select>
         </div>
         <div className="field">
@@ -92,8 +101,23 @@ export default function DemoForm() {
           </select>
         </div>
       </div>
+      {form.team !== "Sales" && (
+        <div className="field">
+          <label htmlFor="csTool">What do you use for customer success? (optional)</label>
+          <select id="csTool" value={form.csTool} onChange={update("csTool")}>
+            <option value="">Select…</option>
+            <option value="HubSpot Service Hub">HubSpot Service Hub</option>
+            <option value="Gainsight">Gainsight</option>
+            <option value="ChurnZero">ChurnZero</option>
+            <option value="Zendesk">Zendesk</option>
+            <option value="Intercom">Intercom</option>
+            <option value="Other">Other</option>
+            <option value="None">None</option>
+          </select>
+        </div>
+      )}
       <div className="field">
-        <label htmlFor="message">What&apos;s the sales problem you&apos;d most like to fix?</label>
+        <label htmlFor="message">What would you most like to fix?</label>
         <textarea id="message" rows={3} value={form.message} onChange={update("message")} />
       </div>
       <button type="submit" className="btn btn-primary" disabled={status === "sending"}>

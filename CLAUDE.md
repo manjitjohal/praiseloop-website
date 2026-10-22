@@ -1,8 +1,19 @@
 # CLAUDE.md — PraiseLoop Marketing Website
 
-Guidance for Claude Code when working in this repo. The user's email is duncan@buildink.co.
+Guidance for Claude Code when working in this repo.
 
-Marketing site for **PraiseLoop** (performance-linked employee recognition) with a Sanity-backed blog. Deployed on **Vercel**.
+Marketing site for **PraiseLoop**, the AI coach for revenue teams (sales and customer success), with a Sanity-backed blog. Deployed on **Vercel**.
+
+## Positioning (Oct 2026)
+
+- Category: **the AI coach for revenue teams**. Sales first, customer success second; partner and delivery teams later. Never "revenue intelligence" (Gong's category).
+- The coach is the product. It finds the cause of underperformance, coaches the fix, and measures whether it worked against each person's own baseline. It supports managers; it never replaces them.
+- Name underperformance as the problem, but never label a person an "underperformer". No leaderboards in marketing.
+- Recognition and rewards stay in the app (Enterprise pack) but are not the lead message.
+- Integrations: only HubSpot and Fathom are live. Everything else is "coming soon, or connected on request". Never claim Salesforce or other tools as live.
+- Word list: sales pages say rep, quota, deal, pipeline; CS pages say CSM, renewals, account, book; the homepage stays neutral ("each person", "their number").
+- Coded mock-ups carry a quiet "Illustrative" label: the names and numbers are made up.
+- House style: no em dashes, UK spelling.
 
 ## Stack
 
@@ -21,7 +32,7 @@ Marketing site for **PraiseLoop** (performance-linked employee recognition) with
 | Path | What it is |
 |------|-----------|
 | `src/app/page.tsx` | Homepage — **fully static**, no CMS |
-| `src/app/{product,pilot,about}/`, `src/app/for/*/` | Product, pilot, about (+ `#security`) and the three audience pages |
+| `src/app/{product,pilot,about}/`, `src/app/for/*/` | Product, pilot, about (+ `#security`) and the audience pages: heads of sales, sales managers, reps, CS leaders, CSMs |
 | `src/components/marketing/` | Page shell (`MarketingPage`), audience-page layout, coded product mock-ups |
 | `src/app/site.css` | Marketing styles, scoped under `.pl`; nav/footer classes are `pl-` prefixed (they also render inside the older `.plh` pages) |
 | `src/app/demo/page.tsx` | Demo-request form (`/demo`) |
@@ -35,13 +46,13 @@ Marketing site for **PraiseLoop** (performance-linked employee recognition) with
 | `sanity/lib/client.ts` | Studio/config client — **throws** if env is missing (do not use for public reads) |
 | `scripts/import-blog-post.mjs` | Creates the first pillar post (P1) via the Sanity API |
 | `DESIGN.md` | **Product-app** design system — canonical token source of truth |
-| `DESIGN.web.md` | **Marketing/web** design system — flourishes + section patterns (pilot: `public/v2.html`) |
+| `DESIGN.web.md` | **Marketing/web** design system — flourishes + section patterns (built in `src/app/site.css`) |
 
 ## Design system
 
 Colors, buttons (`.btn`, `.btn-primary`), `.eyebrow`, `.container`, cards, and mock UIs are defined in `src/app/globals.css`. **Reuse existing classes; match the surrounding style before adding new CSS.**
 
-**Design direction (in progress):** the marketing site is being realigned to the tokens in `DESIGN.md` (Figtree, orange `#F26522`, teal-forward) plus the marketing flourishes documented in **`DESIGN.web.md`**. The pilot is `public/v2.html`; the current homepage (`globals.css` + `LandingPage.tsx`) is still on the older Manrope / `#FF5B04` / warm-cream look and will be retuned to match once the pilot is approved. **When building new marketing UI, follow `DESIGN.web.md`.**
+**Design direction:** the marketing pages use the tokens in `DESIGN.md` (Figtree, orange `#F26522`, teal-forward) plus the flourishes in **`DESIGN.web.md`**, styled in `src/app/site.css` under `.pl`. The older blog, demo, ROI and legal pages still carry some `.plh` / `home-v2.css` styles. **When building new marketing UI, follow `DESIGN.web.md`.** Old briefs from the rewards era are in `docs/archive/`.
 
 ## Sanity & environment variables
 

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const INSIDE = [
-  { Ico: Icon.Search, h: "The five gaps", p: "Activity, conversion at a stage, pipeline quality, drops and rises." },
+  { Ico: Icon.Search, h: "The five gaps", p: "Activity, conversion at a stage, pipeline quality, a drop from normal, and a rise worth sharing." },
   { Ico: Icon.Calendar, h: "Two-week plans", p: "A template for each gap." },
   { Ico: Icon.Trending, h: "Measuring it", p: "Before and after, against the rep's own normal." },
 ];
@@ -32,7 +32,7 @@ export default function PlaybookPage() {
         <section className="hero">
           <div className="container gate-grid">
             <div>
-              <span className="eyebrow">Free playbook</span>
+              <span className="eyebrow">Free playbook · coming soon</span>
               <h1>The sales coaching <span className="kw">playbook</span>.</h1>
               <p className="lede">
                 Most managers know coaching moves the number. Few have time to work out who needs it this week. This playbook shows how to find the real

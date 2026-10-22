@@ -9,8 +9,9 @@ import { Icon } from "../site/icons";
  * does for them, and the objection they'd raise, answered.
  */
 export default function AudiencePage({
-  title, lede, media, problem, extra, points, objection,
+  eyebrow, title, lede, media, problem, extra, points, objection,
 }: {
+  eyebrow?: string;
   title: React.ReactNode;
   lede: string;
   media: React.ReactNode;
@@ -24,6 +25,7 @@ export default function AudiencePage({
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
+            {eyebrow && <span className="eyebrow">{eyebrow}</span>}
             <h1>{title}</h1>
             <p className="lede">{lede}</p>
             <div className="actions">

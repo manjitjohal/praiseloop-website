@@ -35,9 +35,10 @@ export default function SalesManagersPage() {
         ],
       }}
       points={[
+        { h: "How to talk to Sam this week", p: "Before every 1:1: the tone to take, what to do, what to avoid, and an opener, built from what's working for that rep." },
         { h: "One tap to run a plan", p: "Or let the coach run plans for a rep you trust it with, and just keep an eye on them." },
         { h: "1:1s with the homework done", p: "What's been tried with each rep and what moved, before you sit down." },
-        { h: "Ask it anything", p: "“Who's closest to an accelerator this month?” answered from your own data." },
+        { h: "Ask about your team", p: "“Who's closest to target this month?” answered from your own data." },
       ]}
       objection={{
         q: "I already have dashboards. Why would I need this?",

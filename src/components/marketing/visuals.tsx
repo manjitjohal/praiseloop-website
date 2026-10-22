@@ -7,7 +7,8 @@
  */
 
 import { useEffect, useState } from "react";
-import { Coach, DidItWork, RepRow } from "./mocks";
+import Link from "next/link";
+import { Coach, DidItWork, NADIA, RepRow } from "./mocks";
 
 const P = {
   phone: <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />,
@@ -35,11 +36,11 @@ const BEHIND = "#B54848";
 /* ── Problem: where the week goes ─────────────────────── */
 
 const TILES: [keyof typeof P, string, string][] = [
-  ["phone", "On every call", "From first pitch to close, to get one rep over the line"],
-  ["pen", "Rewriting the script", "Talk tracks and sequences that have stopped working"],
+  ["phone", "Sitting in on calls", "From first pitch to renewal, to get one person over the line"],
+  ["pen", "Rewriting the playbook", "Talk tracks, sequences and plays that have stopped working"],
   ["search", "Digging through reports", "Working out why the numbers dropped"],
   ["flask", "Testing what sticks", "New ideas, new scripts, new incentives"],
-  ["repeat", "Coaching, again", "Before meetings, after them, and the team's sales method in every 1:1"],
+  ["repeat", "Coaching, again", "Before meetings, after them, and the team's method in every 1:1"],
 ];
 export function Tiles() {
   return (
@@ -56,9 +57,9 @@ export function Tiles() {
 }
 
 const COSTS: [keyof typeof P, string, string][] = [
-  ["target", "Missed number", "Managers chase the gap instead of the deals."],
+  ["target", "Missed targets and renewals", "Managers chase the gap instead of the next deal or renewal."],
   ["star", "Overlooked stars", "Top performers get the least time, even though they'd bring in the most revenue with it."],
-  ["exit", "Reps walk out", "Reps who don't improve leave, switch off or coast. Then you're hiring again."],
+  ["exit", "Good people walk out", "People who don't improve leave, switch off or coast. Then you're hiring again."],
 ];
 export function Costs() {
   return (
@@ -141,7 +142,7 @@ export function WeekToggle() {
           <span className="c">Day-to-day support for each rep</span><span className="c">Measuring what worked</span>
         </div>
       )}
-      <p className="fineprint"><i>Example week for a manager of eight reps. Not measured data.</i></p>
+      <p className="fineprint"><i>Example week for a sales manager of eight reps. Not measured data.</i></p>
     </div>
   );
 }
@@ -152,8 +153,8 @@ const STEPS: [boolean, string, string, number, number][] = [
   [false, "PraiseLoop", "Spots the drop", 50, 9],
   [true, "Your manager", "Sees who's behind and why", 85, 30],
   [true, "Your manager", "Agrees the plan", 85, 70],
-  [false, "The coach", "Supports the rep, day to day", 50, 91],
-  [true, "Your manager", "Steps in when a rep needs them", 15, 70],
+  [false, "The coach", "Supports them, day to day", 50, 91],
+  [true, "Your manager", "Steps in when someone needs them", 15, 70],
   [false, "PraiseLoop", "Measures whether it worked", 15, 30],
 ];
 const RING_ARROWS = [-60, 0, 60, 120, 180, 240].map((a) => {
@@ -165,12 +166,12 @@ const RING_ARROWS = [-60, 0, 60, 120, 180, 240].map((a) => {
 export function Loop() {
   return (
     <div>
-      <div className="loop" role="img" aria-label="The PraiseLoop loop: PraiseLoop spots the drop; your manager sees who is behind and why; your manager agrees the plan; the coach supports the rep day to day; your manager steps in when a rep needs them; PraiseLoop measures whether it worked, and the loop starts again.">
+      <div className="loop" role="img" aria-label="The PraiseLoop loop: PraiseLoop spots the drop; your manager sees who is behind and why; your manager agrees the plan; the coach supports them day to day; your manager steps in when someone needs them; PraiseLoop measures whether it worked, and the loop starts again.">
         <svg className="loop-ring" viewBox="0 0 920 470" preserveAspectRatio="none" aria-hidden="true">
           <ellipse cx="460" cy="235" rx="390" ry="195" fill="none" stroke={TEAL} strokeWidth="2.5" strokeDasharray="2 9" strokeLinecap="round" opacity="0.55" />
           {RING_ARROWS.map((r) => <path key={r.ang} d="M -8 -7 L 8 0 L -8 7 Z" fill={TEAL} transform={`translate(${r.x},${r.y}) rotate(${r.ang})`} />)}
         </svg>
-        <div className="loop-c"><strong>PraiseLoop</strong><em>The manager and PraiseLoop, working the loop together on every rep who is behind.</em></div>
+        <div className="loop-c"><strong>PraiseLoop</strong><em>The manager and PraiseLoop, working the loop together on everyone who is behind.</em></div>
         {STEPS.map(([m, who, what, x, y], i) => (
           <div key={what} className={`ln${m ? " m" : ""} s${i + 1}`} style={{ left: `${x}%`, top: `${y}%` }}>
             <span>{who}</span><b>{what}</b>
@@ -187,16 +188,16 @@ export function Loop() {
 
 /* ── Team at a glance (heads of sales) ────────────────── */
 
-export function TeamView() {
+export function TeamView({ lead = "manager", person = "rep" }: { lead?: string; person?: string }) {
   const dots = (x0: number, n: number, col: string, drift = false) =>
     Array.from({ length: n }, (_, i) => {
       const r = Math.floor(i / 3), c = i % 3;
       return <circle key={`${x0}-${i}`} cx={x0 + c * 46} cy={110 + r * 46} r={17} fill={col} className={drift && i === 2 ? "drift" : undefined} />;
     });
   return (
-    <svg viewBox="0 0 880 300" role="img" aria-label="An example team split into behind, on track and ahead. PraiseLoop does the legwork with the reps who are behind and moves them up; the manager's time goes on the reps who are on track and ahead." style={{ width: "100%", height: "auto", fontFamily: "inherit" }}>
+    <svg viewBox="0 0 880 300" role="img" aria-label={`An example team split into behind, on track and ahead. PraiseLoop does the legwork with the ${person}s who are behind and moves them up; the ${lead}'s time goes on the ${person}s who are on track and ahead.`} style={{ width: "100%", height: "auto", fontFamily: "inherit" }}>
       <path d="M 330 40 L 330 22 L 860 22 L 860 40" fill="none" stroke="#153F3F" strokeWidth="2.5" />
-      <text x="595" y="14" textAnchor="middle" fontSize="14" fontWeight="800" fill="#153F3F">Where your manager&apos;s time goes</text>
+      <text x="595" y="14" textAnchor="middle" fontSize="14" fontWeight="800" fill="#153F3F">Where your {lead}&apos;s time goes</text>
       <path d="M 20 40 L 20 22 L 280 22 L 280 40" fill="none" stroke={TEAL} strokeWidth="2.5" />
       <text x="150" y="14" textAnchor="middle" fontSize="14" fontWeight="800" fill={TEAL}>Where PraiseLoop does the legwork</text>
       <text x="96" y="78" textAnchor="middle" fontSize="15" fontWeight="700" fill="#1A1A1A">Behind</text>
@@ -210,7 +211,7 @@ export function TeamView() {
         <path d="M -9 -8 L 9 0 L -9 8 Z" fill={TEAL} transform="translate(344,200)" />
       </g>
       <text x="270" y="228" textAnchor="middle" fontSize="12.5" fontWeight="700" fill={TEAL}>moving up</text>
-      <text x="20" y="282" fontSize="13.5" fill="#5F6672">The manager still sees every rep and agrees every plan. PraiseLoop flags when someone who&apos;s behind needs them in person.</text>
+      <text x="20" y="282" fontSize="13.5" fill="#5F6672">The {lead} still sees every {person} and agrees every plan. PraiseLoop flags when someone who&apos;s behind needs them in person.</text>
     </svg>
   );
 }
@@ -218,6 +219,81 @@ export function TeamView() {
 /* ── How it works, click-through ──────────────────────── */
 
 const HOW_STEPS = ["PraiseLoop spots the drop", "It works out why", "Sarah agrees the plan", "Did it work?"];
+const CS_STEPS = ["PraiseLoop spots the drop", "It works out why", "Hannah agrees the plan", "Did it work?"];
+
+/** How it works, with a Sales / Customer success switch. */
+export function HowTeams() {
+  const [team, setTeam] = useState<"sales" | "cs">("sales");
+  return (
+    <div>
+      <div className="tog how-tog" role="group" aria-label="Pick a team">
+        <button type="button" className={team === "sales" ? "on" : ""} aria-pressed={team === "sales"} onClick={() => setTeam("sales")}>Sales team</button>
+        <button type="button" className={team === "cs" ? "on" : ""} aria-pressed={team === "cs"} onClick={() => setTeam("cs")}>Customer success team</button>
+      </div>
+      {team === "sales" ? (
+        <>
+          <p className="lede how-lede">Sam is one of Sarah&apos;s eight reps. Click through what happened.</p>
+          <HowSteps />
+        </>
+      ) : (
+        <>
+          <p className="lede how-lede">Nadia is one of Hannah&apos;s six CSMs. Click through what happened.</p>
+          <CsSteps />
+        </>
+      )}
+    </div>
+  );
+}
+
+function CsSteps() {
+  const [st, setSt] = useState(0);
+  return (
+    <div>
+      <div className="stp" role="group" aria-label="Steps">
+        {CS_STEPS.map((s, i) => (
+          <button key={s} type="button" className={st === i ? "on" : ""} aria-pressed={st === i} onClick={() => setSt(i)}><i>{i + 1}</i>{s}</button>
+        ))}
+      </div>
+      <div className="stp-body" key={st}>
+        {st === 0 && (
+          <div className="walk"><div className="walk-i">
+            <div><span className="walk-when">Monday, week 1</span><h3>PraiseLoop spots the drop</h3><p>Nadia&apos;s client calls have ended with an agreed next step 3 times in her last 10. Over the previous eight weeks it was about 7 in 10. Two of her accounts reach month 8 of their contract this month.</p></div>
+            <div className="panel"><RepRow initials="NK" name="Nadia K." teal status="behind" gap="Next steps agreed: 3 of her last 10 calls, against about 7 in 10 normally" /></div>
+          </div></div>
+        )}
+        {st === 1 && (
+          <div className="walk"><div className="walk-i">
+            <div><span className="walk-when">Same morning</span><h3>It works out why</h3><p>She&apos;s on as many client calls as ever. What&apos;s changed is how they end: fewer finish with an agreed next step, and renewal conversations are starting late.</p></div>
+            <div className="panel evidence">
+              <div className="ev"><span>Client calls held this month</span><b className="ok">10, her normal</b></div>
+              <div className="ev"><span>Renewal conversation started by month 8</span><b className="wn">1 of 4</b></div>
+              <div className="ev"><span>Next step agreed with the client</span><b className="wn">3 of 10</b></div>
+            </div>
+          </div></div>
+        )}
+        {st === 2 && (
+          <div className="walk"><div className="walk-i">
+            <div><span className="walk-when">Tuesday</span><h3>Hannah agrees the plan. Nadia gets one thing to try.</h3><p>A two-week plan, built from what worked in Nadia&apos;s own best quarters. Hannah approves it in one tap between escalations.</p></div>
+            <div className="walk-stack">
+              <Coach label="Coach, to Nadia" text="Your clients are hearing from you. The calls are ending without a next step. For the next two weeks, close every call with one agreed next step and a date." primary="Start this week" secondary="Why this?" />
+              <span className="sub">Hannah ran this plan · Tue 9:02 · she&apos;ll see how it&apos;s going each morning</span>
+            </div>
+          </div></div>
+        )}
+        {st === 3 && (
+          <div className="later">
+            <span className="walk-when">Three weeks later</span>
+            <h3>Every plan gets an answer, against the CSM&apos;s own normal.</h3>
+            <DidItWork d={NADIA} />
+            <p>Renewals land in lumps, so PraiseLoop measures the habit and the stage movement first, and reports renewals alongside as they come in.</p>
+          </div>
+        )}
+      </div>
+      <button type="button" className="btn btn-ghost stp-next" onClick={() => setSt((s) => (s + 1) % 4)}>{st === 3 ? "Start again" : "Next step"}</button>
+    </div>
+  );
+}
+
 export function HowSteps() {
   const [st, setSt] = useState(0);
   return (
@@ -270,8 +346,8 @@ export function HowSteps() {
 /* ── AI chat tools vs PraiseLoop ──────────────────────── */
 
 export function Versus() {
-  const left = ["Waits for you to ask the right question", "Only sees what you paste in", "Doesn't know each rep's normal", "Gives advice, then it's down to you"];
-  const right = ["Spots the drop on its own, every day", "Connected to your team's data all the time", "Measures every rep against their own best weeks", "Agrees a plan with the manager, supports the rep, and checks it worked"];
+  const left = ["Waits for you to ask the right question", "Only sees what you paste in", "Doesn't know each person's normal", "Gives advice, then it's down to you"];
+  const right = ["Spots the drop on its own, every day", "Connected to your team's data all the time", "Measures everyone against their own best weeks", "Agrees a plan with the manager, supports the person, and checks it worked"];
   return (
     <div className="vs">
       <div className="vs-col vs-them"><h3>A chat tool like ChatGPT</h3>{left.map((t) => <div className="vs-row" key={t}><Svg d={P.x} color="#9CA3AF" size={22} /><span>{t}</span></div>)}</div>
@@ -280,16 +356,60 @@ export function Versus() {
   );
 }
 
-/* ── Integrations strip ───────────────────────────────── */
+/* ── Integrations ─────────────────────────────────────── */
 
-const TOOLS = ["HubSpot", "Salesforce", "Fathom", "Gmail", "Outlook", "Google Calendar", "Slack", "Microsoft Teams"];
+const LIVE = ["HubSpot", "Fathom"];
+const SOON = ["Salesforce", "Gmail", "Outlook", "Google Calendar", "Slack", "Microsoft Teams"];
 export function Integrations() {
   return (
-    <div className="mq" aria-label="Integrations">
-      <div className="mq-track">
-        {TOOLS.map((t) => <span className="chip" key={t}>{t}</span>)}
-        <span className="mq-dup" aria-hidden="true">{TOOLS.map((t) => <span className="chip" key={t}>{t}</span>)}</span>
+    <div className="int-groups">
+      <div className="int-grp">
+        <span className="int-lab">Live today</span>
+        <div className="int-row">{LIVE.map((t) => <span className="chip live" key={t}>{t}</span>)}</div>
       </div>
+      <div className="int-grp">
+        <span className="int-lab">Coming soon, or connected on request</span>
+        <div className="int-row">{SOON.map((t) => <span className="chip soon" key={t}>{t}</span>)}</div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Who it's for (home) ──────────────────────────────── */
+
+const Arrow = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
+);
+const BARS = [42, 64, 52, 78, 100];
+export function TeamCards() {
+  return (
+    <div className="teams">
+      <Link className="team-card up d1" href="/for/heads-of-sales">
+        <div className="team-viz">
+          <div className="bars" aria-hidden="true">
+            {BARS.map((h, i) => <span key={h} className={`bar-g${i === BARS.length - 1 ? " hi" : ""}`} style={{ height: `${h}%`, animationDelay: `${0.1 + i * 0.1}s` }} />)}
+          </div>
+          <small>Every rep&apos;s number, and why it moved this week</small>
+        </div>
+        <h3>Sales teams</h3>
+        <p>Pipeline, proposals and quota. PraiseLoop finds why each rep&apos;s number moved and coaches the fix.</p>
+        <div className="team-roles"><span>Heads of sales</span><span>Sales managers</span><span>Reps</span></div>
+        <span className="team-go">For sales teams <Arrow /></span>
+      </Link>
+      <Link className="team-card up d2" href="/for/cs-leaders">
+        <div className="team-viz">
+          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true" style={{ flexShrink: 0 }}>
+            <circle cx="32" cy="32" r="26" fill="none" stroke="#E4E4E1" strokeWidth="7" />
+            <circle className="ring-p" cx="32" cy="32" r="26" fill="none" stroke={TEAL} strokeWidth="7" strokeLinecap="round" transform="rotate(-90 32 32)" />
+            <circle className="ring-dot" cx="32" cy="32" r="6" fill="#F26522" />
+          </svg>
+          <small>Every account in each CSM&apos;s book, and where it&apos;s heading</small>
+        </div>
+        <h3>Customer success teams</h3>
+        <p>Renewals, expansion and the accounts in each CSM&apos;s book. PraiseLoop shows which CSM needs you, and what to change.</p>
+        <div className="team-roles"><span>CS leaders</span><span>CSMs</span></div>
+        <span className="team-go">For customer success teams <Arrow /></span>
+      </Link>
     </div>
   );
 }

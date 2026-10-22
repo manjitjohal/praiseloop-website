@@ -20,6 +20,8 @@ const COLUMNS = [
       { label: "Heads of sales", href: "/for/heads-of-sales" },
       { label: "Sales managers", href: "/for/sales-managers" },
       { label: "Reps", href: "/for/reps" },
+      { label: "CS leaders", href: "/for/cs-leaders" },
+      { label: "CSMs", href: "/for/csms" },
     ],
   },
   {

@@ -16,7 +16,7 @@ const TEAM = [
 const DATA = [
   {
     h: "What we read",
-    p: "Deals, stages, stage history, activity and deal owners, read-only. Targets and incentive thresholds you give us at setup. Call recordings only if an admin turns it on: each call is read once to pull out next steps and objections, then deleted.",
+    p: "Deals, stages, stage history, activity and owners in the pipelines you connect, such as new business and renewals, read-only. Targets and incentive thresholds you give us at setup. Call recordings only if an admin turns it on: each call is read once to pull out next steps and objections, then deleted.",
   },
   { h: "What we don't", p: "The content of emails, or anything outside your CRM and the tools you connect. We don't write back to your CRM either." },
   { h: "Where it's kept", p: "UK or EU data centres. Encrypted in transit and at rest, with access limited to the people who need it." },
@@ -33,6 +33,7 @@ export default function AboutPage() {
             <p>Most sales managers don&apos;t have time to coach everyone. We built PraiseLoop to fill the gap.</p>
             <p>We started out building a recognition product. The more sales teams we spoke to, the clearer it got that the thing they were short of wasn&apos;t praise. It was coaching, and time to do it.</p>
             <p>So we rebuilt PraiseLoop around a coach that works with every rep, using data the team already has. We started with sales because the numbers are already in the CRM, and you can tell quickly whether something&apos;s working.</p>
+            <p>Customer success came next, for the same reason: renewals and expansion are already tracked.</p>
           </div>
         </div>
       </section>
