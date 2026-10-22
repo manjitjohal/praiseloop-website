@@ -494,27 +494,9 @@
 /* ── Revenue teams (22 Oct): who it's for, CS toggle, integrations, menu groups ── */
 .pl .example{background:none;border:0;padding:0;color:#6B7280;font-size:12px;font-weight:600;font-style:italic;letter-spacing:0;text-transform:none}
 .pl .hero-copy .eyebrow{display:inline-block;margin-bottom:14px}
-.pl .teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px}
-.pl .team-card{background:#FFFFFF;border:1px solid #E4E4E1;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:14px;color:var(--ink);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.pl .team-card:hover{border-color:var(--teal);color:var(--ink);transform:translateY(-4px);box-shadow:0 14px 30px rgba(16,24,40,.08)}
-.pl .team-card h3{font-size:24px;letter-spacing:-.01em}
-.pl .team-card p{font-size:16px;color:var(--muted)}
-.pl .team-viz{display:flex;align-items:center;gap:18px;background:#F7F7F4;border-radius:12px;padding:14px 16px}
-.pl .team-viz small{font-size:13.5px;font-weight:700;color:#153F3F;line-height:1.35}
-.pl .bars{display:flex;align-items:flex-end;gap:7px;height:64px;flex-shrink:0}
-.pl .bar-g{display:block;width:16px;border-radius:5px 5px 0 0;background:#9FBFBF;transform-origin:bottom;animation:barGrow 1s ease both}
-.pl .bar-g.hi{background:#F26522;animation:barGrow 1s ease both,barRise 3.2s ease-in-out 1.3s infinite}
-@keyframes barGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-@keyframes barRise{0%,100%{transform:scaleY(.62)}50%{transform:scaleY(1)}}
-.pl .ring-p{stroke-dasharray:163.4;stroke-dashoffset:163.4;animation:ringFill 1.6s ease .4s forwards}
-@keyframes ringFill{to{stroke-dashoffset:23}}
-.pl .ring-dot{animation:plPop .5s ease 1.9s both}
-.pl .team-roles{display:flex;flex-wrap:wrap;gap:8px}
-.pl .team-roles span{background:#E8F0F0;color:#153F3F;border-radius:999px;padding:6px 12px;font-size:13.5px;font-weight:700;animation:plPop .5s ease both}
-.pl .team-roles span:nth-child(2){animation-delay:.15s}.pl .team-roles span:nth-child(3){animation-delay:.3s}
 .pl .team-go{font-weight:700;color:var(--teal);display:inline-flex;align-items:center;gap:8px;margin-top:auto}
 .pl .team-go svg{transition:transform .25s ease}
-.pl .team-card:hover .team-go svg{transform:translateX(5px)}
+.pl .team-go:hover svg{transform:translateX(5px)}
 .pl .how-tog{margin-bottom:20px}
 .pl .how-lede{margin-bottom:20px}
 .pl .int-groups{display:flex;flex-direction:column;gap:28px}
@@ -532,6 +514,129 @@
 .pl .pick button{flex:1 1 110px;min-height:48px;border-radius:12px;border:1px solid #D9D9D5;background:#FFFFFF;color:var(--ink);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
 .pl .pick button.on{border:2px solid #153F3F;background:#E8F0F0}
 .pl .pick button:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
-@media (prefers-reduced-motion:reduce){.pl .bar-g,.pl .bar-g.hi,.pl .ring-dot,.pl .team-roles span{animation:none!important}.pl .ring-p{animation:none;stroke-dashoffset:23}.pl .team-card,.pl .team-card:hover,.pl .team-go svg{transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){.pl .team-go svg{transition:none}}
 .pl fieldset.field{border:0;padding:0;margin:0}
 .pl .field-legend{font-size:14px;font-weight:600;color:#374151;margin-bottom:6px;padding:0}
+
+/* Revenue teams ring (home) */
+.pl .center-head .lede{margin-inline:auto}
+.pl .orb{position:relative;max-width:1000px;height:560px;margin-inline:auto}
+.pl .orb-ring{position:absolute;inset:0;width:100%;height:100%}
+.pl .orb-n{position:absolute;transform:translate(-50%,-50%);min-height:44px;padding:0 16px;border-radius:999px;font:inherit;font-weight:700;font-size:14.5px;white-space:nowrap;cursor:pointer;background:#FFFFFF;color:#374151;border:2px dashed #B8C4C4;transition:background .4s,color .4s,border-color .4s,box-shadow .4s,transform .4s}
+.pl .orb-n.live{border:2px solid var(--teal);color:#153F3F}
+.pl .orb-n:hover{border-color:var(--teal)}
+.pl .orb-n.on{background:#153F3F;border:2px solid #153F3F;color:#FFFFFF;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 0 8px rgba(242,101,34,.18)}
+.pl .orb-c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(380px,60%);text-align:center}
+.pl .orb-body{display:flex;flex-direction:column;align-items:center;gap:6px;animation:plUp .5s ease both}
+.pl .orb-tag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:999px;background:#ECECEA;color:var(--muted)}
+.pl .orb-tag.live{background:#DCFCE7;color:#166534}
+.pl .orb-name{font-size:26px;font-weight:800;letter-spacing:-.02em;color:#153F3F;margin-top:4px;line-height:1.2}
+.pl .orb-k{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:6px}
+.pl .orb-v{font-size:20px;font-weight:800;color:var(--orange-ink)}
+.pl .orb-p{font-size:15px;color:var(--muted);margin-top:4px}
+.pl .orb-key{display:flex;gap:18px;justify-content:center;font-size:14px;color:var(--muted);margin-top:12px}
+.pl .orb-key span{display:inline-flex;align-items:center;gap:8px}
+.pl .orb-key i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.pl .k-live{border:2px solid var(--teal)}.pl .k-next{border:2px dashed #B8C4C4}
+@media (max-width:860px){.pl .orb{height:auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.pl .orb-ring{display:none}.pl .orb-n{position:static;transform:none;font-size:14px;padding:0 14px}.pl .orb-n.on{transform:none}.pl .orb-c{position:static;transform:none;width:100%;order:-1;margin-bottom:16px;min-height:250px}}
+@media (prefers-reduced-motion:reduce){.pl .orb-body{animation:none!important}.pl .orb-n{transition:none}}
+
+/* How PraiseLoop helps: two lanes (home) */
+.pl .sl{display:grid;grid-template-columns:150px repeat(6,minmax(0,1fr));grid-template-rows:auto 56px auto;column-gap:12px;max-width:1100px;margin-inline:auto}
+.pl .sl-lab{display:flex;align-items:center;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.pl .sl-lab.m{grid-row:1;grid-column:1;color:#153F3F}
+.pl .sl-lab.p{grid-row:3;grid-column:1;color:var(--teal)}
+.pl .sl-track{grid-row:2;grid-column:2 / span 6;position:relative;align-self:center;height:4px;border-radius:999px;background:#D7E3E3}
+.pl .sl-run{position:absolute;top:50%;left:0;width:18px;height:18px;margin-top:-9px;margin-left:-9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 6px rgba(242,101,34,.2);animation:slRun 7.2s linear infinite}
+@keyframes slRun{0%{left:0%}92%{left:100%;opacity:1}96%{left:100%;opacity:0}97%{left:0%;opacity:0}100%{left:0%;opacity:1}}
+.pl .sl-dot{grid-row:2;align-self:center;justify-self:center;width:30px;height:30px;border-radius:50%;background:#FFFFFF;border:2px solid var(--teal);color:#153F3F;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;animation:slDot 7.2s infinite}
+@keyframes slDot{0%,12%{background:var(--orange);border-color:var(--orange);color:#FFFFFF}17%,100%{background:#FFFFFF;border-color:var(--teal);color:#153F3F}}
+.pl .sl-step{border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:4px;position:relative;animation:slStep 7.2s infinite}
+.pl .sl-step b{font-size:15px;line-height:1.3}
+.pl .sl-step span{font-size:13px;line-height:1.4}
+.pl .sl-step .sl-who{display:none;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.pl .sl-step.m{grid-row:1;align-self:end;background:#153F3F;color:#FFFFFF}
+.pl .sl-step.m span{color:#CFE3E3}
+.pl .sl-step.p{grid-row:3;align-self:start;background:#FFFFFF;border:2px solid var(--teal);color:var(--ink)}
+.pl .sl-step.p span{color:var(--muted)}
+.pl .sl-step.p .sl-who{color:var(--teal)}
+.pl .sl-step::after{content:"";position:absolute;left:50%;width:2px;height:14px;background:#B8C4C4}
+.pl .sl-step.m::after{bottom:-14px}.pl .sl-step.p::after{top:-16px}
+@keyframes slStep{0%,12%{transform:translateY(0) scale(1.04);box-shadow:0 12px 28px rgba(21,63,63,.18)}17%,100%{transform:none;box-shadow:none}}
+.pl .sl .c1{grid-column:2}.pl .sl .c2{grid-column:3}.pl .sl .c3{grid-column:4}.pl .sl .c4{grid-column:5}.pl .sl .c5{grid-column:6}.pl .sl .c6{grid-column:7}
+.pl .sl .w2{animation-delay:1.2s}.pl .sl .w3{animation-delay:2.4s}.pl .sl .w4{animation-delay:3.6s}.pl .sl .w5{animation-delay:4.8s}.pl .sl .w6{animation-delay:6s}
+.pl .sl-again{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:22px;font-size:14.5px;font-weight:700;color:var(--teal);text-align:center}
+@media (max-width:900px){.pl .sl{display:flex;flex-direction:column;gap:10px}.pl .sl-lab,.pl .sl-track,.pl .sl-dot{display:none}.pl .sl-step{animation:none}.pl .sl-step::after{display:none}.pl .sl-step .sl-who{display:block}}
+@media (prefers-reduced-motion:reduce){.pl .sl-run,.pl .sl-dot,.pl .sl-step{animation:none!important}}
+
+/* ── Mobile pass (22 Oct) ─────────────────────────────── */
+.pl .pl-burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#FFFFFF;color:var(--ink);cursor:pointer}
+.pl .pl-mob{display:none}
+@media (max-width:860px){
+  .pl .pl-nav{position:sticky;top:0}
+  .pl .pl-nav-row{flex-wrap:nowrap;min-height:64px;padding-block:8px}
+  .pl .pl-nav-links,.pl .pl-signin{display:none}
+  .pl .pl-nav-cta{margin-left:auto}
+  .pl .pl-nav-demo{min-height:44px;padding:0 14px;font-size:15px}
+  .pl .pl-burger{display:inline-flex}
+  .pl .pl-mob{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;max-height:calc(100dvh - 64px);overflow-y:auto;background:#FFFFFF;border-bottom:1px solid var(--line);box-shadow:0 18px 40px rgba(16,24,40,0.12);padding:8px 24px 24px}
+  .pl .pl-mob-top{display:flex;align-items:center;min-height:52px;font-size:18px;font-weight:700;color:var(--ink);border-bottom:1px solid var(--line)}
+  .pl .pl-mob-sec{display:flex;flex-direction:column;border-bottom:1px solid var(--line);padding:10px 0}
+  .pl .pl-mob-grp{display:flex;flex-direction:column;padding:4px 0}
+  .pl .pl-mob-h{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:8px 0 2px}
+  .pl .pl-mob-grp a{display:flex;align-items:center;min-height:44px;font-size:16.5px;font-weight:600;color:#374151}
+}
+@media (max-width:380px){.pl .pl-nav-logo{height:30px}.pl .pl-nav-demo{padding:0 12px;font-size:14px}}
+
+/* Toggles: two equal halves on a phone instead of a wrapped pill */
+@media (max-width:600px){
+  .pl .tog{display:grid;grid-template-columns:1fr 1fr;width:100%;border-radius:14px}
+  .pl .tog button{border-radius:10px;padding:8px 10px;line-height:1.2}
+}
+
+/* Week view: one day at a time on a phone (the base rules sit after the old media query, so restate it) */
+@media (max-width:760px){
+  .pl .wk{grid-template-columns:1fr;min-width:0}
+  .pl .wk-day{display:none}
+  .pl .wk.d0 .wk-day:nth-child(1),.pl .wk.d1 .wk-day:nth-child(2),.pl .wk.d2 .wk-day:nth-child(3),.pl .wk.d3 .wk-day:nth-child(4),.pl .wk.d4 .wk-day:nth-child(5){display:flex}
+  .pl .wk-d{display:none}
+  .pl .legend{gap:8px 16px}
+}
+
+/* Problem tiles: two across on a phone, tighter */
+@media (max-width:600px){
+  .pl .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .pl .tile{padding:16px;gap:6px}
+  .pl .tile svg{width:24px;height:24px}
+  .pl .tile h3{font-size:15px;line-height:1.25}
+  .pl .tile p{font-size:13px}
+  .pl .tile:last-child{grid-column:1 / -1}
+  .pl .cost{padding:18px}
+}
+
+/* Revenue teams: an even two-column grid of tags on a phone */
+@media (max-width:860px){
+  .pl .orb{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .pl .orb-c{grid-column:1 / -1}
+  .pl .orb-n{white-space:normal;line-height:1.2;padding:8px 10px;text-align:center}
+}
+
+/* Loop lanes: full-width cards on a phone */
+@media (max-width:900px){.pl .sl-step.m,.pl .sl-step.p{align-self:stretch}}
+
+/* Team split diagram: the SVG text is too small on a phone, so show a simple list instead */
+.pl .split-m{display:none}
+@media (max-width:640px){
+  .pl .split-svg{display:none}
+  .pl .split-m{display:flex;flex-direction:column;gap:10px}
+  .pl .split-m div{display:flex;gap:12px;align-items:flex-start;background:#FFFFFF;border:1px solid var(--line);border-radius:14px;padding:14px}
+  .pl .split-m i{flex-shrink:0;width:14px;height:14px;border-radius:50%;margin-top:4px}
+  .pl .split-m b{display:block;font-size:15px}
+  .pl .split-m span{font-size:14px;color:var(--muted)}
+}
+
+/* Long hero headlines on narrow screens */
+@media (max-width:420px){.pl h1{font-size:34px}.pl h2{font-size:27px}}
+
+/* Mock-ups: fewer rows on a phone so the page isn't endless */
+@media (max-width:600px){.pl .app .panel .rep:nth-child(n+5){display:none}}

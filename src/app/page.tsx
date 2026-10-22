@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MarketingPage from "@/components/marketing/MarketingPage";
 import { ExampleData, Kpi, RepRow } from "@/components/marketing/mocks";
-import { Costs, HowTeams, Integrations, Loop, TeamCards, Tiles, Versus, WeekToggle } from "@/components/marketing/visuals";
+import { Costs, HowTeams, Integrations, LoopLanes, RevenueTeams, Tiles, Versus, WeekToggle } from "@/components/marketing/visuals";
 import { BOOKING_URL } from "@/components/site/blocks";
 import { Icon } from "@/components/site/icons";
 
@@ -86,10 +86,10 @@ export default function Home() {
         <div className="container">
           <div className="head center-head up">
             <span className="eyebrow">Who it&apos;s for</span>
-            <h2>Built for sales and <span className="kw">customer success</span> teams.</h2>
-            <p className="lede">One brings the revenue in. The other keeps it. Both have managers spending too much of the week on the people who are behind.</p>
+            <h2>Built for <span className="kw">revenue</span> teams.</h2>
+            <p className="lede">Every team that brings revenue in, keeps it or grows it. Starting with sales and customer success.</p>
           </div>
-          <TeamCards />
+          <RevenueTeams />
         </div>
       </section>
 
@@ -125,7 +125,7 @@ export default function Home() {
             <h2>The manager gets the <span className="kw">intelligence</span>. PraiseLoop does the legwork.</h2>
             <p className="lede">PraiseLoop reads the data your team already has and works out why each person&apos;s numbers moved. Managers see it all in a few minutes. The coach works through a plan with everyone who needs one, and tells the manager when someone needs a 1:1.</p>
           </div>
-          <Loop />
+          <LoopLanes />
           <figure className="founder center-quote">
             <blockquote className="quote">&ldquo;The goal isn&apos;t to get every rep to 100%. It&apos;s to change their behaviours and help them build better habits. Moving someone from zero to fifty percent is a huge improvement, and now they&apos;re part of your mid and top performers.&rdquo;</blockquote>
             <figcaption className="quote-by"><span className="av g s">AV</span>Ash Vipani, CEO and co-founder, who runs a sales team himself</figcaption>
