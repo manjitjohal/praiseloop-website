@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogPost(slug);
-  if (!post) return { title: "Post not found — PraiseLoop" };
+  if (!post) return { title: "Post not found · PraiseLoop" };
 
   const title = post.seoTitle || post.title;
   const description = post.seoDescription || post.excerpt || undefined;
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     : undefined;
 
   return {
-    title: `${title} — PraiseLoop`,
+    title: `${title} · PraiseLoop`,
     description,
     openGraph: {
       title,

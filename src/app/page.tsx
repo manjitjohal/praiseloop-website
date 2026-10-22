@@ -1,26 +1,26 @@
 import Link from "next/link";
 import MarketingPage from "@/components/marketing/MarketingPage";
 import { ExampleData, Kpi, RepRow } from "@/components/marketing/mocks";
-import { Costs, HowSteps, Integrations, Loop, Tiles, Versus, WeekToggle } from "@/components/marketing/visuals";
+import { Costs, HowTeams, Integrations, Loop, TeamCards, Tiles, Versus, WeekToggle } from "@/components/marketing/visuals";
 import { BOOKING_URL } from "@/components/site/blocks";
 import { Icon } from "@/components/site/icons";
 
 const FAQ: { q: string; a: React.ReactNode }[] = [
   {
-    q: "Will my managers stop looking after reps who are behind?",
-    a: "No. Managers still see every rep and agree every plan. PraiseLoop does the legwork, and tells them when a rep needs them in person.",
+    q: "Will my managers stop looking after people who are behind?",
+    a: "No. Managers still see everyone on the team and agree every plan. The coach works in steps: a nudge first, then a two-week plan the manager agrees, and only if nothing moves does it ask the manager for a 1:1. The manager stays in charge throughout.",
   },
   {
-    q: "What can reps see?",
+    q: "What can reps and CSMs see?",
     a: "Their own numbers, their coach, their plan and how far they are from target. Check-ins stay private unless they choose to share them.",
   },
   {
     q: "What do you need from our CRM?",
-    a: "Read-only access to deals, stages, stage history, activity and deal owners. We don't write anything back to your CRM.",
+    a: "Read-only access to deals, stages, stage history, activity and owners in the pipelines you connect, such as new business and renewals. We don't write anything back to your CRM.",
   },
   {
     q: "How long does setup take?",
-    a: "Most teams are live within two weeks. Connecting the CRM takes an afternoon. The rest is checking your data and loading targets.",
+    a: "Connecting the CRM takes an afternoon. The rest is checking your data and loading targets, which we do with you.",
   },
   {
     q: "How much does it cost?",
@@ -39,10 +39,11 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <h1>Every manager&apos;s hour should go where the <span className="kw">revenue</span> is.</h1>
-            <p className="hero-line">PraiseLoop finds the cause of underperformance in every rep, coaches the fix, and measures the revenue it brings back.</p>
-            <p className="hero-sub">Your managers get the intelligence, while PraiseLoop transforms underperformance across your sales team.</p>
-            <div className="actions">
+            <span className="eyebrow up">The AI coach for revenue teams</span>
+            <h1 className="up d1">Every manager&apos;s hour should go where the <span className="kw">revenue</span> is.</h1>
+            <p className="hero-line up d2">PraiseLoop finds the cause of underperformance across your revenue team, coaches the fix, and measures the revenue it brings back.</p>
+            <p className="hero-sub up d3">Your managers get the intelligence, while PraiseLoop transforms underperformance across your sales and customer success teams.</p>
+            <div className="actions up d4">
               <Link className="btn btn-primary" href={BOOKING_URL}>Book a demo <Icon.Arrow /></Link>
               <a className="textlink" href="#how">See how it works with one rep</a>
             </div>
@@ -73,7 +74,7 @@ export default function Home() {
                   <span className="gap">Calls down 30% on his normal. Plan running, day 6.</span>
                 </div>
                 <RepRow initials="PK" name="Priya K." status="ahead" gap="Biggest deal of the quarter closes Thursday. Worth your time." />
-                <RepRow initials="JL" name="Jess L." teal status="ontrack" gap="Close to her next accelerator." />
+                <RepRow initials="JL" name="Jess L." teal status="ontrack" gap="On track to hit target with a week to spare." />
               </div>
               <div className="hero-strip"><span className="spark-dot" /> PraiseLoop is supporting 3 reps today · 2 plans working</div>
             </div>
@@ -81,16 +82,28 @@ export default function Home() {
         </div>
       </section>
 
+      <section>
+        <div className="container">
+          <div className="head center-head up">
+            <span className="eyebrow">Who it&apos;s for</span>
+            <h2>Built for sales and <span className="kw">customer success</span> teams.</h2>
+            <p className="lede">One brings the revenue in. The other keeps it. Both have managers spending too much of the week on the people who are behind.</p>
+          </div>
+          <TeamCards />
+        </div>
+      </section>
+
       <section className="warm">
         <div className="container">
           <div className="head wide-head">
             <span className="eyebrow">The problem</span>
-            <h2>Within every sales team there&apos;s <span className="kw">underperformance</span>. And within every sales team, there&apos;s a manager dealing with it.</h2>
-            <p className="lede">You hired your sales managers to grow revenue. But most of their week goes on the reps who are behind.</p>
+            <h2>Within every revenue team there&apos;s <span className="kw">underperformance</span>. And within every revenue team, there&apos;s a manager dealing with it.</h2>
+            <p className="lede">You hired your managers to grow revenue. But most of their week goes on the people who are behind.</p>
           </div>
           <h3 className="list-lead">Where your managers&apos; week actually goes:</h3>
           <Tiles />
-          <div className="costs-gap"><Costs /></div>
+          <h3 className="list-lead costs-gap">The impact:</h3>
+          <Costs />
         </div>
       </section>
 
@@ -110,11 +123,11 @@ export default function Home() {
           <div className="head center-head">
             <span className="eyebrow">How PraiseLoop helps</span>
             <h2>The manager gets the <span className="kw">intelligence</span>. PraiseLoop does the legwork.</h2>
-            <p className="lede">PraiseLoop reads the data your team already has and works out why each rep&apos;s numbers moved. Managers see it all in a few minutes. The coach works through a plan with every rep who needs one, and tells the manager when a rep needs a 1:1.</p>
+            <p className="lede">PraiseLoop reads the data your team already has and works out why each person&apos;s numbers moved. Managers see it all in a few minutes. The coach works through a plan with everyone who needs one, and tells the manager when someone needs a 1:1.</p>
           </div>
           <Loop />
           <figure className="founder center-quote">
-            <blockquote className="quote">&ldquo;The goal isn&apos;t to get every rep to 100%. It&apos;s to change their behaviours and help them build better sales habits. Moving someone from zero to fifty percent is a huge improvement, and now they&apos;re part of your mid and top performers.&rdquo;</blockquote>
+            <blockquote className="quote">&ldquo;The goal isn&apos;t to get every rep to 100%. It&apos;s to change their behaviours and help them build better habits. Moving someone from zero to fifty percent is a huge improvement, and now they&apos;re part of your mid and top performers.&rdquo;</blockquote>
             <figcaption className="quote-by"><span className="av g s">AV</span>Ash Vipani, CEO and co-founder, who runs a sales team himself</figcaption>
           </figure>
         </div>
@@ -124,10 +137,10 @@ export default function Home() {
         <div className="container">
           <div className="head">
             <span className="eyebrow">How it works</span>
-            <h2>One rep, three weeks, and proof it <span className="kw">worked</span>.</h2>
-            <p className="lede">Sam is one of Sarah&apos;s eight reps. Click through what happened. <ExampleData /></p>
+            <h2>One person, three weeks, and proof it <span className="kw">worked</span>.</h2>
+            <p className="lede">Pick a team and click through what happened. <ExampleData /></p>
           </div>
-          <HowSteps />
+          <HowTeams />
         </div>
       </section>
 
@@ -146,11 +159,12 @@ export default function Home() {
         <div className="container">
           <div className="head center-head">
             <span className="eyebrow">Connects to your stack</span>
-            <h2>Connects to <span className="kw">everything</span> your sales team already runs on.</h2>
-            <p className="lede">The data&apos;s already there. PraiseLoop connects to it, so nobody has extra admin.</p>
+            <h2>Works from the data your team <span className="kw">already has</span>.</h2>
+            <p className="lede">The data&apos;s already there. PraiseLoop connects to it, so nobody has extra admin. Already tracking renewals in your CRM? PraiseLoop reads your renewals pipeline the same way it reads new business.</p>
           </div>
           <Integrations />
-          <p className="integ-note">In pilot with our first sales teams now.</p>
+          <p className="integ-sub">Live today: HubSpot and Fathom. Other tools connected for each customer as needed.</p>
+          <p className="integ-note">In pilot with our first sales teams now. Pilots open for customer success teams.</p>
         </div>
       </section>
 

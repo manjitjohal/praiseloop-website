@@ -9,17 +9,31 @@ import { BOOKING_URL, SIGN_IN_URL } from "./site/blocks";
 import { Icon } from "./site/icons";
 
 type MenuLink = { href: string; title: string; blurb: string };
+type MenuGroup = { h: string; links: MenuLink[] };
 type NavEntry =
   | { kind: "link"; label: string; href: string; section: string }
-  | { kind: "menu"; key: string; label: string; sections: string[]; links: MenuLink[] };
+  | { kind: "menu"; key: string; label: string; sections: string[]; links: MenuLink[]; groups?: MenuGroup[] };
 
 const NAV: NavEntry[] = [
   { kind: "link", label: "Product", href: "/product", section: "/product" },
   {
-    kind: "menu", key: "for", label: "For", sections: ["/for"],
-    links: [
-      { href: "/for/heads-of-sales", title: "Heads of sales", blurb: "Every manager coaching the same way, with proof" },
-      { href: "/for/sales-managers", title: "Sales managers", blurb: "Know why the numbers moved, before the 1:1" },
+    kind: "menu", key: "for", label: "For", sections: ["/for"], links: [],
+    groups: [
+      {
+        h: "Sales teams",
+        links: [
+          { href: "/for/heads-of-sales", title: "Heads of sales", blurb: "Every manager coaching the same way, with proof" },
+          { href: "/for/sales-managers", title: "Sales managers", blurb: "Know why the numbers moved, before the 1:1" },
+          { href: "/for/reps", title: "Reps", blurb: "Your own coach, against your own best weeks" },
+        ],
+      },
+      {
+        h: "Customer success teams",
+        links: [
+          { href: "/for/cs-leaders", title: "CS leaders", blurb: "Know which CSM needs you, and what's working" },
+          { href: "/for/csms", title: "CSMs", blurb: "Your book, your numbers, your best quarters" },
+        ],
+      },
     ],
   },
   { kind: "link", label: "Pilot", href: "/pilot", section: "/pilot" },
@@ -27,7 +41,7 @@ const NAV: NavEntry[] = [
     kind: "menu", key: "resources", label: "Resources", sections: ["/blog", "/playbook", "/roi-calculator"],
     links: [
       { href: "/blog", title: "Blog", blurb: "Coaching, incentives and the loop" },
-      { href: "/playbook", title: "Sales coaching playbook", blurb: "Free guide for sales managers" },
+      { href: "/playbook", title: "Sales coaching playbook", blurb: "Free guide for sales managers, coming soon" },
       { href: "/roi-calculator", title: "ROI calculator", blurb: "Model it on your own team" },
     ],
   },
@@ -118,13 +132,25 @@ export default function SiteHeader() {
                     {item.label} <Icon.Chevron />
                   </button>
                   {expanded && (
-                    <div className="pl-menu" id={`menu-${item.key}`}>
-                      {item.links.map((l) => (
-                        <Link key={l.href} href={l.href}>
-                          <strong>{l.title}</strong>
-                          <span>{l.blurb}</span>
-                        </Link>
-                      ))}
+                    <div className={`pl-menu${item.groups ? " grp" : ""}`} id={`menu-${item.key}`}>
+                      {item.groups
+                        ? item.groups.map((g) => (
+                            <div key={g.h} className="mg-col">
+                              <span className="mg-h">{g.h}</span>
+                              {g.links.map((l) => (
+                                <Link key={l.href} href={l.href}>
+                                  <strong>{l.title}</strong>
+                                  <span>{l.blurb}</span>
+                                </Link>
+                              ))}
+                            </div>
+                          ))
+                        : item.links.map((l) => (
+                            <Link key={l.href} href={l.href}>
+                              <strong>{l.title}</strong>
+                              <span>{l.blurb}</span>
+                            </Link>
+                          ))}
                     </div>
                   )}
                 </div>

@@ -61,11 +61,13 @@ export default function PilotPage() {
           <div className="prose">
             <h2>Who it <span className="kw">suits</span></h2>
             <p>Sales teams with more than one manager, where the head of sales wants everyone coaching the same way. That usually means somewhere between 20 and 100 reps.</p>
+            <p>Customer success teams too. If your renewals run through a pipeline in your CRM, we measure the habits and the stage movement first, and report renewals alongside as they come in.</p>
+            <p><strong>Start with managers only.</strong> If you&apos;d rather not put a coach in front of reps straight away, the pilot can start with managers: they get the morning overview and the plans, and the rep side switches on when you&apos;re ready.</p>
           </div>
           <div className="plain">
             <div>
               <h3>A CRM we can read</h3>
-              <p>HubSpot or Salesforce today. Others on request.</p>
+              <p>HubSpot today. Other CRMs connected on request.</p>
             </div>
             <div>
               <h3>Targets and an incentive plan</h3>

@@ -39,6 +39,11 @@ const nextConfig: NextConfig = {
         destination: "/roi-calculator/company-wide",
         permanent: false,
       },
+      // Retired pages (22 Oct 2026): send old links somewhere useful.
+      { source: "/how-it-works", destination: "/product", permanent: true },
+      { source: "/consultancies", destination: "/", permanent: true },
+      { source: "/versionold", destination: "/", permanent: true },
+      { source: "/v2.html", destination: "/", permanent: true },
     ];
   },
   // PostHog endpoints use trailing slashes; don't let Next redirect them.

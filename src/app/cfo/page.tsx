@@ -35,7 +35,7 @@ export default function CfoPage() {
             <Link href={BOOKING_URL} className="btn btn-ghost">Book a demo</Link>
           </>
         }
-        meta="Works with HubSpot and Salesforce."
+        meta="Works with HubSpot today. Other CRMs connected on request."
       />
 
       <PillarGrid
@@ -54,7 +54,7 @@ export default function CfoPage() {
         title={<>Every reward traces back to a <span className="kw">CRM record</span>.</>}
         items={[
           { Ico: Icon.Layers, h: "Rules from incentives you already pay", p: "Reward rules are built from your existing incentive plan, so the spend is agreed before anyone earns it." },
-          { Ico: Icon.Database, h: "The CRM is the trigger", p: "When HubSpot or Salesforce records the result, coins land, redeemable for real rewards. No result, no payout." },
+          { Ico: Icon.Database, h: "The CRM is the trigger", p: "When your CRM records the result, coins land, redeemable for real rewards. No result, no payout." },
           { Ico: Icon.Bars, h: "A CFO report at day 90", p: "A 90-day pilot ends with a report on your own numbers: what moved, what it cost, and the case for rolling out, or not." },
         ]}
         line="Not a replacement for your commission plan. It sits alongside it."

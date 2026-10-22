@@ -12,7 +12,7 @@ export default function RepsPage() {
   return (
     <AudiencePage
       title={<>Go from behind your number to <span className="kw">beating it</span>.</>}
-      lede="Your own coach finds what's holding your number back, gives you one habit to fix it, and shows you when it's working. It knows your target and your next accelerator, so you always know which deals matter most."
+      lede="Your own coach finds what's holding your number back, gives you one habit to fix it, and shows you when it's working. It knows your target, so you always know which deals matter most."
       media={<RepToday />}
       problem={{
         h: <>Feedback usually turns up at the <span className="kw">monthly 1:1</span>. By then the deal&apos;s gone.</>,
@@ -22,9 +22,9 @@ export default function RepsPage() {
         ],
       }}
       points={[
-        { h: "Where you stand", p: "How far you are from target and your next accelerator, every day." },
+        { h: "Where you stand", p: "How far you are from target, every day." },
         { h: "Help before a call", p: "What matters about the deal, and the question worth asking." },
-        { h: "Your own progress", p: "Measured against your own best weeks. There's no league table in it." },
+        { h: "Your own progress", p: "Measured against your own best weeks, not against each other." },
       ]}
       objection={{
         q: "Is this my manager keeping tabs on me?",

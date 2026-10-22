@@ -1,6 +1,6 @@
 /**
  * Section blocks shared by the homepage and the standalone landing pages
- * (/cfo, /consultancies, /playbook). Server-safe: no hooks. Styled by
+ * (/cfo, /playbook). Server-safe: no hooks. Styled by
  * home-v2.css under `.plh`.
  */
 

@@ -11,7 +11,7 @@
 
 **Rule of thumb:** if it's a colour/font/semantic token → it lives in `DESIGN.md`. If it's a landing-page pattern, type scale, motion, or flourish → it lives here.
 
-**Living reference implementation:** [`public/v2.html`](./public/v2.html) — a self-contained pilot that clones the marketing flow and applies everything below. When in doubt, match it.
+**Living reference implementation:** the live marketing pages (`src/app/page.tsx` and `src/components/marketing/`, styled in `src/app/site.css`). When in doubt, match them.
 
 ---
 
@@ -55,7 +55,7 @@
 | body | `15–16.5px` | 400–500 |
 | mono micro-label | `10–12px` JetBrains Mono | 600–700 |
 
-- Emphasise keywords inline with `.kw` (orange, 700): *performance / recognition / reward*.
+- Emphasise keywords inline with `.kw` (orange, 700): *revenue / underperformance / worked*.
 - `text-wrap: balance` on headings, `pretty` on ledes.
 
 ---
@@ -71,7 +71,7 @@
 
 ## 5. Section pattern catalog
 
-The marketing flow, in order, as built in `v2.html`. Reuse these; don't reinvent per page.
+The marketing flow, in order, as built on the homepage. Reuse these; don't reinvent per page.
 
 | Pattern | Surface | Anatomy |
 | --- | --- | --- |

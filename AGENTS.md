@@ -2,7 +2,7 @@
 
 Guidance for Codex when working in this repo. The user's email is duncan@buildink.co.
 
-Marketing site for **PraiseLoop** (performance-linked employee recognition) with a Sanity-backed blog. Deployed on **Vercel**.
+Marketing site for **PraiseLoop**, the AI coach for revenue teams (sales and customer success), with a Sanity-backed blog. Deployed on **Vercel**.
 
 ## Stack
 
@@ -20,7 +20,7 @@ Marketing site for **PraiseLoop** (performance-linked employee recognition) with
 
 | Path | What it is |
 |------|-----------|
-| `src/app/page.tsx` → `src/components/LandingPage.tsx` | Homepage — **fully static**, no CMS |
+| `src/app/page.tsx` | Homepage — **fully static**, no CMS |
 | `src/app/demo/page.tsx` | Demo-request form (`/demo`) |
 | `src/app/blog/page.tsx` | Blog listing (`/blog`) — featured post + card grid |
 | `src/app/blog/[slug]/page.tsx` | Blog post — Portable Text body, SEO/OG metadata, series links |

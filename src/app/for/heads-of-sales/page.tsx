@@ -65,7 +65,8 @@ export default function HeadsOfSalesPage() {
       points={[
         { h: "Every rep, every week", p: "Including the reps whose manager is flat out with hiring or a big deal." },
         { h: "What's working, team-wide", p: "Which plans move numbers, broken down by manager and by the kind of gap." },
-        { h: "Something to show at renewal", p: "Before and after for every plan, on each rep's own baseline." },
+        { h: "Something to show the board", p: "Before and after for every plan, on each rep's own baseline." },
+        { h: "Did your last sales contest work?", p: "Every contest and initiative gets the same before and after, so you know which ones to run again." },
       ]}
       objection={{
         q: "Will my managers actually use it?",
