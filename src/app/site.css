@@ -648,3 +648,46 @@
 .pl .quote-side{margin:0;padding:0;border:0}
 .pl .quote-side .quote{font-size:clamp(20px,2vw,26px)}
 @media (max-width:860px){.pl .quote-split{grid-template-columns:1fr;gap:24px}}
+
+/* ── Nov 2026 homepage feedback ───────────────────────────── */
+.pl .hero-wide .hero-copy{flex:1 1 420px}
+.pl .hero-wide .hero-media{flex:1.25 1 560px}
+.pl .hero-points{list-style:none;display:flex;flex-direction:column;gap:10px;padding:0;margin:0;max-width:600px}
+.pl .hero-points li{position:relative;padding-left:22px;font-size:16.5px;line-height:1.5;color:var(--muted)}
+.pl .hero-points li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.pl .hero-points b{color:var(--ink)}
+.pl .rec{gap:12px}
+.pl .rec .hello{font-weight:800;font-size:18px}
+.pl .rec-what{background:#FFFFFF;border:1px solid var(--line);border-left:4px solid #B54848;border-radius:14px;padding:14px 16px}
+.pl .rec-k{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.pl .rec-what p{font-size:15.5px;line-height:1.45;margin-top:4px;color:var(--muted)}
+.pl .rec-what b{color:var(--ink)}
+.pl .rec .panel-h{border-bottom:0}
+.pl .rec-foot{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;color:var(--teal-dark)}
+.pl section.slim{padding:36px 0;border-bottom:1px solid var(--line)}
+.pl .teams-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:center;margin-bottom:16px;text-align:center}
+.pl .teams-row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;align-items:center}
+.pl .teams-grp{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.pl .teams-grp .int-lab{margin-right:4px}
+.pl .teams-grp .chip{padding:8px 14px;font-size:14.5px}
+.pl .teams-grp a.chip.live{color:var(--teal-dark)}
+.pl .teams-grp a.chip.live:hover{background:var(--mint)}
+.pl .story{display:flex;flex-direction:column;gap:24px}
+.pl .story-top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.pl .story-top .sub{font-size:15px}
+.pl .story-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:20px;animation:plUp .35s ease both}
+.pl .story-col{background:#FFFFFF;border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.pl .story-col > p{color:var(--muted);font-size:15.5px}
+.pl .story-n{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal)}
+.pl .story-n i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--teal-dark);color:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:0}
+.pl .story-out{display:flex;flex-direction:column;gap:12px}
+.pl .wk-compact .blk{min-height:0;padding:7px 10px;font-size:12.5px}
+.pl .wk-compact .wk-day{gap:6px}
+.pl .roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px;max-width:1000px;margin:0 auto 56px}
+.pl .role{border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.pl .role h3{font-size:19px;margin-bottom:4px}
+.pl .role.m{background:#FFFFFF;border:1px solid var(--line)}
+.pl .role.p{background:var(--teal-dark);color:#FFFFFF}
+.pl .role .vs-row{display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+.pl .hero-wide h1{font-size:clamp(38px,4.1vw,56px)}
+.pl .hero-wide .hero-line{font-size:20px}
