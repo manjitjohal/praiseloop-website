@@ -9,19 +9,15 @@ import { Icon } from "@/components/site/icons";
 const FAQ: { q: string; a: React.ReactNode }[] = [
   {
     q: "Will my managers stop looking after people who are behind?",
-    a: "No. Managers still see everyone on the team and agree every plan. The coach works in steps: a nudge first, then a two-week plan the manager agrees, and only if nothing moves does it ask the manager for a 1:1. The manager stays in charge throughout.",
+    a: "No. Managers see everyone, agree every plan, and are only asked for a 1:1 when a plan isn't moving.",
   },
   {
     q: "What do you need from our CRM?",
-    a: "Read-only access to deals, stages, stage history, activity and owners in the pipelines you connect, such as new business and renewals. We don't write anything back to your CRM.",
-  },
-  {
-    q: "How long does setup take?",
-    a: "Connecting the CRM takes an afternoon. The rest is checking your data and loading targets, which we do with you.",
+    a: "Read-only access to your deals, stages and activity. Connecting takes an afternoon, and we never write anything back.",
   },
   {
     q: "How much does it cost?",
-    a: "Annual plans, priced by team size. Pilots are a fixed fee agreed up front, which comes off your first year if you carry on.",
+    a: "Annual plans priced by team size; pilots are a fixed fee that comes off year one.",
   },
 ];
 
