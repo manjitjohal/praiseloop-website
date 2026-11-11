@@ -4,20 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Icon } from "../site/icons";
 
-const EMPTY = { firstName: "", lastName: "", email: "", company: "", jobTitle: "", team: "", teamSize: "", crm: "", csTool: "", message: "" };
-const TEAMS = [
-  "Sales",
-  "SDR / BDR",
-  "Pre-sales",
-  "Customer success",
-  "Renewals",
-  "Upsell and expansion",
-  "Partnerships",
-  "Delivery",
-  "More than one of these",
-];
-/** Teams that usually run on customer success tools as well as the CRM. */
-const CS_LIKE = ["Customer success", "Renewals", "Upsell and expansion", "More than one of these"];
+const EMPTY = { name: "", email: "", company: "", teamSize: "", crm: "" };
 type Field = keyof typeof EMPTY;
 
 /** The demo request form. Posts to /api/demo, which emails the lead to the team. */
@@ -60,34 +47,17 @@ export default function DemoForm() {
       <h2>Book your demo</h2>
       <div className="field-row">
         <div className="field">
-          <label htmlFor="firstName">First name *</label>
-          <input id="firstName" autoComplete="given-name" required value={form.firstName} onChange={update("firstName")} />
+          <label htmlFor="name">Name *</label>
+          <input id="name" autoComplete="name" required value={form.name} onChange={update("name")} />
         </div>
         <div className="field">
-          <label htmlFor="lastName">Last name *</label>
-          <input id="lastName" autoComplete="family-name" required value={form.lastName} onChange={update("lastName")} />
+          <label htmlFor="email">Work email *</label>
+          <input id="email" type="email" autoComplete="email" required value={form.email} onChange={update("email")} />
         </div>
       </div>
       <div className="field">
-        <label htmlFor="email">Work email *</label>
-        <input id="email" type="email" autoComplete="email" required value={form.email} onChange={update("email")} />
-      </div>
-      <div className="field-row">
-        <div className="field">
-          <label htmlFor="company">Company *</label>
-          <input id="company" autoComplete="organization" required value={form.company} onChange={update("company")} />
-        </div>
-        <div className="field">
-          <label htmlFor="jobTitle">Job title</label>
-          <input id="jobTitle" autoComplete="organization-title" value={form.jobTitle} onChange={update("jobTitle")} />
-        </div>
-      </div>
-      <div className="field">
-        <label htmlFor="team">Which team is this for? *</label>
-        <select id="team" required value={form.team} onChange={(e) => { const t = e.target.value; setForm((f) => ({ ...f, team: t, csTool: CS_LIKE.includes(t) ? f.csTool : "" })); }}>
-          <option value="">Select…</option>
-          {TEAMS.map((t) => <option key={t} value={t}>{t}</option>)}
-        </select>
+        <label htmlFor="company">Company *</label>
+        <input id="company" autoComplete="organization" required value={form.company} onChange={update("company")} />
       </div>
       <div className="field-row">
         <div className="field">
@@ -111,25 +81,6 @@ export default function DemoForm() {
             <option value="None">We don&apos;t use one yet</option>
           </select>
         </div>
-      </div>
-      {CS_LIKE.includes(form.team) && (
-        <div className="field">
-          <label htmlFor="csTool">What do you use for customer success? (optional)</label>
-          <select id="csTool" value={form.csTool} onChange={update("csTool")}>
-            <option value="">Select…</option>
-            <option value="HubSpot Service Hub">HubSpot Service Hub</option>
-            <option value="Gainsight">Gainsight</option>
-            <option value="ChurnZero">ChurnZero</option>
-            <option value="Zendesk">Zendesk</option>
-            <option value="Intercom">Intercom</option>
-            <option value="Other">Other</option>
-            <option value="None">None</option>
-          </select>
-        </div>
-      )}
-      <div className="field">
-        <label htmlFor="message">What would you most like to fix?</label>
-        <textarea id="message" rows={3} value={form.message} onChange={update("message")} />
       </div>
       <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
         {status === "sending" ? "Sending…" : "Book a demo"}
