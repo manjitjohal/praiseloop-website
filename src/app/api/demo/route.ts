@@ -23,6 +23,7 @@ const TO_EMAIL = process.env.DEMO_TO_EMAIL || "hello@praiseloop.com";
 const FROM_EMAIL = process.env.DEMO_FROM_EMAIL || "PraiseLoop <noreply@updates.praiseloop.com>";
 
 type DemoLead = {
+  name?: string;
   firstName?: string;
   lastName?: string;
   email?: string;
@@ -46,10 +47,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const { firstName, lastName, email, company, jobTitle, team, teamSize, crm, csTool, message } = data || {};
+  const { name, firstName, lastName, email, company, jobTitle, team, teamSize, crm, csTool, message } = data || {};
+  // The form sends a single `name`; first/last are still accepted from older clients.
+  const fullName = (name || `${firstName || ""} ${lastName || ""}`).trim();
 
   // Mirror the form's required fields. Team size and CRM qualify the lead.
-  if (!firstName || !lastName || !email || !company || !team || !teamSize || !crm) {
+  if (!fullName || !email || !company || !teamSize || !crm) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -62,7 +65,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Email delivery is not configured." }, { status: 503 });
   }
 
-  const fullName = `${firstName} ${lastName}`.trim();
   const fields: [string, string | undefined][] = [
     ["Name", fullName],
     ["Work email", email],
@@ -100,7 +102,7 @@ export async function POST(req: Request) {
         from: FROM_EMAIL,
         to: [TO_EMAIL],
         reply_to: email,
-        subject: `New demo request · ${company} · ${team || "Sales"} · ${teamSize} people · ${crm}`,
+        subject: `New demo request · ${company} · ${teamSize} people · ${crm}`,
         html,
         text,
       }),

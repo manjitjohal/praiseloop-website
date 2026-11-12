@@ -8,7 +8,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Coach, DidItWork, NADIA, RepRow } from "./mocks";
+import { Coach, DidItWork, NADIA, RepRow, type DiwData } from "./mocks";
 
 const P = {
   phone: <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z" />,
@@ -92,7 +92,7 @@ const WITH: [string, Blk[]][] = [
   ["Fri", [["g", "Forecast"], ["t", "Celebrate the wins"], ["g", "Admin"], ["t", "Plan next quarter"]]],
 ];
 
-export function WeekToggle() {
+export function WeekToggle({ compact = false }: { compact?: boolean } = {}) {
   const [wk, setWk] = useState<"today" | "with">("today");
   const [pinned, setPinned] = useState(false);
   const [day, setDay] = useState(0);
@@ -106,7 +106,7 @@ export function WeekToggle() {
   const pick = (w: "today" | "with") => () => { setWk(w); setPinned(true); };
   const days = wk === "today" ? TODAY : WITH;
   return (
-    <div className="wk-block">
+    <div className={`wk-block${compact ? " wk-compact" : ""}`}>
       <div className="wk-top">
         <div className="tog" role="group" aria-label="Compare weeks">
           <button type="button" className={wk === "today" ? "on" : ""} aria-pressed={wk === "today"} onClick={pick("today")}>A week today</button>
@@ -128,7 +128,7 @@ export function WeekToggle() {
           {days.map(([d, blocks], di) => (
             <div className="wk-day" key={d}>
               <div className="wk-d">{d}</div>
-              {blocks.map(([c, txt], bi) => (
+              {(compact ? blocks.slice(0, 3) : blocks).map(([c, txt], bi) => (
                 <div key={txt + bi} className={`blk ${c}`} style={{ animationDelay: `${(di * 4 + bi) * 0.04}s` }}>{txt}</div>
               ))}
             </div>
@@ -479,6 +479,145 @@ export function LoopLanes() {
       <div className="sl-again">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4" /><path d="M3 11v-1a4 4 0 0 1 4-4h14" /><path d="M7 22l-4-4 4-4" /><path d="M21 13v1a4 4 0 0 1-4 4H3" /></svg>
         Then it starts again, for everyone who needs it.
+      </div>
+    </div>
+  );
+}
+
+/* ── Nov 2026 homepage feedback (Manjit, 11 Nov) ──────────── */
+
+/** Hero: one coach recommendation, with the evidence behind it. */
+export function HeroRecommendation() {
+  return (
+    <div className="app rec">
+      <div className="app-top">
+        <span className="av t">JL</span>
+        <div>
+          <div className="hello">Jess L. · Account executive</div>
+          <div className="sub">Coach recommendation for Sarah · Monday 8:04</div>
+        </div>
+        <span className="example">Illustrative</span>
+      </div>
+      <div className="rec-what">
+        <span className="rec-k">What&apos;s changed</span>
+        <p><b>Deals with a dated next step: 9 of 15.</b> Over her last eight weeks it was about 13 in 15.</p>
+      </div>
+      <div className="panel evidence">
+        <div className="panel-h"><span>The evidence</span><span className="sub">From HubSpot and Fathom</span></div>
+        <div className="ev"><span>Sales calls held this fortnight</span><b className="ok">22, her normal</b></div>
+        <div className="ev"><span>Calls that ended with an agreed next step</span><b className="wn">5 of 12</b></div>
+        <div className="ev"><span>Deals idle for 14 days or more</span><b className="wn">6</b></div>
+      </div>
+      <Coach
+        label="Recommended plan · 2 weeks"
+        text="Jess is still getting the meetings. They're ending without a next step. For two weeks: close every call with one agreed next step and a date in the diary."
+        primary="Agree plan"
+        secondary="Why this?"
+      />
+      <div className="rec-foot"><Svg d={P.check} color={TEAL} size={16} /> Tracked against Jess&apos;s own last eight weeks. Sarah sees how it&apos;s going each morning.</div>
+    </div>
+  );
+}
+
+/** Who it's for, as one simple row. */
+export function TeamsRow() {
+  const live = TEAMS.filter((t) => t.live);
+  const next = TEAMS.filter((t) => !t.live);
+  return (
+    <div className="teams-row">
+      <div className="teams-grp">
+        <span className="int-lab">Live now</span>
+        {live.map((t) => <Link key={t.name} className="chip live" href={t.href!}>{t.name} <Arrow /></Link>)}
+      </div>
+      <div className="teams-grp">
+        <span className="int-lab">Next</span>
+        {next.map((t) => <span key={t.name} className="chip soon">{t.name}</span>)}
+      </div>
+    </div>
+  );
+}
+
+type Story = { who: string; problem: React.ReactNode; ev: [string, string, "ok" | "wn"][]; action: string; coachLabel: string; approved: string; diw?: DiwData };
+
+const STORIES: Record<"sales" | "cs", Story> = {
+  sales: {
+    who: "Sam is one of Sarah's eight reps.",
+    problem: <>Sam has closed 2 of his last 9 proposals. Over the previous eight weeks it was about 4 in 10. The cause: 6 of the 9 had no decision call booked.</>,
+    ev: [["Pipeline against target", "1.4x, healthy", "ok"], ["Proposals sent within 2 days", "9 of 9", "ok"], ["Decision call booked after the proposal", "3 of 9", "wn"]],
+    coachLabel: "Coach, to Sam",
+    action: "Your proposals are good. The deals are going quiet after them. For the next two weeks, try booking the decision call before you hang up.",
+    approved: "Sarah agreed this plan in one tap · Tue 9:02",
+  },
+  cs: {
+    who: "Nadia is one of Hannah's six CSMs.",
+    problem: <>Nadia&apos;s client calls ended with an agreed next step 3 times in her last 10, against about 7 in 10 normally. Two accounts reach month 8 this month.</>,
+    ev: [["Client calls held this month", "10, her normal", "ok"], ["Renewal conversation started by month 8", "1 of 4", "wn"], ["Next step agreed with the client", "3 of 10", "wn"]],
+    coachLabel: "Coach, to Nadia",
+    action: "Your clients are hearing from you. The calls are ending without a next step. For the next two weeks, close every call with one agreed next step and a date.",
+    approved: "Hannah agreed this plan in one tap · Tue 9:02",
+    diw: NADIA,
+  },
+};
+
+/** The coaching story: problem, action and outcome side by side. */
+export function CoachingStory() {
+  const [team, setTeam] = useState<"sales" | "cs">("sales");
+  const s = STORIES[team];
+  return (
+    <div className="story">
+      <div className="story-top">
+        <div className="tog" role="group" aria-label="Pick a team">
+          <button type="button" className={team === "sales" ? "on" : ""} aria-pressed={team === "sales"} onClick={() => setTeam("sales")}>Sales team</button>
+          <button type="button" className={team === "cs" ? "on" : ""} aria-pressed={team === "cs"} onClick={() => setTeam("cs")}>Customer success team</button>
+        </div>
+        <span className="sub">{s.who}</span>
+      </div>
+      <div className="story-cols" key={team}>
+        <div className="story-col">
+          <span className="story-n"><i>1</i>The problem · Monday</span>
+          <p>{s.problem}</p>
+          <div className="panel evidence">
+            {s.ev.map(([k, v, c]) => <div className="ev" key={k}><span>{k}</span><b className={c}>{v}</b></div>)}
+          </div>
+        </div>
+        <div className="story-col">
+          <span className="story-n"><i>2</i>The action · Tuesday</span>
+          <p>A two-week plan built from what worked in their own best weeks. The manager agrees it; the coach supports it day to day.</p>
+          <Coach label={s.coachLabel} text={s.action} primary="Start this week" secondary="Why this?" />
+          <span className="sub">{s.approved}</span>
+        </div>
+      </div>
+      <div className="story-out">
+        <span className="story-n"><i>3</i>The outcome · three weeks later</span>
+        {s.diw ? <DidItWork d={s.diw} /> : <DidItWork />}
+      </div>
+    </div>
+  );
+}
+
+/** What the manager does and what PraiseLoop does. */
+export function Roles() {
+  const mgr = ["Sees who's behind and why, in a few minutes", "Agrees each plan in one tap", "Steps in for a 1:1 when a plan isn't moving", "Spends the time saved on top performers and big deals"];
+  const pl = ["Spots drops every morning, against each person's own normal", "Works out the cause from CRM and call data", "Coaches the person day to day, one habit at a time", "Measures whether it worked, and says so when it didn't"];
+  return (
+    <div className="roles">
+      <div className="role m"><h3>Your manager</h3>{mgr.map((t) => <div className="vs-row" key={t}><Svg d={P.check} color={TEAL} size={20} /><span>{t}</span></div>)}</div>
+      <div className="role p"><h3>PraiseLoop</h3>{pl.map((t) => <div className="vs-row" key={t}><Svg d={P.check} color="#9FD0D0" size={20} /><span>{t}</span></div>)}</div>
+    </div>
+  );
+}
+
+/** Integrations on one line. */
+export function IntegrationsCompact() {
+  return (
+    <div className="teams-row">
+      <div className="teams-grp">
+        <span className="int-lab">Live today</span>
+        {LIVE.map((t) => <span className="chip live" key={t}>{t}</span>)}
+      </div>
+      <div className="teams-grp">
+        <span className="int-lab">On request</span>
+        {SOON.map((t) => <span className="chip soon" key={t}>{t}</span>)}
       </div>
     </div>
   );
