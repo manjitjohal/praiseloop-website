@@ -8,6 +8,9 @@
    resets marked "globals" below undo what those rules would leak in. */
 
 .pl{--ink:#1A1A1A;--muted:#5F6672;--soft:#9CA3AF;--bg:#FFFFFF;--warm:#F4F4F3;--warm2:#FAF9F7;--line:#ECECEA;--orange:#F26522;--orange-ink:#B8470F;--peach:#FDEBDD;--teal:#1B6B6B;--teal-dark:#153F3F;--mint:#E8F0F0;--green:#166534;--green-bg:#DCFCE7;--amber:#92400E;--amber-bg:#FEF3C7;
+  /* Named here so pages stop inlining them: "behind" red, teal tints on dark surfaces, stronger lines, shadows */
+  --behind:#B54848;--behind-bg:#FBE9E9;--on-dark:#FFFFFF;--teal-soft:#A7C8C8;--teal-pale:#9FD0D0;--teal-mid:#5FA3A3;--orange-soft:#FFB48A;
+  --ink-2:#374151;--line-strong:#D9D9D5;--line-soft:#F0F0EE;--shadow-card:0 24px 50px rgba(21,63,63,0.10);--shadow-lift:0 30px 60px rgba(21,63,63,0.16);--glow-orange:rgba(242,101,34,0.45);--ease-out:cubic-bezier(0.16,1,0.3,1);
   font-family:var(--font-figtree),system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;width:100%;overflow-x:clip}
 .pl *,.pl *::before,.pl *::after{box-sizing:border-box}
 .pl a{color:inherit;text-decoration:none}
@@ -208,6 +211,7 @@
 .pl .form-note{font-size:13.5px;color:var(--muted);text-align:center}
 .pl .form-note.error{color:#B42318}
 .pl .form-note a{text-decoration:underline}
+.pl .form-note.left{text-align:left}
 .pl .form-card.done{align-items:flex-start}
 .pl .form-card.done p{color:var(--muted)}
 .pl .done-ic{width:48px;height:48px;border-radius:50%;background:var(--green-bg);color:var(--green);display:flex;align-items:center;justify-content:center}
@@ -658,8 +662,9 @@
 .pl .hero-points b{color:var(--ink)}
 .pl .rec{gap:12px}
 .pl .rec .hello{font-weight:800;font-size:18px}
-.pl .rec-what{background:#FFFFFF;border:1px solid var(--line);border-left:4px solid #B54848;border-radius:14px;padding:14px 16px}
-.pl .rec-k{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.pl .rec-what{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.pl .rec-k{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.pl .rec-what .rec-k::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--behind);flex-shrink:0}
 .pl .rec-what p{font-size:15.5px;line-height:1.45;margin-top:4px;color:var(--muted)}
 .pl .rec-what b{color:var(--ink)}
 .pl .rec .panel-h{border-bottom:0}

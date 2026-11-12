@@ -4,7 +4,7 @@ import { getBlogSlugs } from "@/lib/sanity";
 const BASE = "https://www.praiseloop.com";
 
 const PAGES = [
-  "", "/product", "/pilot", "/about", "/demo", "/playbook", "/roi-calculator", "/blog",
+  "", "/product", "/pilot", "/about", "/demo", "/playbook", "/roi-calculator", "/see-your-team", "/blog",
   "/for/heads-of-sales", "/for/sales-managers", "/for/reps", "/for/cs-leaders", "/for/csms",
   "/terms", "/cookies",
 ];
