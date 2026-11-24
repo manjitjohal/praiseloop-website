@@ -170,6 +170,7 @@ export default function SiteHeader() {
           </nav>
           <div className="pl-nav-cta">
             <a className="pl-nav-link pl-signin" href={SIGN_IN_URL}>Sign in</a>
+            <Link className="pl-nav-try" href="/see-your-team">See your team</Link>
             <Link className="pl-nav-demo" href={BOOKING_URL}>Book a demo</Link>
             <button
               type="button"
@@ -202,6 +203,7 @@ export default function SiteHeader() {
               ),
             )}
             <a className="pl-mob-top" href={SIGN_IN_URL}>Sign in</a>
+            <Link className="pl-mob-try" href="/see-your-team">See your team</Link>
           </nav>
         )}
       </header>
